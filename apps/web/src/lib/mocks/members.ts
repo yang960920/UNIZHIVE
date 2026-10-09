@@ -4,7 +4,6 @@ import { currentSeason, DEMO_NOW } from "./current-season";
 export interface MockMember extends PublicMemberProfile {
   role: HiveRole;
   online: boolean;
-  combatRole: string;
 }
 
 const names = [
@@ -56,16 +55,6 @@ export const mockMembers: MockMember[] = names.map((name, index) => ({
   bio: null,
   role: index === 1 ? "OFFICER" : index === 2 ? "ADMIN" : "MEMBER",
   online: index < 12,
-  combatRole:
-    index === 1 || index === 4
-      ? "Tank"
-      : index === 2 || index === 9
-        ? "Support"
-        : index === 12
-          ? "Gatherer"
-          : index === 13
-            ? "Driver"
-            : "DPS",
   joinedAt: new Date("2026-08-20T00:00:00+09:00"),
   createdAt: new Date("2026-08-20T00:00:00+09:00"),
   updatedAt: DEMO_NOW,

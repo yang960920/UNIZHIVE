@@ -218,6 +218,11 @@
 }
 .directory-roster li.directory-attendee {
   flex-wrap: wrap;
+  align-items: flex-start;
+}
+.directory-attendee > div:first-child {
+  flex: 1;
+  min-width: 0;
 }
 .directory-section-heading {
   display: flex;
@@ -229,7 +234,7 @@
 .directory-section-heading h2,
 .directory-briefing h2,
 .directory-rsvp h2,
-.directory-roles h2 {
+.directory-synergy h2 {
   margin: 0;
   font-size: 18px;
 }
@@ -251,7 +256,7 @@
 .directory-briefing,
 .directory-rsvp,
 .directory-roster,
-.directory-roles {
+.directory-synergy {
   padding: 25px;
 }
 .directory-operation-card {
@@ -411,14 +416,12 @@
 .directory-feedback.is-error {
   color: #ffb6aa !important;
 }
-.directory-roster ul,
-.directory-roles ul {
+.directory-roster ul {
   margin: 18px 0;
   padding: 0;
   list-style: none;
 }
-.directory-roster li,
-.directory-roles li {
+.directory-roster li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -431,8 +434,7 @@
   display: grid;
   gap: 5px;
 }
-.directory-roster small,
-.directory-roles li > span:last-child {
+.directory-roster small {
   color: var(--muted);
 }
 @media (max-width: 760px) {
@@ -444,7 +446,7 @@
   .directory-briefing,
   .directory-rsvp,
   .directory-roster,
-  .directory-roles {
+  .directory-synergy {
     padding: 21px;
   }
   .directory-section-heading {

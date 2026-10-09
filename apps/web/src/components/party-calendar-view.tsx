@@ -13,6 +13,7 @@ import {
   shiftPartyMonth,
 } from "@/lib/party-navigation";
 import "./operation-directory.css";
+import { PartyContributionTags } from "./party-synergy";
 
 export type PartyCalendarViewData = OperationDirectoryData;
 
@@ -237,6 +238,13 @@ export function PartyCalendarView({ data }: { data: PartyCalendarViewData }) {
                 <p className="directory-operation-description">
                   {party.description || "추가 안내가 없습니다."}
                 </p>
+                <div className="directory-requested-contributions">
+                  <span>함께 준비할 효과</span>
+                  <PartyContributionTags
+                    keys={party.requestedContributions ?? []}
+                    emptyLabel="자유 모집"
+                  />
+                </div>
                 {party.timeConflictNotice && (
                   <p className="party-conflict-notice">{party.timeConflictNotice}</p>
                 )}

@@ -21,9 +21,9 @@ export const mockAnnouncements: MockAnnouncement[] = [
   {
     id: "raid-roster",
     tag: "OPS",
-    title: "레이드 역할 배정 규칙 개정",
+    title: "레이드 준비 세팅 안내",
     content:
-      "오늘 레이드는 21:00 KST입니다. 참가 여부를 선택하고 Support 역할 두 자리를 확인해 주세요.",
+      "오늘 레이드는 21:00 KST입니다. 참가 여부를 선택하고 사용할 감염물과 준비물을 함께 확인해 주세요. 협동 효과는 자유롭게 조율합니다.",
     authorId: "demo-officer",
     isPinned: false,
     publishedAt: new Date("2026-10-03T20:00:00+09:00"),

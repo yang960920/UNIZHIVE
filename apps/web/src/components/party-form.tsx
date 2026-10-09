@@ -9,6 +9,7 @@ import { getPartyContent, getPartyContentOptions } from "@/lib/party-content";
 import { partyDefaultStart } from "@/lib/party-navigation";
 import type { getPartyEditorData } from "@/lib/server/party-administration";
 import type { RSVPStatus } from "@uniz/domain";
+import { PartyRequestedContributions, PartySynergyGuide } from "./party-synergy";
 import "../app/admin/administration.css";
 import "./party-form.css";
 
@@ -168,6 +169,8 @@ export function PartyForm({
             placeholder="준비할 세팅이나 진행 방법을 적어주세요."
           />
         </label>
+        <PartyRequestedContributions initial={initial?.requestedContributions} />
+        <PartySynergyGuide />
         <p className="party-form-note">
           한국 시간(KST) 기준입니다. 선택한 날짜와 시간을 확인한 뒤 등록해주세요. 시작 전에는 참가
           응답을 변경할 수 있습니다.

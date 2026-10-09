@@ -73,6 +73,15 @@ describe("party form server action boundary", () => {
     expect(written.expectedUpdatedAt).toBe("2026-10-06T10:00:00Z");
     expect(written).not.toHaveProperty("role");
   });
+  it("reads multiple requested effects without creating gameplay role slots", async () => {
+    const input = form();
+    input.append("requestedContributions", "fortress");
+    input.append("requestedContributions", "healing");
+    await savePartyForm({ ok: false, message: "" }, input);
+    expect(boundary.save.mock.calls[0][0].requestedContributions).toEqual(["fortress", "healing"]);
+    await savePartyForm({ ok: false, message: "" }, form());
+    expect(boundary.save.mock.calls[1][0].requestedContributions).toEqual([]);
+  });
   it("targets a single participant with a concurrency version and excludes status on removal", async () => {
     const input = new FormData();
     for (const [key, value] of Object.entries({

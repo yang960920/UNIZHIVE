@@ -14,6 +14,7 @@ import {
 } from "@uniz/domain";
 import type { CurrentUser } from "./auth-policy";
 import type { OperationalAuthStatus, OperationalPageData } from "./data/operational-types";
+import { partyContributionSchema } from "./party-synergy";
 
 /** A cleared real session after a remote authorization failure must never turn into demo data. */
 export function selectOperationalAccessMode(
@@ -30,7 +31,21 @@ export function selectOperationalAccessMode(
 
 const id = z.uuid();
 export const operationalMutationSchema = z.discriminatedUnion("action", [
-  z.object({ action: z.literal("RSVP"), operationId: id, status: z.enum(RSVP_STATUSES) }).strict(),
+  z
+    .object({
+      action: z.literal("RSVP"),
+      operationId: id,
+      status: z.enum(RSVP_STATUSES),
+      expectedUpdatedAt: z.iso.datetime({ offset: true }).optional(),
+      contribution: partyContributionSchema.optional(),
+    })
+    .strict()
+    .refine(
+      (value) =>
+        value.contribution === undefined ||
+        (Boolean(value.expectedUpdatedAt) && value.status !== "UNAVAILABLE"),
+      { message: "참가 또는 미정 상태에서 최신 파티 정보로 협동 효과를 저장해 주세요." },
+    ),
   z
     .object({ action: z.literal("MIGRATION"), seasonId: id, status: z.enum(MIGRATION_STATUSES) })
     .strict(),
@@ -53,8 +68,7 @@ export const operationalErrors = {
   OPERATION_CLOSED: "시작되었거나 취소·완료된 작전에는 응답할 수 없습니다.",
   CONTENT_UNAVAILABLE: "현재 시즌에서 사용할 수 없는 콘텐츠입니다. 모집 안내를 확인해 주세요.",
   CAPACITY_REACHED: "작전 정원이 찼습니다. Maybe를 선택하거나 운영진에게 문의해주세요.",
-  ROLE_CAPACITY_REACHED:
-    "배정된 역할의 정원이 찼습니다. Maybe를 선택하거나 운영진에게 문의해주세요.",
+  STALE_OPERATION: "모집 정보나 참가 명단이 변경되었습니다. 새로고침 후 다시 시도해 주세요.",
 } as const;
 export type OperationalErrorCode = keyof typeof operationalErrors;
 
@@ -175,17 +189,9 @@ export function requireOpenOperation(
   goingCount: number,
   previousStatus: (typeof RSVP_STATUSES)[number] | null,
   now: Date,
-  assignedRole?: { capacity: number; goingCount: number },
 ): void {
   if (operation.status !== "SCHEDULED" || now >= operation.startsAt)
     throw new OperationalPolicyError("OPERATION_CLOSED");
   if (status === "GOING" && previousStatus !== "GOING" && goingCount >= operation.capacity)
     throw new OperationalPolicyError("CAPACITY_REACHED");
-  if (
-    status === "GOING" &&
-    previousStatus !== "GOING" &&
-    assignedRole &&
-    assignedRole.goingCount >= assignedRole.capacity
-  )
-    throw new OperationalPolicyError("ROLE_CAPACITY_REACHED");
 }

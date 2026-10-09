@@ -31,14 +31,18 @@ import {
   seasonMemberships,
   seasons,
   servers,
+  sql,
   users,
 } from "@uniz/db";
+import { emptyPartyContribution, type PartyContribution } from "@uniz/domain";
 import {
   getPartyEditorData,
   managePartyParticipant,
   saveParty,
 } from "../src/lib/server/party-administration";
 import { mutateOperationAdministration } from "../src/lib/server/operation-administration";
+import { persistOperationalMutation } from "../src/lib/server/operational-repository";
+import { getOperationDirectoryDetail } from "../src/lib/server/operation-directory";
 process.loadEnvFile(new URL("../../../.env", import.meta.url));
 const configured = new URL(process.env.DATABASE_URL!);
 if (
@@ -158,6 +162,209 @@ async function version(tx: Transaction, id: string) {
   return party.updatedAt.toISOString();
 }
 describe("party administration rollback verification", () => {
+  it("round trips requested effects and participant setup while preserving it on quick responses", async () => {
+    await withRollback(async (tx, f) => {
+      const created = await saveParty({
+        ...f.input,
+        requestedContributions: ["weapon-vulnerability", "fortress", "healing"],
+      });
+      expect((await getPartyEditorData(created.id)).initial?.requestedContributions).toEqual([
+        "weapon-vulnerability",
+        "fortress",
+        "healing",
+      ]);
+      const contribution: PartyContribution = {
+        keys: ["weapon-vulnerability", "healing"],
+        loadoutNote: "저주 인형 · 닥터 테디",
+        vulnerability: { weapon: 70, status: 0, melee: null },
+      };
+      const originalVersion = await version(tx, created.id);
+      await persistOperationalMutation(f.member, {
+        action: "RSVP",
+        operationId: created.id,
+        status: "GOING",
+        expectedUpdatedAt: originalVersion,
+        contribution,
+      });
+      const detail = await getOperationDirectoryDetail(created.id);
+      expect(detail).toMatchObject({
+        mode: "LIVE",
+        data: {
+          requestedContributions: ["weapon-vulnerability", "fortress", "healing"],
+          myContribution: contribution,
+          attendees: [{ userId: f.member.id, contribution }],
+        },
+      });
+      await persistOperationalMutation(f.member, {
+        action: "RSVP",
+        operationId: created.id,
+        status: "MAYBE",
+      });
+      const [preserved] = await tx
+        .select()
+        .from(operationParticipants)
+        .where(eq(operationParticipants.operationId, created.id));
+      expect(preserved).toMatchObject({ status: "MAYBE", contribution });
+      await expect(
+        persistOperationalMutation(f.member, {
+          action: "RSVP",
+          operationId: created.id,
+          status: "GOING",
+          expectedUpdatedAt: originalVersion,
+          contribution: emptyPartyContribution(),
+        }),
+      ).rejects.toThrow("변경");
+      expect(
+        await tx
+          .select()
+          .from(operationParticipants)
+          .where(eq(operationParticipants.id, preserved.id)),
+      ).toEqual([preserved]);
+      await persistOperationalMutation(f.member, {
+        action: "RSVP",
+        operationId: created.id,
+        status: "MAYBE",
+        expectedUpdatedAt: await version(tx, created.id),
+        contribution: emptyPartyContribution(),
+      });
+      expect(await getOperationDirectoryDetail(created.id)).toMatchObject({
+        mode: "LIVE",
+        data: { myContribution: emptyPartyContribution() },
+      });
+    });
+  });
+
+  it("keeps legacy role assignments as history without enforcing their quota on RSVP or staff status edits", async () => {
+    await withRollback(async (tx, f) => {
+      const created = await saveParty(f.input);
+      const [role] = await tx
+        .insert(operationRoles)
+        .values({ operationId: created.id, name: "Old support slot", capacity: 1 })
+        .returning();
+      const contribution: PartyContribution = {
+        keys: ["healing"],
+        loadoutNote: "활성화 젤",
+        vulnerability: { weapon: null, status: null, melee: null },
+      };
+      await tx.insert(operationParticipants).values([
+        { operationId: created.id, userId: f.member.id, status: "GOING", roleId: role.id },
+        {
+          operationId: created.id,
+          userId: f.other.id,
+          status: "MAYBE",
+          roleId: role.id,
+          contribution,
+        },
+      ]);
+      await persistOperationalMutation(f.other, {
+        action: "RSVP",
+        operationId: created.id,
+        status: "GOING",
+      });
+      await persistOperationalMutation(f.other, {
+        action: "RSVP",
+        operationId: created.id,
+        status: "MAYBE",
+      });
+      authenticate(f.officer);
+      await managePartyParticipant({
+        operationId: created.id,
+        userId: f.other.id,
+        action: "SET_STATUS",
+        status: "GOING",
+        expectedUpdatedAt: await version(tx, created.id),
+      });
+      expect(
+        await tx
+          .select()
+          .from(operationParticipants)
+          .where(eq(operationParticipants.userId, f.other.id)),
+      ).toEqual([expect.objectContaining({ status: "GOING", roleId: role.id, contribution })]);
+      authenticate(f.other);
+      expect(await getOperationDirectoryDetail(created.id)).toMatchObject({
+        mode: "LIVE",
+        data: { mayGo: true, goingCount: 2, myContribution: contribution },
+      });
+    });
+  });
+
+  it("denies unauthorized, full and malformed setup changes before overwriting persisted data", async () => {
+    await withRollback(async (tx, f) => {
+      const created = await saveParty({ ...f.input, capacity: 1 });
+      const contribution: PartyContribution = {
+        keys: ["fortress"],
+        loadoutNote: "추분",
+        vulnerability: { weapon: null, status: null, melee: null },
+      };
+      await tx.insert(operationParticipants).values([
+        { operationId: created.id, userId: f.member.id, status: "GOING" },
+        { operationId: created.id, userId: f.other.id, status: "MAYBE", contribution },
+      ]);
+      const currentVersion = await version(tx, created.id);
+      const edit = {
+        action: "RSVP" as const,
+        operationId: created.id,
+        status: "GOING" as const,
+        expectedUpdatedAt: currentVersion,
+        contribution: emptyPartyContribution(),
+      };
+      await expect(persistOperationalMutation(f.other, edit)).rejects.toThrow("정원");
+      await expect(
+        persistOperationalMutation(f.other, {
+          ...edit,
+          contribution: { ...contribution, keys: ["fortress", "fortress"] },
+        }),
+      ).rejects.toThrow();
+      await tx.update(users).set({ role: "APPLICANT" }).where(eq(users.id, f.other.id));
+      await expect(
+        persistOperationalMutation(f.other, { ...edit, status: "MAYBE" }),
+      ).rejects.toThrow("승인된");
+      expect(await version(tx, created.id)).toBe(currentVersion);
+      expect(
+        await tx
+          .select()
+          .from(operationParticipants)
+          .where(eq(operationParticipants.userId, f.other.id)),
+      ).toEqual([expect.objectContaining({ status: "MAYBE", contribution })]);
+    });
+  });
+
+  it("enforces complete JSON setup shapes and percentage bounds directly in PostgreSQL", async () => {
+    await withRollback(async (tx, f) => {
+      const created = await saveParty(f.input);
+      await tx
+        .insert(operationParticipants)
+        .values({ operationId: created.id, userId: f.member.id, status: "MAYBE" });
+      for (const contribution of [
+        { ...emptyPartyContribution(), vulnerability: { weapon: 101, status: null, melee: null } },
+        { ...emptyPartyContribution(), vulnerability: { weapon: -1, status: null, melee: null } },
+        { ...emptyPartyContribution(), vulnerability: {} },
+        { ...emptyPartyContribution(), keys: "healing" },
+        { ...emptyPartyContribution(), keys: ["Tank"] },
+      ]) {
+        await expect(
+          tx.transaction(async (nested) => {
+            await nested.execute(
+              sql`update operation_participants set contribution = ${JSON.stringify(contribution)}::jsonb where operation_id = ${created.id}`,
+            );
+          }),
+        ).rejects.toThrow();
+      }
+      await expect(
+        tx.transaction(async (nested) => {
+          await nested.execute(
+            sql`update operations set requested_contributions = '["Tank"]'::jsonb where id = ${created.id}`,
+          );
+        }),
+      ).rejects.toThrow();
+      const [row] = await tx
+        .select()
+        .from(operationParticipants)
+        .where(eq(operationParticipants.operationId, created.id));
+      expect(row.contribution).toEqual(emptyPartyContribution());
+    });
+  });
+
   it("blocks legacy admin edits of new parties while preserving legacy operation edits", async () => {
     await withRollback(async (tx, f) => {
       const created = await saveParty(f.input);

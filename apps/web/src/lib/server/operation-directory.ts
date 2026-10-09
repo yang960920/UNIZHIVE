@@ -20,8 +20,11 @@ import {
   canOpenAdmin,
   getScenarioSeasonPhases,
   hasGravityContent,
+  emptyPartyContribution,
   type HiveRole,
   type OperationType,
+  type PartyContribution,
+  type PartyContributionKey,
   type RSVPStatus,
   type SeasonStatus,
 } from "@uniz/domain";
@@ -66,6 +69,7 @@ export interface OperationDirectorySummary {
   contentKey: string | null;
   description: string;
   meetingPoint: string;
+  requestedContributions: PartyContributionKey[];
   seasonName: string | null;
   startsAt: string;
   endsAt: string | null;
@@ -91,6 +95,7 @@ export interface OperationDirectoryDetail extends OperationDirectorySummary {
   season: PartySeasonOption | null;
   canCreate: boolean;
   canManageParticipants: boolean;
+  myContribution: PartyContribution;
   attendees: {
     id: string;
     userId: string;
@@ -98,6 +103,7 @@ export interface OperationDirectoryDetail extends OperationDirectorySummary {
     handle: string | null;
     status: RSVPStatus;
     roleName: string | null;
+    contribution: PartyContribution;
   }[];
   roles: { id: string; name: string; capacity: number; goingCount: number }[];
 }
@@ -136,6 +142,7 @@ function operationFields(principal: CurrentUser, now: Date) {
     contentKey: operations.contentKey,
     description: operations.description,
     meetingPoint: operations.meetingPoint,
+    requestedContributions: operations.requestedContributions,
     startsAt: operations.startsAt,
     endsAt: operations.endsAt,
     updatedAt: operations.updatedAt,
@@ -327,6 +334,7 @@ async function readDirectory(
           operationId: operationParticipants.operationId,
           roleId: operationParticipants.roleId,
           status: operationParticipants.status,
+          contribution: operationParticipants.contribution,
         })
         .from(operationParticipants)
         .where(
@@ -372,7 +380,6 @@ async function readDirectory(
     countsByOperation.set(row.operationId, counts);
   }
   const ownByOperation = new Map(ownRows.map((row) => [row.operationId, row]));
-  const roleById = new Map(roleRows.map((row) => [row.id, row]));
   const countByRole = new Map(roleCountRows.map((row) => [row.roleId, row.count]));
   const legacySeasonIds = [
     ...new Set(rows.filter((row) => !row.contentKey && row.seasonId).map((row) => row.seasonId!)),
@@ -391,7 +398,6 @@ async function readDirectory(
   const summaries = rows.map((operation): OperationDirectorySummary => {
     const counts = countsByOperation.get(operation.id) ?? { GOING: 0, MAYBE: 0, UNAVAILABLE: 0 };
     const own = ownByOperation.get(operation.id);
-    const assignedRole = own?.roleId ? roleById.get(own.roleId) : null;
     const season = operation.seasonId ? seasonById.get(operation.seasonId) : null;
     let mayRespond = true;
     let mayGo = true;
@@ -424,19 +430,7 @@ async function readDirectory(
           responseNotice =
             "현재 시즌에서 사용할 수 없는 콘텐츠입니다. 기존 참가 응답은 불참으로 변경할 수 있습니다.";
         } else {
-          requireOpenOperation(
-            operation,
-            "GOING",
-            counts.GOING,
-            own?.status ?? null,
-            now,
-            assignedRole
-              ? {
-                  capacity: assignedRole.capacity,
-                  goingCount: countByRole.get(assignedRole.id) ?? 0,
-                }
-              : undefined,
-          );
+          requireOpenOperation(operation, "GOING", counts.GOING, own?.status ?? null, now);
         }
       } catch (error) {
         if (!(error instanceof OperationalPolicyError)) throw error;
@@ -458,6 +452,7 @@ async function readDirectory(
       contentKey: operation.contentKey,
       description: operation.description,
       meetingPoint: operation.meetingPoint,
+      requestedContributions: operation.requestedContributions,
       seasonName: season?.name ?? null,
       startsAt: operation.startsAt.toISOString(),
       endsAt: operation.endsAt?.toISOString() ?? null,
@@ -498,6 +493,7 @@ async function readDirectory(
         handle: memberProfiles.handle,
         status: operationParticipants.status,
         roleName: operationRoles.name,
+        contribution: operationParticipants.contribution,
       })
       .from(operationParticipants)
       .innerJoin(users, eq(users.id, operationParticipants.userId))
@@ -517,6 +513,7 @@ async function readDirectory(
       asOf: now.toISOString(),
       season: season ? publicSeason(season) : null,
       canCreate: season?.canCreate ?? false,
+      myContribution: ownByOperation.get(summary.id)?.contribution ?? emptyPartyContribution(),
       canManageParticipants:
         canOpenAdmin(principal) &&
         Boolean(

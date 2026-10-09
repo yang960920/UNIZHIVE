@@ -1,0 +1,280 @@
+.party-synergy-fieldset {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.party-synergy-fieldset > legend {
+  padding: 0;
+  font-weight: 650;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.party-synergy-note,
+.party-synergy-empty {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.party-synergy-note {
+  margin: 0 0 14px;
+}
+.party-synergy-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.party-synergy-options .party-synergy-choice {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 62px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 11px;
+  background: var(--bg-1);
+  cursor: pointer;
+}
+.party-synergy-choice:has(input:checked) {
+  border-color: var(--primary);
+  background: rgba(66, 245, 197, 0.07);
+}
+.party-synergy-options .party-synergy-choice input {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  min-height: 0;
+  margin: 3px 0 0;
+  padding: 0;
+  accent-color: var(--primary);
+}
+.party-synergy-choice > span {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.party-synergy-choice strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+.party-synergy-choice small {
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.party-synergy-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.party-synergy-tag {
+  padding: 3px 7px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--primary);
+  background: rgba(66, 245, 197, 0.04);
+}
+.party-my-contribution {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.party-my-contribution > summary,
+.party-synergy-guide > summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+  color: var(--primary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.party-my-contribution > summary:focus-visible,
+.party-synergy-guide > summary:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.party-contribution-form {
+  padding-top: 8px;
+}
+.party-contribution-form fieldset:disabled {
+  opacity: 0.6;
+}
+.party-synergy-input {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  margin: 18px 0;
+}
+.party-synergy-input input,
+.party-synergy-input textarea {
+  font: inherit;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--border);
+  background: var(--bg-1);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: 4px;
+}
+.party-synergy-input textarea {
+  resize: vertical;
+  line-height: 1.7;
+}
+.party-vulnerability-inputs,
+.party-vulnerability-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.party-vulnerability-inputs .party-synergy-input {
+  margin: 0 0 14px;
+}
+.party-synergy-summary h2 {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+.party-requested-summary {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+}
+.party-requested-summary > span {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.party-contribution-counts {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+}
+.party-contribution-counts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 12px;
+}
+.party-contribution-counts strong {
+  color: var(--primary);
+  white-space: nowrap;
+}
+.party-vulnerability-summary {
+  margin: 18px 0 12px;
+}
+.party-vulnerability-summary > div {
+  display: grid;
+  gap: 8px;
+  padding: 13px 9px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg-1);
+}
+.party-vulnerability-summary span,
+.party-vulnerability-summary small {
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.party-vulnerability-summary strong {
+  color: var(--primary);
+  font-size: 20px;
+}
+.party-attendee-contribution {
+  display: grid;
+  gap: 7px;
+  margin-top: 8px;
+}
+.party-attendee-contribution p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 0;
+}
+.party-synergy-guide {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface-1, var(--bg-1));
+  padding: 4px 20px;
+}
+.party-synergy-guide-content {
+  display: grid;
+  gap: 14px;
+  padding: 12px 0 18px;
+}
+.party-synergy-guide-content article {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+.party-synergy-guide-content article > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.party-synergy-guide-content h3 {
+  font-size: 14px;
+  margin: 0;
+}
+.party-synergy-guide-content article > div:first-child > span {
+  font-size: 10px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+.party-synergy-guide-content p,
+.party-synergy-guide-content dl {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 10px 0;
+}
+.party-synergy-guide-content dl > div {
+  display: flex;
+  gap: 10px;
+}
+.party-synergy-guide-content dt {
+  flex: 0 0 26px;
+  color: var(--text-primary);
+}
+.party-synergy-guide-content dd {
+  margin: 0;
+}
+.party-synergy-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 11px;
+  color: var(--primary);
+}
+.directory-requested-contributions {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.directory-requested-contributions > span {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+@media (max-width: 450px) {
+  .party-synergy-options {
+    grid-template-columns: 1fr;
+  }
+  .party-vulnerability-inputs,
+  .party-vulnerability-summary {
+    gap: 5px;
+  }
+  .party-vulnerability-summary strong {
+    font-size: 17px;
+  }
+  .party-synergy-guide {
+    padding-inline: 14px;
+  }
+}

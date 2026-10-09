@@ -73,11 +73,11 @@ export const recentBuilds: BuildSummary[] = [
   {
     id: "shield-tank",
     ownerId: "demo-admin",
-    title: "탱커 실드 샷건",
+    title: "실드 샷건",
     description: "빌드 요약 예시",
     version: 1,
     buildVersionId: "shield-tank-v1",
-    tags: ["Tank", "협동"],
+    tags: ["실드", "협동"],
     updatedAt: new Date("2026-09-30T00:00:00+09:00"),
   },
 ];
@@ -183,7 +183,6 @@ export function getDashboardData(userId?: string, overrides: DemoOverrides = {})
     }
   }
   const going = participants.filter((participant) => participant.status === "GOING");
-  const support = operationRoles.find((role) => role.name === "Support")!;
   const migrationMembers: MigrationMember[] = memberships.map((membership) => ({
     member: mockMembers.find((member) => member.userId === membership.userId)!,
     status: membership.migrationStatus,
@@ -208,10 +207,6 @@ export function getDashboardData(userId?: string, overrides: DemoOverrides = {})
       maybeCount: participants.filter((participant) => participant.status === "MAYBE").length,
       unavailableCount: participants.filter((participant) => participant.status === "UNAVAILABLE")
         .length,
-      supportMissing: Math.max(
-        0,
-        support.capacity - going.filter((participant) => participant.roleId === support.id).length,
-      ),
       myRsvp: participants.find((participant) => participant.userId === userId)?.status ?? null,
       participantMembers: going.map((participant) =>
         mockMembers.find((member) => member.userId === participant.userId)!,

@@ -8,7 +8,6 @@ import {
   getDb,
   operations,
   operationParticipants,
-  operationRoles,
   scenarios,
   seasonMemberships,
   seasons,
@@ -16,7 +15,7 @@ import {
   sql,
   users,
 } from "@uniz/db";
-import { hasGravityContent, type SeasonStatus } from "@uniz/domain";
+import { hasGravityContent, type PartyContributionKey, type SeasonStatus } from "@uniz/domain";
 import { getCurrentAuthState } from "../auth";
 import type { CurrentUser } from "../auth-policy";
 import {
@@ -55,6 +54,7 @@ export interface PartyEditorInitial {
   contentKey: PartyContentKey;
   meetingPoint: string;
   description: string;
+  requestedContributions: PartyContributionKey[];
   startsAt: string;
   endsAt: string | null;
   capacity: number;
@@ -186,6 +186,7 @@ export async function getPartyEditorData(id?: string): Promise<PartyEditorData> 
         contentKey,
         meetingPoint: party.meetingPoint,
         description: party.description,
+        requestedContributions: party.requestedContributions,
         startsAt: party.startsAt.toISOString(),
         endsAt: party.endsAt?.toISOString() ?? null,
         capacity: party.capacity,
@@ -289,6 +290,7 @@ export async function saveParty(value: unknown): Promise<{ id: string }> {
       type: content.type,
       meetingPoint: input.meetingPoint,
       description: input.description,
+      requestedContributions: input.requestedContributions,
       startsAt: new Date(input.startsAt),
       endsAt: input.endsAt ? new Date(input.endsAt) : null,
       capacity: input.capacity,
@@ -395,16 +397,6 @@ export async function managePartyParticipant(value: unknown): Promise<void> {
     } else if (!previous) {
       throw new PartyAdministrationError("등록된 참가자를 찾을 수 없습니다.");
     }
-    const [role] = previous?.roleId
-      ? await transaction
-          .select()
-          .from(operationRoles)
-          .where(
-            and(eq(operationRoles.id, previous.roleId), eq(operationRoles.operationId, party.id)),
-          )
-      : [];
-    if (previous?.roleId && !role)
-      throw new PartyAdministrationError("배정된 역할을 찾을 수 없습니다.");
     try {
       requireOpenOperation(
         party,
@@ -412,14 +404,6 @@ export async function managePartyParticipant(value: unknown): Promise<void> {
         roster.filter((entry) => entry.status === "GOING").length,
         previous?.status ?? null,
         new Date(),
-        role
-          ? {
-              capacity: role.capacity,
-              goingCount: roster.filter(
-                (entry) => entry.roleId === role.id && entry.status === "GOING",
-              ).length,
-            }
-          : undefined,
       );
     } catch (error) {
       if (error instanceof OperationalPolicyError)

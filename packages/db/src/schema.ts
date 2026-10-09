@@ -23,6 +23,8 @@ import {
   SEASON_STATUSES,
   SEASON_SERVER_TYPES,
   TRANCE_PHENOMENA,
+  type PartyContribution,
+  type PartyContributionKey,
 } from "@uniz/domain";
 
 const id = () =>
@@ -358,6 +360,10 @@ export const operations = pgTable(
     contentKey: text("content_key"),
     meetingPoint: text("meeting_point").notNull().default(""),
     description: text("description").notNull().default(""),
+    requestedContributions: jsonb("requested_contributions")
+      .$type<PartyContributionKey[]>()
+      .notNull()
+      .default([]),
     startsAt: timestamp("starts_at", { withTimezone: true }).notNull(),
     endsAt: timestamp("ends_at", { withTimezone: true }),
     capacity: integer("capacity").notNull(),
@@ -369,6 +375,10 @@ export const operations = pgTable(
   },
   (table) => [
     check("operations_capacity_positive", sql`${table.capacity} > 0`),
+    check(
+      "operations_requested_contributions_valid",
+      sql`CASE WHEN jsonb_typeof(${table.requestedContributions}) = 'array' THEN jsonb_array_length(${table.requestedContributions}) <= 10 AND ${table.requestedContributions} <@ '["weapon-vulnerability","status-vulnerability","melee-vulnerability","bulls-eye","fortress","healing","shield","control","mobility","supplies"]'::jsonb ELSE false END`,
+    ),
     check(
       "operations_date_order",
       sql`${table.endsAt} IS NULL OR ${table.endsAt} > ${table.startsAt}`,
@@ -409,10 +419,41 @@ export const operationParticipants = pgTable(
       .references(() => users.id, { onDelete: "restrict" }),
     roleId: text("role_id"),
     status: rsvpStatusEnum("status").notNull(),
+    contribution: jsonb("contribution")
+      .$type<PartyContribution>()
+      .notNull()
+      .default({
+        keys: [],
+        loadoutNote: "",
+        vulnerability: { weapon: null, status: null, melee: null },
+      }),
     ...timestamps(),
   },
   (table) => [
     unique("operation_participants_operation_user_unique").on(table.operationId, table.userId),
+    check(
+      "operation_participants_contribution_valid",
+      sql`coalesce(
+        jsonb_typeof(${table.contribution}) = 'object'
+        AND CASE WHEN jsonb_typeof(${table.contribution}->'keys') = 'array' THEN
+          jsonb_array_length(${table.contribution}->'keys') <= 10
+          AND ${table.contribution}->'keys' <@ '["weapon-vulnerability","status-vulnerability","melee-vulnerability","bulls-eye","fortress","healing","shield","control","mobility","supplies"]'::jsonb
+          ELSE false END
+        AND jsonb_typeof(${table.contribution}->'loadoutNote') = 'string'
+        AND length(${table.contribution}->>'loadoutNote') <= 240
+        AND jsonb_typeof(${table.contribution}->'vulnerability') = 'object'
+        AND CASE WHEN jsonb_typeof(${table.contribution}->'vulnerability'->'weapon') = 'number'
+          THEN (${table.contribution}->'vulnerability'->>'weapon')::numeric BETWEEN 0 AND 100
+          ELSE jsonb_typeof(${table.contribution}->'vulnerability'->'weapon') = 'null' END
+        AND CASE WHEN jsonb_typeof(${table.contribution}->'vulnerability'->'status') = 'number'
+          THEN (${table.contribution}->'vulnerability'->>'status')::numeric BETWEEN 0 AND 100
+          ELSE jsonb_typeof(${table.contribution}->'vulnerability'->'status') = 'null' END
+        AND CASE WHEN jsonb_typeof(${table.contribution}->'vulnerability'->'melee') = 'number'
+          THEN (${table.contribution}->'vulnerability'->>'melee')::numeric BETWEEN 0 AND 100
+          ELSE jsonb_typeof(${table.contribution}->'vulnerability'->'melee') = 'null' END,
+        false
+      )`,
+    ),
     foreignKey({
       name: "operation_participants_role_operation_fk",
       columns: [table.roleId, table.operationId],

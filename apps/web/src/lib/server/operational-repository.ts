@@ -12,7 +12,6 @@ import {
   getDb,
   memberProfiles,
   operationParticipants,
-  operationRoles,
   operations,
   scenarios,
   seasonMemberships,
@@ -50,6 +49,7 @@ import {
   requireOpenVote,
   requireOperationalActor,
   selectOperationalAccessMode,
+  operationalMutationSchema,
   type OperationalMutation,
 } from "../operational-policy";
 
@@ -493,8 +493,10 @@ export async function getOperationalPageData(
 
 export async function persistOperationalMutation(
   actor: CurrentUser,
-  input: OperationalMutation,
+  value: OperationalMutation,
 ): Promise<void> {
+  // Keep direct repository callers behind the same strict boundary as Server Actions.
+  const input = operationalMutationSchema.parse(value);
   requireOperationalActor(actor, input.action);
   await getDb().transaction(async (transaction) => {
     // Match administration and membership writers before taking user/entity locks.
@@ -537,6 +539,11 @@ export async function persistOperationalMutation(
         .for("update");
       if (!operation) throw new OperationalPolicyError("NOT_FOUND");
       if (operation.seasonId !== reference.seasonId) throw new OperationalPolicyError("NOT_FOUND");
+      if (
+        input.expectedUpdatedAt &&
+        new Date(input.expectedUpdatedAt).getTime() !== operation.updatedAt.getTime()
+      )
+        throw new OperationalPolicyError("STALE_OPERATION");
       if (season) {
         const [membership] = await transaction
           .select({ id: seasonMemberships.id })
@@ -585,57 +592,47 @@ export async function persistOperationalMutation(
         .select({
           userId: operationParticipants.userId,
           status: operationParticipants.status,
-          roleId: operationParticipants.roleId,
         })
         .from(operationParticipants)
         .where(eq(operationParticipants.operationId, operation.id));
       const previous = participants.find((participant) => participant.userId === principal.id);
-      const [assignedRole] = previous?.roleId
-        ? await transaction
-            .select({ id: operationRoles.id, capacity: operationRoles.capacity })
-            .from(operationRoles)
-            .where(
-              and(
-                eq(operationRoles.id, previous.roleId),
-                eq(operationRoles.operationId, operation.id),
-              ),
-            )
-        : [];
-      if (previous?.roleId && !assignedRole) throw new OperationalPolicyError("NOT_FOUND");
       requireOpenOperation(
         operation,
         input.status,
         participants.filter((participant) => participant.status === "GOING").length,
         previous?.status ?? null,
         new Date(),
-        assignedRole
-          ? {
-              capacity: assignedRole.capacity,
-              goingCount: participants.filter(
-                (participant) =>
-                  participant.roleId === assignedRole.id && participant.status === "GOING",
-              ).length,
-            }
-          : undefined,
       );
       await transaction
         .insert(operationParticipants)
-        .values({ operationId: operation.id, userId: principal.id, status: input.status })
+        .values({
+          operationId: operation.id,
+          userId: principal.id,
+          status: input.status,
+          ...(input.contribution === undefined ? {} : { contribution: input.contribution }),
+        })
         .onConflictDoUpdate({
           target: [operationParticipants.operationId, operationParticipants.userId],
-          set: { status: input.status, updatedAt: new Date() },
+          set: {
+            status: input.status,
+            updatedAt: new Date(),
+            ...(input.contribution === undefined ? {} : { contribution: input.contribution }),
+          },
         });
-      if (operation.contentKey)
-        await transaction
-          .update(operations)
-          .set({ updatedAt: nextSeasonVersion(operation.updatedAt) })
-          .where(eq(operations.id, operation.id));
+      await transaction
+        .update(operations)
+        .set({ updatedAt: nextSeasonVersion(operation.updatedAt) })
+        .where(eq(operations.id, operation.id));
       await transaction.insert(auditLogs).values({
         actorId: principal.id,
         action: "OPERATION_RSVP_CHANGED",
         entityType: "operation",
         entityId: operation.id,
-        metadata: { status: input.status, previousStatus: previous?.status ?? null },
+        metadata: {
+          status: input.status,
+          previousStatus: previous?.status ?? null,
+          contributionUpdated: input.contribution !== undefined,
+        },
       });
       return;
     }

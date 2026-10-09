@@ -42,6 +42,7 @@ export async function savePartyForm(
       title: form.get("title"),
       meetingPoint: form.get("meetingPoint"),
       description: form.get("description"),
+      requestedContributions: form.getAll("requestedContributions"),
       startsAt: readDate(form, "startsAt", false),
       endsAt: readDate(form, "endsAt", true),
       capacity: Number(form.get("capacity")),

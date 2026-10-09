@@ -89,6 +89,36 @@ describe("live operating mutation input", () => {
         .success,
     ).toBe(false);
   });
+
+  it("requires a version for contribution edits and accepts plain status responses unchanged", () => {
+    const input = { action: "RSVP", operationId: seasonId, status: "GOING" };
+    expect(operationalMutationSchema.safeParse(input).success).toBe(true);
+    const contribution = {
+      keys: ["weapon-vulnerability", "healing"],
+      loadoutNote: "저주 인형 · 닥터 테디",
+      vulnerability: { weapon: 80, status: null, melee: 0 },
+    };
+    expect(operationalMutationSchema.safeParse({ ...input, contribution }).success).toBe(false);
+    const versioned = { ...input, contribution, expectedUpdatedAt: now.toISOString() };
+    expect(operationalMutationSchema.safeParse(versioned).success).toBe(true);
+    expect(
+      operationalMutationSchema.safeParse({ ...versioned, status: "UNAVAILABLE" }).success,
+    ).toBe(false);
+    for (const changed of [
+      { keys: ["healing", "healing"] },
+      { keys: ["supporter"] },
+      { vulnerability: { weapon: 101, status: null, melee: null } },
+      { vulnerability: { weapon: -1, status: null, melee: null } },
+      { vulnerability: { weapon: Infinity, status: null, melee: null } },
+      { userId: actor.id },
+    ])
+      expect(
+        operationalMutationSchema.safeParse({
+          ...versioned,
+          contribution: { ...contribution, ...changed },
+        }).success,
+      ).toBe(false);
+  });
 });
 
 describe("server operating permissions", () => {
@@ -288,13 +318,10 @@ describe("season phase and membership decisions", () => {
 });
 
 describe("serialized RSVP capacity decisions", () => {
-  it("also enforces an existing role assignment capacity while allowing a current Going member to keep it", () => {
-    const role = { capacity: 1, goingCount: 1 };
-    expect(() => requireOpenOperation(operation, "GOING", 1, "MAYBE", now, role)).toThrow(
-      "역할의 정원이 찼습니다",
-    );
-    expect(() => requireOpenOperation(operation, "GOING", 1, "GOING", now, role)).not.toThrow();
-    expect(() => requireOpenOperation(operation, "MAYBE", 1, "MAYBE", now, role)).not.toThrow();
+  it("lets participants share the same contribution without a role quota", () => {
+    expect(() => requireOpenOperation(operation, "GOING", 1, "MAYBE", now)).not.toThrow();
+    expect(() => requireOpenOperation(operation, "GOING", 1, "GOING", now)).not.toThrow();
+    expect(() => requireOpenOperation(operation, "MAYBE", 1, "MAYBE", now)).not.toThrow();
   });
   it("blocks a new Going at capacity while allowing the same member to retain or release a place", () => {
     expect(() => requireOpenOperation(operation, "GOING", 2, null, now)).toThrow("정원이 찼습니다");

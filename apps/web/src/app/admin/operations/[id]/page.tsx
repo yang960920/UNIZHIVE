@@ -8,6 +8,7 @@ import {
 } from "@/lib/server/operation-administration";
 import { operationStatusLabels } from "@/lib/admin-format";
 import { OperationForm } from "../forms";
+import { PartyAttendeeContribution } from "@/components/party-synergy";
 import "../../administration.css";
 
 export default async function OperationEditorPage({ params }: { params: Promise<{ id: string }> }) {
@@ -54,7 +55,7 @@ export default async function OperationEditorPage({ params }: { params: Promise<
                 <tr>
                   <th>멤버</th>
                   <th>응답</th>
-                  <th>배정 역할</th>
+                  <th>협동 세팅</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,7 +69,9 @@ export default async function OperationEditorPage({ params }: { params: Promise<
                       )}
                     </td>
                     <td>{labels[a.status]}</td>
-                    <td>{a.roleName ?? "미배정"}</td>
+                    <td>
+                      <PartyAttendeeContribution contribution={a.contribution} />
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -76,16 +79,6 @@ export default async function OperationEditorPage({ params }: { params: Promise<
           </div>
         ) : (
           <p className="cms-empty">아직 참가 응답이 없습니다.</p>
-        )}
-        {detail.roles.length > 0 && (
-          <ul className="cms-list">
-            {detail.roles.map((r) => (
-              <li key={r.id}>
-                <span>{r.name}</span>
-                <span>{r.capacity}자리</span>
-              </li>
-            ))}
-          </ul>
         )}
       </Card>
     </div>

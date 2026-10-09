@@ -17,13 +17,7 @@ export const nextOperation: Operation = {
   updatedAt: DEMO_NOW,
 };
 
-export const operationRoles: OperationRole[] = [
-  { id: "op-tank", operationId: nextOperation.id, name: "Tank", capacity: 2 },
-  { id: "op-dps", operationId: nextOperation.id, name: "DPS", capacity: 10 },
-  { id: "op-support", operationId: nextOperation.id, name: "Support", capacity: 4 },
-  { id: "op-gatherer", operationId: nextOperation.id, name: "Gatherer", capacity: 2 },
-  { id: "op-driver", operationId: nextOperation.id, name: "Driver", capacity: 2 },
-];
+export const operationRoles: OperationRole[] = [];
 
 export const operationParticipants: OperationParticipant[] = mockMembers
   .slice(0, 21)
@@ -31,7 +25,7 @@ export const operationParticipants: OperationParticipant[] = mockMembers
     id: `participant-${member.userId}`,
     operationId: nextOperation.id,
     userId: member.userId,
-    roleId: operationRoles.find((role) => role.name === member.combatRole)?.id ?? null,
+    roleId: null,
     status: index < 14 ? "GOING" : index < 18 ? "MAYBE" : "UNAVAILABLE",
     createdAt: DEMO_NOW,
     updatedAt: DEMO_NOW,

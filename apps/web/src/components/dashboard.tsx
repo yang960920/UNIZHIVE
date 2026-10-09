@@ -278,7 +278,7 @@ export function Dashboard({
             </span>
             <span className="support-warning">
               <Users size={13} />
-              Support {op.supportMissing}자리 부족
+              자유 참가 · 세팅은 함께 조율
             </span>
           </div>
           <div

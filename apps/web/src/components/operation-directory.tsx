@@ -4,7 +4,12 @@ import { useState, useTransition } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, CalendarDays, Check } from "lucide-react";
 import { Badge, Card, PageHeader } from "@uniz/ui";
-import { RSVP_STATUSES, type OperationType, type RSVPStatus } from "@uniz/domain";
+import {
+  RSVP_STATUSES,
+  type OperationType,
+  type PartyContribution,
+  type RSVPStatus,
+} from "@uniz/domain";
 import type { OperationDirectoryDetail } from "@/lib/server/operation-directory";
 import { mutateOperationalData } from "@/lib/operational-actions";
 import "./operation-directory.css";
@@ -13,6 +18,13 @@ import { PartyParticipantForm } from "./party-form";
 import { getPartyContent } from "@/lib/party-content";
 import { partyCalendarHref } from "@/lib/party-navigation";
 import type { OperationDirectoryData } from "@/lib/server/operation-directory";
+import {
+  PartyAttendeeContribution,
+  PartyContributionEditor,
+  PartyContributionTags,
+  PartySynergyGuide,
+  PartySynergySummary,
+} from "./party-synergy";
 
 const typeLabels: Record<OperationType, string> = {
   PRIME_WAR: "프라임 워",
@@ -54,7 +66,7 @@ export function OperationBriefing({ operation }: { operation: OperationDirectory
   const day = new Date(new Date(operation.startsAt).getTime() + 9 * 60 * 60 * 1000)
     .toISOString()
     .slice(0, 10);
-  function respond(status: RSVPStatus) {
+  function respond(status: RSVPStatus, contribution?: PartyContribution) {
     setFeedback("");
     startTransition(async () => {
       try {
@@ -62,10 +74,16 @@ export function OperationBriefing({ operation }: { operation: OperationDirectory
           action: "RSVP",
           operationId: operation.id,
           status,
+          expectedUpdatedAt: operation.updatedAt,
+          ...(contribution ? { contribution } : {}),
         });
         setFailed(!result.ok);
         setFeedback(
-          result.ok ? `참가 응답을 '${rsvpLabels[status]}' 상태로 저장했습니다.` : result.message,
+          result.ok
+            ? contribution
+              ? "내 세팅과 협동 효과를 저장했습니다."
+              : `참가 응답을 '${rsvpLabels[status]}' 상태로 저장했습니다.`
+            : result.message,
         );
       } catch {
         setFailed(true);
@@ -149,6 +167,13 @@ export function OperationBriefing({ operation }: { operation: OperationDirectory
           <p className="directory-full-description">
             {operation.description || "상세 안내가 아직 등록되지 않았습니다."}
           </p>
+          <div className="directory-requested-contributions">
+            <span>함께 준비할 효과</span>
+            <PartyContributionTags
+              keys={operation.requestedContributions ?? []}
+              emptyLabel="자유 모집 · 별도 협동 효과 요청 없음"
+            />
+          </div>
         </Card>
         <Card className="directory-rsvp">
           <h2>내 참가 응답</h2>
@@ -195,12 +220,27 @@ export function OperationBriefing({ operation }: { operation: OperationDirectory
           >
             {pending ? "저장 중입니다…" : feedback}
           </p>
+          <PartyContributionEditor
+            key={operation.updatedAt}
+            initial={operation.myContribution}
+            pending={pending}
+            disabled={
+              !operation.mayRespond ||
+              !(
+                (operation.myRsvp === "GOING" && operation.mayGo) ||
+                (operation.myRsvp === "MAYBE" && operation.mayMaybe)
+              )
+            }
+            onSave={(contribution) => {
+              if (operation.myRsvp === "GOING" || operation.myRsvp === "MAYBE") {
+                respond(operation.myRsvp, contribution);
+              }
+            }}
+          />
         </Card>
       </div>
       <div className="directory-detail-grid">
-        <Card
-          className={`directory-roster ${!operation.roles.length ? "directory-full-width" : ""}`}
-        >
+        <Card className="directory-roster">
           <div className="directory-section-heading">
             <h2>참가 응답</h2>
             <span>
@@ -218,7 +258,9 @@ export function OperationBriefing({ operation }: { operation: OperationDirectory
                     ) : (
                       <span>{attendee.displayName}</span>
                     )}
-                    {attendee.roleName && <small>{attendee.roleName}</small>}
+                    {attendee.contribution && (
+                      <PartyAttendeeContribution contribution={attendee.contribution} />
+                    )}
                   </div>
                   <Badge tone={attendee.status === "GOING" ? "primary" : "default"}>
                     {rsvpLabels[attendee.status]}
@@ -246,26 +288,14 @@ export function OperationBriefing({ operation }: { operation: OperationDirectory
             참가 인원에는 보존된 이전 응답도 포함됩니다. 명단에는 현재 승인된 멤버만 표시됩니다.
           </p>
         </Card>
-        {operation.roles.length > 0 && (
-          <Card className="directory-roles">
-            <h2>역할 구성</h2>
-            {operation.roles.length > 0 ? (
-              <ul>
-                {operation.roles.map((role) => (
-                  <li key={role.id}>
-                    <span>{role.name}</span>
-                    <span>
-                      {role.goingCount} / {role.capacity}명
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="directory-empty-note">등록된 역할 구성이 없습니다.</p>
-            )}
-          </Card>
-        )}
+        <Card className="directory-synergy">
+          <PartySynergySummary
+            attendees={operation.attendees}
+            requestedContributions={operation.requestedContributions ?? []}
+          />
+        </Card>
       </div>
+      <PartySynergyGuide />
     </div>
   );
 }

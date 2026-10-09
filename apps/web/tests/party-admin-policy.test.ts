@@ -41,6 +41,15 @@ describe("party creation and content boundaries", () => {
     ])
       expect(partySaveSchema.safeParse({ ...input, ...extra }).success).toBe(false);
   });
+  it("defaults to open recruitment and strictly validates optional requested effects", () => {
+    expect(partySaveSchema.parse(input).requestedContributions).toEqual([]);
+    expect(
+      partySaveSchema.parse({ ...input, requestedContributions: ["fortress", "healing"] })
+        .requestedContributions,
+    ).toEqual(["fortress", "healing"]);
+    for (const requestedContributions of [["healing", "healing"], ["Tank"], "healing", null])
+      expect(partySaveSchema.safeParse({ ...input, requestedContributions }).success).toBe(false);
+  });
   it("offers endless activities only in Endless Dream and condenser only in enabled seasons", () => {
     const generic = getPartyContentOptions({
       scenarioSlug: "manibus",

@@ -171,7 +171,7 @@ export const seasonHistory: SeasonHistoryEntry[] = [
     server: mockServers[2]!,
     memberCount: 28,
     majorOperations: "Raid 14 · Migration 1",
-    topBuild: "탱커 실드",
+    topBuild: "실드 세팅",
     imageUrl: null,
   },
   {

@@ -14,10 +14,11 @@ import {
   sql,
   users,
 } from "@uniz/db";
-import type { OperationType, RSVPStatus, SeasonStatus } from "@uniz/domain";
+import type { OperationType, RSVPStatus, SeasonStatus, PartyContribution } from "@uniz/domain";
 import { z } from "zod";
 import { getCurrentAuthState } from "../auth";
 import type { CurrentUser } from "../auth-policy";
+import { readPartyContribution } from "../party-synergy";
 import {
   assertOperationSaveAllowed,
   OperationAdministrationError,
@@ -73,6 +74,7 @@ export interface OperationAdminDetail extends OperationAdminSummary {
     handle: string | null;
     status: RSVPStatus;
     roleName: string | null;
+    contribution: PartyContribution;
   }[];
   roles: { id: string; name: string; capacity: number }[];
 }
@@ -178,6 +180,7 @@ export async function getOperationAdminDetail(id: string): Promise<OperationAdmi
         handle: memberProfiles.handle,
         status: operationParticipants.status,
         roleName: operationRoles.name,
+        contribution: operationParticipants.contribution,
       })
       .from(operationParticipants)
       .innerJoin(users, eq(users.id, operationParticipants.userId))
@@ -198,6 +201,7 @@ export async function getOperationAdminDetail(id: string): Promise<OperationAdmi
       ...operation,
       attendees: attendees.map((attendee) => ({
         ...attendee,
+        contribution: readPartyContribution(attendee.contribution),
         handle: principal.role === "ADMIN" ? attendee.handle : null,
       })),
       roles,

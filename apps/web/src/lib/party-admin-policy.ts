@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { CurrentUser } from "./auth-policy";
 import { getPartyContentOptions, PARTY_CONTENTS } from "./party-content";
+import { partyContributionKeysSchema } from "./party-synergy";
 
 export class PartyAdministrationError extends Error {
   constructor(message: string) {
@@ -18,6 +19,7 @@ export const partySaveSchema = z
     title: z.string().trim().min(2).max(120),
     meetingPoint: z.string().trim().max(240),
     description: z.string().trim().max(5000),
+    requestedContributions: partyContributionKeysSchema.default([]),
     startsAt: date,
     endsAt: date.nullable(),
     capacity: z.number().int().min(1).max(10000),
