@@ -23,6 +23,7 @@ import {
 } from "./server/discord-authorization";
 import { hasDiscordMembershipScope } from "./server/discord-authorization-policy";
 import { DISCORD_OAUTH_ISSUER, DISCORD_OAUTH_SCOPE } from "./discord-oauth-config";
+import { logSignInFailure, type SignInFailureStage } from "./server/auth-signin-diagnostics";
 
 export type { AuthStatus, CurrentAuthState, CurrentUser } from "./auth-policy";
 
@@ -76,6 +77,7 @@ export const authOptions: NextAuthOptions = {
         !hasDiscordMembershipScope(account.scope)
       )
         return false;
+      let stage: SignInFailureStage = "DISCORD_GUILD_CHECK";
       try {
         const member = await getCurrentDiscordGuildMember(
           process.env.DISCORD_GUILD_ID!,
@@ -84,6 +86,7 @@ export const authOptions: NextAuthOptions = {
         if (!member || member.userId !== account.providerAccountId)
           return "/login?error=GuildMembership";
         const verifiedAt = Date.now();
+        stage = "ACCOUNT_PERSISTENCE";
         const persisted = await persistDiscordIdentity({
           discordId: account.providerAccountId,
           name: user.name ?? member.nickname ?? "UNIZ Applicant",
@@ -104,7 +107,8 @@ export const authOptions: NextAuthOptions = {
           verifiedAt,
         }).catch(() => undefined);
         return true;
-      } catch {
+      } catch (error) {
+        logSignInFailure(stage, error);
         return "/login?error=DiscordUnavailable";
       }
     },
