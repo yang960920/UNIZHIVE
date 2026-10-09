@@ -1,6 +1,6 @@
 # Vercel 1차 배포
 
-2026-10-09 기준. 저장소: https://github.com/yang960920/UNIZHIVE
+2026-10-10 기준. 저장소: https://github.com/yang960920/UNIZHIVE
 
 ## 1. Vercel에 GitHub 저장소 연결
 
@@ -60,6 +60,10 @@ DB 연동으로 연결 주소가 등록되어도 앱의 테이블이나 현재 �
 
 DB 연결과 데이터 준비를 마친 뒤 새 배포를 실행한다.
 
+Supabase의 Data API는 이 앱의 NextAuth 세션과 별도로 동작한다. 앱 테이블과 migration journal에는 RLS를 켜고, `PUBLIC`·`anon`·`authenticated`·`service_role`의 테이블 및 앱 함수 접근 권한을 제거한다. 직접 PostgreSQL 연결의 테이블 소유 역할은 기존 서버 권한 검사를 사용한다. 이후 migration으로 객체를 추가하면 새 객체에도 같은 보호를 적용한다.
+
+SQL 관리 화면에서 백업을 복원할 경우 dump의 psql 전용 지시문과 기존 `public` 스키마 생성문을 처리하고, 임시 설정은 `SET LOCAL`과 `set_config(..., true)`로 트랜잭션 안에 한정한다. 공유 풀러에서 세션의 `search_path`를 빈 값으로 남기면 테이블이 있어도 웹의 쿼리가 실패할 수 있다. 복원 후 전체 행 수·이미지·migration hash·관리자 역할을 확인하고, 실제 Discord 로그인과 관리자 화면 접근까지 검증한다.
+
 ## 4. 배포 주소와 Discord 콜백
 
 배포 주소가 확정되면 Discord Developer Portal → 해당 Application → OAuth2 → Redirects에 다음 주소를 등록한다.
@@ -91,6 +95,7 @@ Vercel Function의 요청·응답 크기는 4.5MB 제한이다. 이 프로젝트
 
 - [Vercel 모노레포 설정](https://vercel.com/docs/monorepos/monorepo-faq)
 - [Vercel PostgreSQL 연동](https://vercel.com/docs/postgres)
+- [Supabase Data API 보호](https://supabase.com/docs/guides/api/securing-your-api)
 - [패키지 관리자와 Corepack](https://vercel.com/docs/package-managers)
 - [빌드 환경 설정](https://vercel.com/docs/builds/configure-a-build)
 - [Node.js 버전](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions)
