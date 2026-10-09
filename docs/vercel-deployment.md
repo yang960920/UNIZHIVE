@@ -24,19 +24,19 @@
 
 ## 2. 환경 변수 등록과 프로젝트 생성
 
-프로젝트 생성 화면에서 가져오기용 `.env`의 7개 항목을 등록하고 프로젝트를 먼저 생성한다. `DATABASE_URL`은 생성 후 DB를 연결하여 추가하고, `NEXTAUTH_URL`은 배포 주소가 정해지면 입력한다. 인증 비밀이나 DB 연결 문자열은 소스에 입력하지 않는다. 운영 설정의 적용 대상은 Production으로 선택한다.
+프로젝트 생성 화면에서 가져오기용 `.env`의 7개 항목을 등록하고 프로젝트를 먼저 생성한다. DB 연결 문자열은 생성 후 DB를 연동하여 추가하고, `NEXTAUTH_URL`은 배포 주소가 정해지면 입력한다. 인증 비밀이나 DB 연결 문자열은 소스에 입력하지 않는다. 운영 설정의 적용 대상은 Production으로 선택한다.
 
-| 이름                           | 값과 용도                                                         |
-| ------------------------------ | ----------------------------------------------------------------- |
-| `ENABLE_EXPERIMENTAL_COREPACK` | `1`, 고정한 pnpm 버전 사용                                        |
-| `DATABASE_URL`                 | 프로젝트 생성 후 DB 연동으로 추가되는 운영 PostgreSQL 연결 문자열 |
-| `NEXTAUTH_URL`                 | 실제 운영 사이트의 HTTPS 주소                                     |
-| `NEXTAUTH_SECRET`              | 최소 32자 이상의 운영 전용 무작위 Secret                          |
-| `DISCORD_CLIENT_ID`            | 현재 사용하는 Discord OAuth 애플리케이션 ID                       |
-| `DISCORD_CLIENT_SECRET`        | 해당 애플리케이션의 Secret                                        |
-| `DISCORD_GUILD_ID`             | UNIZ Discord 서버 ID                                              |
-| `MOCK_AUTH`                    | `false`                                                           |
-| `GAME_INFO_EXAMPLES`           | `single`, 게임 정보 작성 예시 하나 표시. `off`로 숨길 수 있음     |
+| 이름                               | 값과 용도                                                         |
+| ---------------------------------- | ----------------------------------------------------------------- |
+| `ENABLE_EXPERIMENTAL_COREPACK`     | `1`, 고정한 pnpm 버전 사용                                        |
+| `DATABASE_URL` 또는 `POSTGRES_URL` | 프로젝트 생성 후 DB 연동으로 추가되는 운영 PostgreSQL 연결 문자열 |
+| `NEXTAUTH_URL`                     | 실제 운영 사이트의 HTTPS 주소                                     |
+| `NEXTAUTH_SECRET`                  | 최소 32자 이상의 운영 전용 무작위 Secret                          |
+| `DISCORD_CLIENT_ID`                | 현재 사용하는 Discord OAuth 애플리케이션 ID                       |
+| `DISCORD_CLIENT_SECRET`            | 해당 애플리케이션의 Secret                                        |
+| `DISCORD_GUILD_ID`                 | UNIZ Discord 서버 ID                                              |
+| `MOCK_AUTH`                        | `false`                                                           |
+| `GAME_INFO_EXAMPLES`               | `single`, 게임 정보 작성 예시 하나 표시. `off`로 숨길 수 있음     |
 
 현재 웹 로그인·가입 확인은 Discord OAuth의 `identify`, `guilds.members.read`를 사용한다. 웹 실행에 Discord Bot Token은 필요하지 않다. Steam 공식 뉴스와 접속자 조회도 API Key 없이 동작한다.
 
@@ -48,13 +48,15 @@ Preview에는 운영 DB와 인증 비밀을 자동으로 복사하지 않는다.
 
 ## 3. 운영 DB 연결과 기존 데이터 이관
 
-생성된 프로젝트의 Storage 또는 Marketplace에서 PostgreSQL을 연결한다. Vercel DB 연동은 연결 정보를 환경 변수로 자동 등록할 수 있다. 연결 후 프로젝트에 `DATABASE_URL`이 등록되었는지 확인한다. 이 앱은 정확히 이 변수 이름을 사용하므로 다른 이름이나 접두사로 등록되었다면 해당 연결 문자열을 `DATABASE_URL`에도 설정한다.
+생성된 프로젝트의 Storage 또는 Marketplace에서 PostgreSQL을 연결한다. Vercel DB 연동은 연결 정보를 환경 변수로 자동 등록할 수 있다. 웹 앱은 `DATABASE_URL`을 우선 사용하고, 없거나 비어 있으면 Supabase 연동의 `POSTGRES_URL`을 자동으로 사용한다. 로그인 준비 상태·실제 DB 연결·멤버 확인·검색에서 동일한 선택 기준을 적용한다. 임의 접두사가 붙은 다른 이름은 지원하지 않는다.
+
+DB 연결 후에는 최신 Production 배포를 다시 실행해야 추가된 환경 변수가 실제 웹에 반영된다. `/api/auth/providers`에서 Discord 제공자가 나타나면 로그인 설정을 읽은 것이며, 이 응답만으로 DB 연결·테이블·Discord 인증 완료까지 검증된 것은 아니다.
 
 현재 개발 DB는 사용자 PC의 PostgreSQL이다. Vercel에서 이 로컬 주소에 연결할 수 없으므로 외부 PostgreSQL이 필요하다. 운영 웹에는 풀링 연결 문자열을 사용하고, DB와 Vercel Function을 가까운 지역에 둔다. 웹 Function은 `apps/web/vercel.json`에서 서울 `icn1`로 설정했다.
 
 DB 연동으로 연결 주소가 등록되어도 앱의 테이블이나 현재 계정·게시글이 자동 이관되지는 않는다. 현재 데이터를 이관하면 계정·관리자 권한·프로필 이미지·시즌·실제 게시글·빌드 버전도 함께 보존한다. DB 백업 파일은 GitHub에 포함하지 않는다. 이관은 운영 DB가 정해진 뒤 별도 백업과 복원 검증을 수행한다.
 
-빈 DB로 시작하면 먼저 현재 `packages/db/migrations`를 적용하고 Discord 로그인·프로필 등록을 마친 지정 계정에 최초 관리자 권한을 부여한다. 운영 DB의 migration은 배포 빌드마다 자동 실행하지 않는다. `pnpm db:migrate`는 DB 연결 문자열을 운영 환경에 설정한 별도 작업으로 실행한다. 로컬 환경을 그대로 둔 상태에서 명령을 실행하면 로컬 DB가 대상이므로 대상 확인이 필요하다.
+빈 DB로 시작하면 먼저 현재 `packages/db/migrations`를 적용하고 Discord 로그인·프로필 등록을 마친 지정 계정에 최초 관리자 권한을 부여한다. 운영 DB의 migration은 배포 빌드마다 자동 실행하지 않는다. `pnpm db:migrate`와 관리자 초기 설정 등 운영 도구에는 작업 대상을 명확히 지정하도록 `DATABASE_URL`을 따로 설정한다. Supabase에서는 해당 작업에 맞는 직접 연결 또는 세션 풀러 주소를 사용한다. 로컬 환경을 그대로 둔 상태에서 명령을 실행하면 로컬 DB가 대상이므로 대상 확인이 필요하다.
 
 DB 연결과 데이터 준비를 마친 뒤 새 배포를 실행한다.
 

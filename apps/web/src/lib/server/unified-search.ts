@@ -19,6 +19,7 @@ import {
   sql,
   users,
 } from "@uniz/db";
+import { resolveDatabaseUrl } from "@uniz/db/environment";
 import { getCurrentAuthState } from "../auth";
 import type { CurrentUser } from "../auth-policy";
 import { getSteamOverview } from "./steam-overview";
@@ -359,7 +360,8 @@ export async function getUnifiedSearch(
   const state = await getCurrentAuthState();
   const mock = state.user?.isMock === true || state.user?.id.startsWith("demo-") === true;
   let actor: CurrentUser | null = null;
-  let mode: UnifiedSearchData["mode"] = mock || !process.env.DATABASE_URL ? "DEMO" : "PUBLIC";
+  let mode: UnifiedSearchData["mode"] =
+    mock || !resolveDatabaseUrl(process.env) ? "DEMO" : "PUBLIC";
   let notice: string | null =
     mode === "DEMO"
       ? "미리보기에서는 페이지·지도·장비와 표시 중인 게임 정보 예시를 검색합니다. 실제 하이브 게시물은 포함되지 않습니다."

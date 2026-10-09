@@ -1,4 +1,5 @@
 import type { HiveRole } from "@uniz/domain";
+import { resolveDatabaseUrl } from "@uniz/db/environment";
 
 export interface CurrentUser {
   id: string;
@@ -50,7 +51,7 @@ export function getAuthEnvironment(
       env.DISCORD_CLIENT_ID?.trim() &&
       env.DISCORD_CLIENT_SECRET?.trim() &&
       env.DISCORD_GUILD_ID?.trim() &&
-      env.DATABASE_URL?.trim() &&
+      resolveDatabaseUrl(env) &&
       (!production || env.NEXTAUTH_SECRET?.trim()),
     ),
   };

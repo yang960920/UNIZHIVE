@@ -1,12 +1,13 @@
 import "server-only";
 import { accounts, and, auditLogs, eq, getDb, memberProfileImages, sql, users } from "@uniz/db";
+import { resolveDatabaseUrl } from "@uniz/db/environment";
 import type { CurrentUser } from "../auth-policy";
 import { hasDiscordMembershipScope, roleAfterDiscordSignIn } from "./discord-authorization-policy";
 import { encryptDiscordToken } from "./discord-token-crypto";
 import { profileImageUrl } from "../profile-image";
 
 export async function findAuthUser(id: string): Promise<CurrentUser | null> {
-  if (!process.env.DATABASE_URL) return null;
+  if (!resolveDatabaseUrl(process.env)) return null;
   const [user] = await getDb()
     .select({
       id: users.id,

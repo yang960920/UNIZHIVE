@@ -25,17 +25,30 @@ vi.mock("@uniz/db", async (original) => ({
 }));
 import { findAuthUser } from "../src/lib/server/auth-repository";
 const assetId = "cc14c3fc-9209-4b93-a9d5-44ce4bf77574";
-const savedDatabaseUrl = process.env.DATABASE_URL;
 beforeEach(() => {
   vi.clearAllMocks();
-  process.env.DATABASE_URL = "postgres://localhost/metadata-test";
+  vi.stubEnv("DATABASE_URL", "postgres://localhost/metadata-test");
+  vi.stubEnv("POSTGRES_URL", "");
   boundary.rows = [];
 });
-afterEach(() => {
-  if (savedDatabaseUrl === undefined) delete process.env.DATABASE_URL;
-  else process.env.DATABASE_URL = savedDatabaseUrl;
-});
+afterEach(() => vi.unstubAllEnvs());
 describe("fresh avatar metadata in the safe signed identity", () => {
+  it("reads the signed identity when only the integration database URL is configured", async () => {
+    vi.stubEnv("DATABASE_URL", "");
+    vi.stubEnv("POSTGRES_URL", "postgresql://fixture@pooler.example.test/hive");
+    boundary.rows = [
+      { id: "member-one", name: "Member", role: "MEMBER", avatarId: null, avatarRevision: null },
+    ];
+    expect(await findAuthUser("member-one")).toEqual({
+      id: "member-one",
+      name: "Member",
+      role: "MEMBER",
+      isMock: false,
+      imageUrl: null,
+    });
+    expect(boundary.select).toHaveBeenCalledTimes(1);
+  });
+
   it("selects only avatar ID/revision and returns neither binary content nor Discord image/token/UID", async () => {
     boundary.rows = [
       {

@@ -79,4 +79,19 @@ describe("development authentication boundary", () => {
     expect(getAuthEnvironment(env).discordEnabled).toBe(false);
     expect(getAuthEnvironment({ ...env, NEXTAUTH_SECRET: "secret" }).discordEnabled).toBe(true);
   });
+
+  it("enables production Discord with the Supabase integration URL while still requiring credentials", () => {
+    const env = {
+      NODE_ENV: "production",
+      DISCORD_CLIENT_ID: "id",
+      DISCORD_CLIENT_SECRET: "secret",
+      DISCORD_GUILD_ID: "guild",
+      NEXTAUTH_SECRET: "test-only-production-secret",
+      DATABASE_URL: "   ",
+      POSTGRES_URL: "postgresql://fixture@pooler.example.test/hive",
+    };
+    expect(getAuthEnvironment(env).discordEnabled).toBe(true);
+    expect(getAuthEnvironment({ ...env, DISCORD_CLIENT_SECRET: "" }).discordEnabled).toBe(false);
+    expect(getAuthEnvironment({ ...env, POSTGRES_URL: " " }).discordEnabled).toBe(false);
+  });
 });

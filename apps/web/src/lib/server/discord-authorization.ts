@@ -1,5 +1,6 @@
 import "server-only";
 import { accounts, and, auditLogs, eq, getDb, sql, users } from "@uniz/db";
+import { resolveDatabaseUrl } from "@uniz/db/environment";
 import {
   DiscordApiError,
   getCurrentDiscordGuildMember,
@@ -216,7 +217,7 @@ async function readGuildEligibilityState(
   useSnapshot: boolean,
 ): Promise<LiveGuildEligibilityState> {
   if (
-    !process.env.DATABASE_URL ||
+    !resolveDatabaseUrl(process.env) ||
     !process.env.DISCORD_GUILD_ID ||
     !process.env.DISCORD_CLIENT_ID ||
     !process.env.DISCORD_CLIENT_SECRET ||

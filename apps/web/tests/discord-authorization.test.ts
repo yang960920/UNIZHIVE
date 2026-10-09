@@ -104,6 +104,7 @@ beforeEach(() => {
     globalThis as typeof globalThis & { __unizDiscordMembershipInvalidations?: Map<string, number> }
   ).__unizDiscordMembershipInvalidations?.clear();
   vi.stubEnv("DATABASE_URL", "test-only-database");
+  vi.stubEnv("POSTGRES_URL", "");
   vi.stubEnv("DISCORD_CLIENT_ID", "123456789012345679");
   vi.stubEnv("DISCORD_CLIENT_SECRET", "test-only-client-secret");
   vi.stubEnv("DISCORD_GUILD_ID", "123456789012345680");
@@ -142,6 +143,13 @@ afterEach(() => {
 });
 
 describe("bounded session guild membership evidence", () => {
+  it("verifies the Discord grant when the database is configured through the Supabase integration", async () => {
+    vi.stubEnv("DATABASE_URL", "");
+    vi.stubEnv("POSTGRES_URL", "postgresql://fixture@pooler.example.test/hive");
+    expect(await getLiveGuildEligibility("user-id")).toBe("MEMBER");
+    expect(fixture.guildMember).toHaveBeenCalledTimes(1);
+  });
+
   it("rejects a delayed login proof that predates a newer forced 401 for the same persisted grant", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     await getSessionGuildEligibilityState("user-id");

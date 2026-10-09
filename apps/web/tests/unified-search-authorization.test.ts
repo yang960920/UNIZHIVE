@@ -124,6 +124,7 @@ function fixtureDatabase() {
 beforeEach(() => {
   vi.clearAllMocks();
   vi.stubEnv("DATABASE_URL", "postgres://fixture");
+  vi.stubEnv("POSTGRES_URL", "");
   boundary.state = { user: actor, status: "AUTHENTICATED" };
   boundary.auth.mockImplementation(async () => boundary.state);
   boundary.guild.mockResolvedValue({ status: "UNAVAILABLE" });
@@ -137,6 +138,15 @@ beforeEach(() => {
 });
 afterEach(() => vi.unstubAllEnvs());
 describe("unified search authorization and SQL projection", () => {
+  it("searches authorized live content when only the integration database URL is configured", async () => {
+    vi.stubEnv("DATABASE_URL", "");
+    vi.stubEnv("POSTGRES_URL", "postgresql://fixture@pooler.example.test/hive");
+    const result = await getUnifiedSearch({ q: "fixture" });
+    expect(result.mode).toBe("LIVE");
+    expect(boundary.database).toHaveBeenCalledTimes(1);
+    expect(reads.some((read) => read.table === users)).toBe(true);
+  });
+
   it("groups visible game-information examples and removes their results when disabled without querying posts", async () => {
     vi.stubEnv("GAME_INFO_EXAMPLES", "single");
     const result = await getUnifiedSearch({ q: "DPS", category: "research" });
