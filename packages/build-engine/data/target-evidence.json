@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "build-data-evidence.v0.1",
+  "kind": "HISTORICAL_EVIDENCE",
+  "checkedAt": "2026-10-06",
+  "sources": [
+    {
+      "id": "official-patch-1-1-targets",
+      "title": "Once Human Patch notes 1.1",
+      "url": "https://www.oncehuman.game/news/update/20240814/40780_1174319.html",
+      "publishedAt": "2024-08-14",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "official-patch-1-3-2-targets",
+      "title": "Once Human Version 1.3.2 Update Announcement",
+      "url": "https://www.oncehuman.game/news/update/20241120/40780_1195018.html",
+      "publishedAt": "2024-11-20",
+      "checkedAt": "2026-10-06"
+    }
+  ],
+  "samples": [
+    {
+      "id": "target-ravenous-hunter-history",
+      "category": "TARGET_PROFILE",
+      "name": "Ravenous Hunter",
+      "patchContext": "Version 1.1 announcement, 2024-08-14",
+      "scenarioContext": null,
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Ravenous Hunter",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["official-patch-1-1-targets"],
+          "note": "공식 공지에 등장하는 적 이름."
+        },
+        {
+          "path": "enemyClass",
+          "value": "Great One",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["official-patch-1-1-targets"],
+          "note": "이 공지는 Great Ones를 Deviants와 구분한다. 현재 분류는 재검증 대상."
+        },
+        {
+          "path": "hp",
+          "value": null,
+          "unit": "HP",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "현재 Scenario/난이도/레벨별 HP 수치를 확인하지 못했다."
+        },
+        {
+          "path": "defense",
+          "value": null,
+          "unit": null,
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "방어 수치와 그 단위를 임의 지정하지 않는다."
+        },
+        {
+          "path": "resistances",
+          "value": null,
+          "unit": null,
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "현재 저항 및 피해 감소 수치 미확인."
+        }
+      ],
+      "notes": ["보스 이름과 역사적 분류만 확인한 자료이며 현재 전투 스탯으로 사용할 수 없다."]
+    },
+    {
+      "id": "target-test-dummy-history",
+      "category": "TARGET_PROFILE",
+      "name": "Test dummy",
+      "patchContext": "Version 1.1 announcement, 2024-08-14",
+      "scenarioContext": null,
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Test dummy",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["official-patch-1-1-targets"],
+          "note": "공식 설명의 일반 명칭을 정규화한 연구 라벨이다. 정확한 게임 내 시설 표시명/ID는 아니다."
+        },
+        {
+          "path": "enemyClass",
+          "value": "Deviant",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["official-patch-1-1-targets"],
+          "note": "해당 패치의 Developer Notes에 기재된 당시 분류."
+        },
+        {
+          "path": "dummyEqualsBoss",
+          "value": false,
+          "unit": "BOOLEAN",
+          "status": "OFFICIAL",
+          "sourceIds": ["official-patch-1-1-targets"],
+          "note": "당시 Deviation Handling 보스/엘리트 효과 변경은 더미와 보스의 결과 차이를 만들었다."
+        },
+        {
+          "path": "defense",
+          "value": null,
+          "unit": null,
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "더미의 방어를 0으로 가정하지 않는다."
+        },
+        {
+          "path": "supportedEffects",
+          "value": null,
+          "unit": null,
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "현재 모든 Proc/상태 효과가 더미에 적용되는지는 별도 실측이 필요하다."
+        }
+      ],
+      "notes": [
+        "더미 DPS를 모든 보스의 DPS로 일반화하지 않는다. 정확한 시설 종류/버전/실측 위치를 향후 함께 기록한다."
+      ]
+    },
+    {
+      "id": "target-secret-servitor-phase-history",
+      "category": "TARGET_PROFILE",
+      "name": "Secret Servitor",
+      "patchContext": "Version 1.3.2 announcement, 2024-11-20",
+      "scenarioContext": null,
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Secret Servitor",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["official-patch-1-3-2-targets"],
+          "note": "공식 공지에 등장하는 보스 이름."
+        },
+        {
+          "path": "phaseRules",
+          "value": "During the dark phase, lighting runes reduces damage reduction.",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["official-patch-1-3-2-targets"],
+          "note": "당시 추가된 안내 문구의 의미를 요약한 것이다. 현재 수치나 계산식을 뜻하지 않는다."
+        },
+        {
+          "path": "damageReduction",
+          "value": null,
+          "unit": "PERCENT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "기본 피해 감소율과 룬별 감소량은 공지에서 확인되지 않았다."
+        }
+      ],
+      "notes": ["보스 Phase 조건을 시즌 Phase와 별도 모델로 기록한다."]
+    }
+  ],
+  "unknowns": [
+    "현재 패치의 적 HP/방어/저항/약점 계수",
+    "더미와 실제 보스의 효과 적용 차이",
+    "현재 패치에서 재현 가능한 UNIZ Benchmark 실측 기록"
+  ]
+}

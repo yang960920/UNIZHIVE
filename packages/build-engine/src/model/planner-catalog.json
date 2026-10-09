@@ -1,0 +1,110 @@
+[
+  {
+    "recordId": "eq-ebr14-octopus",
+    "revision": "sha256:dedc4abef677b3062543a6492bfc1066c849bd65505e24e8c885e46f44e3a3a0",
+    "category": "WEAPON",
+    "name": "EBR-14 - Octopus! Grilled Rings!",
+    "sourceTitle": "Dev Blog丨New Combat Weapons, Armor, Sets, and Mods Coming Soon",
+    "sourceUrl": "https://www.oncehuman.game/news/devBlog/20260116/40781_1282292.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "eq-tec9-additional-rules",
+    "revision": "sha256:256d04870f8392103762523999588e15a8e80c5cd639e08afe7cb294f46d7407",
+    "category": "WEAPON",
+    "name": "TEC9 - Additional Rules",
+    "sourceTitle": "Dev Blog丨New Combat Weapons, Armor, Sets, and Mods Coming Soon",
+    "sourceUrl": "https://www.oncehuman.game/news/devBlog/20260116/40781_1282292.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "eq-nail-gun-raidzone-2025",
+    "revision": "sha256:a8fc2edf41061c46d4c79845117de6686b65ef9a857f47aa85bdc7984cf5af42",
+    "category": "WEAPON",
+    "name": "Nail Gun",
+    "sourceTitle": "Version 2.1.4 Update Announcement (September 24)",
+    "sourceUrl": "https://www.oncehuman.game/news/update/20250924/40780_1261275.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "eq-gilded-gauntlets",
+    "revision": "sha256:8ddece737e7c12afae0ed2cee45b504ae3ae33e3f36a35e3c54d46ac13dfe865",
+    "category": "ARMOR",
+    "name": "Gilded Gauntlets",
+    "sourceTitle": "Dev Blog丨New Combat Weapons, Armor, Sets, and Mods Coming Soon",
+    "sourceUrl": "https://www.oncehuman.game/news/devBlog/20260116/40781_1282292.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "eq-against-all-odds",
+    "revision": "sha256:1108ec90794710e3ad0c3e0ef2aba1d5ac570a8be47f0a201ff31eaa79ff9613",
+    "category": "MOD",
+    "name": "Against All Odds",
+    "sourceTitle": "Dev Blog | New Weapons and Combat Balance Adjustments for September",
+    "sourceUrl": "https://www.oncehuman.game/news/devBlog/20250922/40781_1260687.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "eq-rapid-shot-blueprint",
+    "revision": "sha256:f5a17c650cc7adead913733a488833075f562c6e409ae215c3464c7829c98e38",
+    "category": "CALIBRATION",
+    "name": "Rapid-Shot Blueprint",
+    "sourceTitle": "Version 2.3.1 Update Announcement (January 21)",
+    "sourceUrl": "https://www.oncehuman.game/m/news/update/20260121/40780_1282991.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "eq-shield-protection",
+    "revision": "sha256:b40c479f00722de91d11ade977981d34f54ef19207e299f5998249e6c0c6f49e",
+    "category": "CRADLE",
+    "name": "Shield Protection",
+    "sourceTitle": "Dev Blog | New Weapons and Combat Balance Adjustments for September",
+    "sourceUrl": "https://www.oncehuman.game/news/devBlog/20250922/40781_1260687.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "evidence-dr-teddy-v2-2-3",
+    "revision": "sha256:4b0a7e75bc6cef1f473b35b73ffdc3c23d3533e083b16769db3747ed7aef18a9",
+    "category": "DEVIATION",
+    "name": "Dr. Teddy",
+    "sourceTitle": "Version 2.2.3 Update Announcement (December 10)",
+    "sourceUrl": "https://www.oncehuman.game/news/update/20251210/40780_1275885.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "evidence-invincible-sun-v2-3-4",
+    "revision": "sha256:14cfda05ad08e84898dc0e1fba0a8fc8a8eefcc11718896ce34edc8f763fed8a",
+    "category": "DEVIATION",
+    "name": "Invincible Sun",
+    "sourceTitle": "Version 2.3.4 Update Announcement (March 11)",
+    "sourceUrl": "https://www.oncehuman.game/m/news/update/20260311/40780_1290685.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "evidence-suppression-ap-ammo-v1-4-4",
+    "revision": "sha256:8ce4fad95cfc193b0db448db3ba2a2d3f7d2229442dc463196f58d202ea84972",
+    "category": "AMMO",
+    "name": "Suppression AP Ammo",
+    "sourceTitle": "ONCE HUMAN VERSION 1.4.4 UPDATE ANNOUNCEMENT",
+    "sourceUrl": "https://www.oncehuman.game/news/update/20250326/40780_1222452.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "evidence-sparkling-pumpkin-soup-v3-0-4",
+    "revision": "sha256:26981b1ed5da97158e191c80bc657cdd3ebef5b33d48ef9eb09e0a46e8630733",
+    "category": "FOOD",
+    "name": "Sparkling Pumpkin Soup",
+    "sourceTitle": "Version 3.0.4 Update Announcement (August 24)",
+    "sourceUrl": "https://www.oncehuman.game/news/update/20260824/40780_1312014.html",
+    "currentValidity": "UNVERIFIED"
+  },
+  {
+    "recordId": "evidence-whimsical-drink-v3-0-4",
+    "revision": "sha256:813633a1da8d2d8c4c8f2998853ed35d4811144f47ad6936c46bc23d0c57232a",
+    "category": "DRINK",
+    "name": "Whimsical Drink",
+    "sourceTitle": "Version 3.0.4 Update Announcement (August 24)",
+    "sourceUrl": "https://www.oncehuman.game/news/update/20260824/40780_1312014.html",
+    "currentValidity": "UNVERIFIED"
+  }
+]

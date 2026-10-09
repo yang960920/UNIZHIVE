@@ -1,0 +1,113 @@
+.shell {
+  position: relative;
+  isolation: isolate;
+}
+
+/* The artwork is decorative and stays behind every existing control. */
+.scene {
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 880px;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.scene::before,
+.scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.scene::before {
+  background-image: var(--page-background-image);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  filter: saturate(0.58) brightness(0.94);
+}
+
+/* Strong central shading protects text; the scene remains visible at the edges. */
+.scene::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgb(7 16 14 / 0.62) 0%,
+      rgb(7 16 14 / 0.36) 18%,
+      rgb(7 16 14 / 0.46) 54%,
+      rgb(7 16 14 / 0.86) 82%,
+      var(--bg-0, #07100e) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgb(7 16 14 / 0.04) 0%,
+      rgb(7 16 14 / 0.58) 16%,
+      rgb(7 16 14 / 0.94) 34%,
+      rgb(7 16 14 / 0.94) 66%,
+      rgb(7 16 14 / 0.58) 84%,
+      rgb(7 16 14 / 0.04) 100%
+    );
+}
+
+.shell[data-background-subdued="true"] .scene {
+  opacity: 0.48;
+}
+
+/* Header copy gets the same solid reading surface as before the artwork. */
+.shell :global(.page-header) {
+  background-color: var(--bg-0, #07100e);
+}
+
+/* Only the lab's previously translucent reading and editing surfaces change. */
+.shell[data-background-scene="lab"] :global(.gear-editor-top) {
+  background: linear-gradient(110deg, #17291f, #0a1511);
+}
+
+.shell[data-background-scene="lab"] :global(.gear-panel) {
+  background-color: #0c1713;
+}
+
+.shell[data-background-scene="lab"] :global(.gear-editor input),
+.shell[data-background-scene="lab"] :global(.gear-editor select),
+.shell[data-background-scene="lab"] :global(.gear-editor textarea) {
+  background-color: #07100e;
+}
+
+@media (max-width: 900px) {
+  .scene {
+    top: 64px;
+    max-height: 680px;
+    opacity: 0.68;
+  }
+
+  .scene::after {
+    background: linear-gradient(
+      180deg,
+      rgb(7 16 14 / 0.88) 0%,
+      rgb(7 16 14 / 0.82) 20%,
+      rgb(7 16 14 / 0.94) 58%,
+      var(--bg-0, #07100e) 100%
+    );
+  }
+
+  .shell[data-background-subdued="true"] .scene {
+    opacity: 0.32;
+  }
+}
+
+@media (prefers-contrast: more), (forced-colors: active) {
+  .scene {
+    display: none;
+  }
+}
+
+@media print {
+  .scene {
+    display: none;
+  }
+}

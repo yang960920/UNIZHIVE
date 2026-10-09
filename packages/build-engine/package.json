@@ -1,0 +1,22 @@
+{
+  "name": "@uniz/build-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./data-spec": "./src/model/evidence.ts",
+    "./field-contracts": "./src/model/field-contracts.ts",
+    "./planner": "./src/model/planner.ts",
+    "./planner-validation": "./src/validation/planner.ts",
+    "./gear": "./src/model/gear.ts",
+    "./gear-validation": "./src/validation/gear.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "verify:data": "node --experimental-strip-types ./scripts/verify-data.mjs"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  }
+}

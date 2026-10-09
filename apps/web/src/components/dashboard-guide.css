@@ -1,0 +1,74 @@
+.dashboard-guide {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  max-width: 440px;
+  min-width: 0;
+  margin: 0;
+  align-self: start;
+  justify-self: end;
+}
+.dashboard-guide-bubble {
+  position: relative;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+.dashboard-guide-bubble::after {
+  content: "";
+  position: absolute;
+  right: 30%;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+.dashboard-guide-bubble p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.dashboard-guide-bubble strong {
+  color: var(--primary);
+  font-weight: 650;
+}
+.dashboard-guide-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.dashboard-guide-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.dashboard-guide-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+.dashboard-guide img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  object-fit: contain;
+  justify-self: end;
+}
+.home-public-steam .dashboard-guide {
+  margin: 20px 0 0 auto;
+}

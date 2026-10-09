@@ -1,0 +1,6177 @@
+{
+  "schemaVersion": "uniz.consumables.v1",
+  "verifiedAt": "2026-10-09",
+  "basisGameBuildId": "25590224",
+  "items": [
+    {
+      "id": "consumable-30110322",
+      "sourceId": "30110322",
+      "name": "스타더스트 단호박 샐러드",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_potatosalad_new.png",
+      "effects": [
+        {
+          "description": "사용 시 자신이 입히는 크리티컬 대미지 15% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 호박",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "양고기",
+                "quantity": 1
+              },
+              {
+                "label": "곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 1
+              },
+              {
+                "label": "새고기",
+                "quantity": 1
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "소고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 1
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "치즈",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 치즈",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "소금",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200311;[1200311,1]",
+            "ingredients": [
+              {
+                "label": "변이 호박",
+                "quantity": 1
+              },
+              {
+                "label": "소금",
+                "quantity": 2
+              },
+              {
+                "label": "버터",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110322 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110112",
+      "sourceId": "30110112",
+      "name": "스타더스트 과일 통조림",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_canned_fruit_new.png",
+      "effects": [
+        {
+          "description": "사용 시 캐릭터의 멘탈 수치가 80%보다 높을 경우, 약점 대미지 25% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 토마토",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "블루베리",
+                "quantity": 1
+              },
+              {
+                "label": "코코넛",
+                "quantity": 1
+              },
+              {
+                "label": "레드베리",
+                "quantity": 1
+              },
+              {
+                "label": "바나나",
+                "quantity": 1
+              },
+              {
+                "label": "감귤",
+                "quantity": 1
+              },
+              {
+                "label": "포도",
+                "quantity": 1
+              },
+              {
+                "label": "사과",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "곰보버섯",
+            "quantity": 1
+          },
+          {
+            "label": "강철 잉곳",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200336",
+            "ingredients": [
+              {
+                "label": "변이 비트",
+                "quantity": 1
+              },
+              {
+                "label": "코코넛",
+                "quantity": 1
+              },
+              {
+                "label": "알루미늄 잉곳",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200336,1]",
+            "ingredients": [
+              {
+                "label": "변이 비트",
+                "quantity": 5
+              },
+              {
+                "label": "코코넛",
+                "quantity": 1
+              },
+              {
+                "label": "강철 잉곳",
+                "quantity": 2
+              },
+              {
+                "label": "버터",
+                "quantity": 5
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110112 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110305",
+      "sourceId": "30110305",
+      "name": "꿀에 절인 고기찜",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_potato_stew_new.png",
+      "effects": [
+        {
+          "description": "섭취 시, 프로스트 볼텍스 상태의 적 명중 시 크리티컬 확률 15% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 2
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 2
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 2
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 2
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 2
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 2
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 2
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 2
+              },
+              {
+                "label": "양고기",
+                "quantity": 2
+              },
+              {
+                "label": "곰고기",
+                "quantity": 2
+              },
+              {
+                "label": "악어고기",
+                "quantity": 2
+              },
+              {
+                "label": "새고기",
+                "quantity": 2
+              },
+              {
+                "label": "소고기",
+                "quantity": 2
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 2
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "알로에",
+            "quantity": 2
+          },
+          {
+            "label": "정제수",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200127",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "사슴고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "서리 내린 고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "상어 생선살",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "오징어 고기",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "아귀살",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "참치 생선살",
+                    "quantity": 5
+                  },
+                  {
+                    "label": "버블 생선살",
+                    "quantity": 5
+                  }
+                ]
+              },
+              {
+                "label": "변이 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "소금",
+                "quantity": 3
+              },
+              {
+                "label": "정제수",
+                "quantity": 5
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200127,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "변이 알로에",
+                "quantity": 3
+              },
+              {
+                "label": "소금",
+                "quantity": 3
+              },
+              {
+                "label": "정제수",
+                "quantity": 5
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110305 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110206",
+      "sourceId": "30110206",
+      "name": "감자튀김",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_french_fries_new.png",
+      "effects": [
+        {
+          "description": "사용 시 자신이 포트리스 워페어 내에서 입히는 총기 대미지 20% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 감자",
+            "quantity": 1
+          },
+          {
+            "label": "감자",
+            "quantity": 1
+          },
+          {
+            "label": "향신료",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "치즈",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 치즈",
+                "quantity": 1
+              }
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200125;[1200125,1]",
+            "ingredients": [
+              {
+                "label": "변이 감자",
+                "quantity": 1
+              },
+              {
+                "label": "향신료",
+                "quantity": 2
+              },
+              {
+                "label": "치즈",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110206 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110342",
+      "sourceId": "30110342",
+      "name": "부드러운 조개살",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_sleepy_mussel_new.png",
+      "effects": [
+        {
+          "description": "적 명중 시 대상에게 5%의 취약 효과 부여(10초간 지속, 중첩 불가)",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "조개 고기",
+            "quantity": 2
+          },
+          {
+            "label": "설탕",
+            "quantity": 2
+          },
+          {
+            "label": "정제수",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200351;[1200351,1]",
+            "ingredients": [
+              {
+                "label": "조개 고기",
+                "quantity": 1
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110342 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110330",
+      "sourceId": "30110330",
+      "name": "스테이크 통조림",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_canned_beef_new.png",
+      "effects": [
+        {
+          "description": "사용 시 캐릭터가 입히는 유산탄 대미지 20% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 오이",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 2
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 2
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 2
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 2
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 2
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 2
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 2
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 2
+              },
+              {
+                "label": "양고기",
+                "quantity": 2
+              },
+              {
+                "label": "곰고기",
+                "quantity": 2
+              },
+              {
+                "label": "악어고기",
+                "quantity": 2
+              },
+              {
+                "label": "새고기",
+                "quantity": 2
+              },
+              {
+                "label": "소고기",
+                "quantity": 2
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 2
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "소금",
+            "quantity": 2
+          },
+          {
+            "label": "강철 잉곳",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200330",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "사슴고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "서리 내린 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "상어 생선살",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "오징어 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "아귀살",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "참치 생선살",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "버블 생선살",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "label": "소금",
+                "quantity": 2
+              },
+              {
+                "label": "알루미늄 잉곳",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200330,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "사슴고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "label": "소금",
+                "quantity": 2
+              },
+              {
+                "label": "강철 잉곳",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110330 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110345",
+      "sourceId": "30110345",
+      "name": "부서진 빵",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_broken_bread_new.png",
+      "effects": [
+        {
+          "description": "섭취 시 자신이 입히는 모든 총기 대미지 25% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 밀",
+            "quantity": 1
+          },
+          {
+            "label": "밀",
+            "quantity": 2
+          },
+          {
+            "label": "설탕",
+            "quantity": 2
+          },
+          {
+            "label": "옥수수유",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "[1200340,1];1200340",
+            "ingredients": [
+              {
+                "label": "밀",
+                "quantity": 2
+              },
+              {
+                "label": "변이 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "옥수수유",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110345 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110328",
+      "sourceId": "30110328",
+      "name": "스타더스트 커틀릿",
+      "aliases": ["고기튀김", "고기 튀김"],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_hot_dog_platter_new.png",
+      "effects": [
+        {
+          "description": "사용 시 헌터 마크를 지닌 적에게 입히는 대미지 20% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 후추",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "양고기",
+                "quantity": 1
+              },
+              {
+                "label": "곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 1
+              },
+              {
+                "label": "새고기",
+                "quantity": 1
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "소고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 1
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "양유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 양유",
+                "quantity": 1
+              },
+              {
+                "label": "사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양유",
+                "quantity": 1
+              },
+              {
+                "label": "꿀",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 우유",
+                "quantity": 1
+              },
+              {
+                "label": "감로 꿀",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "양배추",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200324",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "서리 내린 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "상어 생선살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "오징어 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "아귀살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "참치 생선살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "버블 생선살",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "변이 버섯",
+                "quantity": 2
+              },
+              {
+                "label": "옥수수유",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200324,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "변이 버섯",
+                "quantity": 2
+              },
+              {
+                "label": "옥수수유",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110328 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110324",
+      "sourceId": "30110324",
+      "name": "변이된 소시지",
+      "aliases": ["상한 고기", "상한고기"],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_bone_sausage_new.png",
+      "effects": [
+        {
+          "description": "사용 시 자신이 보스에게 입히는 대미지 15% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 곰보버섯",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "양고기",
+                "quantity": 1
+              },
+              {
+                "label": "곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 1
+              },
+              {
+                "label": "새고기",
+                "quantity": 1
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "소고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 1
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "양유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 양유",
+                "quantity": 1
+              },
+              {
+                "label": "사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양유",
+                "quantity": 1
+              },
+              {
+                "label": "꿀",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 우유",
+                "quantity": 1
+              },
+              {
+                "label": "감로 꿀",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "향신료",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200317",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "서리 내린 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "상어 생선살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "오징어 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "아귀살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "참치 생선살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "버블 생선살",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "변이 버섯",
+                "quantity": 2
+              },
+              {
+                "label": "향신료",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200317,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "변이 버섯",
+                "quantity": 2
+              },
+              {
+                "label": "향신료",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110324 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110386",
+      "sourceId": "30110386",
+      "name": "룰렛 만두",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_soc_bloodmoon_8.png",
+      "effects": [
+        {
+          "description": "섭취 시 다음 효과 중 하나를 무작위로 획득한다.\n섭취 시 멘탈이 150 감소\n엘리트 유닛에 대한 대미지 15% 증가\n보스 유닛에 대한 대미지 15% 증가\n변이체 유닛에 대한 대미지 15% 증가.\n달의 징조 효과 적용 중 섭취 시 위의 효과를 모두 획득한다.",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 옥수수",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "양고기",
+                "quantity": 1
+              },
+              {
+                "label": "곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 1
+              },
+              {
+                "label": "새고기",
+                "quantity": 1
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "소고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 1
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "밀",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "달의 속삭임",
+                "quantity": 5
+              },
+              {
+                "label": "후추",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110386 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110374",
+      "sourceId": "30110374",
+      "name": "찌릿찌릿 호박죽",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_electric_pumpkin_soup.png",
+      "effects": [
+        {
+          "description": "섭취 시 자신이 입히는 파워서지 대미지 10% 증가",
+          "durationSeconds": 1980,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "호박",
+            "quantity": 1
+          },
+          {
+            "label": "변이 박하",
+            "quantity": 1
+          },
+          {
+            "label": "정제수",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200379;[1200379,1]",
+            "ingredients": [
+              {
+                "label": "변이 박하",
+                "quantity": 1
+              },
+              {
+                "label": "호박",
+                "quantity": 2
+              },
+              {
+                "label": "해초",
+                "quantity": 2
+              },
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "정제수",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "끓인 물",
+                    "quantity": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110374 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110369",
+      "sourceId": "30110369",
+      "name": "고기 듬뿍 카레라이스",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_meat_curry_rice.png",
+      "effects": [
+        {
+          "description": "섭취 시 자신의 스프린트 및 활공 스태미나 소모 30% 감소",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "ingredients": [],
+        "variants": [
+          {
+            "label": "제작 재료 조합 A",
+            "sourceKey": "1200374",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "서리 내린 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "상어 생선살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "오징어 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "아귀살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "참치 생선살",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "버블 생선살",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "밀",
+                "quantity": 2
+              },
+              {
+                "label": "향신료",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "제작 재료 조합 B",
+            "sourceKey": "[1200374,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "밀",
+                "quantity": 2
+              },
+              {
+                "label": "향신료",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 지원 시나리오의 기본 제작 재료 조합은 확인하지 못했습니다. 원본에서 확인한 재료 조합을 함께 표시합니다.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110369 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110303",
+      "sourceId": "30110303",
+      "name": "별빛 호박 파이",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_starrypie.png",
+      "effects": [
+        {
+          "description": "사용 시 자신이 과식 상태일 시 크리티컬 대미지 25% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 옥수수",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "양유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 양유",
+                "quantity": 1
+              },
+              {
+                "label": "사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양유",
+                "quantity": 1
+              },
+              {
+                "label": "꿀",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 우유",
+                "quantity": 1
+              },
+              {
+                "label": "감로 꿀",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "양배추",
+            "quantity": 1
+          },
+          {
+            "label": "호박",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200307;[1200307,1]",
+            "ingredients": [
+              {
+                "label": "변이 호박",
+                "quantity": 1
+              },
+              {
+                "label": "변이 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "변이 밀",
+                "quantity": 3
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110303 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110304",
+      "sourceId": "30110304",
+      "name": "스타더스트 야채볶음",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_stir_fried_chowder_new.png",
+      "effects": [
+        {
+          "description": "사용 시 캐릭터의 이동 속도 20% 증가, 부스트 상태일 시 스태미나 소모량 50% 감소",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 양배추",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "치즈",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 치즈",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "버터",
+            "quantity": 1
+          },
+          {
+            "label": "소금",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200310;[1200310,1]",
+            "ingredients": [
+              {
+                "label": "변이 양배추",
+                "quantity": 1
+              },
+              {
+                "label": "소금",
+                "quantity": 2
+              },
+              {
+                "label": "옥수수유",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110304 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110350",
+      "sourceId": "30110350",
+      "name": "유령 버섯 통조림",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_bright_mushroom_can_new.png",
+      "effects": [
+        {
+          "description": "사용 시 5초마다 신체에서 눈부신 빛이 발생하여 근처의 몬스터에게 3초간 기절 효과 부여 (엘리트, 대형 동물에게는 적용되지 않음)",
+          "durationSeconds": 900,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "ingredients": [],
+        "variants": [
+          {
+            "label": "제작 재료 조합 A",
+            "sourceKey": "[1200345,224];[1200345,225];[1200345,223];[1200345,228];[1200345,226];[1200345,227]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "변이 붉은 창포",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 사프란",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 노란 연꽃",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 도라지",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 세이지 연고",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 인동초",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 에키네시아",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 알로에",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "버섯",
+                "quantity": 2
+              },
+              {
+                "label": "캐비어",
+                "quantity": 1
+              },
+              {
+                "label": "강철 잉곳",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "제작 재료 조합 B",
+            "sourceKey": "1200345",
+            "ingredients": [
+              {
+                "label": "버섯",
+                "quantity": 5
+              },
+              {
+                "label": "변이 곰보버섯",
+                "quantity": 1
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              },
+              {
+                "label": "알루미늄 잉곳",
+                "quantity": 3
+              }
+            ]
+          },
+          {
+            "label": "제작 재료 조합 C",
+            "sourceKey": "[1200345,1]",
+            "ingredients": [
+              {
+                "label": "버섯",
+                "quantity": 5
+              },
+              {
+                "label": "변이 곰보버섯",
+                "quantity": 1
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              },
+              {
+                "label": "강철 잉곳",
+                "quantity": 3
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 지원 시나리오의 기본 제작 재료 조합은 확인하지 못했습니다. 원본에서 확인한 재료 조합을 함께 표시합니다.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110350 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110314",
+      "sourceId": "30110314",
+      "name": "향긋한 변이 스테이크",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_aberrant_bacon_new.png",
+      "effects": [
+        {
+          "description": "사용 시 변이체 처치로 획득하는 산성 용액 수량 50% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 2
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 2
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 2
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 2
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 2
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 2
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 2
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 2
+              },
+              {
+                "label": "양고기",
+                "quantity": 2
+              },
+              {
+                "label": "곰고기",
+                "quantity": 2
+              },
+              {
+                "label": "악어고기",
+                "quantity": 2
+              },
+              {
+                "label": "새고기",
+                "quantity": 2
+              },
+              {
+                "label": "소고기",
+                "quantity": 2
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 2
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "후추",
+            "quantity": 1
+          },
+          {
+            "label": "소금",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200130",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "사슴고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "서리 내린 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "상어 생선살",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "오징어 고기",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "아귀살",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "참치 생선살",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "버블 생선살",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "label": "후추",
+                "quantity": 1
+              },
+              {
+                "label": "소금",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200130,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "후추",
+                "quantity": 2
+              },
+              {
+                "label": "소금",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110314 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110373",
+      "sourceId": "30110373",
+      "name": "송이버섯 버터구이",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_buttered_snowshroom.png",
+      "effects": [
+        {
+          "description": "사용 시 자신의 트랜스 대미지 감소 8% 증가. 과식, 수분이 충분한 상태일 시 트랜스 대미지 감소 12%까지 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "버섯",
+            "quantity": 2
+          },
+          {
+            "label": "버터",
+            "quantity": 1
+          },
+          {
+            "label": "옥수수",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200378;[1200378,1]",
+            "ingredients": [
+              {
+                "label": "변이 설이버섯",
+                "quantity": 1
+              },
+              {
+                "label": "설이버섯",
+                "quantity": 2
+              },
+              {
+                "label": "버터",
+                "quantity": 2
+              },
+              {
+                "label": "소금",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110373 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110367",
+      "sourceId": "30110367",
+      "name": "과일 케이크",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_fruity_cake.png",
+      "effects": [
+        {
+          "description": "사용 시 1분 내에 캐릭터의 멘탈 수치 100과 HP 50% 회복",
+          "durationSeconds": 60,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "ingredients": [],
+        "variants": [
+          {
+            "label": "제작 재료 조합 A",
+            "sourceKey": "1200372",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "바나나",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사과",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "코코넛",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "포도",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "감귤",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "레드베리",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "블루베리",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "윈터멜론",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "불가시나무 열매",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "버터",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "제작 재료 조합 B",
+            "sourceKey": "[1200372,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "바나나",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사과",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "코코넛",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "포도",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "감귤",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "레드베리",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "블루베리",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "윈터멜론",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "불가시나무 열매",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "설탕",
+                "quantity": 3
+              },
+              {
+                "label": "버터",
+                "quantity": 2
+              },
+              {
+                "label": "치즈",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 지원 시나리오의 기본 제작 재료 조합은 확인하지 못했습니다. 원본에서 확인한 재료 조합을 함께 표시합니다.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110367 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110377",
+      "sourceId": "30110377",
+      "name": "허니 에그 디저트",
+      "aliases": [],
+      "kind": "FOOD",
+      "icon": "/game/consumables/icon_sweet_twinkling_egg.png",
+      "effects": [
+        {
+          "description": "섭취 시 자신이 입히는 유산탄 대미지 10% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "양유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 양유",
+                "quantity": 1
+              },
+              {
+                "label": "사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양유",
+                "quantity": 1
+              },
+              {
+                "label": "꿀",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 우유",
+                "quantity": 1
+              },
+              {
+                "label": "감로 꿀",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "최고급 계란",
+                "quantity": 1
+              },
+              {
+                "label": "펠리컨 알",
+                "quantity": 1
+              },
+              {
+                "label": "악어알",
+                "quantity": 1
+              },
+              {
+                "label": "거북 알",
+                "quantity": 1
+              },
+              {
+                "label": "새알",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "설탕",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200382;[1200382,1]",
+            "ingredients": [
+              {
+                "label": "변이 양강",
+                "quantity": 1
+              },
+              {
+                "label": "비트",
+                "quantity": 2
+              },
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "새알",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "거북 알",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "악어알",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "펠리컨 알",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 계란",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110377 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110313",
+      "sourceId": "30110313",
+      "name": "스타더스트 버섯 수프",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_mushroom_soup_new.png",
+      "effects": [
+        {
+          "description": "최대 스태미나 20% 증가, 스태미나 회복 속도 30% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 버섯",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "양고기",
+                "quantity": 1
+              },
+              {
+                "label": "곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 1
+              },
+              {
+                "label": "새고기",
+                "quantity": 1
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "소고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 1
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "비트",
+            "quantity": 1
+          },
+          {
+            "label": "피클",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "[1200123,1]",
+            "ingredients": [
+              {
+                "label": "변이 버섯",
+                "quantity": 5
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              },
+              {
+                "label": "향신료",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "1200123",
+            "ingredients": [
+              {
+                "label": "변이 버섯",
+                "quantity": 1
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "버프 설명의 분류 문구와 달리 실제 소비 그룹 및 요리 분류에서 음료로 확인되었습니다.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110313 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110318",
+      "sourceId": "30110318",
+      "name": "훈제고기 보르시",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_borscht_new.png",
+      "effects": [
+        {
+          "description": "사용 시 자신이 무기 상자와 장비 상가 오픈 시 획득 에너지 링크 수량 배로 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사슴고기",
+                "quantity": 2
+              },
+              {
+                "label": "버블 생선살",
+                "quantity": 2
+              },
+              {
+                "label": "거북 고기",
+                "quantity": 2
+              },
+              {
+                "label": "서리 내린 고기",
+                "quantity": 1
+              },
+              {
+                "label": "생고기",
+                "quantity": 2
+              },
+              {
+                "label": "악어거북고기",
+                "quantity": 2
+              },
+              {
+                "label": "짐승고기",
+                "quantity": 2
+              },
+              {
+                "label": "프리미엄 거북 고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 토끼고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양고기",
+                "quantity": 1
+              },
+              {
+                "label": "상어 생선살",
+                "quantity": 1
+              },
+              {
+                "label": "돼지고기",
+                "quantity": 2
+              },
+              {
+                "label": "토끼고기",
+                "quantity": 2
+              },
+              {
+                "label": "양고기",
+                "quantity": 2
+              },
+              {
+                "label": "곰고기",
+                "quantity": 2
+              },
+              {
+                "label": "악어고기",
+                "quantity": 2
+              },
+              {
+                "label": "새고기",
+                "quantity": 2
+              },
+              {
+                "label": "소고기",
+                "quantity": 2
+              },
+              {
+                "label": "최고급 사슴고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 짐승고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 돼지고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 곰고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 악어고기",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 새고기",
+                "quantity": 1
+              },
+              {
+                "label": "프리미엄 소고기",
+                "quantity": 1
+              },
+              {
+                "label": "오징어 고기",
+                "quantity": 1
+              },
+              {
+                "label": "아귀살",
+                "quantity": 2
+              },
+              {
+                "label": "참치 생선살",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "토마토",
+            "quantity": 1
+          },
+          {
+            "label": "정제수",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200301",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "사슴고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "서리 내린 고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "상어 생선살",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "오징어 고기",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "아귀살",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "참치 생선살",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "버블 생선살",
+                    "quantity": 2
+                  }
+                ]
+              },
+              {
+                "label": "곰보버섯",
+                "quantity": 1
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200301,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "최고급 양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "소고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사슴고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "짐승고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "양고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "생고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "악어거북고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "새고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "거북 고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 토끼고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 돼지고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 곰고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 악어고기",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "프리미엄 소고기",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "곰보버섯",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "버프 설명의 분류 문구와 달리 실제 소비 그룹 및 요리 분류에서 음료로 확인되었습니다.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110318 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110401",
+      "sourceId": "30110401",
+      "name": "기상천외 드링크",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_herb_tea_new.png",
+      "effects": [
+        {
+          "description": "사용 시 10%의 총기 대미지 보너스 획득",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "변이 붉은 창포",
+                "quantity": 1
+              },
+              {
+                "label": "변이 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "변이 노란 연꽃",
+                "quantity": 1
+              },
+              {
+                "label": "변이 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "변이 세이지 연고",
+                "quantity": 1
+              },
+              {
+                "label": "변이 인동초",
+                "quantity": 1
+              },
+              {
+                "label": "변이 에키네시아",
+                "quantity": 1
+              },
+              {
+                "label": "변이 알로에",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "버터",
+            "quantity": 1
+          },
+          {
+            "label": "정제수",
+            "quantity": 1
+          },
+          {
+            "label": "얼음",
+            "quantity": 1
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110401 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110344",
+      "sourceId": "30110344",
+      "name": "아이디어 드링크",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_hallucination_cocktail_new.png",
+      "effects": [
+        {
+          "description": "사용 시 25%의 트랜스 대미지 보너스 획득",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "변이 붉은 창포",
+                "quantity": 1
+              },
+              {
+                "label": "변이 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "변이 노란 연꽃",
+                "quantity": 1
+              },
+              {
+                "label": "변이 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "변이 세이지 연고",
+                "quantity": 1
+              },
+              {
+                "label": "변이 인동초",
+                "quantity": 1
+              },
+              {
+                "label": "변이 에키네시아",
+                "quantity": 1
+              },
+              {
+                "label": "변이 알로에",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "설탕",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "설이버섯",
+                "quantity": 1
+              },
+              {
+                "label": "따개비",
+                "quantity": 10
+              },
+              {
+                "label": "선인장",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "얼음",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200339",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "세이지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "붉은 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "노란 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "사프란 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "노란 사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "도라지 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "노란 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "붉은 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "사프란 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 인동초",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 국화",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "창포 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "연꽃 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 국화",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "창포 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네창포",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "label": "변이 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "정제수",
+                "quantity": 5
+              },
+              {
+                "label": "얼음",
+                "quantity": 5
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200339,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "세이지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "붉은 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "노란 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "label": "변이 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "정제수",
+                "quantity": 5
+              },
+              {
+                "label": "얼음",
+                "quantity": 5
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110344 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110332",
+      "sourceId": "30110332",
+      "name": "스타더스트 라즈베리 빙수",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_raspberry_shaved_ice_new.png",
+      "effects": [
+        {
+          "description": "섭취 시 자신이 입히는 <지속 디버프> 효과 지속 시간 20% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 비트",
+            "quantity": 1
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "사과",
+                "quantity": 2
+              },
+              {
+                "label": "코코넛",
+                "quantity": 2
+              },
+              {
+                "label": "포도",
+                "quantity": 2
+              },
+              {
+                "label": "감귤",
+                "quantity": 2
+              },
+              {
+                "label": "바나나",
+                "quantity": 2
+              },
+              {
+                "label": "레드베리",
+                "quantity": 2
+              },
+              {
+                "label": "블루베리",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "레드베리",
+            "quantity": 2
+          },
+          {
+            "label": "얼음",
+            "quantity": 5
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200333",
+            "ingredients": [
+              {
+                "label": "알로에",
+                "quantity": 2
+              },
+              {
+                "label": "블루베리",
+                "quantity": 2
+              },
+              {
+                "label": "레드베리",
+                "quantity": 2
+              },
+              {
+                "label": "얼음",
+                "quantity": 5
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200333,1]",
+            "ingredients": [
+              {
+                "label": "변이 알로에",
+                "quantity": 5
+              },
+              {
+                "label": "블루베리",
+                "quantity": 2
+              },
+              {
+                "label": "레드베리",
+                "quantity": 2
+              },
+              {
+                "label": "얼음",
+                "quantity": 5
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110332 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110301",
+      "sourceId": "30110301",
+      "name": "스타더스트 에너지 드링크",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_nengliangyinliao_new.png",
+      "effects": [
+        {
+          "description": "사용 시 2단 점프 능력 획득, 30분 지속",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "세이지",
+                "quantity": 3
+              },
+              {
+                "label": "붉은 창포",
+                "quantity": 3
+              },
+              {
+                "label": "세이지 국화",
+                "quantity": 2
+              },
+              {
+                "label": "창포 연꽃",
+                "quantity": 2
+              },
+              {
+                "label": "노란 사프란",
+                "quantity": 2
+              },
+              {
+                "label": "에키네시아 창포",
+                "quantity": 2
+              },
+              {
+                "label": "사프란",
+                "quantity": 3
+              },
+              {
+                "label": "에키네시아 도라지",
+                "quantity": 2
+              },
+              {
+                "label": "인동초",
+                "quantity": 3
+              },
+              {
+                "label": "사프란 도라지",
+                "quantity": 2
+              },
+              {
+                "label": "인동초 알로에",
+                "quantity": 2
+              },
+              {
+                "label": "에키네창포",
+                "quantity": 2
+              },
+              {
+                "label": "세이지 연꽃",
+                "quantity": 2
+              },
+              {
+                "label": "인동초 국화",
+                "quantity": 2
+              },
+              {
+                "label": "에키네시아",
+                "quantity": 3
+              },
+              {
+                "label": "세이지 알로에",
+                "quantity": 2
+              },
+              {
+                "label": "에키네시아 알로에",
+                "quantity": 2
+              },
+              {
+                "label": "세이지 인동초",
+                "quantity": 2
+              },
+              {
+                "label": "도라지",
+                "quantity": 3
+              },
+              {
+                "label": "노란 연꽃",
+                "quantity": 3
+              },
+              {
+                "label": "알로에",
+                "quantity": 3
+              },
+              {
+                "label": "도라지 알로에",
+                "quantity": 2
+              },
+              {
+                "label": "붉은 알로에",
+                "quantity": 2
+              },
+              {
+                "label": "노란 알로에",
+                "quantity": 2
+              },
+              {
+                "label": "사프란 알로에",
+                "quantity": 2
+              },
+              {
+                "label": "세이지 도라지",
+                "quantity": 2
+              },
+              {
+                "label": "세이지 창포",
+                "quantity": 2
+              },
+              {
+                "label": "세이지 사프란",
+                "quantity": 2
+              },
+              {
+                "label": "인동초 도라지",
+                "quantity": 2
+              },
+              {
+                "label": "창포 도라지",
+                "quantity": 2
+              },
+              {
+                "label": "연꽃 도라지",
+                "quantity": 2
+              },
+              {
+                "label": "인동초 창포",
+                "quantity": 2
+              },
+              {
+                "label": "인동초 연꽃",
+                "quantity": 2
+              },
+              {
+                "label": "인동초 사프란",
+                "quantity": 2
+              },
+              {
+                "label": "에키네시아 연꽃",
+                "quantity": 2
+              },
+              {
+                "label": "에키네시아 사프란",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "정제수",
+            "quantity": 2
+          },
+          {
+            "label": "설탕",
+            "quantity": 2
+          },
+          {
+            "label": "강철 잉곳",
+            "quantity": 1
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200337",
+            "ingredients": [
+              {
+                "label": "사프란",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 5
+              },
+              {
+                "label": "설탕",
+                "quantity": 5
+              },
+              {
+                "label": "알루미늄 잉곳",
+                "quantity": 3
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200337,1]",
+            "ingredients": [
+              {
+                "label": "산성 용액",
+                "quantity": 500
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110301 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110333",
+      "sourceId": "30110333",
+      "name": "특제 콜드브루",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_icebrewing_new.png",
+      "effects": [
+        {
+          "description": "섭취 시 캐릭터의 부스트 속도 추가로 20% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 알로에",
+            "quantity": 1
+          },
+          {
+            "label": "오이",
+            "quantity": 1
+          },
+          {
+            "label": "얼음",
+            "quantity": 5
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "[1200332,1]",
+            "ingredients": [
+              {
+                "label": "변이 알로에",
+                "quantity": 10
+              },
+              {
+                "label": "오이",
+                "quantity": 1
+              },
+              {
+                "label": "얼음",
+                "quantity": 5
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110333 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110343",
+      "sourceId": "30110343",
+      "name": "기적의 차",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_miracle_tea_new.png",
+      "effects": [
+        {
+          "description": "섭취 시 자신이 입히는 모든 회복 효과 10% 증가",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "세이지",
+                "quantity": 1
+              },
+              {
+                "label": "도라지",
+                "quantity": 1
+              },
+              {
+                "label": "인동초",
+                "quantity": 1
+              },
+              {
+                "label": "붉은 창포",
+                "quantity": 1
+              },
+              {
+                "label": "에키네시아",
+                "quantity": 1
+              },
+              {
+                "label": "노란 연꽃",
+                "quantity": 1
+              },
+              {
+                "label": "에키네시아 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "에키네시아 연꽃",
+                "quantity": 1
+              },
+              {
+                "label": "세이지 창포",
+                "quantity": 1
+              },
+              {
+                "label": "인동초 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "사프란 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "세이지 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "인동초 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "에키네시아 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "세이지 연꽃",
+                "quantity": 1
+              },
+              {
+                "label": "노란 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "도라지 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "노란 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "사프란",
+                "quantity": 1
+              },
+              {
+                "label": "알로에",
+                "quantity": 1
+              },
+              {
+                "label": "세이지 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "인동초 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "붉은 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "에키네시아 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "사프란 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "세이지 인동초",
+                "quantity": 1
+              },
+              {
+                "label": "세이지 국화",
+                "quantity": 1
+              },
+              {
+                "label": "세이지 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "창포 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "연꽃 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "인동초 창포",
+                "quantity": 1
+              },
+              {
+                "label": "인동초 국화",
+                "quantity": 1
+              },
+              {
+                "label": "인동초 연꽃",
+                "quantity": 1
+              },
+              {
+                "label": "에키네시아 창포",
+                "quantity": 1
+              },
+              {
+                "label": "창포 연꽃",
+                "quantity": 1
+              },
+              {
+                "label": "에키네창포",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "알로에",
+            "quantity": 1
+          },
+          {
+            "label": "정제수",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200338",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "세이지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "붉은 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "노란 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "사프란 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "노란 사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "도라지 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "노란 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "붉은 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "사프란 알로에",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 인동초",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 국화",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "세이지 사프란",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "창포 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "연꽃 도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 국화",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "창포 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네창포",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "label": "변이 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 5
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200338,1]",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "세이지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "붉은 창포",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "노란 연꽃",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "에키네시아",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "도라지",
+                    "quantity": 3
+                  },
+                  {
+                    "label": "인동초",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "label": "변이 사프란",
+                "quantity": 1
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 5
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110343 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110354",
+      "sourceId": "30110354",
+      "name": "스타더스트 에일 맥주",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_wheat_honey_brewing_new.png",
+      "effects": [
+        {
+          "description": "섭취 후 30분 동안 캐릭터의 오염 내성이 105 증가해, 오염 지역에서의 멘탈 침식 속도가 현저히 감소한다.",
+          "durationSeconds": 1800,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "변이 밀",
+                "quantity": 1
+              },
+              {
+                "label": "밀",
+                "quantity": 15
+              }
+            ]
+          },
+          {
+            "label": "설탕",
+            "quantity": 2
+          },
+          {
+            "label": "정제수",
+            "quantity": 2
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200349",
+            "ingredients": [
+              {
+                "label": "변이 밀",
+                "quantity": 1
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "label": "다른 서버의 재료 조합 B",
+            "sourceKey": "[1200349,1]",
+            "ingredients": [
+              {
+                "label": "변이 밀",
+                "quantity": 1
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              },
+              {
+                "label": "설탕",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110354 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110351",
+      "sourceId": "30110351",
+      "name": "반중력 셰이크",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_anti_gravity_milkshake_new.png",
+      "effects": [
+        {
+          "description": "사용 시 자신의 적재량이 최대치까지 증가, 30초간 지속",
+          "durationSeconds": null,
+          "verified": true
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "변이 오이",
+            "quantity": 1
+          },
+          {
+            "label": "설탕",
+            "quantity": 3
+          },
+          {
+            "label": "정제수",
+            "quantity": 2
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "치즈",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 치즈",
+                "quantity": 1
+              }
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200346;[1200346,1]",
+            "ingredients": [
+              {
+                "label": "설탕",
+                "quantity": 3
+              },
+              {
+                "label": "변이 오이",
+                "quantity": 1
+              },
+              {
+                "label": "정제수",
+                "quantity": 2
+              },
+              {
+                "label": "치즈",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110351 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    },
+    {
+      "id": "consumable-30110391",
+      "sourceId": "30110391",
+      "name": "별빛 버블 밀크티",
+      "aliases": [],
+      "kind": "DRINK",
+      "icon": "/game/consumables/icon_antigravity_starry_milktea.png",
+      "effects": [
+        {
+          "description": "사용 시 비전투 상태에서, 활공 시 초당 최대 HP %의 실드 획득, 최고 최대 HP 50%의 실드 유지",
+          "durationSeconds": 1800,
+          "verified": false
+        }
+      ],
+      "recipe": {
+        "status": "VERIFIED_LOCAL_STATIC",
+        "basisLabel": "시즌 시나리오 기준",
+        "ingredients": [
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "변이 세이지 연고",
+                "quantity": 1
+              },
+              {
+                "label": "변이 도라지",
+                "quantity": 1
+              },
+              {
+                "label": "변이 인동초",
+                "quantity": 1
+              },
+              {
+                "label": "변이 붉은 창포",
+                "quantity": 1
+              },
+              {
+                "label": "변이 에키네시아",
+                "quantity": 1
+              },
+              {
+                "label": "변이 노란 연꽃",
+                "quantity": 1
+              },
+              {
+                "label": "변이 알로에",
+                "quantity": 1
+              },
+              {
+                "label": "변이 사프란",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "바나나",
+                "quantity": 1
+              },
+              {
+                "label": "사과",
+                "quantity": 1
+              },
+              {
+                "label": "코코넛",
+                "quantity": 1
+              },
+              {
+                "label": "포도",
+                "quantity": 1
+              },
+              {
+                "label": "감귤",
+                "quantity": 1
+              },
+              {
+                "label": "레드베리",
+                "quantity": 2
+              },
+              {
+                "label": "블루베리",
+                "quantity": 2
+              },
+              {
+                "label": "윈터멜론",
+                "quantity": 1
+              },
+              {
+                "label": "불가시나무 열매",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "양유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 양유",
+                "quantity": 1
+              },
+              {
+                "label": "사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 우유",
+                "quantity": 1
+              },
+              {
+                "label": "최고급 양유",
+                "quantity": 1
+              },
+              {
+                "label": "꿀",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 사슴 우유",
+                "quantity": 1
+              },
+              {
+                "label": "스타더스트 우유",
+                "quantity": 1
+              },
+              {
+                "label": "감로 꿀",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "선택 재료",
+            "quantity": null,
+            "options": [
+              {
+                "label": "설탕",
+                "quantity": 2
+              },
+              {
+                "label": "중력 결정",
+                "quantity": 5
+              }
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "label": "다른 서버의 재료 조합 A",
+            "sourceKey": "1200406",
+            "ingredients": [
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "변이 세이지 연고",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 도라지",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 인동초",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 붉은 창포",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 에키네시아",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 노란 연꽃",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 알로에",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "변이 사프란",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "바나나",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사과",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "코코넛",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "포도",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "감귤",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "레드베리",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "블루베리",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "윈터멜론",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "불가시나무 열매",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "양유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "스타더스트 양유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "사슴 우유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "우유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 사슴 우유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 우유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "최고급 양유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "꿀",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "스타더스트 사슴 우유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "스타더스트 우유",
+                    "quantity": 1
+                  },
+                  {
+                    "label": "감로 꿀",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "label": "선택 재료",
+                "quantity": null,
+                "options": [
+                  {
+                    "label": "설탕",
+                    "quantity": 2
+                  },
+                  {
+                    "label": "중력 결정",
+                    "quantity": 5
+                  }
+                ]
+              },
+              {
+                "label": "얼음",
+                "quantity": 5
+              }
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "원본 기본 수치이며 재료·요리 품질·셰프 강화는 반영하지 않았습니다.",
+        "별빛 버블 밀크티의 한국어 원본 설명에는 실드 획득 수치가 누락되어 있습니다. 수치 계산에 사용하지 않습니다.",
+        "서버·시나리오에 따라 제작 재료가 다를 수 있습니다. 게임 제작 화면의 조합을 확인해주세요.",
+        "현재 시나리오의 획득·레시피 해제 조건은 미확인입니다."
+      ],
+      "source": {
+        "url": null,
+        "evidence": "로컬 item_data 30110391 → item_use_para_data.buff_effect_list → buff_level_data/실제 buff_data 소비 그룹, cuisine_common_data 및 forge_data/forge_choice_material_data를 아이템 ID로 연결. 기준 빌드 25590224의 정적 기본 기록이며 현재 획득 조건과 재료·셰프 강화 수치는 별도입니다.",
+        "verifiedAt": "2026-10-09"
+      }
+    }
+  ]
+}

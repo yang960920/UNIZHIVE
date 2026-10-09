@@ -1,0 +1,126 @@
+.member-directory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.member-directory-card {
+  display: grid;
+  gap: 16px;
+  height: 100%;
+}
+.member-directory-card:hover {
+  border-color: var(--muted);
+}
+.member-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.member-card-heading > div {
+  flex: 1;
+  min-width: 0;
+}
+.member-card-heading h2 {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+.member-note {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+.member-bio {
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.member-profile-card {
+  max-width: 760px;
+  display: grid;
+  gap: 24px;
+}
+.member-profile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.member-management-list {
+  display: grid;
+  gap: 18px;
+}
+.member-management-card {
+  display: grid;
+  gap: 18px;
+}
+.member-card-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  color: var(--primary);
+  font-size: 12px;
+}
+.member-review-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.member-review-form label,
+.member-profile-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+}
+.member-review-form select,
+.member-profile-form input,
+.member-profile-form textarea {
+  width: 100%;
+  min-height: 44px;
+  background: var(--bg-1);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+}
+.member-review-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.member-review-form > p {
+  grid-column: 1 / -1;
+}
+.member-review-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.member-profile-form {
+  display: grid;
+  gap: 20px;
+  max-width: 620px;
+}
+.member-profile-form small {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.member-back {
+  margin-top: 20px;
+}
+@media (max-width: 1023px) {
+  .member-directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .member-directory,
+  .member-review-form {
+    grid-template-columns: 1fr;
+  }
+  .member-card-heading {
+    flex-wrap: wrap;
+  }
+  .member-review-buttons .button {
+    min-height: 44px;
+  }
+}

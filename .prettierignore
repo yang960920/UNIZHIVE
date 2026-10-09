@@ -1,0 +1,9 @@
+node_modules
+.next
+pnpm-lock.yaml
+docs/product-blueprint
+assets
+apps/web/public
+packages/db/migrations/meta
+artifacts
+outputs

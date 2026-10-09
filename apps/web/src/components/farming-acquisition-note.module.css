@@ -1,0 +1,44 @@
+.note {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+.heading strong {
+  color: var(--text-primary);
+}
+.heading span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.note p {
+  margin: 4px 0 0;
+}
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 6px;
+  font-size: 11px;
+}
+.sources a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sources a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}

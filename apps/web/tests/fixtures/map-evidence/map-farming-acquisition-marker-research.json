@@ -1,0 +1,657 @@
+{
+  "schemaVersion": 1,
+  "status": "COMPLETE",
+  "verifiedAt": "2026-10-08",
+  "provider": "TH.GL",
+  "documentationUrl": "https://www.th.gl/developers",
+  "method": "공식 지도에서 보이는 Locations와 보스 필터를 펼쳐 읽고, 모두 해제 후 각 이름을 단독 선택하여 Embed this map 대화상자의 생성 src를 읽었다. 다른 세 시나리오에서도 9개 필터를 함께 선택하고 생성 types가 단독 검증 ID 전부와 동일한지 확인했다.",
+  "dataAccess": "공개 필터 UI와 공식 생성 임베드 코드만 사용했다. 마커 DB, 마커 API, 내부 지도 상태를 읽지 않았다.",
+  "scopeNote": "4지도 검증은 필터 UI와 types 파라미터 지원 확인이다. 각 지도에 대상 던전/보스가 실제 존재하거나 특정 감염물을 얻을 수 있음을 뜻하지 않는다.",
+  "filters": [
+    {
+      "key": "silo",
+      "filterName": "사일로",
+      "category": "LOCATIONS",
+      "granularity": "GENERIC_SILO_CATEGORY",
+      "typeIds": [
+        "securementsilos"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "securementsilos",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=securementsilos"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    },
+    {
+      "key": "monolith",
+      "filterName": "모노리스",
+      "category": "LOCATIONS",
+      "granularity": "GENERIC_MONOLITH_CATEGORY",
+      "typeIds": [
+        "juxie"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "juxie",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=juxie"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    },
+    {
+      "key": "lea-research-lab",
+      "filterName": "LEA 연구소",
+      "category": "LOCATIONS",
+      "granularity": "SPECIFIC_FACILITY_CATEGORY",
+      "typeIds": [
+        "raidlea"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "raidlea",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=raidlea"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    },
+    {
+      "key": "ravenous-hunter",
+      "filterName": "라베노스 헌터",
+      "category": "BOSSES",
+      "granularity": "SPECIFIC_BOSS_CATEGORY",
+      "typeIds": [
+        "boss_ravenous_hunter"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "boss_ravenous_hunter",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=boss_ravenous_hunter"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    },
+    {
+      "key": "shadow-hound",
+      "filterName": "섀도우 하운드",
+      "category": "BOSSES",
+      "granularity": "SPECIFIC_BOSS_CATEGORY",
+      "typeIds": [
+        "boss_shadow_hound"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "boss_shadow_hound",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=boss_shadow_hound"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    },
+    {
+      "key": "arachsiam",
+      "filterName": "아라크시암",
+      "category": "BOSSES",
+      "granularity": "SPECIFIC_BOSS_CATEGORY",
+      "typeIds": [
+        "boss_arachsiam"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "boss_arachsiam",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=boss_arachsiam"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    },
+    {
+      "key": "treant",
+      "filterName": "트렌트",
+      "category": "BOSSES",
+      "granularity": "SPECIFIC_BOSS_CATEGORY",
+      "typeIds": [
+        "boss_treant"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "boss_treant",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=boss_treant"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    },
+    {
+      "key": "secret-servitor",
+      "filterName": "시크릿 서번트",
+      "category": "BOSSES",
+      "granularity": "SPECIFIC_BOSS_CATEGORY",
+      "typeIds": [
+        "boss_secret_servitor"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "boss_secret_servitor",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=boss_secret_servitor"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    },
+    {
+      "key": "forsaken-giant",
+      "filterName": "망각의 군주",
+      "category": "BOSSES",
+      "granularity": "SPECIFIC_BOSS_CATEGORY",
+      "typeIds": [
+        "boss_the_forsaken_giant"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": [
+        {
+          "mapKey": "MANIBUS",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+          "observedTypesParameter": "boss_the_forsaken_giant",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=boss_the_forsaken_giant"
+        },
+        {
+          "mapKey": "WINTER",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "ENDLESS_DREAM",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        },
+        {
+          "mapKey": "DEVIATION",
+          "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+          "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+          "selectionSummary": "Locations 3/38, 보스의 6/88"
+        }
+      ]
+    }
+  ],
+  "requestedTargets": [
+    {
+      "key": "silo-sigma",
+      "name": "Securement Silo - SIGMA",
+      "matchedFilterKey": "silo",
+      "exactTargetTypeAvailable": false,
+      "typeIds": [
+        "securementsilos"
+      ],
+      "selectionCapability": "전체 사일로 분류만 선택할 수 있으며 이 사일로 하나만 필터링하지 못한다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "silo-alpha",
+      "name": "Securement Silo - ALPHA",
+      "matchedFilterKey": "silo",
+      "exactTargetTypeAvailable": false,
+      "typeIds": [
+        "securementsilos"
+      ],
+      "selectionCapability": "전체 사일로 분류만 선택할 수 있으며 이 사일로 하나만 필터링하지 못한다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "silo-theta",
+      "name": "Securement Silo - THETA",
+      "matchedFilterKey": "silo",
+      "exactTargetTypeAvailable": false,
+      "typeIds": [
+        "securementsilos"
+      ],
+      "selectionCapability": "전체 사일로 분류만 선택할 수 있으며 이 사일로 하나만 필터링하지 못한다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "silo-phi",
+      "name": "Securement Silo - PHI",
+      "matchedFilterKey": "silo",
+      "exactTargetTypeAvailable": false,
+      "typeIds": [
+        "securementsilos"
+      ],
+      "selectionCapability": "전체 사일로 분류만 선택할 수 있으며 이 사일로 하나만 필터링하지 못한다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "silo-psi",
+      "name": "Securement Silo - PSI",
+      "matchedFilterKey": "silo",
+      "exactTargetTypeAvailable": false,
+      "typeIds": [
+        "securementsilos"
+      ],
+      "selectionCapability": "전체 사일로 분류만 선택할 수 있으며 이 사일로 하나만 필터링하지 못한다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "silo-ex1",
+      "name": "Securement Silo - EX1",
+      "matchedFilterKey": "silo",
+      "exactTargetTypeAvailable": false,
+      "typeIds": [
+        "securementsilos"
+      ],
+      "selectionCapability": "전체 사일로 분류만 선택할 수 있으며 이 사일로 하나만 필터링하지 못한다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "silo-taurus",
+      "name": "Securement Silo - TAURUS",
+      "matchedFilterKey": "silo",
+      "exactTargetTypeAvailable": false,
+      "typeIds": [
+        "securementsilos"
+      ],
+      "selectionCapability": "전체 사일로 분류만 선택할 수 있으며 이 사일로 하나만 필터링하지 못한다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "silo-delta",
+      "name": "Securement Silo - DELTA",
+      "matchedFilterKey": "silo",
+      "exactTargetTypeAvailable": false,
+      "typeIds": [
+        "securementsilos"
+      ],
+      "selectionCapability": "전체 사일로 분류만 선택할 수 있으며 이 사일로 하나만 필터링하지 못한다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "ravenous-hunter",
+      "name": "라베노스 헌터",
+      "matchedFilterKey": "ravenous-hunter",
+      "exactTargetTypeAvailable": true,
+      "typeIds": [
+        "boss_ravenous_hunter"
+      ],
+      "selectionCapability": "해당 보스 유형 분류를 선택할 수 있다. 특정 던전 보상 경로 또는 모든 시나리오에서 실제 보스 마커가 있다는 증명은 아니다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "shadow-hound",
+      "name": "섀도우 하운드",
+      "matchedFilterKey": "shadow-hound",
+      "exactTargetTypeAvailable": true,
+      "typeIds": [
+        "boss_shadow_hound"
+      ],
+      "selectionCapability": "해당 보스 유형 분류를 선택할 수 있다. 특정 던전 보상 경로 또는 모든 시나리오에서 실제 보스 마커가 있다는 증명은 아니다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "arachsiam",
+      "name": "아라크시암",
+      "matchedFilterKey": "arachsiam",
+      "exactTargetTypeAvailable": true,
+      "typeIds": [
+        "boss_arachsiam"
+      ],
+      "selectionCapability": "해당 보스 유형 분류를 선택할 수 있다. 특정 던전 보상 경로 또는 모든 시나리오에서 실제 보스 마커가 있다는 증명은 아니다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "treant",
+      "name": "트렌트",
+      "matchedFilterKey": "treant",
+      "exactTargetTypeAvailable": true,
+      "typeIds": [
+        "boss_treant"
+      ],
+      "selectionCapability": "해당 보스 유형 분류를 선택할 수 있다. 특정 던전 보상 경로 또는 모든 시나리오에서 실제 보스 마커가 있다는 증명은 아니다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "secret-servitor",
+      "name": "시크릿 서번트",
+      "matchedFilterKey": "secret-servitor",
+      "exactTargetTypeAvailable": true,
+      "typeIds": [
+        "boss_secret_servitor"
+      ],
+      "selectionCapability": "해당 보스 유형 분류를 선택할 수 있다. 특정 던전 보상 경로 또는 모든 시나리오에서 실제 보스 마커가 있다는 증명은 아니다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "forsaken-giant",
+      "name": "망각의 군주",
+      "matchedFilterKey": "forsaken-giant",
+      "exactTargetTypeAvailable": true,
+      "typeIds": [
+        "boss_the_forsaken_giant"
+      ],
+      "selectionCapability": "해당 보스 유형 분류를 선택할 수 있다. 특정 던전 보상 경로 또는 모든 시나리오에서 실제 보스 마커가 있다는 증명은 아니다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    },
+    {
+      "key": "lea-research-lab",
+      "name": "LEA Research Lab",
+      "matchedFilterKey": "lea-research-lab",
+      "exactTargetTypeAvailable": true,
+      "typeIds": [
+        "raidlea"
+      ],
+      "selectionCapability": "LEA 연구소 시설 분류를 선택할 수 있다.",
+      "targetCoordinates": null,
+      "targetPresentByScenario": null
+    }
+  ],
+  "mapSupport": [
+    {
+      "mapKey": "MANIBUS",
+      "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+      "verificationMode": "INDIVIDUAL_9",
+      "verifiedTypeIds": [
+        "boss_arachsiam",
+        "boss_ravenous_hunter",
+        "boss_secret_servitor",
+        "boss_shadow_hound",
+        "boss_the_forsaken_giant",
+        "boss_treant",
+        "juxie",
+        "raidlea",
+        "securementsilos"
+      ],
+      "selectionSummary": "각 필터를 단독 선택하고 Locations 1/38 또는 보스의 1/88을 확인했다."
+    },
+    {
+      "mapKey": "WINTER",
+      "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+      "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+      "verificationMode": "BATCH_9",
+      "verifiedTypeIds": [
+        "boss_arachsiam",
+        "boss_ravenous_hunter",
+        "boss_secret_servitor",
+        "boss_shadow_hound",
+        "boss_the_forsaken_giant",
+        "boss_treant",
+        "juxie",
+        "raidlea",
+        "securementsilos"
+      ],
+      "selectionSummary": "Locations 3/38, 보스의 6/88"
+    },
+    {
+      "mapKey": "ENDLESS_DREAM",
+      "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+      "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+      "verificationMode": "BATCH_9",
+      "verifiedTypeIds": [
+        "boss_arachsiam",
+        "boss_ravenous_hunter",
+        "boss_secret_servitor",
+        "boss_shadow_hound",
+        "boss_the_forsaken_giant",
+        "boss_treant",
+        "juxie",
+        "raidlea",
+        "securementsilos"
+      ],
+      "selectionSummary": "Locations 3/38, 보스의 6/88"
+    },
+    {
+      "mapKey": "DEVIATION",
+      "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+      "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=raidlea,juxie,securementsilos,boss_arachsiam,boss_shadow_hound,boss_treant,boss_ravenous_hunter,boss_secret_servitor,boss_the_forsaken_giant",
+      "verificationMode": "BATCH_9",
+      "verifiedTypeIds": [
+        "boss_arachsiam",
+        "boss_ravenous_hunter",
+        "boss_secret_servitor",
+        "boss_shadow_hound",
+        "boss_the_forsaken_giant",
+        "boss_treant",
+        "juxie",
+        "raidlea",
+        "securementsilos"
+      ],
+      "selectionSummary": "Locations 3/38, 보스의 6/88"
+    }
+  ],
+  "teddyEntranceRecommendation": {
+    "baseFilter": "deviations_dr._teddy",
+    "supplementalTypes": [
+      "securementsilos"
+    ],
+    "exactThetaSelectionPossible": false,
+    "noteKorean": "THETA 히든 보상 안내와 함께 사일로 입구 분류를 표시할 수 있습니다. 이 필터는 전체 사일로를 표시하므로 지도에서 THETA 이름을 확인해야 하며, 테디의 고정 스폰 또는 특정 난이도 개방을 보장하지 않습니다."
+  },
+  "cameraNote": "임베드 코드의 center/zoom은 당시 지도 기본 보기다. 사일로 또는 보스의 정확한 좌표로 사용하지 않는다.",
+  "cleanup": {
+    "initialPresetObserved": "기본값 선택",
+    "restoredPreset": "기본값 선택",
+    "restorationObserved": [
+      "기본값 pressed",
+      "Locations 38/38",
+      "보스의 88/88",
+      "수용물 94/94",
+      "Gatherables 4/14"
+    ],
+    "researchTabClosed": true
+  }
+}

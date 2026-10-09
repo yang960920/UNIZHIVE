@@ -1,0 +1,994 @@
+{
+  "schemaVersion": 1,
+  "status": "COMPLETE",
+  "verifiedAt": "2026-10-08",
+  "provider": "TH.GL",
+  "method": "Manibus 한국어 Locations 38개를 단독 선택하여 공식 Embed types를 확인했다. 다른 3지도는 동일 KO 38개 목록과 Locations 38/38 전체 선택 후 공식 Embed types를 확인했다. 두 공방은 영어 UI에서도 단독 Embed를 대조했다. 공개 사일로 가이드 및 실제 PHI tooltip을 읽었다. 마커 API/DB/숨은 앱 상태는 읽지 않았다.",
+  "documentationUrl": "https://www.th.gl/developers",
+  "sourceMapKey": "MANIBUS",
+  "sourceMapUrl": "https://oncehuman.th.gl/ko/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84",
+  "categories": [
+    {
+      "labelKo": "가든",
+      "typeId": "zhongzhiyuan",
+      "typeIds": [
+        "zhongzhiyuan"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=zhongzhiyuan"
+      }
+    },
+    {
+      "labelKo": "공방 채굴",
+      "typeId": "excavation",
+      "typeIds": [
+        "excavation"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=excavation"
+      }
+    },
+    {
+      "labelKo": "공용 온도 조절 탑",
+      "typeId": "map_cbt2_view_icon_temperature",
+      "typeIds": [
+        "map_cbt2_view_icon_temperature"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=map_cbt2_view_icon_temperature"
+      }
+    },
+    {
+      "labelKo": "공장",
+      "typeId": "gongchang",
+      "typeIds": [
+        "gongchang"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=gongchang"
+      }
+    },
+    {
+      "labelKo": "광산 공방",
+      "typeId": "mine",
+      "typeIds": [
+        "mine"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=mine"
+      }
+    },
+    {
+      "labelKo": "교통 중추",
+      "typeId": "jiaotongshuniu",
+      "typeIds": [
+        "jiaotongshuniu"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=jiaotongshuniu"
+      }
+    },
+    {
+      "labelKo": "군사",
+      "typeId": "junshijidi",
+      "typeIds": [
+        "junshijidi"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=junshijidi"
+      }
+    },
+    {
+      "labelKo": "낚시 산책로",
+      "typeId": "fishing",
+      "typeIds": [
+        "fishing"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=fishing"
+      }
+    },
+    {
+      "labelKo": "놀이공원(관람차)",
+      "typeId": "north_youleyuan1",
+      "typeIds": [
+        "north_youleyuan1"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_youleyuan1"
+      }
+    },
+    {
+      "labelKo": "놀이공원(문어)",
+      "typeId": "north_youleyuan2",
+      "typeIds": [
+        "north_youleyuan2"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_youleyuan2"
+      }
+    },
+    {
+      "labelKo": "대형 경기장",
+      "typeId": "dv_arena_large",
+      "typeIds": [
+        "dv_arena_large"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=dv_arena_large"
+      }
+    },
+    {
+      "labelKo": "도시",
+      "typeId": "chengzhen",
+      "typeIds": [
+        "chengzhen"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=chengzhen"
+      }
+    },
+    {
+      "labelKo": "동굴 기지",
+      "typeId": "north_dongxue",
+      "typeIds": [
+        "north_dongxue"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_dongxue"
+      }
+    },
+    {
+      "labelKo": "로스트시티",
+      "typeId": "north_pobaichengshi",
+      "typeIds": [
+        "north_pobaichengshi"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_pobaichengshi"
+      }
+    },
+    {
+      "labelKo": "리퍼 마켓",
+      "typeId": "fanmaiji",
+      "typeIds": [
+        "fanmaiji"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=fanmaiji"
+      }
+    },
+    {
+      "labelKo": "마운틴포트",
+      "typeId": "north_shantijidi",
+      "typeIds": [
+        "north_shantijidi"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_shantijidi"
+      }
+    },
+    {
+      "labelKo": "모노리스",
+      "typeId": "juxie",
+      "typeIds": [
+        "juxie"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=juxie"
+      }
+    },
+    {
+      "labelKo": "무스시",
+      "typeId": "north_musishi",
+      "typeIds": [
+        "north_musishi"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_musishi"
+      }
+    },
+    {
+      "labelKo": "버드뷰 캠프",
+      "typeId": "guanniaoyingdi",
+      "typeIds": [
+        "guanniaoyingdi"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=guanniaoyingdi"
+      }
+    },
+    {
+      "labelKo": "병원",
+      "typeId": "hospital",
+      "typeIds": [
+        "hospital"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=hospital"
+      }
+    },
+    {
+      "labelKo": "부동항",
+      "typeId": "north_haigang",
+      "typeIds": [
+        "north_haigang"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_haigang"
+      }
+    },
+    {
+      "labelKo": "부활 지점",
+      "typeId": "initial_respawn",
+      "typeIds": [
+        "initial_respawn"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=initial_respawn"
+      }
+    },
+    {
+      "labelKo": "사일로",
+      "typeId": "securementsilos",
+      "typeIds": [
+        "securementsilos"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=securementsilos"
+      }
+    },
+    {
+      "labelKo": "세계석",
+      "typeId": "transport",
+      "typeIds": [
+        "transport"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=transport"
+      }
+    },
+    {
+      "labelKo": "소형 경기장",
+      "typeId": "dv_arena_small",
+      "typeIds": [
+        "dv_arena_small"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=dv_arena_small"
+      }
+    },
+    {
+      "labelKo": "소형 부락",
+      "typeId": "juluo",
+      "typeIds": [
+        "juluo"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=juluo"
+      }
+    },
+    {
+      "labelKo": "연구소",
+      "typeId": "yanjiusuo",
+      "typeIds": [
+        "yanjiusuo"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=yanjiusuo"
+      }
+    },
+    {
+      "labelKo": "용광로 기지",
+      "typeId": "north_ronglu",
+      "typeIds": [
+        "north_ronglu"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_ronglu"
+      }
+    },
+    {
+      "labelKo": "유적",
+      "typeId": "yiji",
+      "typeIds": [
+        "yiji"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=yiji"
+      }
+    },
+    {
+      "labelKo": "자원스팟",
+      "typeId": "hud_icon_resourse_null",
+      "typeIds": [
+        "hud_icon_resourse_null"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=hud_icon_resourse_null"
+      }
+    },
+    {
+      "labelKo": "쟁탈 구역",
+      "typeId": "icon_stronghold_borderlands",
+      "typeIds": [
+        "icon_stronghold_borderlands"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=icon_stronghold_borderlands"
+      }
+    },
+    {
+      "labelKo": "캠프 공격",
+      "typeId": "yingdi",
+      "typeIds": [
+        "yingdi"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=yingdi"
+      }
+    },
+    {
+      "labelKo": "플라자",
+      "typeId": "gouwuzhongxin",
+      "typeIds": [
+        "gouwuzhongxin"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=gouwuzhongxin"
+      }
+    },
+    {
+      "labelKo": "학교",
+      "typeId": "school",
+      "typeIds": [
+        "school"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=school"
+      }
+    },
+    {
+      "labelKo": "화산 기지",
+      "typeId": "north_huoshanjidi",
+      "typeIds": [
+        "north_huoshanjidi"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=north_huoshanjidi"
+      }
+    },
+    {
+      "labelKo": "LEA 연구소",
+      "typeId": "raidlea",
+      "typeIds": [
+        "raidlea"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=raidlea"
+      }
+    },
+    {
+      "labelKo": "Scattered",
+      "typeId": "scattered",
+      "typeIds": [
+        "scattered"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=scattered"
+      }
+    },
+    {
+      "labelKo": "Settlement Worldstone",
+      "typeId": "zhongliyingdi_kechuansong",
+      "typeIds": [
+        "zhongliyingdi_kechuansong"
+      ],
+      "verifiedMapKeys": [
+        "MANIBUS",
+        "WINTER",
+        "ENDLESS_DREAM",
+        "DEVIATION"
+      ],
+      "evidence": {
+        "selectionSummary": "Locations 1/38",
+        "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=zhongliyingdi_kechuansong"
+      }
+    }
+  ],
+  "mapSupport": [
+    {
+      "mapKey": "WINTER",
+      "mapUrl": "https://oncehuman.th.gl/ko/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8",
+      "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%98%B9%EB%8F%85%ED%95%9C%20%EA%B2%A8%EC%9A%B8?center=5300,0&zoom=1.93&types=fanmaiji,juluo,yingdi,scattered,transport,map_cbt2_view_icon_temperature,dv_arena_small,hud_icon_resourse_null,raidlea,icon_stronghold_borderlands,mine,initial_respawn,juxie,dv_arena_large,zhongliyingdi_kechuansong,excavation,securementsilos,yanjiusuo,chengzhen,junshijidi,zhongzhiyuan,gouwuzhongxin,hospital,fishing,north_ronglu,north_haigang,north_youleyuan2,guanniaoyingdi,north_huoshanjidi,gongchang,north_shantijidi,north_musishi,north_youleyuan1,north_pobaichengshi,north_dongxue,yiji,school,jiaotongshuniu",
+      "verificationMode": "BATCH_38",
+      "selectionSummary": "Locations 38/38",
+      "verifiedTypeIds": [
+        "fanmaiji",
+        "juluo",
+        "yingdi",
+        "scattered",
+        "transport",
+        "map_cbt2_view_icon_temperature",
+        "dv_arena_small",
+        "hud_icon_resourse_null",
+        "raidlea",
+        "icon_stronghold_borderlands",
+        "mine",
+        "initial_respawn",
+        "juxie",
+        "dv_arena_large",
+        "zhongliyingdi_kechuansong",
+        "excavation",
+        "securementsilos",
+        "yanjiusuo",
+        "chengzhen",
+        "junshijidi",
+        "zhongzhiyuan",
+        "gouwuzhongxin",
+        "hospital",
+        "fishing",
+        "north_ronglu",
+        "north_haigang",
+        "north_youleyuan2",
+        "guanniaoyingdi",
+        "north_huoshanjidi",
+        "gongchang",
+        "north_shantijidi",
+        "north_musishi",
+        "north_youleyuan1",
+        "north_pobaichengshi",
+        "north_dongxue",
+        "yiji",
+        "school",
+        "jiaotongshuniu"
+      ],
+      "uiLabelsMatchSourceMap": true,
+      "scope": "UI_FILTER_SUPPORT_ONLY",
+      "cameraIsNamedLocation": false
+    },
+    {
+      "mapKey": "ENDLESS_DREAM",
+      "mapUrl": "https://oncehuman.th.gl/ko/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88",
+      "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%EB%AC%B4%ED%95%9C%ED%95%9C%20%EA%BF%88?center=-2071.57,361.97&zoom=1.74&types=fanmaiji,juluo,yingdi,scattered,transport,map_cbt2_view_icon_temperature,dv_arena_small,hud_icon_resourse_null,raidlea,icon_stronghold_borderlands,mine,initial_respawn,juxie,dv_arena_large,zhongliyingdi_kechuansong,excavation,securementsilos,yanjiusuo,chengzhen,junshijidi,zhongzhiyuan,gouwuzhongxin,hospital,fishing,north_ronglu,north_haigang,north_youleyuan2,guanniaoyingdi,north_huoshanjidi,gongchang,north_shantijidi,north_musishi,north_youleyuan1,north_pobaichengshi,north_dongxue,yiji,school,jiaotongshuniu",
+      "verificationMode": "BATCH_38",
+      "selectionSummary": "Locations 38/38",
+      "verifiedTypeIds": [
+        "fanmaiji",
+        "juluo",
+        "yingdi",
+        "scattered",
+        "transport",
+        "map_cbt2_view_icon_temperature",
+        "dv_arena_small",
+        "hud_icon_resourse_null",
+        "raidlea",
+        "icon_stronghold_borderlands",
+        "mine",
+        "initial_respawn",
+        "juxie",
+        "dv_arena_large",
+        "zhongliyingdi_kechuansong",
+        "excavation",
+        "securementsilos",
+        "yanjiusuo",
+        "chengzhen",
+        "junshijidi",
+        "zhongzhiyuan",
+        "gouwuzhongxin",
+        "hospital",
+        "fishing",
+        "north_ronglu",
+        "north_haigang",
+        "north_youleyuan2",
+        "guanniaoyingdi",
+        "north_huoshanjidi",
+        "gongchang",
+        "north_shantijidi",
+        "north_musishi",
+        "north_youleyuan1",
+        "north_pobaichengshi",
+        "north_dongxue",
+        "yiji",
+        "school",
+        "jiaotongshuniu"
+      ],
+      "uiLabelsMatchSourceMap": true,
+      "scope": "UI_FILTER_SUPPORT_ONLY",
+      "cameraIsNamedLocation": false
+    },
+    {
+      "mapKey": "DEVIATION",
+      "mapUrl": "https://oncehuman.th.gl/ko/maps/Deviation%20Secure",
+      "generatedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/Deviation%20Secure?center=-2850,3500&zoom=1.74&types=fanmaiji,juluo,yingdi,scattered,transport,map_cbt2_view_icon_temperature,dv_arena_small,hud_icon_resourse_null,raidlea,icon_stronghold_borderlands,mine,initial_respawn,juxie,dv_arena_large,zhongliyingdi_kechuansong,excavation,securementsilos,yanjiusuo,chengzhen,junshijidi,zhongzhiyuan,gouwuzhongxin,hospital,fishing,north_ronglu,north_haigang,north_youleyuan2,guanniaoyingdi,north_huoshanjidi,gongchang,north_shantijidi,north_musishi,north_youleyuan1,north_pobaichengshi,north_dongxue,yiji,school,jiaotongshuniu",
+      "verificationMode": "BATCH_38",
+      "selectionSummary": "Locations 38/38",
+      "verifiedTypeIds": [
+        "fanmaiji",
+        "juluo",
+        "yingdi",
+        "scattered",
+        "transport",
+        "map_cbt2_view_icon_temperature",
+        "dv_arena_small",
+        "hud_icon_resourse_null",
+        "raidlea",
+        "icon_stronghold_borderlands",
+        "mine",
+        "initial_respawn",
+        "juxie",
+        "dv_arena_large",
+        "zhongliyingdi_kechuansong",
+        "excavation",
+        "securementsilos",
+        "yanjiusuo",
+        "chengzhen",
+        "junshijidi",
+        "zhongzhiyuan",
+        "gouwuzhongxin",
+        "hospital",
+        "fishing",
+        "north_ronglu",
+        "north_haigang",
+        "north_youleyuan2",
+        "guanniaoyingdi",
+        "north_huoshanjidi",
+        "gongchang",
+        "north_shantijidi",
+        "north_musishi",
+        "north_youleyuan1",
+        "north_pobaichengshi",
+        "north_dongxue",
+        "yiji",
+        "school",
+        "jiaotongshuniu"
+      ],
+      "uiLabelsMatchSourceMap": true,
+      "scope": "UI_FILTER_SUPPORT_ONLY",
+      "cameraIsNamedLocation": false
+    }
+  ],
+  "englishWorkshopEvidence": [
+    {
+      "labelKo": "광산 공방",
+      "labelEn": "Mine Workshop",
+      "typeId": "mine",
+      "sourceMapUrl": "https://oncehuman.th.gl/maps/Manibus%20%26%20Evolution's%20Call",
+      "selectionSummary": "Locations 1/38",
+      "generatedEmbedUrl": "https://oncehuman.th.gl/embed/maps/Manibus%20%26%20Evolution's%20Call?center=-2850,3500&zoom=1.74&types=mine"
+    },
+    {
+      "labelKo": "공방 채굴",
+      "labelEn": "Mining Workshop",
+      "typeId": "excavation",
+      "sourceMapUrl": "https://oncehuman.th.gl/maps/Manibus%20%26%20Evolution's%20Call",
+      "selectionSummary": "Locations 1/38",
+      "generatedEmbedUrl": "https://oncehuman.th.gl/embed/maps/Manibus%20%26%20Evolution's%20Call?center=-2850,3500&zoom=1.74&types=excavation"
+    }
+  ],
+  "namedLocations": [
+    {
+      "providerMapLabel": "Manibus & Evolution's Call",
+      "mapKey": "MANIBUS",
+      "names": [
+        "Securement Silo - SIGMA",
+        "Securement Silo - ALPHA",
+        "Securement Silo - PSI",
+        "Securement Silo - EX1",
+        "Securement Silo - THETA",
+        "Securement Silo - PHI"
+      ],
+      "typeId": "securementsilos",
+      "sourceUrl": "https://oncehuman.th.gl/guides/Securement%20Silos",
+      "sourceLastUpdated": "2026-10-08",
+      "visibleDropTable": false,
+      "guideEntryCounts": [
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1"
+      ]
+    },
+    {
+      "providerMapLabel": "The Way of Winter",
+      "mapKey": "WINTER",
+      "names": [
+        "Securement Silo - EX1 [Deviation -1.4]",
+        "Securement Silo - Delta",
+        "Securement Silo - PSI [Deviation +0.5]",
+        "Securement Silo - Taurus"
+      ],
+      "typeId": "securementsilos",
+      "sourceUrl": "https://oncehuman.th.gl/guides/Securement%20Silos",
+      "sourceLastUpdated": "2026-10-08",
+      "visibleDropTable": false,
+      "guideEntryCounts": [
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1"
+      ]
+    },
+    {
+      "providerMapLabel": "Endless Dream",
+      "mapKey": "ENDLESS_DREAM",
+      "names": [
+        "Securement Silo - SIGMA",
+        "Securement Silo - EX1 [Deviation -1.4]",
+        "Securement Silo - ALPHA",
+        "Securement Silo - Delta",
+        "Securement Silo - PSI",
+        "Securement Silo - PSI [Deviation +0.5]",
+        "Securement Silo - Taurus",
+        "Securement Silo - EX1",
+        "Securement Silo - THETA",
+        "Securement Silo - PHI"
+      ],
+      "typeId": "securementsilos",
+      "sourceUrl": "https://oncehuman.th.gl/guides/Securement%20Silos",
+      "sourceLastUpdated": "2026-10-08",
+      "visibleDropTable": false,
+      "guideEntryCounts": [
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1",
+        "0/1"
+      ]
+    }
+  ],
+  "tooltipEvidence": [
+    {
+      "sourceUrl": "https://oncehuman.th.gl/guides/Securement%20Silos",
+      "providerMapLabel": "Manibus & Evolution's Call",
+      "visibleHeading": "Securement Silo - PHI",
+      "visibleCategory": "Securement Silos",
+      "visibleCoordinateText": "5254, -2886, 129",
+      "visibleText": "Securement Silo - PHI\nSecurement Silos\n5254, -2886, 129",
+      "visibleDropTable": false,
+      "cameraEmbed": null,
+      "usage": "실제 클릭 후 이름과 좌표가 표시된 tooltip. 드롭 아이템/확률/난이도/시즌 조건이 표시되지 않았다."
+    }
+  ],
+  "providerGuideIndexEvidence": {
+    "sourceUrl": "https://oncehuman.th.gl/guides",
+    "globalCategoryCounts": [
+      {
+        "labelEn": "Securement Silos",
+        "typeId": "securementsilos",
+        "knownLocations": 34
+      },
+      {
+        "labelEn": "LEA Research Lab",
+        "typeId": "raidlea",
+        "knownLocations": 7
+      },
+      {
+        "labelEn": "Monolith",
+        "typeId": "juxie",
+        "knownLocations": 36
+      },
+      {
+        "labelEn": "Mine Workshop",
+        "typeId": "mine",
+        "knownLocations": 28
+      },
+      {
+        "labelEn": "Mining Workshop",
+        "typeId": "excavation",
+        "knownLocations": 4
+      }
+    ],
+    "scope": "TH.GL 공개 가이드의 전체 지도 합계이며 시나리오별 좌표 수나 drop pool이 아니다.",
+    "excludeConfusion": "입구 Locations / Securement Silos 34개와 별도의 아이템·컨테이너 Securement Silo 287개 분류를 합치지 않는다."
+  },
+  "categoryRoles": {
+    "basis": "한국어 UI명과 공개 가이드명에서 읽은 용도에 대한 분류 제안이며 TH.GL의 공식 drop taxonomy가 아니다.",
+    "amenityTypeIds": [
+      "transport",
+      "initial_respawn",
+      "fanmaiji",
+      "map_cbt2_view_icon_temperature",
+      "zhongliyingdi_kechuansong"
+    ],
+    "dungeonEntranceTypeIds": [
+      "securementsilos",
+      "juxie",
+      "raidlea"
+    ],
+    "activityTypeIds": [
+      "mine",
+      "excavation",
+      "dv_arena_small",
+      "dv_arena_large",
+      "icon_stronghold_borderlands"
+    ],
+    "remainingRole": "정착지·탐험 지역 등 포괄적 위치 분류. 장소/난이도/시나리오별로 보상이 달라질 수 있으므로 카테고리 공통 확정 drop pool을 만들 근거로 쓰지 않는다."
+  },
+  "limitations": [
+    "38개 타입이 4개 지도 UI와 공식 Embed types에서 선택 지원되는 것을 검증했다. 실제 마커 존재 또는 해당 시나리오에서의 획득 가능 여부는 검증한 뜻이 아니다.",
+    "category type은 개별 장소·좌표 또는 확정 드롭테이블이 아니다.",
+    "확인한 Securement Silos 가이드와 PHI 실제 tooltip에는 드롭테이블이 없었다. 모든 TH.GL 페이지에 드롭 정보가 없다고 일반화하지 않는다.",
+    "가이드의 Highlight on Map은 장소 강조 기능이다. 현재 카메라를 해당 장소의 정확한 좌표로 추정하지 않았으며 named camera는 등록하지 않는다.",
+    "사일로 가이드의 5개 탭에는 Deviation Secure가 없었다. Prismverse's Clash를 DEVIATION 시나리오로 임의 대체하지 않는다.",
+    "글로벌 카테고리에는 복수 위치가 등록된다. 편의시설에는 dungeon drop pool을 붙이지 않는다.",
+    "이 파일의 generated center/zoom은 검증 당시 카메라 값이며 특정 장소 좌표가 아니다."
+  ],
+  "cleanup": {
+    "initialTypes": [
+      "securementsilos"
+    ],
+    "restored": true,
+    "restoredGeneratedEmbedUrl": "https://oncehuman.th.gl/ko/embed/maps/%ED%84%B0%EC%B9%98%20%EC%98%A4%EB%B8%8C%20%EC%8A%A4%EC%B9%B4%EC%9D%B4%26%EC%A7%84%ED%99%94%EC%9D%98%20%EB%B6%80%EB%A6%84?center=-2850,3500&zoom=1.74&types=securementsilos",
+    "restoredSelectionSummary": "Locations 1/38, other categories 0",
+    "restoredLanguage": "ko",
+    "researchTabId": "1266226473",
+    "researchTabClosed": true
+  }
+}

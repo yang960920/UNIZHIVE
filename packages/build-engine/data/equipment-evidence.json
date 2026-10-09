@@ -1,0 +1,697 @@
+{
+  "schemaVersion": "build-data-evidence.v0.1",
+  "kind": "HISTORICAL_EVIDENCE",
+  "checkedAt": "2026-10-06",
+  "sources": [
+    {
+      "id": "EQ01",
+      "title": "Weapon & Gear Guide",
+      "url": "https://www.oncehuman.game/wiki/20240516/37492_1155622.html",
+      "publishedAt": "2024-05-16",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ02",
+      "title": "Memetic & Cradle Guide",
+      "url": "https://www.oncehuman.game/wiki/20240520/37492_1156112.html",
+      "publishedAt": "2024-05-21",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ03",
+      "title": "Dev Blog | Mod System Overhaul and Compensation Plan",
+      "url": "https://www.oncehuman.game/news/devBlog/20251212/40781_1276354.html",
+      "publishedAt": "2025-12-12",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ04",
+      "title": "Dev Blog丨Comprehensive Optimization of Calibration & Accessories",
+      "url": "https://www.oncehuman.game/news/devBlog/20260113/40781_1281545.html",
+      "publishedAt": "2026-01-13",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ05",
+      "title": "Version 2.3.1 Update Announcement (January 21)",
+      "url": "https://www.oncehuman.game/m/news/update/20260121/40780_1282991.html",
+      "publishedAt": "2026-01-21",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ06",
+      "title": "Dev Blog丨New Combat Weapons, Armor, Sets, and Mods Coming Soon",
+      "url": "https://www.oncehuman.game/news/devBlog/20260116/40781_1282292.html",
+      "publishedAt": "2026-01-17",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ07",
+      "title": "Dev Blog | Feb. Combat Balance Adjustments",
+      "url": "https://www.oncehuman.game/news/devBlog/20260212/40781_1287008.html",
+      "publishedAt": "2026-02-23",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ08",
+      "title": "Version 2.3.3 Update Announcement (February 25)",
+      "url": "https://www.oncehuman.game/banner/20260226/41906_1288020.html",
+      "publishedAt": "2026-02-25",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ09",
+      "title": "Dev Blog | New Weapons and Combat Balance Adjustments for September",
+      "url": "https://www.oncehuman.game/news/devBlog/20250922/40781_1260687.html",
+      "publishedAt": "2025-09-22",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ10",
+      "title": "Version 2.1.4 Update Announcement (September 24)",
+      "url": "https://www.oncehuman.game/news/update/20250924/40780_1261275.html",
+      "publishedAt": "2025-09-24",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ11",
+      "title": "Version 2.3.5 Update Announcement (March 25)",
+      "url": "https://www.oncehuman.game/news/update/20260325/40780_1292938.html",
+      "publishedAt": "2026-03-25",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ12",
+      "title": "Dev Blog | September Combat Balance Adjustment",
+      "url": "https://www.oncehuman.game/news/devBlog/20260910/40781_1313572.html",
+      "publishedAt": "2026-09-10",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ13",
+      "title": "Version 3.0.6 Update Announcement (September 16)",
+      "url": "https://www.oncehuman.game/news/devBlog/20260916/40781_1314019.html",
+      "publishedAt": "2026-09-16",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "EQ14",
+      "title": "Version 3.0.7 Update Announcement (September 28)",
+      "url": "https://www.oncehuman.game/news/update/20260924/40780_1315053.html",
+      "publishedAt": "2026-09-28",
+      "checkedAt": "2026-10-06"
+    }
+  ],
+  "samples": [
+    {
+      "id": "eq-ebr14-octopus",
+      "category": "WEAPON",
+      "name": "EBR-14 - Octopus! Grilled Rings!",
+      "patchContext": "2026-01-21 예정 신장비; 2.3.3 공식 공지에 저격총 언급",
+      "scenarioContext": "신장비 발표: RaidZone 제외",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "EBR-14 - Octopus! Grilled Rings!",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ06"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "weaponType",
+          "value": "SNIPER_RIFLE",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ08"],
+          "note": "공식 공지가 해당 이름을 저격총으로 분류."
+        },
+        {
+          "path": "keyword",
+          "value": "BURN",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ06"],
+          "note": "명중에 따른 화상 발동 설명."
+        },
+        {
+          "path": "procChance",
+          "value": null,
+          "unit": "PERCENT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "1월 소개는 확률값을 제시하지 않음."
+        },
+        {
+          "path": "baseDamage",
+          "value": null,
+          "unit": "DAMAGE",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "티어/별/제작조건을 고정한 기본 피해 값 미확인."
+        }
+      ],
+      "notes": ["역사적 소개 근거이며 최신 무기 데이터가 아님."]
+    },
+    {
+      "id": "eq-tec9-additional-rules",
+      "category": "WEAPON",
+      "name": "TEC9 - Additional Rules",
+      "patchContext": "2.3.3 (2026-02-25 PT); 숫자는 2월 23일 시험 제안",
+      "scenarioContext": "1월 신장비 소개는 RaidZone 제외; 2월 적용 모드별 확인 필요",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "TEC9 - Additional Rules",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ06"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "chargedDamageClass",
+          "value": "STATUS",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ08"],
+          "note": "충전 상태 피해 분류 변경이 최종 패치 공지에 명시."
+        },
+        {
+          "path": "fortressWarfareCooldown",
+          "value": 10,
+          "unit": "SECONDS",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ07"],
+          "note": "공식 개발 블로그 시험 제안값. 최종 패치 본문은 이 숫자를 반복하지 않음."
+        },
+        {
+          "path": "chargedAttackCoefficientDisplayed",
+          "value": 120,
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ07"],
+          "note": "시험 제안값. 공격력 기준 표시 계수이며 전체 피해 공식이 아님."
+        },
+        {
+          "path": "damagePipeline",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "치명타/약점/버프 결합 순서와 중첩 규칙 미확인."
+        }
+      ],
+      "notes": ["최종 공지와 시험 제안 숫자의 근거 수준을 구분한다."]
+    },
+    {
+      "id": "eq-nail-gun-raidzone-2025",
+      "category": "WEAPON",
+      "name": "Nail Gun",
+      "patchContext": "2.1.4 (2025-09-24 PT)",
+      "scenarioContext": "RaidZone 전용 문단",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Nail Gun",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ10"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "damagePerShotDisplayed",
+          "value": 13,
+          "unit": "DAMAGE",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ10"],
+          "note": "해당 버전 RaidZone 소개 값; PvE 장비에 전용 불가."
+        },
+        {
+          "path": "magazineCapacity",
+          "value": 18,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ10"],
+          "note": "소개 표의 장탄수."
+        },
+        {
+          "path": "fireRateDisplayed",
+          "value": 400,
+          "unit": "UNSPECIFIED",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ10"],
+          "note": "소개 표의 표시 값. 원문에 단위가 없어 RPM으로 단정하지 않음."
+        },
+        {
+          "path": "tierScaling",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "티어/제작 강화에 따른 변환 미확인."
+        }
+      ],
+      "notes": ["일반 시나리오와 RaidZone 스탯 혼용 방지를 위한 반례 샘플."]
+    },
+    {
+      "id": "eq-gilded-gauntlets",
+      "category": "ARMOR",
+      "name": "Gilded Gauntlets",
+      "patchContext": "2026-01-21 신장비 소개; 2.3.3 조정 예정/공지",
+      "scenarioContext": "1월 발표: RaidZone 제외",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Gilded Gauntlets",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ06"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "enablesBurnCrit",
+          "value": true,
+          "unit": "BOOLEAN",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ06"],
+          "note": "화상의 치명타 피해 가능 효과."
+        },
+        {
+          "path": "burnCritRateBonusDisplayed",
+          "value": 20,
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ07"],
+          "note": "2월 시험 제안 표의 +20%. 상대 배율인지 퍼센트포인트인지는 이 근거로 확정하지 않음."
+        },
+        {
+          "path": "burnCritDamageBonusDisplayed",
+          "value": 20,
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ07"],
+          "note": "2월 시험 제안값; EQ08은 강화 방향만 재확인."
+        },
+        {
+          "path": "slot",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "이름만 보고 Gloves 슬롯으로 자동 확정하지 않음."
+        }
+      ],
+      "notes": ["기본 HP/Psi Intensity/방어력은 미확인."]
+    },
+    {
+      "id": "eq-treacherous-tides-20260916",
+      "category": "ARMOR",
+      "name": "Treacherous Tides Set",
+      "patchContext": "3.0.6 (2026-09-16 PT) 최종 비교표",
+      "scenarioContext": "해당 공지의 장비 밸런스 문단; 전체 모드별 일치 여부 미확인",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Treacherous Tides Set",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ13"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "twoPiece.hpThreshold",
+          "value": 70,
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ13"],
+          "note": "현재 HP 70% 미만 조건."
+        },
+        {
+          "path": "twoPiece.weaponDamageBonus",
+          "value": 12,
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ13"],
+          "note": "최종 공지 12%; EQ12 시험 제안 10%를 채택하지 않음."
+        },
+        {
+          "path": "twoPiece.statusDamageBonus",
+          "value": 12,
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ13"],
+          "note": "동일 조건의 상태 피해 보너스."
+        },
+        {
+          "path": "threePiece.damageBonusRange",
+          "value": [8, 28],
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ13"],
+          "note": "HP 100%에서 8%, HP 60%에서 28%라는 경계만 확인."
+        },
+        {
+          "path": "threePiece.interpolation",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "두 경계 사이의 함수/반올림/다른 버프 중첩을 추론하지 않음."
+        }
+      ],
+      "notes": [
+        "9월 10일 제안은 최종 9월 16일 공지와 수치가 다르다.",
+        "9월 28일 공지를 추가 확인했으나 무언급은 현재성 보증이 아니다."
+      ]
+    },
+    {
+      "id": "eq-against-all-odds",
+      "category": "MOD",
+      "name": "Against All Odds",
+      "patchContext": "2.1.4 (2025-09-24 PT), 상세 설명은 9월 22일 개발 블로그",
+      "scenarioContext": "Lunar Revelry/비 RaidZone 신규 장비 문맥; 모드별 확인 필요",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Against All Odds",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ09", "EQ10"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "mainEffect",
+          "value": "기본 무기/상태 피해 증가; HP를 잃은 뒤 추가 증가",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ09"],
+          "note": "당시 변경 설명을 요약."
+        },
+        {
+          "path": "bonusMagnitude",
+          "value": null,
+          "unit": "PERCENT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "해당 설명에 증가량이 없음."
+        },
+        {
+          "path": "duration",
+          "value": null,
+          "unit": "SECONDS",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "해당 설명에 지속시간이 없음."
+        },
+        {
+          "path": "modernSubAttributes",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "2026 신형/레거시 구분별 상세 부옵션 미확인."
+        }
+      ],
+      "notes": ["현재 모드의 수치/슬롯/희귀도 레코드로 사용하지 않는다."]
+    },
+    {
+      "id": "eq-mod-field-guide-system",
+      "category": "MOD",
+      "name": "Mods Field Guide",
+      "patchContext": "2025-12-12 설계 발표 -> 2.3.1 (2026-01-21 PT) 도입 공지",
+      "scenarioContext": "2.3.1 Optimization - All Modes 문단",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Mods Field Guide",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ03", "EQ05"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "announcedLevelRange",
+          "value": [1, 17],
+          "unit": "LEVEL",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ03"],
+          "note": "제안의 레벨 범위; 현재 버전의 개별 모드 능력치가 아님."
+        },
+        {
+          "path": "fixedSubAttributeCount",
+          "value": 4,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ03"],
+          "note": "신형 모드 부옵션 개수. 레거시 랜덤 롤과 구분."
+        },
+        {
+          "path": "legacyModsRetained",
+          "value": true,
+          "unit": "BOOLEAN",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ05"],
+          "note": "도입 공지는 기존 모드 호환을 유지한다고 설명."
+        },
+        {
+          "path": "currentLevelCap",
+          "value": null,
+          "unit": "LEVEL",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "10월 전체 카탈로그 기준 상한을 재검증하지 못함."
+        }
+      ],
+      "notes": [
+        "아이템이 아닌 공식 시스템 명칭을 사용한 시스템 근거 레코드.",
+        "신형과 레거시는 같은 이름이어도 동일 데이터로 합치지 않는다."
+      ]
+    },
+    {
+      "id": "eq-rapid-shot-blueprint",
+      "category": "CALIBRATION",
+      "name": "Rapid-Shot Blueprint",
+      "patchContext": "2.3.1 (2026-01-21 PT) AWS.338 예시 표",
+      "scenarioContext": "장비/부착물 조정 문단; 개별 시나리오 적용은 확인 필요",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Rapid-Shot Blueprint",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ05"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "reloadEfficiencyBonus",
+          "value": 15,
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ05"],
+          "note": "공식 예시 표의 보너스."
+        },
+        {
+          "path": "reloadSecondsInOfficialExample",
+          "value": 3.16,
+          "unit": "SECONDS",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ05"],
+          "note": "AWS.338 - Bullseye 예시에서만 해당; 모든 무기의 재장전 시간으로 사용 금지."
+        },
+        {
+          "path": "effectStacking",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "재장전 효율 결합/계산식을 만들지 않음."
+        }
+      ],
+      "notes": ["표의 동일 예시 결과만 기록하며 계산 엔진 입력이 아니다."]
+    },
+    {
+      "id": "eq-gear-calibration-system",
+      "category": "CALIBRATION",
+      "name": "Gear Calibration",
+      "patchContext": "2024-05-16 가이드 -> 2.3.1 (2026-01-21 PT) 전환",
+      "scenarioContext": "공식 장비 조정 문단; 보상 제외 시나리오를 기능 제외와 혼동하지 않음",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Gear Calibration",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ01", "EQ05"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "legacy.materialUpgradeAvailable",
+          "value": true,
+          "unit": "BOOLEAN",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ01"],
+          "note": "2024 가이드의 재료를 통한 장비 개선 설명."
+        },
+        {
+          "path": "modern.postCraftWeaponCalibrationAvailable",
+          "value": false,
+          "unit": "BOOLEAN",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ05"],
+          "note": "작업대 교정과 블루프린트 교체 제거 공지."
+        },
+        {
+          "path": "modern.applyWeaponBlueprintDuringCrafting",
+          "value": true,
+          "unit": "BOOLEAN",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ05"],
+          "note": "제작 단계 블루프린트 적용."
+        },
+        {
+          "path": "modern.legendaryExampleAttackBonusRange",
+          "value": [33, 50],
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ05"],
+          "note": "신규 Legendary 예시 범위. 모든 희귀도/스타일 값으로 일반화 금지."
+        },
+        {
+          "path": "modern.legendaryExampleElementalBonusRange",
+          "value": [15, 20],
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ05"],
+          "note": "공식 예시의 속성 피해 범위."
+        },
+        {
+          "path": "legacy.maxCalibrationLevel",
+          "value": null,
+          "unit": "LEVEL",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "검토한 공식 자료에서 +10 상한을 확인하지 못함."
+        }
+      ],
+      "notes": [
+        "아이템이 아닌 시스템 근거 레코드.",
+        "이전 교정 무기의 기존 능력치 유지와 신규 제작 방식을 따로 기록한다."
+      ]
+    },
+    {
+      "id": "eq-shield-protection",
+      "category": "CRADLE_OVERRIDE",
+      "name": "Shield Protection",
+      "patchContext": "2025-09-22 발표; 2.1.4 시즌 Cradle 조정 공지",
+      "scenarioContext": "당시 Visional Wheel 시즌 문맥; 현재 가용 노드 풀 미확인",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Shield Protection",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ09"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "replaces",
+          "value": "Tactical Leap",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ09"],
+          "note": "공식 발표에서 이전 노드의 교체 명칭 확인."
+        },
+        {
+          "path": "activationCondition",
+          "value": "일정량의 보호막 보유",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ09"],
+          "note": "발동 조건의 정성 설명."
+        },
+        {
+          "path": "effect",
+          "value": "Deviant 대상 피해 증가와 받는 피해 감소",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ09"],
+          "note": "효과 대상과 방향만 확인."
+        },
+        {
+          "path": "shieldThreshold",
+          "value": null,
+          "unit": "PERCENT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "공식 본문에 보호막 조건 수치 없음."
+        }
+      ],
+      "notes": ["EQ11의 Super Anomaly 노드 제거가 이 이름의 제거를 뜻한다고 추론하지 않는다."]
+    },
+    {
+      "id": "eq-cradle-override-system",
+      "category": "CRADLE_OVERRIDE",
+      "name": "Override",
+      "patchContext": "2024-05-21 가이드; 2.3.5 (2026-03-25 PT) 노드 제거 공지",
+      "scenarioContext": "과거 가이드 및 Nalcott Super Anomaly 개편 문맥",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Override",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ02"],
+          "note": "공식 영문 표기. 한국어 현지화명과 내부 게임 ID는 미확인."
+        },
+        {
+          "path": "historicalMaxUnlockedNodes",
+          "value": 8,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ02"],
+          "note": "2024 가이드의 최대 해금 노드 수."
+        },
+        {
+          "path": "superAnomalyRelatedNodesRemoved",
+          "value": true,
+          "unit": "BOOLEAN",
+          "status": "OFFICIAL",
+          "sourceIds": ["EQ11"],
+          "note": "해당 적 관련 노드 제거 공지. 전체 Cradle 기능 제거가 아님."
+        },
+        {
+          "path": "currentNodePool",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "패치/시나리오/Visional 태그별 최신 선택 가능한 전체 목록 미확인."
+        }
+      ],
+      "notes": [
+        "아이템이 아닌 시스템 근거 레코드.",
+        "8칸 고정 UI 계약으로 사용하지 않고 버전별 설정으로 보관한다."
+      ]
+    }
+  ],
+  "unknowns": [
+    "2026-10-06의 시나리오/플랫폼별 전체 장비 카탈로그 및 현재 수치",
+    "한국어 현지화명, 공식 내부 ID, 무기 모델과 블루프린트 ID의 정확한 구분",
+    "별/티어/제작재료/레거시 교정 여부를 고정한 무기와 방어구 기본값",
+    "신형/레거시 모드별 정확한 부옵션 표와 Shiny 수치",
+    "교정 스타일별 최신 전체 랜덤 범위 및 레거시 변환 규칙 세부",
+    "Cradle 선택 풀, 해금 조건, 수치 및 시나리오 가용성",
+    "퍼센트와 퍼센트포인트 의미, 피해 배율 결합/반올림/발동 RNG/중첩 규칙"
+  ]
+}

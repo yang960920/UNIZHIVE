@@ -1,0 +1,126 @@
+.panel {
+  min-width: 0;
+  max-height: 72vh;
+  padding: 20px;
+  overflow-y: auto;
+  border-left: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.panel header > span {
+  color: var(--primary);
+  font-size: 11px;
+}
+.panel h2 {
+  margin: 4px 0 8px;
+  color: var(--text-primary);
+  font-size: 20px;
+}
+.panel h3 {
+  margin: 20px 0 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+}
+.panel p {
+  margin: 0 0 10px;
+}
+.scope {
+  color: var(--muted);
+  font-size: 11px;
+}
+.markerNote {
+  padding: 10px 12px;
+  border-left: 2px solid var(--primary);
+  background: var(--surface-2);
+}
+.rewards {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rewards li {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.rewardHeading {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.rewardHeading small {
+  color: var(--primary);
+}
+.rewards strong {
+  display: block;
+  margin: 4px 0;
+  color: var(--text-primary);
+}
+.rewards p {
+  margin: 0;
+}
+.conditions {
+  display: grid;
+  gap: 6px;
+  padding-left: 18px;
+}
+.panel footer {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 11px;
+}
+.panel a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.panel a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.dungeonRules {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.dungeonRules summary {
+  margin-bottom: 12px;
+  color: var(--primary);
+  cursor: pointer;
+}
+.dungeonRules table {
+  width: 100%;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+.dungeonRules caption {
+  margin-bottom: 8px;
+  text-align: left;
+  color: var(--text-primary);
+}
+.dungeonRules th,
+.dungeonRules td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.ruleSource {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+}
+@media (max-width: 900px) {
+  .panel {
+    max-height: none;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+}

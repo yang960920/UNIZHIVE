@@ -1,0 +1,18 @@
+.auth-retry-notice {
+  display: grid;
+  gap: 24px;
+}
+.auth-retry-notice h2 {
+  margin: 0 0 12px;
+}
+.auth-retry-notice p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+.auth-retry-notice button {
+  margin-top: 12px;
+}
+.auth-retry-notice button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}

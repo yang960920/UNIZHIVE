@@ -1,0 +1,70 @@
+.personal-notifications > p,
+.personal-notifications > div > p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.personal-notification-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.personal-notification-list > li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.personal-notification-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.personal-notification-meta time {
+  color: var(--muted);
+  font-size: 10px;
+}
+.personal-notification-list > li > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.personal-notification-list > li > a > svg {
+  flex-shrink: 0;
+  color: var(--secondary);
+}
+.personal-notification-list > li > a:hover {
+  color: var(--primary);
+}
+.personal-notification-list > li > p {
+  margin: 6px 0 0;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.personal-notifications > small {
+  display: block;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+.personal-notification-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.personal-notification-footer > p {
+  margin: 0;
+}
+.personal-notification-empty .badge {
+  margin-right: 8px;
+}

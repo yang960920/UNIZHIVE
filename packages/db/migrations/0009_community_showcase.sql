@@ -1,0 +1,2 @@
+ALTER TABLE "community_posts" DROP CONSTRAINT "community_posts_category_valid";--> statement-breakpoint
+ALTER TABLE "community_posts" ADD CONSTRAINT "community_posts_category_valid" CHECK ("community_posts"."category" IN ('GUIDE','TIP','QUESTION','BUILD','SHOWCASE','GENERAL'));

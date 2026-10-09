@@ -1,0 +1,169 @@
+.map-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-1);
+}
+.map-controls label,
+.map-farming-controls label,
+.map-location-controls label {
+  display: grid;
+  gap: 8px;
+  min-width: 190px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.map-controls input,
+.map-controls select,
+.map-farming-controls select,
+.map-location-controls select {
+  min-height: 40px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-1);
+  color: var(--text-primary);
+}
+.map-farming-controls,
+.map-location-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-1);
+}
+.map-farming-controls label,
+.map-location-controls label {
+  min-width: 260px;
+}
+.map-farming-controls p,
+.map-location-controls p {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.map-farming-controls strong {
+  color: var(--primary);
+}
+.map-content.has-location {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+}
+.map-silo-list {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.map-silo-list summary {
+  cursor: pointer;
+  color: var(--primary);
+  font-size: 13px;
+}
+.map-silo-list p {
+  margin: 10px 0;
+}
+.map-silo-list nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.map-silo-list nav a {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  line-height: 1.6;
+}
+.map-silo-list nav a:hover,
+.map-silo-list nav a[aria-current="location"] {
+  border-color: var(--primary);
+  background: var(--surface-2);
+  color: var(--primary);
+}
+.map-controls .map-share-field {
+  flex: 1;
+}
+.map-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.map-help {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.map-help p {
+  margin: 0;
+}
+.map-feedback {
+  color: var(--primary);
+}
+.map-feedback.is-error {
+  color: #ffb6aa;
+}
+.map-frame {
+  position: relative;
+  min-width: 0;
+  min-height: 420px;
+}
+.map-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  pointer-events: none;
+  background: var(--bg-1);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+.map-frame .map-embed {
+  min-height: 420px;
+}
+.map-attribution {
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 700px) {
+  .map-controls,
+  .map-farming-controls,
+  .map-location-controls {
+    padding: 16px;
+    gap: 12px;
+  }
+  .map-controls label,
+  .map-farming-controls label,
+  .map-location-controls label {
+    width: 100%;
+    min-width: 0;
+  }
+  .map-share-actions {
+    width: 100%;
+  }
+  .map-share-actions .button {
+    flex: 1;
+  }
+  .map-help {
+    padding: 12px 16px;
+  }
+  .map-toolbar-actions {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 900px) {
+  .map-content.has-location {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

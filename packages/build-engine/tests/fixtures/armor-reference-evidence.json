@@ -1,0 +1,2291 @@
+{
+  "description": "Reviewed public-facing armor identities, classifications, and Korean set effects only. Raw tables, archive locations, bytecode metadata, and private paths are excluded.",
+  "classification": {
+    "constant": "EQUIP_SUIT_GOLDEN_TYPE",
+    "value": 3
+  },
+  "armorProofs": [
+    {
+      "catalogId": "armor-lonewolf-hood",
+      "sourceId": "21000701",
+      "name": "고독한 늑대 모자",
+      "displayName": "울프 후드",
+      "preferredAliases": ["고독한 늑대 모자", "울프 후드", "울프 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-lonewolf-jacket",
+      "sourceId": "22000701",
+      "name": "고독한 늑대 재킷",
+      "displayName": "울프 자켓",
+      "preferredAliases": ["고독한 늑대 재킷", "울프 자켓", "울프 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-lonewolf-pants",
+      "sourceId": "23000701",
+      "name": "고독한 늑대 하의",
+      "displayName": "울프 하의",
+      "preferredAliases": ["고독한 늑대 하의", "울프 하의", "울프 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-lonewolf-boots",
+      "sourceId": "24000701",
+      "name": "고독한 늑대 신발",
+      "displayName": "울프 부츠",
+      "preferredAliases": ["고독한 늑대 신발", "울프 부츠", "울프 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-lonewolf-gloves",
+      "sourceId": "25000701",
+      "name": "고독한 늑대 장갑",
+      "displayName": "울프 장갑",
+      "preferredAliases": ["고독한 늑대 장갑", "울프 장갑", "울프 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-lonewolf-mask",
+      "sourceId": "26000701",
+      "name": "고독한 늑대 마스크",
+      "displayName": "울프 마스크",
+      "preferredAliases": ["고독한 늑대 마스크", "울프 마스크", "울프 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-gilded-gauntlets",
+      "sourceId": "25010901",
+      "name": "유금 장갑",
+      "displayName": "유금 장갑",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26003901",
+      "sourceId": "26003901",
+      "name": "고스트 링크 마스크",
+      "displayName": "고스트 링크 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21003901",
+      "sourceId": "21003901",
+      "name": "고스트 링크 모자",
+      "displayName": "고스트 링크 모자",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23003901",
+      "sourceId": "23003901",
+      "name": "고스트 링크 바지",
+      "displayName": "고스트 링크 바지",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24003901",
+      "sourceId": "24003901",
+      "name": "고스트 링크 신발",
+      "displayName": "고스트 링크 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25003901",
+      "sourceId": "25003901",
+      "name": "고스트 링크 장갑",
+      "displayName": "고스트 링크 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22003901",
+      "sourceId": "22003901",
+      "name": "고스트 링크 조끼",
+      "displayName": "고스트 링크 조끼",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26000901",
+      "sourceId": "26000901",
+      "name": "구원자 마스크",
+      "displayName": "세이버 마스크",
+      "preferredAliases": ["구원자 마스크", "세이버 마스크", "세이버 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22000901",
+      "sourceId": "22000901",
+      "name": "구원자 상의",
+      "displayName": "세이버 외투",
+      "preferredAliases": ["구원자 상의", "세이버 외투", "세이버 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24000901",
+      "sourceId": "24000901",
+      "name": "구원자 신발",
+      "displayName": "세이버 신발",
+      "preferredAliases": ["구원자 신발", "세이버 신발", "세이버 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25000901",
+      "sourceId": "25000901",
+      "name": "구원자 장갑",
+      "displayName": "세이버 장갑",
+      "preferredAliases": ["구원자 장갑", "세이버 장갑", "세이버 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23000901",
+      "sourceId": "23000901",
+      "name": "구원자 하의",
+      "displayName": "세이버 하의",
+      "preferredAliases": ["구원자 하의", "세이버 하의", "세이버 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21000901",
+      "sourceId": "21000901",
+      "name": "구원자 헬멧",
+      "displayName": "세이버 후드",
+      "preferredAliases": ["구원자 헬멧", "세이버 후드", "세이버 세트"],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21003501",
+      "sourceId": "21003501",
+      "name": "그래비티 타이드 모자",
+      "displayName": "그래비티 타이드 모자",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22003501",
+      "sourceId": "22003501",
+      "name": "그래비티 타이드 상의",
+      "displayName": "그래비티 타이드 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24003501",
+      "sourceId": "24003501",
+      "name": "그래비티 타이드 신발",
+      "displayName": "그래비티 타이드 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25003501",
+      "sourceId": "25003501",
+      "name": "그래비티 타이드 장갑",
+      "displayName": "그래비티 타이드 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26003501",
+      "sourceId": "26003501",
+      "name": "그래비티 타이드 페이스웨어",
+      "displayName": "그래비티 타이드 페이스웨어",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23003501",
+      "sourceId": "23003501",
+      "name": "그래비티 타이드 하의",
+      "displayName": "그래비티 타이드 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21012001",
+      "sourceId": "21012001",
+      "name": "노랑 페인트 마스크",
+      "displayName": "노랑 페인트 마스크",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-24011001",
+      "sourceId": "24011001",
+      "name": "단단한 전투화",
+      "displayName": "단단한 전투화",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-23010701",
+      "sourceId": "23010701",
+      "name": "댄싱 스파인 하의",
+      "displayName": "댄싱 스파인 하의",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26010301",
+      "sourceId": "26010301",
+      "name": "더스트 마스크",
+      "displayName": "더스트 마스크",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26013101",
+      "sourceId": "26013101",
+      "name": "디퓨저 마스크",
+      "displayName": "디퓨저 마스크",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26000801",
+      "sourceId": "26000801",
+      "name": "레니게이드 마스크",
+      "displayName": "레니게이드 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23000801",
+      "sourceId": "23000801",
+      "name": "레니게이드 하의",
+      "displayName": "레니게이드 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24000801",
+      "sourceId": "24000801",
+      "name": "레니게이드 신발",
+      "displayName": "레니게이드 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22000801",
+      "sourceId": "22000801",
+      "name": "레니게이드 외투",
+      "displayName": "레니게이드 외투",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25000801",
+      "sourceId": "25000801",
+      "name": "레니게이드 장갑",
+      "displayName": "레니게이드 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21000801",
+      "sourceId": "21000801",
+      "name": "레니게이드 후드",
+      "displayName": "레니게이드 후드",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22014201",
+      "sourceId": "22014201",
+      "name": "마그네틱 모멘트 상의",
+      "displayName": "마그네틱 모멘트 상의",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-22013101",
+      "sourceId": "22013101",
+      "name": "매직 트리거 상의",
+      "displayName": "매직 트리거 상의",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-21012201",
+      "sourceId": "21012201",
+      "name": "바람을 듣는 모자",
+      "displayName": "바람을 듣는 모자",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26001201",
+      "sourceId": "26001201",
+      "name": "바스티유 마스크",
+      "displayName": "바스티유 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23001201",
+      "sourceId": "23001201",
+      "name": "바스티유 바지",
+      "displayName": "바스티유 바지",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24001201",
+      "sourceId": "24001201",
+      "name": "바스티유 부츠",
+      "displayName": "바스티유 부츠",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22001201",
+      "sourceId": "22001201",
+      "name": "바스티유 상의",
+      "displayName": "바스티유 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25001201",
+      "sourceId": "25001201",
+      "name": "바스티유 장갑",
+      "displayName": "바스티유 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21001201",
+      "sourceId": "21001201",
+      "name": "바스티유 헬멧",
+      "displayName": "바스티유 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21011901",
+      "sourceId": "21011901",
+      "name": "방독 마스크",
+      "displayName": "방독 마스크",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-24010901",
+      "sourceId": "24010901",
+      "name": "베테랑 헌터 부츠",
+      "displayName": "베테랑 헌터 부츠",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-23010601",
+      "sourceId": "23010601",
+      "name": "블레이드 하의",
+      "displayName": "블레이드 하의",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-22012301",
+      "sourceId": "22012301",
+      "name": "샤먼 벌처 상의",
+      "displayName": "샤먼 벌처 상의",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-22012201",
+      "sourceId": "22012201",
+      "name": "낡은 망토",
+      "displayName": "낡은 망토",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-24010701",
+      "sourceId": "24010701",
+      "name": "데님 부츠",
+      "displayName": "데님 부츠",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-25010701",
+      "sourceId": "25010701",
+      "name": "유랑자 장갑",
+      "displayName": "유랑자 장갑",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-21012101",
+      "sourceId": "21012101",
+      "name": "방독 후드",
+      "displayName": "방독 후드",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-25010801",
+      "sourceId": "25010801",
+      "name": "설원 카모플라주 장갑",
+      "displayName": "설원 카모플라주 장갑",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26001001",
+      "sourceId": "26001001",
+      "name": "수호자 마스크",
+      "displayName": "수호자 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21001001",
+      "sourceId": "21001001",
+      "name": "수호자 모자",
+      "displayName": "수호자 모자",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22001001",
+      "sourceId": "22001001",
+      "name": "수호자 상의",
+      "displayName": "수호자 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24001001",
+      "sourceId": "24001001",
+      "name": "수호자 신발",
+      "displayName": "수호자 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25001001",
+      "sourceId": "25001001",
+      "name": "수호자 장갑",
+      "displayName": "수호자 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23001001",
+      "sourceId": "23001001",
+      "name": "수호자 하의",
+      "displayName": "수호자 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24011401",
+      "sourceId": "24011401",
+      "name": "스핀스텝 가죽 부츠",
+      "displayName": "스핀스텝 가죽 부츠",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-23013201",
+      "sourceId": "23013201",
+      "name": "슬라이드 팬츠",
+      "displayName": "슬라이드 팬츠",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26013201",
+      "sourceId": "26013201",
+      "name": "안카 가면",
+      "displayName": "안카 가면",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-23003801",
+      "sourceId": "23003801",
+      "name": "어둠의 공명 바지",
+      "displayName": "어둠의 공명 바지",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24003801",
+      "sourceId": "24003801",
+      "name": "어둠의 공명 신발",
+      "displayName": "어둠의 공명 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25003801",
+      "sourceId": "25003801",
+      "name": "어둠의 공명 장갑",
+      "displayName": "어둠의 공명 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22003801",
+      "sourceId": "22003801",
+      "name": "어둠의 공명 조끼",
+      "displayName": "어둠의 공명 조끼",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26003801",
+      "sourceId": "26003801",
+      "name": "어둠의 공명 페이스웨어",
+      "displayName": "어둠의 공명 페이스웨어",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21003801",
+      "sourceId": "21003801",
+      "name": "어둠의 공명 헬멧",
+      "displayName": "어둠의 공명 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23013101",
+      "sourceId": "23013101",
+      "name": "오버로드 일렉트릭 하의",
+      "displayName": "오버로드 일렉트릭 하의",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26010101",
+      "sourceId": "26010101",
+      "name": "오아시스 마스크",
+      "displayName": "오아시스 마스크",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-22012501",
+      "sourceId": "22012501",
+      "name": "은밀한 자객 로브",
+      "displayName": "은밀한 자객 로브",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-24010601",
+      "sourceId": "24010601",
+      "name": "전술 전투화",
+      "displayName": "전술 전투화",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-21011801",
+      "sourceId": "21011801",
+      "name": "케이지 헬멧",
+      "displayName": "케이지 헬멧",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-22012401",
+      "sourceId": "22012401",
+      "name": "폭주하는 전장 상의",
+      "displayName": "폭주하는 전장 상의",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26003401",
+      "sourceId": "26003401",
+      "name": "폴른월드 서지 마스크",
+      "displayName": "폴른월드 서지 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23003401",
+      "sourceId": "23003401",
+      "name": "폴른월드 서지 바지",
+      "displayName": "폴른월드 서지 바지",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22003401",
+      "sourceId": "22003401",
+      "name": "폴른월드 서지 상의",
+      "displayName": "폴른월드 서지 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24003401",
+      "sourceId": "24003401",
+      "name": "폴른월드 서지 신발",
+      "displayName": "폴른월드 서지 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25003401",
+      "sourceId": "25003401",
+      "name": "폴른월드 서지 장갑",
+      "displayName": "폴른월드 서지 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21003401",
+      "sourceId": "21003401",
+      "name": "폴른월드 서지 헬멧",
+      "displayName": "폴른월드 서지 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24011201",
+      "sourceId": "24011201",
+      "name": "플레임 가죽 부츠",
+      "displayName": "플레임 가죽 부츠",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26001101",
+      "sourceId": "26001101",
+      "name": "허리케인 마스크",
+      "displayName": "허리케인 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22001101",
+      "sourceId": "22001101",
+      "name": "허리케인 상의",
+      "displayName": "허리케인 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24001101",
+      "sourceId": "24001101",
+      "name": "허리케인 신발",
+      "displayName": "허리케인 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25001101",
+      "sourceId": "25001101",
+      "name": "허리케인 장갑",
+      "displayName": "허리케인 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23001101",
+      "sourceId": "23001101",
+      "name": "허리케인 하의",
+      "displayName": "허리케인 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21001101",
+      "sourceId": "21001101",
+      "name": "허리케인 헬멧",
+      "displayName": "허리케인 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24011301",
+      "sourceId": "24011301",
+      "name": "혈흔 추적 가죽 부츠",
+      "displayName": "혈흔 추적 가죽 부츠",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-22014101",
+      "sourceId": "22014101",
+      "name": "화이트크래시 상의",
+      "displayName": "화이트크래시 상의",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26003101",
+      "sourceId": "26003101",
+      "name": "흑석 마스크",
+      "displayName": "흑석 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26003296",
+      "sourceId": "26003296",
+      "name": "블랙스톤 마스크 - 고온",
+      "displayName": "블랙스톤 마스크 - 고온",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26003396",
+      "sourceId": "26003396",
+      "name": "블랙스톤 마스크 - 추위",
+      "displayName": "블랙스톤 마스크 - 추위",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24003101",
+      "sourceId": "24003101",
+      "name": "흑석 부츠",
+      "displayName": "흑석 부츠",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24003296",
+      "sourceId": "24003296",
+      "name": "블랙스톤 부츠 - 고온",
+      "displayName": "블랙스톤 부츠 - 고온",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24003396",
+      "sourceId": "24003396",
+      "name": "블랙스톤 부츠 - 추위",
+      "displayName": "블랙스톤 부츠 - 추위",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22003101",
+      "sourceId": "22003101",
+      "name": "흑석 상의",
+      "displayName": "흑석 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22003296",
+      "sourceId": "22003296",
+      "name": "블랙스톤 상의 - 고온",
+      "displayName": "블랙스톤 상의 - 고온",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22003396",
+      "sourceId": "22003396",
+      "name": "블랙스톤 상의 - 추위",
+      "displayName": "블랙스톤 상의 - 추위",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25003101",
+      "sourceId": "25003101",
+      "name": "흑석 장갑",
+      "displayName": "흑석 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25003296",
+      "sourceId": "25003296",
+      "name": "블랙스톤 장갑 - 고온",
+      "displayName": "블랙스톤 장갑 - 고온",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25003396",
+      "sourceId": "25003396",
+      "name": "블랙스톤 장갑 - 추위",
+      "displayName": "블랙스톤 장갑 - 추위",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23003101",
+      "sourceId": "23003101",
+      "name": "흑석 하의",
+      "displayName": "흑석 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23003296",
+      "sourceId": "23003296",
+      "name": "블랙스톤 하의 - 고온",
+      "displayName": "블랙스톤 하의 - 고온",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23003396",
+      "sourceId": "23003396",
+      "name": "블랙스톤 하의 - 추위",
+      "displayName": "블랙스톤 하의 - 추위",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21003101",
+      "sourceId": "21003101",
+      "name": "흑석 후드",
+      "displayName": "흑석 후드",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21003296",
+      "sourceId": "21003296",
+      "name": "흑석 후드 - 고온",
+      "displayName": "흑석 후드 - 고온",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21003396",
+      "sourceId": "21003396",
+      "name": "흑석 후드 - 추위",
+      "displayName": "흑석 후드 - 추위",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24010501",
+      "sourceId": "24010501",
+      "name": "가죽 부츠",
+      "displayName": "가죽 부츠",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-21011799",
+      "sourceId": "21011799",
+      "name": "감시자 헬멧",
+      "displayName": "감시자 헬멧",
+      "preferredAliases": [],
+      "description": "일반 방어구입니다.",
+      "suitType": 2,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22011401",
+      "sourceId": "22011401",
+      "name": "깔끔한 가죽 재킷",
+      "displayName": "깔끔한 가죽 재킷",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26010001",
+      "sourceId": "26010001",
+      "name": "메이플라이 고글",
+      "displayName": "메이플라이 고글",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-21004399",
+      "sourceId": "21004399",
+      "name": "방독 헬멧",
+      "displayName": "방독 헬멧",
+      "preferredAliases": [],
+      "description": "일반 방어구입니다.",
+      "suitType": 2,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21011601",
+      "sourceId": "21011601",
+      "name": "베레모",
+      "displayName": "베레모",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26002101",
+      "sourceId": "26002101",
+      "name": "스노우 레오파드 마스크",
+      "displayName": "스노우 레오파드 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24002101",
+      "sourceId": "24002101",
+      "name": "스노우 레오파드 부츠",
+      "displayName": "스노우 레오파드 부츠",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22002101",
+      "sourceId": "22002101",
+      "name": "스노우 레오파드 상의",
+      "displayName": "스노우 레오파드 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25002101",
+      "sourceId": "25002101",
+      "name": "스노우 레오파드 장갑",
+      "displayName": "스노우 레오파드 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23002101",
+      "sourceId": "23002101",
+      "name": "스노우 레오파드 하의",
+      "displayName": "스노우 레오파드 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21002101",
+      "sourceId": "21002101",
+      "name": "스노우 레오파드 헬멧",
+      "displayName": "스노우 레오파드 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26000401",
+      "sourceId": "26000401",
+      "name": "에이전트 마스크",
+      "displayName": "에이전트 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22000401",
+      "sourceId": "22000401",
+      "name": "에이전트 상의",
+      "displayName": "에이전트 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24000401",
+      "sourceId": "24000401",
+      "name": "에이전트 신발",
+      "displayName": "에이전트 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25000401",
+      "sourceId": "25000401",
+      "name": "에이전트 장갑",
+      "displayName": "에이전트 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23000401",
+      "sourceId": "23000401",
+      "name": "에이전트 하의",
+      "displayName": "에이전트 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21000401",
+      "sourceId": "21000401",
+      "name": "에이전트 헬멧",
+      "displayName": "에이전트 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26010401",
+      "sourceId": "26010401",
+      "name": "정밀 사격 마스크",
+      "displayName": "정밀 사격 마스크",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-22002599",
+      "sourceId": "22002599",
+      "name": "정신 차단 보호복",
+      "displayName": "정신 차단 보호복",
+      "preferredAliases": [],
+      "description": "일반 방어구입니다.",
+      "suitType": 2,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24011101",
+      "sourceId": "24011101",
+      "name": "트레킹 가죽 부츠",
+      "displayName": "트레킹 가죽 부츠",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26001301",
+      "sourceId": "26001301",
+      "name": "팔콘 마스크",
+      "displayName": "팔콘 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21001301",
+      "sourceId": "21001301",
+      "name": "팔콘 모자",
+      "displayName": "팔콘 모자",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24001301",
+      "sourceId": "24001301",
+      "name": "팔콘 신발",
+      "displayName": "팔콘 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22001301",
+      "sourceId": "22001301",
+      "name": "팔콘 외투",
+      "displayName": "팔콘 외투",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25001301",
+      "sourceId": "25001301",
+      "name": "팔콘 장갑",
+      "displayName": "팔콘 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23001301",
+      "sourceId": "23001301",
+      "name": "팔콘 하의",
+      "displayName": "팔콘 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22012601",
+      "sourceId": "22012601",
+      "name": "프로스트 전술 조끼",
+      "displayName": "프로스트 전술 조끼",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-23010501",
+      "sourceId": "23010501",
+      "name": "핫도그 반바지",
+      "displayName": "핫도그 반바지",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26001501",
+      "sourceId": "26001501",
+      "name": "헤비 듀티 마스크",
+      "displayName": "헤비 듀티 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22001501",
+      "sourceId": "22001501",
+      "name": "헤비 듀티 상의",
+      "displayName": "헤비 듀티 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24001501",
+      "sourceId": "24001501",
+      "name": "헤비 듀티 신발",
+      "displayName": "헤비 듀티 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25001501",
+      "sourceId": "25001501",
+      "name": "헤비 듀티 장갑",
+      "displayName": "헤비 듀티 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23001501",
+      "sourceId": "23001501",
+      "name": "헤비 듀티 하의",
+      "displayName": "헤비 듀티 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21001501",
+      "sourceId": "21001501",
+      "name": "헤비 듀티 헬멧",
+      "displayName": "헤비 듀티 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25010501",
+      "sourceId": "25010501",
+      "name": "BBQ 장갑",
+      "displayName": "BBQ 장갑",
+      "preferredAliases": [],
+      "description": "한 번에 하나만 장착할 수 있는 핵심 방어구입니다.",
+      "suitType": 3,
+      "isKeyArmor": true
+    },
+    {
+      "catalogId": "armor-26000301",
+      "sourceId": "26000301",
+      "name": "레이드 마스크",
+      "displayName": "레이드 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22000301",
+      "sourceId": "22000301",
+      "name": "레이드 상의",
+      "displayName": "레이드 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24000301",
+      "sourceId": "24000301",
+      "name": "레이드 신발",
+      "displayName": "레이드 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25000301",
+      "sourceId": "25000301",
+      "name": "레이드 장갑",
+      "displayName": "레이드 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23000301",
+      "sourceId": "23000301",
+      "name": "레이드 하의",
+      "displayName": "레이드 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21000301",
+      "sourceId": "21000301",
+      "name": "레이드 헬멧",
+      "displayName": "레이드 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26001401",
+      "sourceId": "26001401",
+      "name": "블래스트 마스크",
+      "displayName": "블래스트 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22001401",
+      "sourceId": "22001401",
+      "name": "블래스트 상의",
+      "displayName": "블래스트 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24001401",
+      "sourceId": "24001401",
+      "name": "블래스트 신발",
+      "displayName": "블래스트 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25001401",
+      "sourceId": "25001401",
+      "name": "블래스트 장갑",
+      "displayName": "블래스트 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23001401",
+      "sourceId": "23001401",
+      "name": "블래스트 하의",
+      "displayName": "블래스트 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21001401",
+      "sourceId": "21001401",
+      "name": "블래스트 헬멧",
+      "displayName": "블래스트 헬멧",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26000101",
+      "sourceId": "26000101",
+      "name": "스카우트 마스크",
+      "displayName": "스카우트 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24000101",
+      "sourceId": "24000101",
+      "name": "스카우트 생존 신발",
+      "displayName": "스카우트 생존 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22000101",
+      "sourceId": "22000101",
+      "name": "스카우트 외투",
+      "displayName": "스카우트 외투",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25000101",
+      "sourceId": "25000101",
+      "name": "스카우트 장갑",
+      "displayName": "스카우트 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23000101",
+      "sourceId": "23000101",
+      "name": "스카우트 하의",
+      "displayName": "스카우트 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21000101",
+      "sourceId": "21000101",
+      "name": "스카우트 후드",
+      "displayName": "스카우트 후드",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22002399",
+      "sourceId": "22002399",
+      "name": "심층 격리 세트",
+      "displayName": "심층 격리 세트",
+      "preferredAliases": [],
+      "description": "일반 방어구입니다.",
+      "suitType": 2,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21002299",
+      "sourceId": "21002299",
+      "name": "개척자 모자",
+      "displayName": "개척자 모자",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23002299",
+      "sourceId": "23002299",
+      "name": "개척자 바지",
+      "displayName": "개척자 바지",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24002299",
+      "sourceId": "24002299",
+      "name": "개척자 신발",
+      "displayName": "개척자 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25002299",
+      "sourceId": "25002299",
+      "name": "개척자 장갑",
+      "displayName": "개척자 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21000001",
+      "sourceId": "21000001",
+      "name": "러스틱 모자",
+      "displayName": "러스틱 모자",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22000001",
+      "sourceId": "22000001",
+      "name": "러스틱 상의",
+      "displayName": "러스틱 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24000001",
+      "sourceId": "24000001",
+      "name": "러스틱 신발",
+      "displayName": "러스틱 신발",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25000001",
+      "sourceId": "25000001",
+      "name": "러스틱 장갑",
+      "displayName": "러스틱 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23000001",
+      "sourceId": "23000001",
+      "name": "러스틱 하의",
+      "displayName": "러스틱 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26002099",
+      "sourceId": "26002099",
+      "name": "방오염 마스크",
+      "displayName": "방오염 마스크",
+      "preferredAliases": [],
+      "description": "일반 방어구입니다.",
+      "suitType": 2,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-21002296",
+      "sourceId": "21002296",
+      "name": "설원 러스틱 모자",
+      "displayName": "설원 러스틱 모자",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-24002296",
+      "sourceId": "24002296",
+      "name": "설원 러스틱 부츠",
+      "displayName": "설원 러스틱 부츠",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22002296",
+      "sourceId": "22002296",
+      "name": "설원 러스틱 상의",
+      "displayName": "설원 러스틱 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-25002296",
+      "sourceId": "25002296",
+      "name": "설원 러스틱 장갑",
+      "displayName": "설원 러스틱 장갑",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23002296",
+      "sourceId": "23002296",
+      "name": "설원 러스틱 하의",
+      "displayName": "설원 러스틱 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-26001601",
+      "sourceId": "26001601",
+      "name": "피실험자 마스크",
+      "displayName": "피실험자 마스크",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-22001601",
+      "sourceId": "22001601",
+      "name": "피실험자 상의",
+      "displayName": "피실험자 상의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    },
+    {
+      "catalogId": "armor-23001601",
+      "sourceId": "23001601",
+      "name": "피실험자 하의",
+      "displayName": "피실험자 하의",
+      "preferredAliases": [],
+      "description": "세트 방어구입니다.",
+      "suitType": 1,
+      "isKeyArmor": false
+    }
+  ],
+  "effectProofs": [
+    {
+      "sourceId": "1007",
+      "pieces": 1,
+      "description": "탄창 용량+10%"
+    },
+    {
+      "sourceId": "1007",
+      "pieces": 2,
+      "description": "크리티컬 확률+5%"
+    },
+    {
+      "sourceId": "1007",
+      "pieces": 3,
+      "description": "총기로 크리티컬 4회 명중할 때마다 고영 효과 1스택 획득, 고영 효과는 6%의 크리티컬 대미지 제공, 20초간 지속 및 최대 8스택 중첩"
+    },
+    {
+      "sourceId": "1007",
+      "pieces": 4,
+      "description": "울프 최대 스택이 10스택으로 증가. 장전 후 크리티컬 확률+10%, 2초간 지속"
+    },
+    {
+      "sourceId": "1039",
+      "pieces": 1,
+      "description": "크리티컬 확률 +3%"
+    },
+    {
+      "sourceId": "1039",
+      "pieces": 2,
+      "description": "장전 효율 +15%"
+    },
+    {
+      "sourceId": "1039",
+      "pieces": 3,
+      "description": "총기 명중 시, 자신이 확률로 [동기화] 스택 1개 획득: 총기 대미지 +3%, 최대 10스택 중첩(35%), 버프 지속 시간 5초"
+    },
+    {
+      "sourceId": "1039",
+      "pieces": 4,
+      "description": "[동기화]가 10스택에 도달하면, 적 공격 시 상대방이 [과부하] 상태에 진입합니다. [과부하]: 초당 자신 및 주변 3미터 내 목표에게 50%초감각 강도의 트랜스 대미지를 가하며, 5초 동안 지속"
+    },
+    {
+      "sourceId": "1009",
+      "pieces": 1,
+      "description": "약품 쿨타임 감소+20%"
+    },
+    {
+      "sourceId": "1009",
+      "pieces": 2,
+      "description": "실드가 존재할 때, 자신이 가하는 총기 및 트랜스 대미지 +10%"
+    },
+    {
+      "sourceId": "1009",
+      "pieces": 3,
+      "description": "명중 시 현재 HP의 6%를 소모하고, 최대 HP의 6%만큼 임시 실드를 생성하며, 30초간 지속(쿨타임 0.5초, 실드 60%를 초과 시 더 이상 발동되지 않음)"
+    },
+    {
+      "sourceId": "1009",
+      "pieces": 4,
+      "description": "HP가 30%보다 낮을 시 가방에서 레벨이 가장 낮은 치료제를 자동으로 사용 (쿨타임: 40초)"
+    },
+    {
+      "sourceId": "1036",
+      "pieces": 1,
+      "description": "점프 높이+10%"
+    },
+    {
+      "sourceId": "1036",
+      "pieces": 2,
+      "description": "탄창 용량+15%"
+    },
+    {
+      "sourceId": "1036",
+      "pieces": 3,
+      "description": "공중에 떠 있을 때, 몬스터 대미지 20% 감소. 공중에서 5미터 이동할 때마다 1층의 잠재적 에너지 효과 1스택 획득, 총기, 트랜스 대미지+2% 증가, 최대 12스택의 보너스 효과 획득 가능. 5초마다 잠재적 에너지 1스택 소실"
+    },
+    {
+      "sourceId": "1036",
+      "pieces": 4,
+      "description": "잠재력이 8스택 초과 시 총기, 트랜스 대미지+15%. 공중에서 30m 이동 후, 30초 동안 잠재력이 감소하지 않음"
+    },
+    {
+      "sourceId": "1008",
+      "pieces": 1,
+      "description": "장전 효율+10%"
+    },
+    {
+      "sourceId": "1008",
+      "pieces": 2,
+      "description": "약점 대미지+10%"
+    },
+    {
+      "sourceId": "1008",
+      "pieces": 3,
+      "description": "동일한 적을 연속 명중 시 사격수 집중 효과 1스택 획득, 약점 대미지 4% 증가, 최대 10스택 중첩. 공격 타깃 변경 후 사격수 집중 효과의 스택이 반으로 감소"
+    },
+    {
+      "sourceId": "1008",
+      "pieces": 4,
+      "description": "장전 시 이전 탄창의 약점 명중 비율 1%마다 총알 0.6% 추가로 장전, 최대 30% 추가 장전"
+    },
+    {
+      "sourceId": "1012",
+      "pieces": 1,
+      "description": "HP가 70%보다 높을 시 총기 대미지 10% 증가"
+    },
+    {
+      "sourceId": "1012",
+      "pieces": 2,
+      "description": "장전 효율+15%"
+    },
+    {
+      "sourceId": "1012",
+      "pieces": 3,
+      "description": "자세를 낮춘 후 0.5초 동안 이동을 하지 않을 경우 바스티유 상태 진입 및 총기 대미지+40%. 바스티유 상태 종료 시 3초 간 부스트 불가, 스태미나 소모+100%"
+    },
+    {
+      "sourceId": "1012",
+      "pieces": 4,
+      "description": "바스티유 상태 종료 3초 후 1초마다 아머 1스택 획득, 최대 60스택. 바스티유 상태 진입 시 아머 1스택당 최대 HP 1%의 실드 제공"
+    },
+    {
+      "sourceId": "1010",
+      "pieces": 1,
+      "description": "트랜스 대미지 감소+15%"
+    },
+    {
+      "sourceId": "1010",
+      "pieces": 2,
+      "description": "원소(블레이즈, 프리징,플라스마, 폭발) 대미지+8%"
+    },
+    {
+      "sourceId": "1010",
+      "pieces": 3,
+      "description": "총기로 명중 후 어빌리티 1스택 획득, 스택당 자신의 원소 대미지 1% 증가(블레이즈, 프리징, 플라즈마, 폭발), 최대 20스택. 장전 시 절반의 스택 제거."
+    },
+    {
+      "sourceId": "1010",
+      "pieces": 4,
+      "description": "어빌리티 스택 최대치 10 증가, 약점 명중 시 2스택 추가 중첩"
+    },
+    {
+      "sourceId": "1037",
+      "pieces": 1,
+      "description": "궁극기 사용 시 10%의 임시 실드를 10초 동안 획득"
+    },
+    {
+      "sourceId": "1037",
+      "pieces": 2,
+      "description": "트랜스 에너지가 가득 차지 않았을 때, 총기 및 트랜스 대미지 +12%"
+    },
+    {
+      "sourceId": "1037",
+      "pieces": 3,
+      "description": "에너지 1점 소모 시마다 총기 및 트랜스 대미지 +0.6%, 최대 +30%까지 증가"
+    },
+    {
+      "sourceId": "1037",
+      "pieces": 4,
+      "description": "전투 스킬 사용 시 30점의 트랜스 에너지 소모, 재사용 대기시간 50% 단축"
+    },
+    {
+      "sourceId": "1035",
+      "pieces": 1,
+      "description": "총기 대미지 감소 +10%"
+    },
+    {
+      "sourceId": "1035",
+      "pieces": 2,
+      "description": "HP가 70% 미만일 때, 총기 및 트랜스 대미지 +12%"
+    },
+    {
+      "sourceId": "1035",
+      "pieces": 3,
+      "description": "멘탈이 낮을수록 최대 HP가 최대 60% 감소. 총기 및 트랜스 대미지는 HP가 낮아질수록 증가하며, 최소 8%(HP 100% 시 달성), 최대 28%(HP 60% 시 달성)."
+    },
+    {
+      "sourceId": "1035",
+      "pieces": 4,
+      "description": "HP가 최대치의 40% 미만일 때, 최대 HP 30%에 해당하는 실드 획득(쿨타임: 8초)"
+    },
+    {
+      "sourceId": "1011",
+      "pieces": 1,
+      "description": "구르기 시 소모 스태미나 20% 감소"
+    },
+    {
+      "sourceId": "1011",
+      "pieces": 2,
+      "description": "탄창 용량+15%"
+    },
+    {
+      "sourceId": "1011",
+      "pieces": 3,
+      "description": "피격 시 에너지 저장 갑옷 효과 1스택 획득, 대미지 감소+4%, 10초간 지속, 최대 6스택 중첩"
+    },
+    {
+      "sourceId": "1011",
+      "pieces": 4,
+      "description": "구르기 시 에너지 저장 갑옷 효과 3스택을 소모해 폭발을 유발, 주변을 적 넉백. 폭발이 적 1명을 명중할 때마다 HP 5% 회복, 최대 20% 회복(트리거 쿨타임: 10초)"
+    },
+    {
+      "sourceId": "1031",
+      "pieces": 1,
+      "description": "추위, 열기 내성+2.5"
+    },
+    {
+      "sourceId": "1031",
+      "pieces": 2,
+      "description": "원소 대미지 부여 시 1스택 [온도 감지](원소 대미지 +2%)) 획득, 2초 지속, 0.5초마다 1회 발동, 최대 5스택."
+    },
+    {
+      "sourceId": "1031",
+      "pieces": 3,
+      "description": "환경 온도가 10~30도일 시 [온화] 상태 획득(원소 대미지+18%)"
+    },
+    {
+      "sourceId": "1031",
+      "pieces": 4,
+      "description": "[온도 감지] 5스택 도달 시 [온화] 상태로 간주, 환경 온도가 10~30도일 때 원소 대미지 +7%"
+    },
+    {
+      "sourceId": "1032",
+      "pieces": 1,
+      "description": "열기 내성 +5"
+    },
+    {
+      "sourceId": "1032",
+      "pieces": 2,
+      "description": "원소 대미지 부여 시 1스택 [온도 감지](원소 대미지 +2%)) 획득, 2초 지속, 0.5초마다 1회 발동, 최대 5스택."
+    },
+    {
+      "sourceId": "1032",
+      "pieces": 3,
+      "description": "온도가 30도보다 높으면 [열정] 상태가 되어 원소 대미지+10%, 1도 추가 상승할 때마다 원소 대미지+0.5%(최대 20%)"
+    },
+    {
+      "sourceId": "1032",
+      "pieces": 4,
+      "description": "[온도 감지] 5스택 도달 시 환경 온도 5 증가, [열정] 상태가 부여하는 추가 효과(고온 보너스) 2배, 최대 40%까지 증가"
+    },
+    {
+      "sourceId": "1033",
+      "pieces": 1,
+      "description": "추위 내성 +5"
+    },
+    {
+      "sourceId": "1033",
+      "pieces": 2,
+      "description": "원소 대미지 부여 시 1스택 [온도 감지](원소 대미지 +2%)) 획득, 2초 지속, 0.5초마다 1회 발동, 최대 5스택."
+    },
+    {
+      "sourceId": "1033",
+      "pieces": 3,
+      "description": "환경 온도가 10도보다 낮으면 [냉혹] 상태 획득, 원소 대미지+10%, 1도 추가 하락할 때마다 원소 대미지+0.5%(최대 20%)"
+    },
+    {
+      "sourceId": "1033",
+      "pieces": 4,
+      "description": "[온도 감지] 5스택 도달 시 환경 온도 5 감소, [냉혹] 상태가 부여하는 추가 효과(저온 보너스) 2배, 최대 40%까지 증가"
+    },
+    {
+      "sourceId": "1021",
+      "pieces": 1,
+      "description": "몸통 피격 대미지 감소 +10%"
+    },
+    {
+      "sourceId": "1021",
+      "pieces": 2,
+      "description": "10m 이내 아군 플레이어 또는 아군 영지 시 근접, 트랜스, 총기 대미지 +8%"
+    },
+    {
+      "sourceId": "1021",
+      "pieces": 3,
+      "description": "아군 영지에 있을 때, 처치에 참여하면 근접, 트랜스, 총기 대미지+8%, 최대 3스택 중첩, 지속 시간 10초"
+    },
+    {
+      "sourceId": "1021",
+      "pieces": 4,
+      "description": "아군 영지에 있을 때, 7m 범위 내 터렛의 대미지 +50%"
+    },
+    {
+      "sourceId": "1004",
+      "pieces": 1,
+      "description": "머리 피격 대미지 감소+10%"
+    },
+    {
+      "sourceId": "1004",
+      "pieces": 2,
+      "description": "약점 대미지+10%"
+    },
+    {
+      "sourceId": "1004",
+      "pieces": 3,
+      "description": "정밀 처치 시 백발백중 효과 획득 및 약점 대미지 15% 증가, 8초간 지속, 최대 3스택 중첩"
+    },
+    {
+      "sourceId": "1004",
+      "pieces": 4,
+      "description": "적 처치 후 장전 효율 20% 증가, 약점 처치인 경우 발사 속도가 추가로 10% 증가. 장전 액션 후 제거."
+    },
+    {
+      "sourceId": "1002",
+      "pieces": 1,
+      "description": "구르기 시 소모 스태미나 20% 감소"
+    },
+    {
+      "sourceId": "1002",
+      "pieces": 2,
+      "description": "크리티컬 대미지+12%"
+    },
+    {
+      "sourceId": "1002",
+      "pieces": 3,
+      "description": "스태미나 90% 이상 시 크리티컬 확률 5% 증가, 크리티컬 대미지 20% 증가"
+    },
+    {
+      "sourceId": "1002",
+      "pieces": 4,
+      "description": "적 처치 후 즉시 스태미나 30 회복, 2초 내 이동 속도 20% 증가 (쿨타임: 3초)"
+    },
+    {
+      "sourceId": "1006",
+      "pieces": 1,
+      "description": "최대 HP+10%"
+    },
+    {
+      "sourceId": "1006",
+      "pieces": 2,
+      "description": "원소(블레이즈, 프리징,플라스마, 폭발) 대미지+8%"
+    },
+    {
+      "sourceId": "1006",
+      "pieces": 3,
+      "description": "적 처치 후, 2초 동안 이동 속도+20%, 8초 이내에 점차 감소되는 40%의 원소(블레이즈, 프리징, 플라즈마, 폭발) 대미지 보너스 획득"
+    },
+    {
+      "sourceId": "1006",
+      "pieces": 4,
+      "description": "5m 범위 내에 적이 있을 시 1명마다 대미지 감소 4% 제공, 최대 4스택 중첩"
+    },
+    {
+      "sourceId": "1003",
+      "pieces": 1,
+      "description": "채집 속도+15%"
+    },
+    {
+      "sourceId": "1003",
+      "pieces": 2,
+      "description": "적재 한도+20"
+    },
+    {
+      "sourceId": "1003",
+      "pieces": 3,
+      "description": "현재 적재 80 초과 시 받는 대미지 10% 감소, 총기 대미지 및 전술 아이템 대미지 15% 증가"
+    },
+    {
+      "sourceId": "1003",
+      "pieces": 4,
+      "description": "활공, 구르기 스태미나 소모 30% 감소"
+    },
+    {
+      "sourceId": "1005",
+      "pieces": 1,
+      "description": "근접 헤비 어택 대미지+20%"
+    },
+    {
+      "sourceId": "1005",
+      "pieces": 2,
+      "description": "몸통 피격 대미지 감소+12%"
+    },
+    {
+      "sourceId": "1005",
+      "pieces": 3,
+      "description": "근접 공격으로 적을 처치한 후 5초 이내에 다음 근접 공격의 대미지 20% 증가, 근접 베기 속도 15% 증가"
+    },
+    {
+      "sourceId": "1005",
+      "pieces": 4,
+      "description": "근접 공격으로 적 처치 시 즉시 스태미나 30 회복, 2초 내 이동 속도 20% 증가 (쿨타임: 3초)"
+    },
+    {
+      "sourceId": "1001",
+      "pieces": 1,
+      "description": "최대 HP+10%"
+    },
+    {
+      "sourceId": "1001",
+      "pieces": 2,
+      "description": "총기 대미지+8%"
+    },
+    {
+      "sourceId": "1001",
+      "pieces": 3,
+      "description": "적에게 발견되지 않을 시, 입히는 총기 대미지와 전술 아이템 대미지 20% 증가"
+    },
+    {
+      "sourceId": "1001",
+      "pieces": 4,
+      "description": "HP가 50%보다 낮을 때 부스트 속도 12% 증가, 스태미나 회복 속도 20% 증가"
+    },
+    {
+      "sourceId": "1902",
+      "pieces": 2,
+      "description": "구르기 스태미나 소모-20%"
+    },
+    {
+      "sourceId": "1902",
+      "pieces": 3,
+      "description": "무기 정확도+14%"
+    },
+    {
+      "sourceId": "1902",
+      "pieces": 4,
+      "description": "적재 한도+15"
+    },
+    {
+      "sourceId": "1000",
+      "pieces": 1,
+      "description": "이동 속도+8%"
+    },
+    {
+      "sourceId": "1000",
+      "pieces": 2,
+      "description": "근접 대미지+15%"
+    },
+    {
+      "sourceId": "1000",
+      "pieces": 3,
+      "description": "HP+600"
+    },
+    {
+      "sourceId": "1000",
+      "pieces": 4,
+      "description": "채집 속도 20% 증가"
+    },
+    {
+      "sourceId": "1034",
+      "pieces": 1,
+      "description": "이동 속도+8%"
+    },
+    {
+      "sourceId": "1034",
+      "pieces": 2,
+      "description": "추위 내성 +5"
+    },
+    {
+      "sourceId": "1034",
+      "pieces": 3,
+      "description": "HP+600"
+    },
+    {
+      "sourceId": "1034",
+      "pieces": 4,
+      "description": "채집 속도 20% 증가"
+    },
+    {
+      "sourceId": "1014",
+      "pieces": 1,
+      "description": "오염 내성+15"
+    },
+    {
+      "sourceId": "1014",
+      "pieces": 2,
+      "description": "HP+300"
+    },
+    {
+      "sourceId": "1014",
+      "pieces": 3,
+      "description": "근접 대미지+10%"
+    }
+  ]
+}

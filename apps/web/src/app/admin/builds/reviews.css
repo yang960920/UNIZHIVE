@@ -1,0 +1,38 @@
+.build-review-page,
+.build-review-card,
+.build-review-form {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.build-review-card h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.build-review-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+.build-review-form select,
+.build-review-form textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface-1);
+  color: var(--text-primary);
+  padding: 12px;
+  font: inherit;
+}
+.build-review-form textarea {
+  resize: vertical;
+}
+.build-review-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.build-review-card .button {
+  justify-self: start;
+}

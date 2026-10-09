@@ -1,0 +1,124 @@
+.gear-saved {
+  display: grid;
+  gap: 24px;
+}
+.gear-saved header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.gear-saved header p {
+  margin: 6px 0;
+  color: var(--text-secondary);
+}
+.gear-saved h2,
+.gear-saved h3 {
+  margin: 0;
+}
+.gear-saved-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.gear-saved-card {
+  background: linear-gradient(120deg, #101818, #22241f);
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  min-width: 0;
+}
+.gear-saved-card.rarity-legendary {
+  border-bottom-color: #bd9646;
+}
+.gear-saved-card.rarity-epic {
+  border-bottom-color: #b29ce4;
+}
+.gear-saved-card.rarity-rare {
+  border-bottom-color: #78b6dd;
+}
+.gear-saved-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin: 0;
+}
+.gear-saved-context dt {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.gear-saved-context dd {
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+.gear-saved-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.gear-saved-heading > div {
+  min-width: 0;
+}
+.gear-saved-heading span,
+.gear-saved-card dt {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.gear-saved-heading h3 {
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.gear-saved-card dl {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+.gear-saved-card dd {
+  margin: 2px 0 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.gear-saved-card dd:has(.gear-icon) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.gear-saved-card dd .gear-icon {
+  width: 36px;
+  height: 36px;
+}
+.gear-saved-card dd > span:not(.gear-icon) {
+  min-width: 0;
+}
+.gear-saved-sets,
+.gear-saved-recommendation,
+.gear-saved-notes {
+  padding: 18px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.gear-saved-recommendation p {
+  margin: 10px 0 0;
+}
+.gear-cradle-effect {
+  border-top: 1px solid var(--border);
+  margin: 14px 0 0;
+  padding-top: 12px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+@media (max-width: 1000px) {
+  .gear-saved-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 620px) {
+  .gear-saved-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

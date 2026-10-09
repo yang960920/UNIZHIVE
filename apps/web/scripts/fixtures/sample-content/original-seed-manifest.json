@@ -1,0 +1,381 @@
+{
+  "batch": "uniz-starter-content-2026-10-08-v1",
+  "applied": true,
+  "manifest": [
+    {
+      "kind": "build",
+      "id": "11bf28ca-7527-5691-aa4c-94d31618683d",
+      "key": "hive-rifle-frost"
+    },
+    {
+      "kind": "build",
+      "id": "dcc806dd-bfae-5ed4-adbe-30560da9d68e",
+      "key": "hive-smg-power-surge"
+    },
+    {
+      "kind": "build",
+      "id": "06ebac68-0ef7-5bbc-a727-571f658c7046",
+      "key": "hive-rifle-shrapnel"
+    },
+    {
+      "kind": "build",
+      "id": "02db3423-3015-58ac-ab38-8f3fcb188db8",
+      "key": "hive-rifle-blaze"
+    },
+    {
+      "kind": "build",
+      "id": "611f4e69-d084-500d-a6d0-16bf608d7009",
+      "key": "hive-sniper-precision"
+    },
+    {
+      "kind": "build",
+      "id": "dad659e2-a25e-5b8e-a2f6-4952af679c67",
+      "key": "public-rifle-general"
+    },
+    {
+      "kind": "build",
+      "id": "faad7a76-d5d9-57d9-ae99-284129b91c24",
+      "key": "public-rifle-power-surge"
+    },
+    {
+      "kind": "build",
+      "id": "ef0b6089-37f6-50c5-a3ee-4fca9ecabe80",
+      "key": "public-frost-survival"
+    },
+    {
+      "kind": "build",
+      "id": "819e83c2-416c-5eca-affc-96840b05f961",
+      "key": "public-lmg-blaze"
+    },
+    {
+      "kind": "build",
+      "id": "4e306002-cc14-588c-a8e5-f6cf0435b276",
+      "key": "public-lmg-fast-gunner"
+    },
+    {
+      "kind": "community_post",
+      "id": "f10d3763-36bc-50a1-a130-a841fbdaa6cc",
+      "key": "community-guide-01"
+    },
+    {
+      "kind": "community_post",
+      "id": "80b0eb5f-ed32-59c6-af5f-bdf6a1d7e42e",
+      "key": "community-guide-02"
+    },
+    {
+      "kind": "community_post",
+      "id": "9c546dfb-32d5-5c0e-a497-9d841f05bf91",
+      "key": "community-guide-03"
+    },
+    {
+      "kind": "community_post",
+      "id": "c23b47ce-4dbb-5a4e-a573-02bf53e5384d",
+      "key": "community-guide-04"
+    },
+    {
+      "kind": "community_post",
+      "id": "224f6c23-3545-5e3e-a54d-631e507255e6",
+      "key": "community-guide-05"
+    },
+    {
+      "kind": "community_post",
+      "id": "f2628edd-5273-5284-a8f7-7dec3b590749",
+      "key": "community-tip-01"
+    },
+    {
+      "kind": "community_post",
+      "id": "769ce6e2-d27b-5161-ab3a-d7445bfaed7e",
+      "key": "community-tip-02"
+    },
+    {
+      "kind": "community_post",
+      "id": "4c25f6ae-ea5a-59c8-a0fd-78090e6b93c1",
+      "key": "community-tip-03"
+    },
+    {
+      "kind": "community_post",
+      "id": "63b628b6-a528-5fe7-a486-d93611064702",
+      "key": "community-tip-04"
+    },
+    {
+      "kind": "community_post",
+      "id": "5133c5c9-87b7-5a2c-a813-d44aceef37a0",
+      "key": "community-tip-05"
+    },
+    {
+      "kind": "community_post",
+      "id": "cd43cd29-00ee-5889-a18a-fa33fb797183",
+      "key": "community-question-01"
+    },
+    {
+      "kind": "community_post",
+      "id": "3ea19009-3ae6-5d68-a332-792fc35a42f1",
+      "key": "community-question-02"
+    },
+    {
+      "kind": "community_post",
+      "id": "513e42d6-631d-5065-a0c5-b0d430845d8a",
+      "key": "community-question-03"
+    },
+    {
+      "kind": "community_post",
+      "id": "866d6216-b222-5f02-ac0c-ab98adfa34df",
+      "key": "community-question-04"
+    },
+    {
+      "kind": "community_post",
+      "id": "9ec22074-4de9-533a-afeb-024f47006d05",
+      "key": "community-question-05"
+    },
+    {
+      "kind": "community_post",
+      "id": "c36d8601-7c78-5e25-a50f-53ec5f9127e8",
+      "key": "community-build-01"
+    },
+    {
+      "kind": "community_post",
+      "id": "19c44cb2-4c4b-589f-a8d8-e6c0f7908f1b",
+      "key": "community-build-02"
+    },
+    {
+      "kind": "community_post",
+      "id": "54450d32-9d9c-5c11-af04-3d76aca7162c",
+      "key": "community-build-03"
+    },
+    {
+      "kind": "community_post",
+      "id": "f9c10ee9-8662-5058-aa16-b2b4c71161ae",
+      "key": "community-build-04"
+    },
+    {
+      "kind": "community_post",
+      "id": "37d3bc6e-afe9-5a31-a42c-4e01c08645d7",
+      "key": "community-build-05"
+    },
+    {
+      "kind": "community_post",
+      "id": "a9acc47d-808a-5fba-a83b-f5748ada802c",
+      "key": "community-general-01"
+    },
+    {
+      "kind": "community_post",
+      "id": "6bb963be-3062-56e7-abc9-4c3d497b1998",
+      "key": "community-general-02"
+    },
+    {
+      "kind": "community_post",
+      "id": "557f3a8c-d2e2-544e-a857-4a66fb2c6cd4",
+      "key": "community-general-03"
+    },
+    {
+      "kind": "community_post",
+      "id": "d4527da7-50ff-5085-af01-9cf120541c30",
+      "key": "community-general-04"
+    },
+    {
+      "kind": "community_post",
+      "id": "744523fa-f1f4-5515-acf8-2ff0216c9532",
+      "key": "community-general-05"
+    },
+    {
+      "kind": "operation",
+      "id": "5670c75b-5a33-5a21-a363-4f446c4d5931",
+      "key": "party-endless-deep-1"
+    },
+    {
+      "kind": "operation",
+      "id": "1edada03-b462-5c2a-a6b2-776c75eb4ab2",
+      "key": "party-endless-deep-2"
+    },
+    {
+      "kind": "operation",
+      "id": "8a9199b8-12dd-5bd5-a4c1-e173e75da666",
+      "key": "party-endless-deep-3"
+    },
+    {
+      "kind": "operation",
+      "id": "3c439943-869f-5c1e-a524-35e03eff0f2d",
+      "key": "party-endless-deep-4"
+    },
+    {
+      "kind": "operation",
+      "id": "b755c9f8-e821-578a-a680-59ac61489618",
+      "key": "party-endless-deep-5"
+    },
+    {
+      "kind": "operation",
+      "id": "86908577-14d4-503a-a83b-cc49a2fc7de8",
+      "key": "party-endless-kin-1"
+    },
+    {
+      "kind": "operation",
+      "id": "f1d2294b-33e8-559c-a80e-8b6b30779c47",
+      "key": "party-endless-kin-2"
+    },
+    {
+      "kind": "operation",
+      "id": "f0d492a3-4e35-5595-a3ed-174465c00fb6",
+      "key": "party-endless-kin-3"
+    },
+    {
+      "kind": "operation",
+      "id": "52ed9a15-7ae2-501a-a5bf-78b2761083b1",
+      "key": "party-endless-kin-4"
+    },
+    {
+      "kind": "operation",
+      "id": "e3d0b548-e159-5a7e-aa92-e070d67c44ba",
+      "key": "party-endless-kin-5"
+    },
+    {
+      "kind": "operation",
+      "id": "915c74c3-0c00-5c82-ab9d-226394dc4c0d",
+      "key": "party-endless-shallow-1"
+    },
+    {
+      "kind": "operation",
+      "id": "65d66179-b331-5ec0-a43a-9ff9e227e2e6",
+      "key": "party-endless-shallow-2"
+    },
+    {
+      "kind": "operation",
+      "id": "876d0e31-7214-53e8-a151-97316b329c53",
+      "key": "party-endless-shallow-3"
+    },
+    {
+      "kind": "operation",
+      "id": "df8e0ad5-352a-5f2b-a13a-015195e202a6",
+      "key": "party-endless-shallow-4"
+    },
+    {
+      "kind": "operation",
+      "id": "a75601fc-9670-50ec-a51f-3014e64c8b5e",
+      "key": "party-endless-shallow-5"
+    },
+    {
+      "kind": "operation",
+      "id": "f70146b9-d8e0-59be-a27a-f0fa95116e40",
+      "key": "party-prime-war-1"
+    },
+    {
+      "kind": "operation",
+      "id": "b03fd445-5d3f-50d3-a59f-e136c6376072",
+      "key": "party-prime-war-2"
+    },
+    {
+      "kind": "operation",
+      "id": "42975542-c9aa-528e-a3ac-6192aedfcfc5",
+      "key": "party-prime-war-3"
+    },
+    {
+      "kind": "operation",
+      "id": "9eb2b93c-0b65-58c4-ab49-5e1a28a9bd1b",
+      "key": "party-prime-war-4"
+    },
+    {
+      "kind": "operation",
+      "id": "5e0aafee-1c1a-5a19-a092-2e17e9bd47c2",
+      "key": "party-prime-war-5"
+    },
+    {
+      "kind": "operation",
+      "id": "560ab91e-f935-51cc-a210-5e718b0f9f8f",
+      "key": "party-raid-1"
+    },
+    {
+      "kind": "operation",
+      "id": "0fe68f99-42e4-5744-a88e-5fa6c99c2ac0",
+      "key": "party-raid-2"
+    },
+    {
+      "kind": "operation",
+      "id": "8c529082-3e3c-55c3-a6b7-5e8616d99f45",
+      "key": "party-raid-3"
+    },
+    {
+      "kind": "operation",
+      "id": "2533f513-e5c6-5950-abec-4d9cfde58aea",
+      "key": "party-raid-4"
+    },
+    {
+      "kind": "operation",
+      "id": "0810c151-65c8-5aee-aefe-08b3ba6ceeb4",
+      "key": "party-raid-5"
+    },
+    {
+      "kind": "operation",
+      "id": "58910c67-a8cd-5759-abd2-6e5edd7b4781",
+      "key": "party-farm-1"
+    },
+    {
+      "kind": "operation",
+      "id": "6c293893-d87a-5118-abda-cd92695809ae",
+      "key": "party-farm-2"
+    },
+    {
+      "kind": "operation",
+      "id": "91d6675f-a86e-51fa-a189-58e0dc4efbc1",
+      "key": "party-farm-3"
+    },
+    {
+      "kind": "operation",
+      "id": "5d432d85-4bf3-5fb7-ac7d-52fdf5899b72",
+      "key": "party-farm-4"
+    },
+    {
+      "kind": "operation",
+      "id": "829b9e02-186d-5c3b-a8a2-8748da32b23f",
+      "key": "party-farm-5"
+    },
+    {
+      "kind": "operation",
+      "id": "8b38c190-9cf5-5d5e-a5a9-68dc6e021534",
+      "key": "party-exploration-1"
+    },
+    {
+      "kind": "operation",
+      "id": "2cbad784-2a6a-591d-af27-a7cd82a5e4a2",
+      "key": "party-exploration-2"
+    },
+    {
+      "kind": "operation",
+      "id": "320a6895-851e-5471-aabe-b7fcec3ca7cc",
+      "key": "party-exploration-3"
+    },
+    {
+      "kind": "operation",
+      "id": "1de04edf-bbdb-5b6f-a24a-36b3624e6495",
+      "key": "party-exploration-4"
+    },
+    {
+      "kind": "operation",
+      "id": "1f12f4c8-a71a-5e78-a6ba-aa86b22c87be",
+      "key": "party-exploration-5"
+    },
+    {
+      "kind": "operation",
+      "id": "a17575da-906e-5d24-ad21-5a46ed4c9e5f",
+      "key": "party-other-1"
+    },
+    {
+      "kind": "operation",
+      "id": "3d2f8c78-5b55-5e1c-a094-b875d900e693",
+      "key": "party-other-2"
+    },
+    {
+      "kind": "operation",
+      "id": "b033f62b-49a2-5b45-abe1-d58f91e2739b",
+      "key": "party-other-3"
+    },
+    {
+      "kind": "operation",
+      "id": "de2a1b70-cd30-5a0d-a496-f94cac9ec4a5",
+      "key": "party-other-4"
+    },
+    {
+      "kind": "operation",
+      "id": "ccee9bfd-748c-5e95-a33b-796cd24c70b0",
+      "key": "party-other-5"
+    }
+  ]
+}

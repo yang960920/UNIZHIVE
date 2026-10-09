@@ -1,0 +1,214 @@
+.root {
+  margin-top: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.root h4,
+.root h5,
+.root p {
+  margin: 0;
+}
+.root h4 {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+.toggle,
+.materials > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 12px;
+  color: var(--primary);
+  cursor: pointer;
+  list-style: none;
+}
+.toggle::-webkit-details-marker,
+.materials > summary::-webkit-details-marker {
+  display: none;
+}
+.toggle:focus-visible,
+.materials > summary:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -3px;
+}
+.root[open] > .toggle svg,
+.materials[open] > summary svg {
+  transform: rotate(180deg);
+}
+.body {
+  display: grid;
+  gap: 16px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+.target,
+.traitHeading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.target > div,
+.traitHeading > div {
+  min-width: 0;
+}
+.target strong,
+.materialGrid strong {
+  display: block;
+  color: var(--text-primary);
+}
+.target span:not(.icon),
+.target p,
+.traitHeading span:not(.icon),
+.caption,
+.note,
+.effect,
+.materialGrid span:not(.icon) {
+  color: var(--text-secondary);
+}
+.traitHeading h5 {
+  font-size: 14px;
+}
+.icon {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  align-items: center;
+  justify-content: center;
+}
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.preparation,
+.cautions {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+}
+.sectionHeading {
+  display: flex;
+  gap: 4px 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.sectionHeading > span {
+  color: var(--primary);
+  font-size: 12px;
+}
+.preparation ol {
+  margin: 0;
+  padding-left: 20px;
+}
+.preparation li + li {
+  margin-top: 8px;
+}
+.traits {
+  display: grid;
+  gap: 12px;
+}
+.trait {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  min-width: 0;
+}
+.effect {
+  white-space: pre-line;
+}
+.materials {
+  border: 1px solid var(--border);
+  min-width: 0;
+}
+.materials > summary {
+  font-size: 12px;
+}
+.materialGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin: 0;
+  padding: 0 10px 10px;
+  list-style: none;
+}
+.materialGrid li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  min-width: 0;
+}
+.materialGrid li > div {
+  min-width: 0;
+}
+.materialGrid span:not(.icon),
+.materialGrid p {
+  font-size: 12px;
+}
+.materialGrid p {
+  margin-top: 4px;
+}
+.warning,
+.cautions {
+  color: var(--text-secondary);
+}
+.warning {
+  border-left: 2px solid #c6a460;
+  padding-left: 8px;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer button {
+  min-height: 44px;
+  white-space: normal;
+  max-width: 100%;
+}
+.root a {
+  color: var(--primary);
+  font-size: 12px;
+}
+:global(.gear-saved-card):has(> .root[open]) {
+  grid-column: 1 / -1;
+}
+:global(.gear-saved-card) > .root[open] .traits > h4,
+:global(.gear-saved-card) > .root[open] .traits > p {
+  grid-column: 1 / -1;
+}
+@media (min-width: 1001px) {
+  :global(.gear-saved-card) > .root[open] .traits {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+@media (min-width: 621px) and (max-width: 1000px) {
+  :global(.gear-saved-card) > .root[open] .traits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+@media (max-width: 620px) {
+  .body,
+  .trait,
+  .preparation,
+  .cautions {
+    padding: 10px;
+  }
+  .sectionHeading {
+    display: grid;
+  }
+}

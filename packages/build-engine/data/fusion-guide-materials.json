@@ -1,0 +1,3938 @@
+{
+  "schemaVersion": "uniz.fusion-material-guide.v1",
+  "verifiedAt": "2026-10-07",
+  "materials": [
+    {
+      "id": "fusion-material-30001121",
+      "sourceId": "30001121",
+      "name": "수사슴",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_deer.png",
+      "bonusTraitSourceId": "1000001",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001122",
+      "sourceId": "30001122",
+      "name": "어미 사슴",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_deer2.png",
+      "bonusTraitSourceId": "1000001",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001131",
+      "sourceId": "30001131",
+      "name": "늑대",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_wolf.png",
+      "bonusTraitSourceId": "1000002",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001141",
+      "sourceId": "30001141",
+      "name": "숫양",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_goat1.png",
+      "bonusTraitSourceId": "1000003",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001142",
+      "sourceId": "30001142",
+      "name": "암양",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_goat2.png",
+      "bonusTraitSourceId": "1000003",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001161",
+      "sourceId": "30001161",
+      "name": "멧돼지",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_wildboar.png",
+      "bonusTraitSourceId": "1000004",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001151",
+      "sourceId": "30001151",
+      "name": "곰",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_bear.png",
+      "bonusTraitSourceId": "1000005",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001181",
+      "sourceId": "30001181",
+      "name": "악어",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_crocodile.png",
+      "bonusTraitSourceId": "1000006",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001191",
+      "sourceId": "30001191",
+      "name": "카피바라",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_capybara2.png",
+      "bonusTraitSourceId": "1000007",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001211",
+      "sourceId": "30001211",
+      "name": "표범",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_leopard2.png",
+      "bonusTraitSourceId": "1000008",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001251",
+      "sourceId": "30001251",
+      "name": "북극곰",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_bear2.png",
+      "bonusTraitSourceId": "1000010",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-30001241",
+      "sourceId": "30001241",
+      "name": "들소",
+      "type": "ANIMAL",
+      "icon": "/game/fusion-guide/farming_cbt2_icon_cattle2.png",
+      "bonusTraitSourceId": "1000011",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61520103",
+      "sourceId": "61520103",
+      "name": "테이블",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_table.png",
+      "bonusTraitSourceId": "1100002",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550120",
+      "sourceId": "61550120",
+      "name": "클래식 라운드 테이블 - I",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/classicalroundtable_1.png",
+      "bonusTraitSourceId": "11550120",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550121",
+      "sourceId": "61550121",
+      "name": "클래식 라운드 테이블 - II",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/classicalroundtable_2.png",
+      "bonusTraitSourceId": "11550121",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510112",
+      "sourceId": "61510112",
+      "name": "더블 헤드 가로등",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_street_light.png",
+      "bonusTraitSourceId": "1100006",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550114",
+      "sourceId": "61550114",
+      "name": "종이 박스 - I",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/carton_2.png",
+      "bonusTraitSourceId": "1100009",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550193",
+      "sourceId": "61550193",
+      "name": "탁상용 전자시계",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_digital_calender.png",
+      "bonusTraitSourceId": "1100011",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510102",
+      "sourceId": "61510102",
+      "name": "형광등",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_ceilinglight.png",
+      "bonusTraitSourceId": "11510102",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510103",
+      "sourceId": "61510103",
+      "name": "원형 샹들리에",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_ceilinglight_02.png",
+      "bonusTraitSourceId": "11510103",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510104",
+      "sourceId": "61510104",
+      "name": "촛대",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_candlestick_new.png",
+      "bonusTraitSourceId": "11510104",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510105",
+      "sourceId": "61510105",
+      "name": "플로어 스탠드",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_floor_lantern_new.png",
+      "bonusTraitSourceId": "11510105",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510106",
+      "sourceId": "61510106",
+      "name": "샹들리에",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_roof_lantern_02.png",
+      "bonusTraitSourceId": "11510106",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510107",
+      "sourceId": "61510107",
+      "name": "벽시계",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_wall_lantern_new.png",
+      "bonusTraitSourceId": "11510107",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510110",
+      "sourceId": "61510110",
+      "name": "연결식 조명",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_light_string.png",
+      "bonusTraitSourceId": "11510110",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510125",
+      "sourceId": "61510125",
+      "name": "'미소'",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_neon_lights_a.png",
+      "bonusTraitSourceId": "11510125",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510126",
+      "sourceId": "61510126",
+      "name": "'조심'",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_neon_lights_b.png",
+      "bonusTraitSourceId": "11510126",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510127",
+      "sourceId": "61510127",
+      "name": "'좋아요'",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_neon_lights_c.png",
+      "bonusTraitSourceId": "11510127",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510137",
+      "sourceId": "61510137",
+      "name": "스탠드식 탐조등",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_zhijiadeng.png",
+      "bonusTraitSourceId": "11510137",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510138",
+      "sourceId": "61510138",
+      "name": "소형 표시등",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_warning_light.png",
+      "bonusTraitSourceId": "11510138",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510301",
+      "sourceId": "61510301",
+      "name": "석제 정원 등",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_garden_light_02.png",
+      "bonusTraitSourceId": "11510301",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510401",
+      "sourceId": "61510401",
+      "name": "철제 정원 등",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_garden_light_03.png",
+      "bonusTraitSourceId": "11510401",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510501",
+      "sourceId": "61510501",
+      "name": "아메리칸 스타일 벽등",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_wall_lantern_as.png",
+      "bonusTraitSourceId": "11510501",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510502",
+      "sourceId": "61510502",
+      "name": "아메리칸 스타일 스탠드 조명",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_floor_lantern_as.png",
+      "bonusTraitSourceId": "11510502",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510503",
+      "sourceId": "61510503",
+      "name": "아메리칸 스타일 샹들리에",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_chandelier_as.png",
+      "bonusTraitSourceId": "11510503",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510504",
+      "sourceId": "61510504",
+      "name": "아메리칸 스탠드 조명",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_table_lamp_as.png",
+      "bonusTraitSourceId": "11510504",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510601",
+      "sourceId": "61510601",
+      "name": "인더스트리얼 벽등",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_wall_lantern_ins.png",
+      "bonusTraitSourceId": "11510601",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510602",
+      "sourceId": "61510602",
+      "name": "인더스트리얼 스탠드 조명",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_floor_lantern_ins.png",
+      "bonusTraitSourceId": "11510602",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510603",
+      "sourceId": "61510603",
+      "name": "인더스트리얼 샹들리에",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_chandelier_ins.png",
+      "bonusTraitSourceId": "11510603",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61510604",
+      "sourceId": "61510604",
+      "name": "인더스트리얼 스탠드 조명",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_table_lamp_ins.png",
+      "bonusTraitSourceId": "11510604",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61520105",
+      "sourceId": "61520105",
+      "name": "구석 테이블",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/endtable.png",
+      "bonusTraitSourceId": "11520105",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61520106",
+      "sourceId": "61520106",
+      "name": "평범한 흰색 롱 테이블",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_observe_work_table.png",
+      "bonusTraitSourceId": "11520106",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61520501",
+      "sourceId": "61520501",
+      "name": "아메리칸 스타일 커피 테이블",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_lowtable_as.png",
+      "bonusTraitSourceId": "11520501",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61520502",
+      "sourceId": "61520502",
+      "name": "아메리칸 스타일 롱 테이블",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_table_as.png",
+      "bonusTraitSourceId": "11520502",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61520601",
+      "sourceId": "61520601",
+      "name": "인더스트리얼 티테이블",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_lowtable_ins.png",
+      "bonusTraitSourceId": "11520601",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61520604",
+      "sourceId": "61520604",
+      "name": "인더스트리얼 롱 테이블",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_table_ins.png",
+      "bonusTraitSourceId": "11520604",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550115",
+      "sourceId": "61550115",
+      "name": "종이 박스 - II",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/carton_1.png",
+      "bonusTraitSourceId": "11550115",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550116",
+      "sourceId": "61550116",
+      "name": "종이 박스 - III",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/carton_3.png",
+      "bonusTraitSourceId": "11550116",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550117",
+      "sourceId": "61550117",
+      "name": "종이 박스 - IV",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/carton_4.png",
+      "bonusTraitSourceId": "11550117",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550118",
+      "sourceId": "61550118",
+      "name": "종이 박스 - V",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/carton_5.png",
+      "bonusTraitSourceId": "11550118",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550130",
+      "sourceId": "61550130",
+      "name": "모형 장식품 - I",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_m_spider_box.png",
+      "bonusTraitSourceId": "11550130",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550131",
+      "sourceId": "61550131",
+      "name": "모형 장식품 - II",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_rongzhu.png",
+      "bonusTraitSourceId": "11550131",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550132",
+      "sourceId": "61550132",
+      "name": "모형 장식품 - III",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_scarecrow.png",
+      "bonusTraitSourceId": "11550132",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550133",
+      "sourceId": "61550133",
+      "name": "모형 장식품 - IV",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_siren.png",
+      "bonusTraitSourceId": "11550133",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550134",
+      "sourceId": "61550134",
+      "name": "모형 장식품 - V",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_yhr0301_04_01.png",
+      "bonusTraitSourceId": "11550134",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550135",
+      "sourceId": "61550135",
+      "name": "모형 장식품 - VI",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_agent.png",
+      "bonusTraitSourceId": "11550135",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550136",
+      "sourceId": "61550136",
+      "name": "모형 장식품 - VII",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_djgrz0309_light.png",
+      "bonusTraitSourceId": "11550136",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550137",
+      "sourceId": "61550137",
+      "name": "모형 장식품 - VIII",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_ghost_rubbercloth.png",
+      "bonusTraitSourceId": "11550137",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550138",
+      "sourceId": "61550138",
+      "name": "모형 장식품 - IX",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_lady_in_mirror.png",
+      "bonusTraitSourceId": "11550138",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550525",
+      "sourceId": "61550525",
+      "name": "홈 주크박스",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_ktvmachine.png",
+      "bonusTraitSourceId": "11550525",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61550527",
+      "sourceId": "61550527",
+      "name": "현대식 변기",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_toilet.png",
+      "bonusTraitSourceId": "11550527",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61560102",
+      "sourceId": "61560102",
+      "name": "에어컨 실외기",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/air_conditioning.png",
+      "bonusTraitSourceId": "11560102",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61560132",
+      "sourceId": "61560132",
+      "name": "환풍기",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/ventilating_fan_1.png",
+      "bonusTraitSourceId": "11560132",
+      "bonusDeviantSourceIds": []
+    },
+    {
+      "id": "fusion-material-61560180",
+      "sourceId": "61560180",
+      "name": "간이 세면대",
+      "type": "FURNITURE",
+      "icon": "/game/fusion-guide/icon_washbasin_01.png",
+      "bonusTraitSourceId": "11560180",
+      "bonusDeviantSourceIds": []
+    }
+  ],
+  "traits": [
+    {
+      "id": "deviant-trait-power-reversal-2",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-weakspot-master-lavender-blue",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-moonlight-ambush",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001131",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-300101",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300102",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300103",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300105",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300106",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300107",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300108",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300109",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300110",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300111",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300112",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300113",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300114",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300115",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300116",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300117",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300118",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300119",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300199",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300200",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300196",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300197",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300198",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400039",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400045",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400072",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400073",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400074",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400077",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400079",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400080",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400081",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400084",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400085",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400086",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400088",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400089",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400102",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400108",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400109",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400110",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400111",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400118",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400120",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400123",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400126",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400131",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400132",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400136",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400137",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400145",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400146",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400152",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400154",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400156",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400192",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-600047",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-600048",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-600049",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300001",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300002",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300003",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300004",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300005",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300006",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300007",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300008",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300009",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300010",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300011",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300016",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300017",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300018",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300019",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300020",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300021",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300022",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-300023",
+      "typeCode": 3,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400001",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400002",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400003",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400004",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400005",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400006",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400007",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400008",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400009",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400010",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400011",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400013",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400014",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400015",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400016",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400017",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400018",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400019",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400020",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400021",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400022",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400023",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400024",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400025",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400026",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400027",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400028",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400029",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-400030",
+      "typeCode": 4,
+      "materialRecipes": []
+    },
+    {
+      "id": "deviant-trait-1000001",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001121",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        },
+        {
+          "materialSourceId": "30001122",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1000003",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001141",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        },
+        {
+          "materialSourceId": "30001142",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1000004",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001161",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1000005",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001151",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1000006",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001181",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1000007",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001191",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1000008",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001211",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1000010",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001251",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1000011",
+      "typeCode": 10,
+      "materialRecipes": [
+        {
+          "materialSourceId": "30001241",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000053",
+            "99000054",
+            "99000055",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000034",
+            "99000018",
+            "99000028",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "미니 하스터",
+            "종이 인형",
+            "데스 래빗",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "미스터 위시",
+            "닥터 테디",
+            "목공 비버",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1100002",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61520103",
+          "bodyRecipeDeviantSourceIds": [
+            "99000031",
+            "99000049",
+            "99000051",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000062",
+            "99000061",
+            "99000064",
+            "99000027",
+            "99000030",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "나비의 꿈",
+            "부서진 소녀",
+            "초차원 고양이",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "블랙 백",
+            "래브라도",
+            "웨일마스트",
+            "호두까기 인형",
+            "파이로 다이노",
+            "스파크맨더"
+          ]
+        },
+        {
+          "materialSourceId": "61550120",
+          "bodyRecipeDeviantSourceIds": ["99000029"],
+          "bodyRecipeDeviantNames": ["딕비 보이"]
+        },
+        {
+          "materialSourceId": "61550121",
+          "bodyRecipeDeviantSourceIds": ["99000029"],
+          "bodyRecipeDeviantNames": ["딕비 보이"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1100006",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510112",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000048",
+            "99000060",
+            "99000070",
+            "92000032",
+            "92000060",
+            "99000027",
+            "99000030",
+            "99000032",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "화염 정령",
+            "소원 상자",
+            "여우 주임",
+            "빛·하늘의 자식",
+            "꿈의 영역-소원 상자",
+            "호두까기 인형",
+            "파이로 다이노",
+            "하늘의 후예",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1100009",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550114",
+          "bodyRecipeDeviantSourceIds": [
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000044",
+            "99000047",
+            "99000051",
+            "99000003",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000062",
+            "92000032",
+            "99000034",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "물고기 항해사",
+            "저주 인형",
+            "초차원 고양이",
+            "극한의 해파리",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-1100011",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550193",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "99000043",
+            "99000044",
+            "99000047",
+            "99000048",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000058",
+            "99000008",
+            "99000063",
+            "99000066",
+            "99000062",
+            "99000034",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000030",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "나이트 램프",
+            "물고기 항해사",
+            "저주 인형",
+            "화염 정령",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "겨울 정령",
+            "활성화 젤",
+            "도베르만",
+            "소환령",
+            "블랙 백",
+            "미스터 위시",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "파이로 다이노",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510102",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510102",
+          "bodyRecipeDeviantSourceIds": [
+            "92000020",
+            "99000011",
+            "99000020",
+            "99000029",
+            "99000030"
+          ],
+          "bodyRecipeDeviantNames": [
+            "광포·셰프 다이노",
+            "울프의 속삭임",
+            "셰프 다이노",
+            "딕비 보이",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510103",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510103",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000044",
+            "99000060",
+            "92000060",
+            "99000019",
+            "99000027",
+            "99000029"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "물고기 항해사",
+            "소원 상자",
+            "꿈의 영역-소원 상자",
+            "땡벌떼",
+            "호두까기 인형",
+            "딕비 보이"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510104",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510104",
+          "bodyRecipeDeviantSourceIds": [
+            "92000020",
+            "99000034",
+            "99000019",
+            "99000020",
+            "99000030"
+          ],
+          "bodyRecipeDeviantNames": [
+            "광포·셰프 다이노",
+            "미스터 위시",
+            "땡벌떼",
+            "셰프 다이노",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510105",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510105",
+          "bodyRecipeDeviantSourceIds": ["92000020", "99000019", "99000020", "99000030"],
+          "bodyRecipeDeviantNames": ["광포·셰프 다이노", "땡벌떼", "셰프 다이노", "파이로 다이노"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510106",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510106",
+          "bodyRecipeDeviantSourceIds": ["99000019"],
+          "bodyRecipeDeviantNames": ["땡벌떼"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510107",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510107",
+          "bodyRecipeDeviantSourceIds": ["92000020", "99000019", "99000020", "99000030"],
+          "bodyRecipeDeviantNames": ["광포·셰프 다이노", "땡벌떼", "셰프 다이노", "파이로 다이노"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510110",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510110",
+          "bodyRecipeDeviantSourceIds": ["99000008", "99000019"],
+          "bodyRecipeDeviantNames": ["활성화 젤", "땡벌떼"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510125",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510125",
+          "bodyRecipeDeviantSourceIds": ["99000008"],
+          "bodyRecipeDeviantNames": ["활성화 젤"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510126",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510126",
+          "bodyRecipeDeviantSourceIds": ["99000008"],
+          "bodyRecipeDeviantNames": ["활성화 젤"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510127",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510127",
+          "bodyRecipeDeviantSourceIds": ["99000008"],
+          "bodyRecipeDeviantNames": ["활성화 젤"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510137",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510137",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000053",
+            "99000055",
+            "99000058",
+            "99000063",
+            "99000014",
+            "99000062",
+            "99000034",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000030",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "미니 하스터",
+            "데스 래빗",
+            "겨울 정령",
+            "도베르만",
+            "토토",
+            "블랙 백",
+            "미스터 위시",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "파이로 다이노",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510138",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510138",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000062",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "블랙 백",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510301",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510301",
+          "bodyRecipeDeviantSourceIds": ["92000020", "99000020", "99000030"],
+          "bodyRecipeDeviantNames": ["광포·셰프 다이노", "셰프 다이노", "파이로 다이노"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510401",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510401",
+          "bodyRecipeDeviantSourceIds": ["92000020", "99000020", "99000030"],
+          "bodyRecipeDeviantNames": ["광포·셰프 다이노", "셰프 다이노", "파이로 다이노"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510501",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510501",
+          "bodyRecipeDeviantSourceIds": ["99000019", "99000027"],
+          "bodyRecipeDeviantNames": ["땡벌떼", "호두까기 인형"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510502",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510502",
+          "bodyRecipeDeviantSourceIds": [
+            "92000021",
+            "92000020",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000027",
+            "99000030"
+          ],
+          "bodyRecipeDeviantNames": [
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "호두까기 인형",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510503",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510503",
+          "bodyRecipeDeviantSourceIds": ["99000019"],
+          "bodyRecipeDeviantNames": ["땡벌떼"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510504",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510504",
+          "bodyRecipeDeviantSourceIds": [
+            "92000021",
+            "92000020",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000027",
+            "99000030"
+          ],
+          "bodyRecipeDeviantNames": [
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "호두까기 인형",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510601",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510601",
+          "bodyRecipeDeviantSourceIds": ["99000019", "99000027"],
+          "bodyRecipeDeviantNames": ["땡벌떼", "호두까기 인형"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510602",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510602",
+          "bodyRecipeDeviantSourceIds": [
+            "92000021",
+            "92000020",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000027",
+            "99000030"
+          ],
+          "bodyRecipeDeviantNames": [
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "호두까기 인형",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510603",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510603",
+          "bodyRecipeDeviantSourceIds": ["99000019"],
+          "bodyRecipeDeviantNames": ["땡벌떼"]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11510604",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61510604",
+          "bodyRecipeDeviantSourceIds": [
+            "92000021",
+            "92000020",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000027",
+            "99000030"
+          ],
+          "bodyRecipeDeviantNames": [
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "호두까기 인형",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11520105",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61520105",
+          "bodyRecipeDeviantSourceIds": [
+            "99000031",
+            "92000020",
+            "99000049",
+            "99000051",
+            "99000063",
+            "99000011",
+            "99000062",
+            "99000020",
+            "99000061",
+            "99000027",
+            "99000030"
+          ],
+          "bodyRecipeDeviantNames": [
+            "나비의 꿈",
+            "광포·셰프 다이노",
+            "부서진 소녀",
+            "초차원 고양이",
+            "도베르만",
+            "울프의 속삭임",
+            "블랙 백",
+            "셰프 다이노",
+            "래브라도",
+            "호두까기 인형",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11520106",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61520106",
+          "bodyRecipeDeviantSourceIds": [
+            "99000031",
+            "92000020",
+            "99000049",
+            "99000051",
+            "99000063",
+            "99000011",
+            "99000062",
+            "99000020",
+            "99000061",
+            "99000027",
+            "99000030"
+          ],
+          "bodyRecipeDeviantNames": [
+            "나비의 꿈",
+            "광포·셰프 다이노",
+            "부서진 소녀",
+            "초차원 고양이",
+            "도베르만",
+            "울프의 속삭임",
+            "블랙 백",
+            "셰프 다이노",
+            "래브라도",
+            "호두까기 인형",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11520501",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61520501",
+          "bodyRecipeDeviantSourceIds": [
+            "99000031",
+            "92000020",
+            "99000049",
+            "99000051",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000062",
+            "99000020",
+            "99000061",
+            "99000064",
+            "99000027",
+            "99000030",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "나비의 꿈",
+            "광포·셰프 다이노",
+            "부서진 소녀",
+            "초차원 고양이",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "블랙 백",
+            "셰프 다이노",
+            "래브라도",
+            "웨일마스트",
+            "호두까기 인형",
+            "파이로 다이노",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11520502",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61520502",
+          "bodyRecipeDeviantSourceIds": [
+            "99000031",
+            "92000020",
+            "99000049",
+            "99000051",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000062",
+            "99000020",
+            "99000061",
+            "99000064",
+            "99000027",
+            "99000030",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "나비의 꿈",
+            "광포·셰프 다이노",
+            "부서진 소녀",
+            "초차원 고양이",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "블랙 백",
+            "셰프 다이노",
+            "래브라도",
+            "웨일마스트",
+            "호두까기 인형",
+            "파이로 다이노",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11520601",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61520601",
+          "bodyRecipeDeviantSourceIds": [
+            "99000031",
+            "92000020",
+            "99000049",
+            "99000051",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000062",
+            "99000020",
+            "99000061",
+            "99000064",
+            "99000030",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "나비의 꿈",
+            "광포·셰프 다이노",
+            "부서진 소녀",
+            "초차원 고양이",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "블랙 백",
+            "셰프 다이노",
+            "래브라도",
+            "웨일마스트",
+            "파이로 다이노",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11520604",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61520604",
+          "bodyRecipeDeviantSourceIds": [
+            "99000031",
+            "92000020",
+            "99000049",
+            "99000051",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000062",
+            "99000020",
+            "99000061",
+            "99000064",
+            "99000030",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "나비의 꿈",
+            "광포·셰프 다이노",
+            "부서진 소녀",
+            "초차원 고양이",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "블랙 백",
+            "셰프 다이노",
+            "래브라도",
+            "웨일마스트",
+            "파이로 다이노",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550115",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550115",
+          "bodyRecipeDeviantSourceIds": [
+            "99000038",
+            "99000031",
+            "92000021",
+            "92000020",
+            "99000044",
+            "99000047",
+            "99000051",
+            "99000003",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "물고기 항해사",
+            "저주 인형",
+            "초차원 고양이",
+            "극한의 해파리",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550116",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550116",
+          "bodyRecipeDeviantSourceIds": [
+            "99000038",
+            "99000031",
+            "92000021",
+            "92000020",
+            "99000044",
+            "99000047",
+            "99000051",
+            "99000003",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "물고기 항해사",
+            "저주 인형",
+            "초차원 고양이",
+            "극한의 해파리",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550117",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550117",
+          "bodyRecipeDeviantSourceIds": [
+            "99000038",
+            "99000031",
+            "92000021",
+            "92000020",
+            "99000044",
+            "99000047",
+            "99000051",
+            "99000003",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "물고기 항해사",
+            "저주 인형",
+            "초차원 고양이",
+            "극한의 해파리",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550118",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550118",
+          "bodyRecipeDeviantSourceIds": [
+            "99000038",
+            "99000031",
+            "92000021",
+            "92000020",
+            "99000044",
+            "99000047",
+            "99000051",
+            "99000003",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "물고기 항해사",
+            "저주 인형",
+            "초차원 고양이",
+            "극한의 해파리",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550120",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550120",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000047",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000062",
+            "99000034",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000030",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "저주 인형",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "블랙 백",
+            "미스터 위시",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "파이로 다이노",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550121",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550121",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000047",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000062",
+            "99000034",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000030",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "저주 인형",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "블랙 백",
+            "미스터 위시",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "파이로 다이노",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550130",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550130",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550131",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550131",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550132",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550132",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550133",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550133",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550134",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550134",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550135",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550135",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550136",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550136",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550137",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550137",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550138",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550138",
+          "bodyRecipeDeviantSourceIds": [
+            "99000037",
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000043",
+            "99000044",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "거대 버섯",
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "나이트 램프",
+            "물고기 항해사",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550525",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550525",
+          "bodyRecipeDeviantSourceIds": [
+            "99000031",
+            "99000039",
+            "92000020",
+            "99000051",
+            "99000066",
+            "99000034",
+            "99000020",
+            "99000064",
+            "99000026",
+            "99000029",
+            "99000030",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "나비의 꿈",
+            "레인맨",
+            "광포·셰프 다이노",
+            "초차원 고양이",
+            "소환령",
+            "미스터 위시",
+            "셰프 다이노",
+            "웨일마스트",
+            "영원한 태양",
+            "딕비 보이",
+            "파이로 다이노",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11550527",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61550527",
+          "bodyRecipeDeviantSourceIds": [
+            "99000038",
+            "99000031",
+            "92000021",
+            "99000039",
+            "92000020",
+            "99000044",
+            "99000047",
+            "99000048",
+            "99000049",
+            "99000051",
+            "99000053",
+            "99000055",
+            "99000003",
+            "99000058",
+            "99000060",
+            "99000008",
+            "99000063",
+            "99000011",
+            "99000066",
+            "99000070",
+            "99000014",
+            "99000062",
+            "92000032",
+            "99000034",
+            "92000060",
+            "99000018",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000061",
+            "99000064",
+            "99000026",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000032",
+            "99000059",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "레인맨",
+            "광포·셰프 다이노",
+            "물고기 항해사",
+            "저주 인형",
+            "화염 정령",
+            "부서진 소녀",
+            "초차원 고양이",
+            "미니 하스터",
+            "데스 래빗",
+            "극한의 해파리",
+            "겨울 정령",
+            "소원 상자",
+            "활성화 젤",
+            "도베르만",
+            "울프의 속삭임",
+            "소환령",
+            "여우 주임",
+            "토토",
+            "블랙 백",
+            "빛·하늘의 자식",
+            "미스터 위시",
+            "꿈의 영역-소원 상자",
+            "닥터 테디",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "래브라도",
+            "웨일마스트",
+            "영원한 태양",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "하늘의 후예",
+            "스파크맨더",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11560102",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61560102",
+          "bodyRecipeDeviantSourceIds": ["92000020", "99000020", "99000028", "99000030"],
+          "bodyRecipeDeviantNames": [
+            "광포·셰프 다이노",
+            "셰프 다이노",
+            "목공 비버",
+            "파이로 다이노"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11560132",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61560132",
+          "bodyRecipeDeviantSourceIds": [
+            "92000020",
+            "99000020",
+            "99000028",
+            "99000030",
+            "99000035"
+          ],
+          "bodyRecipeDeviantNames": [
+            "광포·셰프 다이노",
+            "셰프 다이노",
+            "목공 비버",
+            "파이로 다이노",
+            "악취 구근"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deviant-trait-11560180",
+      "typeCode": 11,
+      "materialRecipes": [
+        {
+          "materialSourceId": "61560180",
+          "bodyRecipeDeviantSourceIds": [
+            "99000038",
+            "99000031",
+            "92000021",
+            "92000020",
+            "99000049",
+            "99000051",
+            "99000011",
+            "99000066",
+            "99000014",
+            "99000034",
+            "99000019",
+            "99000020",
+            "99000021",
+            "99000064",
+            "99000027",
+            "99000028",
+            "99000029",
+            "99000030",
+            "99000059"
+          ],
+          "bodyRecipeDeviantNames": [
+            "사무라이",
+            "나비의 꿈",
+            "꿈의 영역·사원 번호 37",
+            "광포·셰프 다이노",
+            "부서진 소녀",
+            "초차원 고양이",
+            "울프의 속삭임",
+            "소환령",
+            "토토",
+            "미스터 위시",
+            "땡벌떼",
+            "셰프 다이노",
+            "사원 번호 37",
+            "웨일마스트",
+            "호두까기 인형",
+            "목공 비버",
+            "딕비 보이",
+            "파이로 다이노",
+            "스파크맨더"
+          ]
+        }
+      ]
+    }
+  ]
+}

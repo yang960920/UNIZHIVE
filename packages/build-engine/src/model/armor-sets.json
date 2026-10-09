@@ -1,0 +1,808 @@
+[
+  {
+    "id": "lonewolf",
+    "sourceId": "1007",
+    "displayName": "울프 세트",
+    "aliases": ["고독한 늑대 세트", "울프 세트"],
+    "aliasIds": ["set-1007"],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "탄창 용량+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "크리티컬 확률+5%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "총기로 크리티컬 4회 명중할 때마다 고영 효과 1스택 획득, 고영 효과는 6%의 크리티컬 대미지 제공, 20초간 지속 및 최대 8스택 중첩",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "울프 최대 스택이 10스택으로 증가. 장전 후 크리티컬 확률+10%, 2초간 지속",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1039",
+    "sourceId": "1039",
+    "displayName": "고스트 링크 세트",
+    "aliases": ["고스트 링크 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "크리티컬 확률 +3%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "장전 효율 +15%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "총기 명중 시, 자신이 확률로 [동기화] 스택 1개 획득: 총기 대미지 +3%, 최대 10스택 중첩(35%), 버프 지속 시간 5초",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "[동기화]가 10스택에 도달하면, 적 공격 시 상대방이 [과부하] 상태에 진입합니다. [과부하]: 초당 자신 및 주변 3미터 내 목표에게 50%초감각 강도의 트랜스 대미지를 가하며, 5초 동안 지속",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1009",
+    "sourceId": "1009",
+    "displayName": "세이버 세트",
+    "aliases": ["구원자 세트", "세이버 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "약품 쿨타임 감소+20%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "실드가 존재할 때, 자신이 가하는 총기 및 트랜스 대미지 +10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "명중 시 현재 HP의 6%를 소모하고, 최대 HP의 6%만큼 임시 실드를 생성하며, 30초간 지속(쿨타임 0.5초, 실드 60%를 초과 시 더 이상 발동되지 않음)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "HP가 30%보다 낮을 시 가방에서 레벨이 가장 낮은 치료제를 자동으로 사용 (쿨타임: 40초)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1036",
+    "sourceId": "1036",
+    "displayName": "그래비티 타이드 세트",
+    "aliases": ["그래비티 타이드 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "점프 높이+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "탄창 용량+15%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "공중에 떠 있을 때, 몬스터 대미지 20% 감소. 공중에서 5미터 이동할 때마다 1층의 잠재적 에너지 효과 1스택 획득, 총기, 트랜스 대미지+2% 증가, 최대 12스택의 보너스 효과 획득 가능. 5초마다 잠재적 에너지 1스택 소실",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "잠재력이 8스택 초과 시 총기, 트랜스 대미지+15%. 공중에서 30m 이동 후, 30초 동안 잠재력이 감소하지 않음",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1008",
+    "sourceId": "1008",
+    "displayName": "레니게이드 세트",
+    "aliases": ["레니게이드 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "장전 효율+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "약점 대미지+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "동일한 적을 연속 명중 시 사격수 집중 효과 1스택 획득, 약점 대미지 4% 증가, 최대 10스택 중첩. 공격 타깃 변경 후 사격수 집중 효과의 스택이 반으로 감소",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "장전 시 이전 탄창의 약점 명중 비율 1%마다 총알 0.6% 추가로 장전, 최대 30% 추가 장전",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1012",
+    "sourceId": "1012",
+    "displayName": "바스티유 세트",
+    "aliases": ["바스티유 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "HP가 70%보다 높을 시 총기 대미지 10% 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "장전 효율+15%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "자세를 낮춘 후 0.5초 동안 이동을 하지 않을 경우 바스티유 상태 진입 및 총기 대미지+40%. 바스티유 상태 종료 시 3초 간 부스트 불가, 스태미나 소모+100%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "바스티유 상태 종료 3초 후 1초마다 아머 1스택 획득, 최대 60스택. 바스티유 상태 진입 시 아머 1스택당 최대 HP 1%의 실드 제공",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1010",
+    "sourceId": "1010",
+    "displayName": "수호자 세트",
+    "aliases": ["수호자 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "트랜스 대미지 감소+15%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "원소(블레이즈, 프리징,플라스마, 폭발) 대미지+8%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "총기로 명중 후 어빌리티 1스택 획득, 스택당 자신의 원소 대미지 1% 증가(블레이즈, 프리징, 플라즈마, 폭발), 최대 20스택. 장전 시 절반의 스택 제거.",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "어빌리티 스택 최대치 10 증가, 약점 명중 시 2스택 추가 중첩",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1037",
+    "sourceId": "1037",
+    "displayName": "어둠의 해골 공명 세트",
+    "aliases": ["어둠의 해골 공명 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "궁극기 사용 시 10%의 임시 실드를 10초 동안 획득",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "트랜스 에너지가 가득 차지 않았을 때, 총기 및 트랜스 대미지 +12%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "에너지 1점 소모 시마다 총기 및 트랜스 대미지 +0.6%, 최대 +30%까지 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "전투 스킬 사용 시 30점의 트랜스 에너지 소모, 재사용 대기시간 50% 단축",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1035",
+    "sourceId": "1035",
+    "displayName": "폴른월드 서지 세트",
+    "aliases": ["폴른월드 서지 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "총기 대미지 감소 +10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "HP가 70% 미만일 때, 총기 및 트랜스 대미지 +12%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "멘탈이 낮을수록 최대 HP가 최대 60% 감소. 총기 및 트랜스 대미지는 HP가 낮아질수록 증가하며, 최소 8%(HP 100% 시 달성), 최대 28%(HP 60% 시 달성).",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "HP가 최대치의 40% 미만일 때, 최대 HP 30%에 해당하는 실드 획득(쿨타임: 8초)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1011",
+    "sourceId": "1011",
+    "displayName": "허리케인 세트",
+    "aliases": ["허리케인 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "구르기 시 소모 스태미나 20% 감소",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "탄창 용량+15%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "피격 시 에너지 저장 갑옷 효과 1스택 획득, 대미지 감소+4%, 10초간 지속, 최대 6스택 중첩",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "구르기 시 에너지 저장 갑옷 효과 3스택을 소모해 폭발을 유발, 주변을 적 넉백. 폭발이 적 1명을 명중할 때마다 HP 5% 회복, 최대 20% 회복(트리거 쿨타임: 10초)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1031",
+    "sourceId": "1031",
+    "displayName": "흑석 세트",
+    "aliases": ["흑석 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "추위, 열기 내성+2.5",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "원소 대미지 부여 시 1스택 [온도 감지](원소 대미지 +2%)) 획득, 2초 지속, 0.5초마다 1회 발동, 최대 5스택.",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "환경 온도가 10~30도일 시 [온화] 상태 획득(원소 대미지+18%)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "[온도 감지] 5스택 도달 시 [온화] 상태로 간주, 환경 온도가 10~30도일 때 원소 대미지 +7%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1032",
+    "sourceId": "1032",
+    "displayName": "흑석 세트 (열기)",
+    "aliases": ["흑석 세트 (열기)"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "열기 내성 +5",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "원소 대미지 부여 시 1스택 [온도 감지](원소 대미지 +2%)) 획득, 2초 지속, 0.5초마다 1회 발동, 최대 5스택.",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "온도가 30도보다 높으면 [열정] 상태가 되어 원소 대미지+10%, 1도 추가 상승할 때마다 원소 대미지+0.5%(최대 20%)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "[온도 감지] 5스택 도달 시 환경 온도 5 증가, [열정] 상태가 부여하는 추가 효과(고온 보너스) 2배, 최대 40%까지 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1033",
+    "sourceId": "1033",
+    "displayName": "흑석 세트 (한기)",
+    "aliases": ["흑석 세트 (한기)"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "추위 내성 +5",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "원소 대미지 부여 시 1스택 [온도 감지](원소 대미지 +2%)) 획득, 2초 지속, 0.5초마다 1회 발동, 최대 5스택.",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "환경 온도가 10도보다 낮으면 [냉혹] 상태 획득, 원소 대미지+10%, 1도 추가 하락할 때마다 원소 대미지+0.5%(최대 20%)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "[온도 감지] 5스택 도달 시 환경 온도 5 감소, [냉혹] 상태가 부여하는 추가 효과(저온 보너스) 2배, 최대 40%까지 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1021",
+    "sourceId": "1021",
+    "displayName": "스노우 팬서 세트",
+    "aliases": ["스노우 팬서 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "몸통 피격 대미지 감소 +10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "10m 이내 아군 플레이어 또는 아군 영지 시 근접, 트랜스, 총기 대미지 +8%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "아군 영지에 있을 때, 처치에 참여하면 근접, 트랜스, 총기 대미지+8%, 최대 3스택 중첩, 지속 시간 10초",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "아군 영지에 있을 때, 7m 범위 내 터렛의 대미지 +50%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1004",
+    "sourceId": "1004",
+    "displayName": "에이전트 세트",
+    "aliases": ["에이전트 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "머리 피격 대미지 감소+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "약점 대미지+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "정밀 처치 시 백발백중 효과 획득 및 약점 대미지 15% 증가, 8초간 지속, 최대 3스택 중첩",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "적 처치 후 장전 효율 20% 증가, 약점 처치인 경우 발사 속도가 추가로 10% 증가. 장전 액션 후 제거.",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1002",
+    "sourceId": "1002",
+    "displayName": "팔콘 세트",
+    "aliases": ["팔콘 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "구르기 시 소모 스태미나 20% 감소",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "크리티컬 대미지+12%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "스태미나 90% 이상 시 크리티컬 확률 5% 증가, 크리티컬 대미지 20% 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "적 처치 후 즉시 스태미나 30 회복, 2초 내 이동 속도 20% 증가 (쿨타임: 3초)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1006",
+    "sourceId": "1006",
+    "displayName": "헤비 듀티 세트",
+    "aliases": ["헤비 듀티 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "최대 HP+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "원소(블레이즈, 프리징,플라스마, 폭발) 대미지+8%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "적 처치 후, 2초 동안 이동 속도+20%, 8초 이내에 점차 감소되는 40%의 원소(블레이즈, 프리징, 플라즈마, 폭발) 대미지 보너스 획득",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "5m 범위 내에 적이 있을 시 1명마다 대미지 감소 4% 제공, 최대 4스택 중첩",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1003",
+    "sourceId": "1003",
+    "displayName": "레이드 세트",
+    "aliases": ["레이드 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "채집 속도+15%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "적재 한도+20",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "현재 적재 80 초과 시 받는 대미지 10% 감소, 총기 대미지 및 전술 아이템 대미지 15% 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "활공, 구르기 스태미나 소모 30% 감소",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1005",
+    "sourceId": "1005",
+    "displayName": "블래스트 세트",
+    "aliases": ["블래스트 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "근접 헤비 어택 대미지+20%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "몸통 피격 대미지 감소+12%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "근접 공격으로 적을 처치한 후 5초 이내에 다음 근접 공격의 대미지 20% 증가, 근접 베기 속도 15% 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "근접 공격으로 적 처치 시 즉시 스태미나 30 회복, 2초 내 이동 속도 20% 증가 (쿨타임: 3초)",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1001",
+    "sourceId": "1001",
+    "displayName": "스카우트 세트",
+    "aliases": ["스카우트 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "최대 HP+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "총기 대미지+8%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "적에게 발견되지 않을 시, 입히는 총기 대미지와 전술 아이템 대미지 20% 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "HP가 50%보다 낮을 때 부스트 속도 12% 증가, 스태미나 회복 속도 20% 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1902",
+    "sourceId": "1902",
+    "displayName": "개척자 세트",
+    "aliases": ["개척자 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 2,
+        "description": "구르기 스태미나 소모-20%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "무기 정확도+14%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "적재 한도+15",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1000",
+    "sourceId": "1000",
+    "displayName": "러스틱 세트",
+    "aliases": ["러스틱 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "이동 속도+8%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "근접 대미지+15%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "HP+600",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "채집 속도 20% 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1034",
+    "sourceId": "1034",
+    "displayName": "설원 러스틱 세트",
+    "aliases": ["설원 러스틱 세트"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "이동 속도+8%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "추위 내성 +5",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "HP+600",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 4,
+        "description": "채집 속도 20% 증가",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  },
+  {
+    "id": "set-1014",
+    "sourceId": "1014",
+    "displayName": "연구 대상",
+    "aliases": ["연구 대상"],
+    "aliasIds": [],
+    "effects": [
+      {
+        "pieces": 1,
+        "description": "오염 내성+15",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 2,
+        "description": "HP+300",
+        "status": "VERIFIED_LOCAL_STATIC"
+      },
+      {
+        "pieces": 3,
+        "description": "근접 대미지+10%",
+        "status": "VERIFIED_LOCAL_STATIC"
+      }
+    ],
+    "source": {
+      "evidence": "Installed Korean client static suit_data plus exact [buff_template_id, level] buff_level_data and desc_value substitutions; live availability is not inferred.",
+      "gameBuildId": "25590224",
+      "verifiedAt": "2026-10-07"
+    }
+  }
+]

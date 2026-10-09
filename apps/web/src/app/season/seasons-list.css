@@ -1,0 +1,38 @@
+.season-registration-list > .page-header {
+  margin-bottom: 0;
+}
+.season-registration-dates,
+.season-registration-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.season-registration-dates,
+.season-registration-closed {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.season-registration-actions {
+  margin-top: 16px;
+}
+.season-registration-actions .cms-form {
+  margin: 0;
+}
+.season-own-requests {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+.season-own-requests > div {
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.season-detail-title {
+  color: inherit;
+  text-decoration: none;
+}
+.season-detail-title:hover {
+  color: var(--primary);
+}

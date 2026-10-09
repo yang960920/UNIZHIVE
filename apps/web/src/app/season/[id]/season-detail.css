@@ -1,0 +1,25 @@
+.season-detail-facts,
+.season-migration-counts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+}
+.season-detail-facts div,
+.season-migration-counts div {
+  display: grid;
+  gap: 8px;
+}
+.season-detail-facts dt,
+.season-migration-counts dt {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.season-detail-facts dd,
+.season-migration-counts dd {
+  margin: 0;
+  font-size: 14px;
+}
+.season-selected-detail .cms-form select {
+  max-width: 420px;
+}

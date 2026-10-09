@@ -1,0 +1,37 @@
+.like-control {
+  display: inline-grid;
+  gap: 5px;
+  align-items: start;
+}
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.like-button[aria-pressed="true"] {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.like-button:disabled {
+  cursor: default;
+}
+.like-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.like-error {
+  color: var(--warning);
+  font-size: 12px;
+  max-width: 260px;
+  overflow-wrap: anywhere;
+}

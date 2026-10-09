@@ -1,0 +1,452 @@
+[
+  {
+    "sampleKey": "party-endless-deep-1",
+    "contentKey": "endless-deep",
+    "title": "[예시] 무깊 · 퇴근 후 1회 천천히",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n무깊 한 번을 목표로 가볍게 모입니다. 처음 오시는 분은 입장 전 준비와 이동을 같이 확인해요. 장비 점수나 클리어 경험으로 참가자를 제한하지 않습니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 입장 위치는 참가 확인 후 안내",
+    "capacity": 4,
+    "durationMinutes": 45,
+    "preferredTime": "평일 20:30"
+  },
+  {
+    "sampleKey": "party-endless-deep-2",
+    "contentKey": "endless-deep",
+    "title": "[예시] 무깊 · 첫 도전 함께 익히기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n처음 도전하는 분끼리 진행 흐름을 익히는 연습 모집입니다. 막히는 구간은 잠깐 멈추고 설명을 나눠요. 실패해도 재촉하지 않고 정해진 시간 안에서 마칩니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 입장 위치는 참가 확인 후 안내",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 14:00"
+  },
+  {
+    "sampleKey": "party-endless-deep-3",
+    "contentKey": "endless-deep",
+    "title": "[예시] 무깊 · 주말 오전 한 바퀴",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n주말 오전에 무깊 한 바퀴 같이 돌 분을 찾습니다. 회복 아이템과 평소 쓰는 장비만 챙겨 주세요. 음성 채팅은 듣기만 참여해도 괜찮습니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 입장 위치는 참가 확인 후 안내",
+    "capacity": 4,
+    "durationMinutes": 45,
+    "preferredTime": "일요일 11:00"
+  },
+  {
+    "sampleKey": "party-endless-deep-4",
+    "contentKey": "endless-deep",
+    "title": "[예시] 무깊 · 복귀 유저 적응 모임",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n오랜만에 돌아온 분들과 준비 상태를 확인하며 진행합니다. 특정 빌드나 무기 조합은 요구하지 않아요. 시작 전에 궁금한 내용을 짧게 나누고 출발합니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 입장 위치는 참가 확인 후 안내",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "평일 21:00"
+  },
+  {
+    "sampleKey": "party-endless-deep-5",
+    "contentKey": "endless-deep",
+    "title": "[예시] 무깊 · 늦은 저녁 짧게 한 번",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n늦은 시간에 한 번만 가볍게 도전하는 모집입니다. 무리한 반복 없이 종료 시간을 지켜요. 미숙한 구간이 있으면 미리 말씀해 주셔도 부담 없이 함께합니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 입장 위치는 참가 확인 후 안내",
+    "capacity": 4,
+    "durationMinutes": 40,
+    "preferredTime": "금요일 22:00"
+  },
+  {
+    "sampleKey": "party-endless-kin-1",
+    "contentKey": "endless-kin",
+    "title": "[예시] 무킨 · 저녁 한 번 같이 가요",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n무킨 한 번 함께 가실 분을 모십니다. 각자 익숙한 장비로 오셔도 되고, 필요한 준비는 출발 전에 맞춥니다. 경험 여부보다 함께 천천히 진행하는 분위기를 우선합니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 같은 월드에서 모인 뒤 입장",
+    "capacity": 4,
+    "durationMinutes": 45,
+    "preferredTime": "평일 20:00"
+  },
+  {
+    "sampleKey": "party-endless-kin-2",
+    "contentKey": "endless-kin",
+    "title": "[예시] 무킨 · 초행 환영 연습 파티",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n초행 분들과 진행 순서를 익히는 연습 파티입니다. 빠른 클리어보다 서로 이해하면서 가는 것이 목표예요. 질문은 언제든 가능하며 음성은 선택입니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 같은 월드에서 모인 뒤 입장",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 15:30"
+  },
+  {
+    "sampleKey": "party-endless-kin-3",
+    "contentKey": "endless-kin",
+    "title": "[예시] 무킨 · 주말 2회 이내 가볍게",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n정해진 시간 안에서 최대 두 번 정도만 진행합니다. 결과가 아쉬워도 연장 참여를 요구하지 않아요. 중간 휴식이 필요하면 편하게 말씀해 주세요.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 같은 월드에서 모인 뒤 입장",
+    "capacity": 4,
+    "durationMinutes": 70,
+    "preferredTime": "일요일 15:00"
+  },
+  {
+    "sampleKey": "party-endless-kin-4",
+    "contentKey": "endless-kin",
+    "title": "[예시] 무킨 · 복귀자끼리 감각 찾기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n복귀 후 감을 찾고 싶은 분들과 무킨을 함께 돌아봅니다. 장비와 소모품을 확인한 뒤 무리 없는 속도로 출발해요. 고정 역할이나 숙련 기준은 없습니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 같은 월드에서 모인 뒤 입장",
+    "capacity": 4,
+    "durationMinutes": 55,
+    "preferredTime": "평일 21:30"
+  },
+  {
+    "sampleKey": "party-endless-kin-5",
+    "contentKey": "endless-kin",
+    "title": "[예시] 무킨 · 음성 없이 편하게",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n텍스트 안내 위주로 진행하는 무킨 모집입니다. 필요한 이야기는 입장 전에 정리하고, 진행 중에도 급하게 재촉하지 않아요. 듣기만 참여하거나 음성을 사용하지 않아도 괜찮습니다.",
+    "meetingPoint": "시작 5분 전 하이브 파티 채널 · 같은 월드에서 모인 뒤 입장",
+    "capacity": 4,
+    "durationMinutes": 50,
+    "preferredTime": "금요일 20:30"
+  },
+  {
+    "sampleKey": "party-endless-shallow-1",
+    "contentKey": "endless-shallow",
+    "title": "[예시] 무얕 · 초보끼리 한 바퀴",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n무얕을 처음 시작하는 분들을 위한 가벼운 한 바퀴 모집입니다. 익숙한 무기와 기본 회복 아이템만 챙겨 주세요. 준비가 부족하면 함께 확인한 뒤 진행합니다.",
+    "meetingPoint": "하이브 파티 채널 · 출발 전 월드와 입장 위치 확인",
+    "capacity": 4,
+    "durationMinutes": 40,
+    "preferredTime": "평일 19:30"
+  },
+  {
+    "sampleKey": "party-endless-shallow-2",
+    "contentKey": "endless-shallow",
+    "title": "[예시] 무얕 · 점심 후 짧은 파티",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n주말 점심 뒤 무얕 한 번 돌고 마칩니다. 오래 접속하기 어려운 분도 편하게 참가해요. 이동과 입장 준비를 포함해 약 40분을 생각하고 있습니다.",
+    "meetingPoint": "하이브 파티 채널 · 출발 전 월드와 입장 위치 확인",
+    "capacity": 4,
+    "durationMinutes": 40,
+    "preferredTime": "토요일 13:00"
+  },
+  {
+    "sampleKey": "party-endless-shallow-3",
+    "contentKey": "endless-shallow",
+    "title": "[예시] 무얕 · 친구와 함께 입문하기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n혼자 가기 망설여지는 분들과 무얕 입문을 함께합니다. 서로 준비를 확인하고 설명하면서 천천히 가요. 특정 무기나 높은 장비 수준은 요구하지 않습니다.",
+    "meetingPoint": "하이브 파티 채널 · 출발 전 월드와 입장 위치 확인",
+    "capacity": 4,
+    "durationMinutes": 50,
+    "preferredTime": "일요일 14:00"
+  },
+  {
+    "sampleKey": "party-endless-shallow-4",
+    "contentKey": "endless-shallow",
+    "title": "[예시] 무얕 · 퇴근 후 워밍업",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n저녁에 무얕 한 번 돌며 손을 푸는 모집입니다. 시간 내에서 한 번을 목표로 하고 추가 반복은 강요하지 않아요. 참가 확정 후 늦을 것 같으면 댓글로 알려 주세요.",
+    "meetingPoint": "하이브 파티 채널 · 출발 전 월드와 입장 위치 확인",
+    "capacity": 4,
+    "durationMinutes": 35,
+    "preferredTime": "평일 20:30"
+  },
+  {
+    "sampleKey": "party-endless-shallow-5",
+    "contentKey": "endless-shallow",
+    "title": "[예시] 무얕 · 주말 아침 여유롭게",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n주말 아침에 여유롭게 무얕을 돌아봅니다. 첫 참가나 복귀 유저 모두 환영해요. 음성 없이도 참여할 수 있고, 종료 시간에 맞춰 깔끔하게 마칩니다.",
+    "meetingPoint": "하이브 파티 채널 · 출발 전 월드와 입장 위치 확인",
+    "capacity": 4,
+    "durationMinutes": 45,
+    "preferredTime": "일요일 10:00"
+  },
+  {
+    "sampleKey": "party-gravity-condenser-1",
+    "contentKey": "gravity-condenser",
+    "title": "[예시] 응축기 · 저녁 응축기 한 번",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n응축기를 이용할 수 있는 시즌에서 한 번만 가볍게 진행하는 모집입니다. 평소 쓰는 장비와 회복 아이템을 챙겨 주세요. 이용 조건과 위치를 확인한 뒤 함께 출발합니다.",
+    "meetingPoint": "하이브 파티 채널 · 이용 가능한 응축기 위치와 월드를 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 40,
+    "preferredTime": "평일 20:30"
+  },
+  {
+    "sampleKey": "party-gravity-condenser-2",
+    "contentKey": "gravity-condenser",
+    "title": "[예시] 응축기 · 처음부터 같이 익히기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n응축기가 익숙하지 않은 분들과 준비와 진행 흐름을 확인합니다. 장비 수준이나 경험으로 참가를 제한하지 않아요. 설명 시간을 포함해 약 한 시간만 진행합니다.",
+    "meetingPoint": "하이브 파티 채널 · 이용 가능한 응축기 위치와 월드를 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 14:30"
+  },
+  {
+    "sampleKey": "party-gravity-condenser-3",
+    "contentKey": "gravity-condenser",
+    "title": "[예시] 응축기 · 주말 낮 가볍게",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n주말 낮에 응축기 한 번 함께 갈 분을 찾습니다. 가능한 위치와 월드를 먼저 맞추고 출발해요. 무리한 반복이나 종료 시간 연장은 하지 않습니다.",
+    "meetingPoint": "하이브 파티 채널 · 이용 가능한 응축기 위치와 월드를 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 45,
+    "preferredTime": "일요일 15:30"
+  },
+  {
+    "sampleKey": "party-gravity-condenser-4",
+    "contentKey": "gravity-condenser",
+    "title": "[예시] 응축기 · 복귀 유저 적응 파티",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n응축기를 오랜만에 이용하는 분들과 천천히 적응하는 모집입니다. 필요한 준비는 출발 전 확인하며, 특정 무기나 빌드를 요구하지 않아요. 음성은 듣기만 참여해도 괜찮습니다.",
+    "meetingPoint": "하이브 파티 채널 · 이용 가능한 응축기 위치와 월드를 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 50,
+    "preferredTime": "평일 21:00"
+  },
+  {
+    "sampleKey": "party-gravity-condenser-5",
+    "contentKey": "gravity-condenser",
+    "title": "[예시] 응축기 · 늦은 저녁 한 바퀴",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n늦은 저녁에 응축기 한 번 돌고 마치는 짧은 모집입니다. 시작 전 이용 가능 여부를 함께 확인합니다. 미숙한 부분은 서로 알려주며 부담 없이 진행해요.",
+    "meetingPoint": "하이브 파티 채널 · 이용 가능한 응축기 위치와 월드를 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 40,
+    "preferredTime": "금요일 22:00"
+  },
+  {
+    "sampleKey": "party-prime-war-1",
+    "contentKey": "prime-war",
+    "title": "[예시] 프라임 워 · 주말 입문 안내 모임",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n프라임 워를 처음 보는 분들과 진행 가능 장소와 준비를 함께 확인합니다. 준비 상태에 맞춰 참가하며 특정 장비 수치를 요구하지 않아요. 시작 전 안내를 듣고 무리 없는 범위에서 함께합니다.",
+    "meetingPoint": "하이브 파티 채널 · 서버 내 진행 가능 장소와 월드 확인 후 이동",
+    "capacity": 12,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 16:00"
+  },
+  {
+    "sampleKey": "party-prime-war-2",
+    "contentKey": "prime-war",
+    "title": "[예시] 프라임 워 · 저녁 1회 함께 준비",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n서버에서 진행 가능한 프라임 워 한 번을 목표로 모입니다. 필요한 준비와 각자 할 수 있는 역할을 출발 전에 나눠요. 부족한 준비는 편하게 말해 주셔도 괜찮습니다.",
+    "meetingPoint": "하이브 파티 채널 · 서버 내 진행 가능 장소와 월드 확인 후 이동",
+    "capacity": 12,
+    "durationMinutes": 60,
+    "preferredTime": "평일 21:00"
+  },
+  {
+    "sampleKey": "party-prime-war-3",
+    "contentKey": "prime-war",
+    "title": "[예시] 프라임 워 · 주말 낮 천천히 익히기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n프라임 워 흐름을 익히고 싶은 분들을 위한 모집입니다. 숙련자 위주의 빠른 진행보다 설명과 준비 시간을 넉넉하게 잡아요. 상황상 진행이 어렵다면 무리하게 강행하지 않습니다.",
+    "meetingPoint": "하이브 파티 채널 · 서버 내 진행 가능 장소와 월드 확인 후 이동",
+    "capacity": 12,
+    "durationMinutes": 75,
+    "preferredTime": "일요일 14:30"
+  },
+  {
+    "sampleKey": "party-prime-war-4",
+    "contentKey": "prime-war",
+    "title": "[예시] 프라임 워 · 복귀 유저 동행 모집",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n복귀 후 프라임 워가 낯선 분들과 준비를 맞추는 모임입니다. 참여 가능한 범위에서 역할을 나누고 진행해요. 음성은 듣기만 참여해도 되고 필요한 안내는 글로도 남깁니다.",
+    "meetingPoint": "하이브 파티 채널 · 서버 내 진행 가능 장소와 월드 확인 후 이동",
+    "capacity": 12,
+    "durationMinutes": 60,
+    "preferredTime": "금요일 20:00"
+  },
+  {
+    "sampleKey": "party-prime-war-5",
+    "contentKey": "prime-war",
+    "title": "[예시] 프라임 워 · 가벼운 주말 저녁 모임",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n주말 저녁 프라임 워 한 번을 같이 준비할 분을 찾습니다. 긴 반복 없이 정해진 시간 안에서 마치고, 필요한 준비는 사전에 댓글로 맞춥니다. 초행도 부담 없이 참가해 주세요.",
+    "meetingPoint": "하이브 파티 채널 · 서버 내 진행 가능 장소와 월드 확인 후 이동",
+    "capacity": 12,
+    "durationMinutes": 70,
+    "preferredTime": "토요일 20:30"
+  },
+  {
+    "sampleKey": "party-raid-1",
+    "contentKey": "raid",
+    "title": "[예시] 레이드 · 입문 레이드 한 바퀴",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n참가자 수준에 맞는 레이드를 정해서 한 번 돌아봅니다. 처음 가는 분도 편하게 질문해 주세요. 평소 사용하는 장비로 준비하며 특정 무기나 빌드는 요구하지 않습니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 목적지 및 월드를 먼저 합의",
+    "capacity": 4,
+    "durationMinutes": 45,
+    "preferredTime": "평일 20:00"
+  },
+  {
+    "sampleKey": "party-raid-2",
+    "contentKey": "raid",
+    "title": "[예시] 레이드 · 퇴근 후 짧은 협동",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n저녁에 부담 없이 협동 콘텐츠 한 번 진행할 분을 모십니다. 목적지는 참가자와 정하고 준비 상태를 확인한 뒤 출발해요. 정해진 시간 이상 반복하지 않습니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 목적지 및 월드를 먼저 합의",
+    "capacity": 4,
+    "durationMinutes": 50,
+    "preferredTime": "평일 21:00"
+  },
+  {
+    "sampleKey": "party-raid-3",
+    "contentKey": "raid",
+    "title": "[예시] 레이드 · 초행 설명 있는 파티",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n설명을 들으며 레이드 흐름을 익히는 모집입니다. 빠른 클리어 기록보다는 이해하고 마치는 것을 목표로 해요. 음성은 선택이고 질문은 텍스트로 남겨도 괜찮습니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 목적지 및 월드를 먼저 합의",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 15:00"
+  },
+  {
+    "sampleKey": "party-raid-4",
+    "contentKey": "raid",
+    "title": "[예시] 레이드 · 주말 두 바퀴 이내",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n주말에 같은 목적지를 최대 두 번 정도 함께 도는 모집입니다. 참가자 준비에 맞는 곳을 선택하고 중간 휴식도 가집니다. 시간에 맞춰 종료하며 추가 참여를 요구하지 않습니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 목적지 및 월드를 먼저 합의",
+    "capacity": 4,
+    "durationMinutes": 75,
+    "preferredTime": "일요일 16:00"
+  },
+  {
+    "sampleKey": "party-raid-5",
+    "contentKey": "raid",
+    "title": "[예시] 레이드 · 복귀자 감각 회복",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n복귀 후 협동 플레이 감각을 되찾고 싶은 분들과 레이드를 돌아봅니다. 입장 준비와 진행 순서를 함께 확인해요. 경험이나 장비 점수 기준 없이 부담 없이 참여할 수 있습니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 목적지 및 월드를 먼저 합의",
+    "capacity": 4,
+    "durationMinutes": 55,
+    "preferredTime": "금요일 20:30"
+  },
+  {
+    "sampleKey": "party-farm-1",
+    "contentKey": "farm",
+    "title": "[예시] 파밍 · 기본 재료 한 시간",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n기본 재료가 필요한 분들과 동선을 정해 한 시간 정도 파밍합니다. 필요한 재료를 먼저 공유하고 서로 이동을 도와요. 특정 양을 채워야 하는 목표나 경쟁은 없습니다.",
+    "meetingPoint": "하이브 파티 채널 · 목적지와 채집 동선은 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "평일 20:00"
+  },
+  {
+    "sampleKey": "party-farm-2",
+    "contentKey": "farm",
+    "title": "[예시] 파밍 · 주말 모드 파밍 동행",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n모드 파밍을 같이 할 분들을 모집합니다. 목적지는 참가자의 준비와 관심에 맞춰 정하고 횟수도 무리 없이 맞춰요. 좋은 결과가 나오지 않아도 종료 시간을 지킵니다.",
+    "meetingPoint": "하이브 파티 채널 · 목적지와 채집 동선은 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 14:00"
+  },
+  {
+    "sampleKey": "party-farm-3",
+    "contentKey": "farm",
+    "title": "[예시] 파밍 · 복귀자 재료 정리",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n복귀 후 무엇부터 모을지 정리하고 가까운 동선부터 같이 돌아봅니다. 각자 필요한 재료를 댓글로 적어 주세요. 이동이 느리거나 준비가 부족해도 괜찮습니다.",
+    "meetingPoint": "하이브 파티 채널 · 목적지와 채집 동선은 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 50,
+    "preferredTime": "일요일 13:00"
+  },
+  {
+    "sampleKey": "party-farm-4",
+    "contentKey": "farm",
+    "title": "[예시] 파밍 · 저녁 짧은 루트 한 바퀴",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n저녁에 짧은 파밍 동선 한 바퀴만 함께 돕니다. 필요 품목과 이동 방법을 출발 전에 맞춰요. 음성 없이 텍스트로 소통해도 되고 추가 반복은 선택입니다.",
+    "meetingPoint": "하이브 파티 채널 · 목적지와 채집 동선은 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 40,
+    "preferredTime": "평일 21:30"
+  },
+  {
+    "sampleKey": "party-farm-5",
+    "contentKey": "farm",
+    "title": "[예시] 파밍 · 여유로운 주말 재료 모임",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n주말에 여유롭게 필요한 재료를 모으는 파티입니다. 각자 목표를 공유한 뒤 겹치는 동선부터 이동해요. 정해진 시간 안에서 자유롭게 쉬었다가 함께할 수 있습니다.",
+    "meetingPoint": "하이브 파티 채널 · 목적지와 채집 동선은 출발 전에 확인",
+    "capacity": 4,
+    "durationMinutes": 75,
+    "preferredTime": "토요일 17:00"
+  },
+  {
+    "sampleKey": "party-exploration-1",
+    "contentKey": "exploration",
+    "title": "[예시] 탐험 · 지도 열며 산책하기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n아직 가보지 않은 지역을 함께 둘러보는 탐험 모집입니다. 목적지는 참가자와 정하고 이동 속도도 천천히 맞춰요. 필요한 회복 아이템만 챙기고 가볍게 출발합니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 출발 지점 및 월드 합의",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 13:30"
+  },
+  {
+    "sampleKey": "party-exploration-2",
+    "contentKey": "exploration",
+    "title": "[예시] 탐험 · 초보 길 찾기 동행",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n길이나 이동 경로가 낯선 분들과 출발 지점부터 같이 움직입니다. 모르는 곳은 잠깐 멈춰 확인하고, 긴 전투나 높은 장비 조건은 피해서 동선을 정해요.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 출발 지점 및 월드 합의",
+    "capacity": 4,
+    "durationMinutes": 50,
+    "preferredTime": "평일 20:00"
+  },
+  {
+    "sampleKey": "party-exploration-3",
+    "contentKey": "exploration",
+    "title": "[예시] 탐험 · 사진 찍는 주말 탐험",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n주말에 풍경을 구경하고 사진도 남기며 느긋하게 이동합니다. 클리어 목표나 파밍 효율은 따지지 않아요. 참가자와 가보고 싶은 장소를 먼저 정합니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 출발 지점 및 월드 합의",
+    "capacity": 4,
+    "durationMinutes": 75,
+    "preferredTime": "일요일 15:00"
+  },
+  {
+    "sampleKey": "party-exploration-4",
+    "contentKey": "exploration",
+    "title": "[예시] 탐험 · 복귀 후 지역 둘러보기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n복귀 후 낯선 지역을 함께 둘러보는 모임입니다. 필요한 준비와 이동 수단을 먼저 확인하고 무리 없는 구간부터 가요. 음성은 선택이며 질문도 편하게 나눕니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 출발 지점 및 월드 합의",
+    "capacity": 4,
+    "durationMinutes": 60,
+    "preferredTime": "금요일 20:30"
+  },
+  {
+    "sampleKey": "party-exploration-5",
+    "contentKey": "exploration",
+    "title": "[예시] 탐험 · 저녁 짧은 탐험 코스",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n저녁에 한 시간 안으로 마칠 수 있는 짧은 코스를 같이 걷습니다. 늦게까지 남아야 할 부담 없이 출발과 종료 시간을 지켜요. 장비나 숙련도 기준은 없습니다.",
+    "meetingPoint": "하이브 파티 채널 · 참가자와 출발 지점 및 월드 합의",
+    "capacity": 4,
+    "durationMinutes": 45,
+    "preferredTime": "평일 21:00"
+  },
+  {
+    "sampleKey": "party-other-1",
+    "contentKey": "other",
+    "title": "[예시] 기타 · 첫 인사와 질문 모임",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n하이브에서 처음 파티를 찾는 분들과 짧게 인사하는 모임입니다. 궁금한 내용을 한두 가지 가져와도 좋고 편하게 듣기만 참여해도 돼요. 게임 내 활동은 참가자와 함께 정합니다.",
+    "meetingPoint": "하이브 파티 채널 · 게임 내 모임 장소는 참가 확인 후 안내",
+    "capacity": 6,
+    "durationMinutes": 40,
+    "preferredTime": "평일 20:30"
+  },
+  {
+    "sampleKey": "party-other-2",
+    "contentKey": "other",
+    "title": "[예시] 기타 · 거점 구경하고 아이디어 나누기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n서로의 거점을 구경하며 배치와 꾸미기 아이디어를 나눕니다. 큰 규모나 완성된 거점일 필요는 없어요. 방문 가능한 곳과 순서를 참가자와 먼저 맞춥니다.",
+    "meetingPoint": "하이브 파티 채널 · 게임 내 모임 장소는 참가 확인 후 안내",
+    "capacity": 6,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 15:00"
+  },
+  {
+    "sampleKey": "party-other-3",
+    "contentKey": "other",
+    "title": "[예시] 기타 · 장비 준비 서로 확인하기",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n협동 콘텐츠에 가기 전에 현재 장비와 소모품을 가볍게 확인하는 모임입니다. 정답 빌드를 강요하지 않고 부족한 부분을 함께 정리해요. 초보와 복귀 유저 모두 환영합니다.",
+    "meetingPoint": "하이브 파티 채널 · 게임 내 모임 장소는 참가 확인 후 안내",
+    "capacity": 6,
+    "durationMinutes": 45,
+    "preferredTime": "일요일 17:00"
+  },
+  {
+    "sampleKey": "party-other-4",
+    "contentKey": "other",
+    "title": "[예시] 기타 · 주말 자유 활동 한 시간",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n정해진 공략 목표 없이 참가자끼리 하고 싶은 활동을 고릅니다. 탐험이나 짧은 파밍 등 무리 없는 내용으로 맞춰요. 중간에 쉬거나 먼저 마쳐도 괜찮습니다.",
+    "meetingPoint": "하이브 파티 채널 · 게임 내 모임 장소는 참가 확인 후 안내",
+    "capacity": 6,
+    "durationMinutes": 60,
+    "preferredTime": "토요일 20:00"
+  },
+  {
+    "sampleKey": "party-other-5",
+    "contentKey": "other",
+    "title": "[예시] 기타 · 복귀 유저 적응 수다",
+    "description": "화면 구성용 예시 모집입니다. 실제 개최 일정이 확정된 모집은 아닙니다.\n\n복귀한 분들과 현재 막히는 부분을 나누고 게임 안에서 가볍게 함께 움직입니다. 듣기만 참여해도 되고 음성을 사용하지 않아도 괜찮아요. 정해진 시간에 맞춰 마칩니다.",
+    "meetingPoint": "하이브 파티 채널 · 게임 내 모임 장소는 참가 확인 후 안내",
+    "capacity": 6,
+    "durationMinutes": 45,
+    "preferredTime": "금요일 21:30"
+  }
+]

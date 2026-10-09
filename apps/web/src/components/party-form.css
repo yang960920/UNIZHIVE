@@ -1,0 +1,36 @@
+.party-form {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.party-form .cms-fields {
+  gap: 22px;
+}
+.party-form .cms-calendar-controls {
+  grid-template-columns: minmax(0, 1fr) 140px;
+}
+@media (max-width: 360px) {
+  .party-form .cms-calendar-controls {
+    grid-template-columns: 1fr;
+  }
+}
+.party-form-note {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 13px;
+}
+.party-participant-editor {
+  width: 100%;
+  margin-top: 10px;
+}
+.party-participant-editor > summary {
+  color: var(--primary);
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.party-participant-editor .cms-fields {
+  gap: 12px;
+  padding-top: 8px;
+}

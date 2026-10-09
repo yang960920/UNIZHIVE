@@ -1,0 +1,545 @@
+{
+  "schemaVersion": "build-data-evidence.v0.1",
+  "kind": "HISTORICAL_EVIDENCE",
+  "checkedAt": "2026-10-06",
+  "sources": [
+    {
+      "id": "effects-E01",
+      "title": "Version 3.0.4 Update Announcement (August 24)",
+      "url": "https://www.oncehuman.game/news/update/20260824/40780_1312014.html",
+      "publishedAt": "2026-08-24",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "effects-E02",
+      "title": "Version 2.3.6 Update Announcement (April 8)",
+      "url": "https://www.oncehuman.game/news/update/20260408/40780_1295195.html",
+      "publishedAt": "2026-04-08",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "effects-E03",
+      "title": "Version 2.3.8 Update Announcement (May 13)",
+      "url": "https://www.oncehuman.game/m/news/official/20260513/40779_1300125.html",
+      "publishedAt": "2026-05-13",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "effects-E04",
+      "title": "Version 2.2.3 Update Announcement (December 10)",
+      "url": "https://www.oncehuman.game/news/update/20251210/40780_1275885.html",
+      "publishedAt": "2025-12-10",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "effects-E05",
+      "title": "Version 2.3.4 Update Announcement (March 11)",
+      "url": "https://www.oncehuman.game/m/news/update/20260311/40780_1290685.html",
+      "publishedAt": "2026-03-11",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "effects-E06",
+      "title": "ONCE HUMAN VERSION 1.4.4 UPDATE ANNOUNCEMENT",
+      "url": "https://www.oncehuman.game/news/update/20250326/40780_1222452.html",
+      "publishedAt": "2025-03-26",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "effects-E07",
+      "title": "Version 3.0.1 Update Announcement (July 9)",
+      "url": "https://www.oncehuman.game/news/update/20260709/40780_1307147.html",
+      "publishedAt": "2026-07-09",
+      "checkedAt": "2026-10-06"
+    },
+    {
+      "id": "effects-E08",
+      "title": "Version 2.2.0 Update Announcement (October 29)",
+      "url": "https://www.oncehuman.game/news/update/20251029/40780_1267745.html",
+      "publishedAt": "2025-10-29",
+      "checkedAt": "2026-10-06"
+    }
+  ],
+  "samples": [
+    {
+      "id": "evidence-dr-teddy-v2-2-3",
+      "category": "DEVIATION",
+      "name": "Dr. Teddy",
+      "patchContext": "Version 2.2.3, 2025-12-10 update announcement",
+      "scenarioContext": "Deviation: Survive, Capture, Preserve",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Dr. Teddy",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E04"],
+          "note": "공지의 영문 이름. 한국어 명칭과 game ID는 미검증."
+        },
+        {
+          "path": "skill.kindLabel",
+          "value": "Psi Skill",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E04"],
+          "note": "해당 시나리오의 스킬 명칭."
+        },
+        {
+          "path": "skill.scalingStatLabel",
+          "value": "Attack",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E04"],
+          "note": "원문의 기준 스탯 표기만 보존."
+        },
+        {
+          "path": "skill.healingCoefficientPercent",
+          "value": 180,
+          "unit": "PERCENT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E04"],
+          "note": "역사적 공지의 회복당 계수. 계산 함수가 아님."
+        },
+        {
+          "path": "skill.healCount",
+          "value": 6,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E04"],
+          "note": "공지의 회복 횟수."
+        },
+        {
+          "path": "skill.healIntervalSeconds",
+          "value": null,
+          "unit": "SECONDS",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "회복 간격 미공개."
+        },
+        {
+          "path": "skill.scalingStatOwner",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "Attack의 소유자와 장비 상속 방식 미확인."
+        },
+        {
+          "path": "skill.snapshotPolicy",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "계산 시점 미확인."
+        }
+      ],
+      "notes": [
+        "일반 시즌의 동명 Deviation에 자동 적용하지 않는다.",
+        "레벨·등급별 표와 현재 클라이언트 검증이 필요하다."
+      ]
+    },
+    {
+      "id": "evidence-invincible-sun-v2-3-4",
+      "category": "DEVIATION",
+      "name": "Invincible Sun",
+      "patchContext": "Version 2.3.4, 2026-03-11 update announcement",
+      "scenarioContext": "Open-world multiplayer; complete applicable scenario list unspecified",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Invincible Sun",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E05"],
+          "note": "공지의 영문 이름."
+        },
+        {
+          "path": "skill.zoneDurationSeconds",
+          "value": 8,
+          "unit": "SECONDS",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E05"],
+          "note": "패치 공지의 화염 지대 지속시간."
+        },
+        {
+          "path": "skill.appliesEffect",
+          "value": "Burn",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E05"],
+          "note": "지대가 부여하는 효과."
+        },
+        {
+          "path": "skill.stacksPerApplication",
+          "value": 2,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E05"],
+          "note": "한 번의 Burn 부여 스택 수."
+        },
+        {
+          "path": "skill.applicationIntervalSeconds",
+          "value": 3,
+          "unit": "SECONDS",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E05"],
+          "note": "스택 부여 간격이며 피해 tick 간격이 아님."
+        },
+        {
+          "path": "skill.damageTickIntervalSeconds",
+          "value": null,
+          "unit": "SECONDS",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "위 부여 간격에서 피해 간격을 도출할 수 없음."
+        },
+        {
+          "path": "effect.burnStackLimit",
+          "value": null,
+          "unit": "COUNT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "이 공지로 범용 Burn 최대 스택을 확정하지 않음."
+        },
+        {
+          "path": "skill.tickBoundaryPolicy",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "시작·종료 순간 적용과 갱신 순서 미확인."
+        }
+      ],
+      "notes": [
+        "부여 빈도와 피해 빈도는 별도 데이터다.",
+        "일반 Burn 피해 공식이나 총 tick 수를 구현하지 않는다."
+      ]
+    },
+    {
+      "id": "evidence-suppression-ap-ammo-v1-4-4",
+      "category": "AMMO",
+      "name": "Suppression AP Ammo",
+      "patchContext": "Version 1.4.4, 2025-03-26 update announcement",
+      "scenarioContext": null,
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Suppression AP Ammo",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E06"],
+          "note": "공지에 기재된 탄약 이름."
+        },
+        {
+          "path": "antiTypeTargetLabel",
+          "value": "Deviants",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E06"],
+          "note": "해당 공지에서 효과적인 대상으로 설명."
+        },
+        {
+          "path": "antiTypeDamageBonusPercent",
+          "value": null,
+          "unit": "PERCENT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "정확한 배율 미기재."
+        },
+        {
+          "path": "caliberLabel",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "현재 탄약 계열 및 호환표 미확인."
+        },
+        {
+          "path": "armorPenetrationPercent",
+          "value": null,
+          "unit": "PERCENT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "AP라는 이름만으로 관통 수치를 추정하지 않음."
+        }
+      ],
+      "notes": ["v2.3.6의 탄약 종류·제작 변경 이후 현재 호환성을 다시 확인해야 한다."]
+    },
+    {
+      "id": "evidence-sparkling-pumpkin-soup-v3-0-4",
+      "category": "FOOD",
+      "name": "Sparkling Pumpkin Soup",
+      "patchContext": "Version 3.0.4, 2026-08-24 update announcement",
+      "scenarioContext": null,
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Sparkling Pumpkin Soup",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E01"],
+          "note": "공지에 기재된 영문 이름."
+        },
+        {
+          "path": "restoresResourceLabel",
+          "value": "Energy",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E01"],
+          "note": "회복 자원 정정 내용."
+        },
+        {
+          "path": "restoreAmount",
+          "value": null,
+          "unit": null,
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "자원 회복량 미기재."
+        },
+        {
+          "path": "effect.magnitudePercent",
+          "value": null,
+          "unit": "PERCENT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "개별 버프량 미확인."
+        },
+        {
+          "path": "effect.durationSeconds",
+          "value": null,
+          "unit": "SECONDS",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "지속시간 미기재."
+        }
+      ],
+      "notes": ["전체 레시피·재료·클래스별 강화표를 구성하는 근거는 아니다."]
+    },
+    {
+      "id": "evidence-whimsical-drink-v3-0-4",
+      "category": "DRINK",
+      "name": "Whimsical Drink",
+      "patchContext": "Version 3.0.4, 2026-08-24 update announcement",
+      "scenarioContext": null,
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Whimsical Drink",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E01"],
+          "note": "공지에 기재된 영문 이름."
+        },
+        {
+          "path": "combatBuffException",
+          "value": true,
+          "unit": "BOOLEAN",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E01"],
+          "note": "음식 위주의 전투 스탯 버프 분류에서 음료 예외로 명시."
+        },
+        {
+          "path": "effect.statLabel",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "이 공지에는 개별 강화 스탯이 없음."
+        },
+        {
+          "path": "effect.magnitudePercent",
+          "value": null,
+          "unit": "PERCENT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "효과량 미기재."
+        },
+        {
+          "path": "effect.durationSeconds",
+          "value": null,
+          "unit": "SECONDS",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "지속시간 미기재."
+        }
+      ],
+      "notes": ["v2.3.6에서 소개된 이름 미공개 음료와 같은 아이템이라고 추정하지 않는다."]
+    },
+    {
+      "id": "evidence-chef-glutton-v2-3-8",
+      "category": "EFFECT",
+      "name": "Glutton",
+      "patchContext": "Version 2.3.8, 2026-05-13 update announcement",
+      "scenarioContext": "Chef class; complete applicable scenario list unspecified",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Glutton",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E03"],
+          "note": "공지의 Chef trait 이름."
+        },
+        {
+          "path": "requiredClassLabel",
+          "value": "Chef",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E03"],
+          "note": "해당 클래스 trait 문맥."
+        },
+        {
+          "path": "foodEffectsLimit",
+          "value": 2,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E03"],
+          "note": "공지의 동시 음식 효과 한도."
+        },
+        {
+          "path": "drinkEffectsLimit",
+          "value": 2,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E03"],
+          "note": "공지의 동시 음료 효과 한도."
+        },
+        {
+          "path": "overwriteRule",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "교체·갱신·충돌 처리 미기재."
+        },
+        {
+          "path": "nonChefFoodEffectsLimit",
+          "value": null,
+          "unit": "COUNT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "다른 클래스의 기본 한도로 확대하지 않음."
+        },
+        {
+          "path": "ingredientPotencyProgression",
+          "value": null,
+          "unit": null,
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "선택 재료·반복 섭취의 전체 증가표 미확보."
+        }
+      ],
+      "notes": ["클래스 조건을 가진 규칙이며 모든 빌드의 기본 슬롯 수가 아니다."]
+    },
+    {
+      "id": "evidence-ghost-link-overload-v3-0-1",
+      "category": "EFFECT",
+      "name": "Overload",
+      "patchContext": "Version 3.0.1, 2026-07-09 update announcement",
+      "scenarioContext": "Non-RaidZone mode; Ghost Link 4-piece set effect",
+      "currentValidity": "UNVERIFIED",
+      "fields": [
+        {
+          "path": "name",
+          "value": "Overload",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E07"],
+          "note": "해당 공지의 상태 이름. 다른 동명 효과와 동일시하지 않음."
+        },
+        {
+          "path": "sourceSetLabel",
+          "value": "Ghost Link Set",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E07"],
+          "note": "효과의 장비 문맥."
+        },
+        {
+          "path": "requiredSetPieces",
+          "value": 4,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E07"],
+          "note": "공지의 세트 조건."
+        },
+        {
+          "path": "requiredSynchronizeStacks",
+          "value": 10,
+          "unit": "COUNT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E07"],
+          "note": "해당 효과 발동 전 스택 조건."
+        },
+        {
+          "path": "triggerConditionLabel",
+          "value": "Attack an enemy at required Synchronize stacks",
+          "unit": "TEXT",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E07"],
+          "note": "공지의 발동 조건을 짧게 의역."
+        },
+        {
+          "path": "durationSeconds",
+          "value": 5,
+          "unit": "SECONDS",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E07"],
+          "note": "공지의 효과 지속시간."
+        },
+        {
+          "path": "damageTickIntervalSeconds",
+          "value": 1,
+          "unit": "SECONDS",
+          "status": "OFFICIAL",
+          "sourceIds": ["effects-E07"],
+          "note": "매초 피해라는 설명만 보존."
+        },
+        {
+          "path": "damagePerTick",
+          "value": null,
+          "unit": "DAMAGE",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "피해량과 계수 미기재."
+        },
+        {
+          "path": "tickBoundaryPolicy",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "총 tick 수·시작/종료 경계 미확인."
+        },
+        {
+          "path": "ownerStackKey",
+          "value": null,
+          "unit": "TEXT",
+          "status": "UNVERIFIED",
+          "sourceIds": [],
+          "note": "여러 Meta의 중첩 처리 미확인."
+        }
+      ],
+      "notes": [
+        "v3.0.4에서 Ghost Link 3-piece의 발동 조건이 추가 변경되었다.",
+        "서로 다른 패치의 설명을 합쳐 현재 실행 규칙으로 만들지 않는다."
+      ]
+    }
+  ],
+  "unknowns": [
+    "모든 표본의 현재 패치 유효성 및 한국어 클라이언트 명칭",
+    "공식 내부 item/effect ID와 전체 카탈로그",
+    "Deviation 인스턴스 레벨·등급·trait별 수치표 및 소유자 스탯 상속",
+    "탄약 통합 이후의 모든 무기 호환·레시피·산출량과 Anti-Type 배율",
+    "현재 음식/음료의 개별 효과량·시간·재료·클래스·부패·교체 규칙",
+    "효과별 스탯 버킷·치명타·약점·저항·스냅샷·반올림·확률 알고리즘",
+    "중첩·다중 대상·서로 다른 소유자·tick 경계와 동시 사건 처리 순서",
+    "이름 미공개 신규 Weapon DMG 음료와 알려진 음료의 동일성"
+  ]
+}

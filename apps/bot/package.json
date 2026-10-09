@@ -1,0 +1,13 @@
+{
+  "name": "@uniz/bot",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@uniz/domain": "workspace:*",
+    "@uniz/build-engine": "workspace:*",
+    "@uniz/integrations": "workspace:*"
+  }
+}

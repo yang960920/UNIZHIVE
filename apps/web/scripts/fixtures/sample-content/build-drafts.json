@@ -1,0 +1,3060 @@
+[
+  {
+    "key": "hive-rifle-frost",
+    "visibility": "HIVE",
+    "title": "[예시] 빙혼 · 탐험 준비",
+    "description": "빙혼, 프로스트 블라스트 모듈, 극한의 해파리를 담은 프로스트 예시 구성입니다. 탐험이나 가벼운 전투 전에 장비를 확인하는 용도로 마련했습니다.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10413301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500006",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10123301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10914101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-21001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-22001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-25000101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-26000101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-99000003",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5002",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-extreme-freeze",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-5013",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-4",
+          "itemId": "cradle-5016",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["지역 탐험", "일반 전투"],
+        "tags": ["예시", "소총", "프로스트", "탐험"],
+        "notes": "프로스트 테마로 장비 선택을 모아둔 예시입니다. 이동이 많은 탐험에서 실제 사용감과 감염물 사용 간격을 메모해 다음 버전에 반영해보세요."
+      },
+      "notes": "탐험 메모\n• 방문할 거점과 귀환 지점 미리 정하기\n• 감염물 사용 후 조준과 이동이 편한지 확인하기\n• 오래 머물렀던 전투 구간만 짧게 남기기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-21001501": "헤비 듀티 헬멧",
+        "armor-22001501": "헤비 듀티 상의",
+        "armor-23001501": "헤비 듀티 하의",
+        "armor-24001501": "헤비 듀티 신발",
+        "armor-25000101": "스카우트 장갑",
+        "armor-26000101": "스카우트 마스크",
+        "cradle-5002": "중량형 무장 마스터리",
+        "cradle-5013": "원소 감응",
+        "cradle-5016": "강인함",
+        "cradle-extreme-freeze": "극한 동결",
+        "deviant-99000003": "극한의 해파리",
+        "module-19500006": "프로스트 블라스트<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10123301": "리볼버-귀상어",
+        "weapon-10413301": "SOCR - 빙혼",
+        "weapon-10914101": "노던 파이크"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "hive-smg-power-surge",
+    "visibility": "HIVE",
+    "title": "[예시] 외부 공간 · 사일로 순회",
+    "description": "외부 공간과 파워서지 모듈을 연결한 기관단총 예시입니다. 사일로를 함께 돌기 전 장비 선택과 이동 동선을 이야기할 때 참고할 수 있습니다.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10333401",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500032",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10123301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10941101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-21001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-22001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-25001301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-26001301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-butterfly",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5008",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-5013",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-tactical-combo",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-4",
+          "itemId": "cradle-5016",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["사일로 파밍", "사일로 순회"],
+        "tags": ["예시", "기관단총", "파워서지", "사일로"],
+        "notes": "가까운 거리에서 이동하며 사격하는 구성을 기록했습니다. 빠른 클리어 기록보다 길을 익히는 파티를 염두에 두고, 사격 거리와 장전 타이밍을 본인에게 맞춰 조정하세요."
+      },
+      "notes": "파티 메모\n• 출발 전에 탄약과 치료제 확인하기\n• 방을 넘기기 전 뒤처진 파티원 기다리기\n• 보조무기 사용이 편했던 구간을 기록하기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-21001501": "헤비 듀티 헬멧",
+        "armor-22001501": "헤비 듀티 상의",
+        "armor-23001501": "헤비 듀티 하의",
+        "armor-24001501": "헤비 듀티 신발",
+        "armor-25001301": "팔콘 장갑",
+        "armor-26001301": "팔콘 마스크",
+        "cradle-5008": "경량 무장 마스터리",
+        "cradle-5013": "원소 감응",
+        "cradle-5016": "강인함",
+        "cradle-tactical-combo": "전술 조합",
+        "deviant-butterfly": "나비",
+        "module-19500032": "파워서지 증폭<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10123301": "리볼버-귀상어",
+        "weapon-10333401": "MPS7 - 외부 공간",
+        "weapon-10941101": "군용 단검"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "hive-rifle-shrapnel",
+    "visibility": "HIVE",
+    "title": "[예시] 마지막 용기 · 레이드 준비",
+    "description": "마지막 용기를 중심으로 주무기·보조무기·울프 방어구를 한눈에 기록한 소총 구성입니다. 파티 전에 장비를 맞춰보는 용도로 가볍게 시작하세요.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10411301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500001",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10721301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10931301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-lonewolf-hood",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-lonewolf-jacket",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-lonewolf-pants",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-lonewolf-boots",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-25001301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-26001301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-99000011",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5002",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-tactical-combo",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-critical-combo",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-4",
+          "itemId": "cradle-unyielding",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["레이드 준비", "보스 연습"],
+        "tags": ["예시", "소총", "유산탄", "울프"],
+        "notes": "보스 도전 전 주무기와 보조무기의 전환 순서를 연습하는 예시입니다. 보유한 방어구가 다르면 빈 부위부터 채우고, 모듈 레벨은 본인 장비를 확인한 뒤 입력하세요."
+      },
+      "notes": "연습 메모\n• 한 탄창 사격 후 안전한 위치에서 장전하기\n• 전투 감염물 사용 시점을 파티원과 정하기\n• 보스별로 조준이 불편했던 구간을 다음 버전에 기록하기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-25001301": "팔콘 장갑",
+        "armor-26001301": "팔콘 마스크",
+        "armor-lonewolf-boots": "고독한 늑대 신발",
+        "armor-lonewolf-hood": "고독한 늑대 모자",
+        "armor-lonewolf-jacket": "고독한 늑대 재킷",
+        "armor-lonewolf-pants": "고독한 늑대 하의",
+        "cradle-5002": "중량형 무장 마스터리",
+        "cradle-critical-combo": "크리티컬 콤보",
+        "cradle-tactical-combo": "전술 조합",
+        "cradle-unyielding": "불굴",
+        "deviant-99000011": "울프의 속삭임",
+        "module-19500001": "완전 격파<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10411301": "SOCR - 마지막 용기",
+        "weapon-10721301": "리커브 석궁",
+        "weapon-10931301": "도끼"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "hive-rifle-blaze",
+    "visibility": "HIVE",
+    "title": "[예시] 버닝 레이지 · 솔로 연습",
+    "description": "버닝 레이지와 버닝 파이어 모듈을 기준으로 장비를 묶었습니다. 혼자 전투를 연습하며 파이로 다이노 사용 순서까지 기록해보기 좋은 예시입니다.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10421301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500012",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10112301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10931301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-21001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-22001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-25001401",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-26001401",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-99000030",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5002",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-5112",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-5013",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-4",
+          "itemId": "cradle-unyielding",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["솔로 연습", "일반 전투"],
+        "tags": ["예시", "소총", "블레이즈", "파이로 다이노"],
+        "notes": "장비와 모듈의 이름을 확인하고 본인 세팅을 옮겨 적는 출발점입니다. 같은 무기라도 모듈과 개체 등급은 서로 다를 수 있으니 직접 확인한 값만 입력하세요."
+      },
+      "notes": "기록 메모\n• 주무기와 감염물 사용 순서 정해보기\n• 치료제 사용이 필요했던 순간 적어두기\n• 모듈을 바꿨을 때 사용감이 달라진 점만 남기기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-21001501": "헤비 듀티 헬멧",
+        "armor-22001501": "헤비 듀티 상의",
+        "armor-23001501": "헤비 듀티 하의",
+        "armor-24001501": "헤비 듀티 신발",
+        "armor-25001401": "블래스트 장갑",
+        "armor-26001401": "블래스트 마스크",
+        "cradle-5002": "중량형 무장 마스터리",
+        "cradle-5013": "원소 감응",
+        "cradle-5112": "블레이징 버스트",
+        "cradle-unyielding": "불굴",
+        "deviant-99000030": "파이로 다이노",
+        "module-19500012": "버닝 파이어<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10112301": "데저트이글-화이트 샤크",
+        "weapon-10421301": "AKM-버닝 레이지",
+        "weapon-10931301": "도끼"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "hive-sniper-precision",
+    "visibility": "HIVE",
+    "title": "[예시] 블랙 팬서 · 파티 준비",
+    "description": "블랙 팬서와 레니게이드 방어구를 중심으로 조준 연습용 구성을 마련했습니다. 파티 전에 사격 거리와 보조 소총 전환 흐름을 함께 확인해보세요.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10521301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10421201",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10941101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-21000801",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-22000801",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23000801",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24000801",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-25000401",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-26000401",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-butterfly",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5003",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-5113",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-tactical-combo",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-4",
+          "itemId": "cradle-5016",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["파티 준비", "조준 연습"],
+        "tags": ["예시", "저격총", "약점", "레니게이드"],
+        "notes": "천천히 조준하고 무기를 전환하는 흐름을 익히는 예시입니다. 조준경과 탄약은 실제 보유 항목의 호환을 확인한 뒤 추가하고, 가까운 전투에서는 위치 이동부터 연습하세요."
+      },
+      "notes": "조준 메모\n• 편안한 사격 거리 찾기\n• 재장전 중 엄폐할 위치 정하기\n• 맞추기 어려웠던 적의 약점 위치 메모하기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-21000801": "레니게이드 후드",
+        "armor-22000801": "레니게이드 외투",
+        "armor-23000801": "레니게이드 하의",
+        "armor-24000801": "레니게이드 신발",
+        "armor-25000401": "에이전트 장갑",
+        "armor-26000401": "에이전트 마스크",
+        "cradle-5003": "정밀 무장 마스터리",
+        "cradle-5016": "강인함",
+        "cradle-5113": "원거리 타격",
+        "cradle-tactical-combo": "전술 조합",
+        "deviant-butterfly": "나비",
+        "weapon-10421201": "AKM-개척자",
+        "weapon-10521301": "AWM-블랙 팬서",
+        "weapon-10941101": "군용 단검"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "public-rifle-general",
+    "visibility": "PUBLIC",
+    "title": "[예시] 마지막 용기 · 소총 기본형",
+    "description": "소총을 기준으로 무기와 방어구를 채워본 기본 예시입니다. 팔콘 방어구와 활성화 젤을 넣어 본인 장비로 바꿔 기록하기 쉽게 구성했습니다.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10411301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500001",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10123301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10931301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-21001301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-22001301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23001301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24001301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-lonewolf-gloves",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-lonewolf-mask",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-99000008",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5002",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-tactical-combo",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-5016",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["장비 기록 입문", "일반 전투"],
+        "tags": ["예시", "소총", "기본형", "팔콘"],
+        "notes": "장비 슬롯을 채우는 순서와 메모 기능을 확인하는 공개 예시입니다. 주무기부터 본인 장비로 바꾸고, 아직 없는 장비는 비워둔 채 저장해도 됩니다."
+      },
+      "notes": "처음 기록할 때\n• 주무기와 방어구 이름부터 확인하기\n• 모르는 레벨과 개체 등급은 비워두기\n• 다음에 바꾸고 싶은 부위 하나만 정하기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-21001301": "팔콘 모자",
+        "armor-22001301": "팔콘 외투",
+        "armor-23001301": "팔콘 하의",
+        "armor-24001301": "팔콘 신발",
+        "armor-lonewolf-gloves": "고독한 늑대 장갑",
+        "armor-lonewolf-mask": "고독한 늑대 마스크",
+        "cradle-5002": "중량형 무장 마스터리",
+        "cradle-5016": "강인함",
+        "cradle-tactical-combo": "전술 조합",
+        "deviant-99000008": "활성화 젤",
+        "module-19500001": "완전 격파<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10123301": "리볼버-귀상어",
+        "weapon-10411301": "SOCR - 마지막 용기",
+        "weapon-10931301": "도끼"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "public-rifle-power-surge",
+    "visibility": "PUBLIC",
+    "title": "[예시] 아웃사이더 · 파워서지 기본형",
+    "description": "아웃사이더를 주무기로 둔 파워서지 테마의 공개 예시입니다. 기관단총 형태의 하이브 구성과 비교해 무기 선택을 기록해볼 수 있습니다.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10412301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500032",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10321201",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10941101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-22001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-25001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-26001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-21000101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24000101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-99000008",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5002",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-5013",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-5016",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["장비 기록 입문", "파워서지 확인"],
+        "tags": ["예시", "소총", "파워서지", "기본형"],
+        "notes": "익숙한 소총 조작으로 세팅을 기록하는 예시입니다. 무기를 바꾸었을 때 장전 습관과 사격 거리가 어떻게 달라지는지만 가볍게 적어보세요."
+      },
+      "notes": "비교 메모\n• 기존에 쓰던 소총과 사격감 비교하기\n• 보조무기로 바꾸는 상황 하나 정하기\n• 모듈 레벨은 직접 확인한 뒤 입력하기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-21000101": "스카우트 후드",
+        "armor-22001501": "헤비 듀티 상의",
+        "armor-23001501": "헤비 듀티 하의",
+        "armor-24000101": "스카우트 생존 신발",
+        "armor-25001501": "헤비 듀티 장갑",
+        "armor-26001501": "헤비 듀티 마스크",
+        "cradle-5002": "중량형 무장 마스터리",
+        "cradle-5013": "원소 감응",
+        "cradle-5016": "강인함",
+        "deviant-99000008": "활성화 젤",
+        "module-19500032": "파워서지 증폭<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10321201": "MP5 - 블루 타이거",
+        "weapon-10412301": "SCOR-아웃사이더",
+        "weapon-10941101": "군용 단검"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "public-frost-survival",
+    "visibility": "PUBLIC",
+    "title": "[예시] 빙혼 · 생존 우선형",
+    "description": "빙혼을 유지하면서 수호자 방어구와 닥터 테디를 넣은 변형 예시입니다. 전투에 익숙해지는 동안 회복과 이동을 함께 기록해볼 수 있습니다.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10413301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500006",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10211301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10914101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-21001001",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-22001001",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23001001",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24001001",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-25001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-26001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-dr-teddy",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5002",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-extreme-freeze",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-5010",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-4",
+          "itemId": "cradle-unyielding",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["전투 연습", "파티 준비"],
+        "tags": ["예시", "프로스트", "생존", "닥터 테디"],
+        "notes": "전투 중 조작 여유와 회복 타이밍을 관찰하는 예시입니다. 감염물과 크래들은 본인 시나리오의 해금·장착 조건을 확인한 뒤 사용하세요."
+      },
+      "notes": "생존 메모\n• 적을 피하면서 치료할 위치 찾기\n• 감염물 사용을 잊은 순간 기록하기\n• 가까운 전투에서 보조무기 전환 연습하기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-21001001": "수호자 모자",
+        "armor-22001001": "수호자 상의",
+        "armor-23001001": "수호자 하의",
+        "armor-24001001": "수호자 신발",
+        "armor-25001501": "헤비 듀티 장갑",
+        "armor-26001501": "헤비 듀티 마스크",
+        "cradle-5002": "중량형 무장 마스터리",
+        "cradle-5010": "빠른 구조",
+        "cradle-extreme-freeze": "극한 동결",
+        "cradle-unyielding": "불굴",
+        "deviant-dr-teddy": "닥터 테디",
+        "module-19500006": "프로스트 블라스트<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10211301": "배럴-듀얼 퓨리",
+        "weapon-10413301": "SOCR - 빙혼",
+        "weapon-10914101": "노던 파이크"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "public-lmg-blaze",
+    "visibility": "PUBLIC",
+    "title": "[예시] 곧 폭발이야! · 블레이즈 변형",
+    "description": "블레이즈 테마에서 주무기를 KVD로 바꿔본 경기관총 예시입니다. 버닝 레이지 구성과 함께 열어 장비 선택의 차이를 확인할 수 있습니다.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10631301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500012",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10421301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10931301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-21001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-22001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-25001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-26001501",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23001401",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24001401",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-99000030",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5002",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-5112",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-5013",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-4",
+          "itemId": "cradle-5016",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["일반 전투", "무기 비교"],
+        "tags": ["예시", "경기관총", "블레이즈", "변형"],
+        "notes": "무기 종류를 바꾸면서 장전과 이동의 리듬을 비교하는 예시입니다. 한 번에 장비를 모두 바꾸기보다 주무기부터 확인하고 사용감을 남겨보세요."
+      },
+      "notes": "변형 메모\n• 장전 중 이동할 위치 정하기\n• 소총과 경기관총의 조작 차이 적기\n• 파이로 다이노를 사용하는 상황 정하기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-21001501": "헤비 듀티 헬멧",
+        "armor-22001501": "헤비 듀티 상의",
+        "armor-23001401": "블래스트 하의",
+        "armor-24001401": "블래스트 신발",
+        "armor-25001501": "헤비 듀티 장갑",
+        "armor-26001501": "헤비 듀티 마스크",
+        "cradle-5002": "중량형 무장 마스터리",
+        "cradle-5013": "원소 감응",
+        "cradle-5016": "강인함",
+        "cradle-5112": "블레이징 버스트",
+        "deviant-99000030": "파이로 다이노",
+        "module-19500012": "버닝 파이어<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10421301": "AKM-버닝 레이지",
+        "weapon-10631301": "KVD-곧 폭발이야!",
+        "weapon-10931301": "도끼"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  },
+  {
+    "key": "public-lmg-fast-gunner",
+    "visibility": "PUBLIC",
+    "title": "[예시] 포식자 · 연속 사격 연습",
+    "description": "포식자와 속사 지속 모듈을 묶은 패스트거너 테마의 예시입니다. 울프 방어구를 넣고 사격 유지와 장전 타이밍을 기록해볼 수 있습니다.",
+    "snapshot": {
+      "schemaVersion": "uniz-gear.v2",
+      "context": {
+        "gamePatch": null,
+        "scenarioKey": null,
+        "mode": "PVE",
+        "platform": "PC",
+        "characterClass": null
+      },
+      "slots": [
+        {
+          "slot": "primary",
+          "itemId": "weapon-10622301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": "module-19500019",
+            "moduleSuffix": "module-suffix-frame-0",
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "secondary",
+          "itemId": "weapon-10123301",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "melee",
+          "itemId": "weapon-10941101",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "helmet",
+          "itemId": "armor-lonewolf-hood",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "top",
+          "itemId": "armor-lonewolf-jacket",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "gloves",
+          "itemId": "armor-lonewolf-gloves",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "mask",
+          "itemId": "armor-lonewolf-mask",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "bottom",
+          "itemId": "armor-23000801",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "shoes",
+          "itemId": "armor-24000801",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "combatDeviant",
+          "itemId": "deviant-99000011",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-1",
+          "itemId": "cradle-5002",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-2",
+          "itemId": "cradle-5119",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-3",
+          "itemId": "cradle-critical-combo",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        },
+        {
+          "slot": "cradle-4",
+          "itemId": "cradle-unyielding",
+          "level": null,
+          "suffixId": null,
+          "abilityGrade": null,
+          "activityGrade": null,
+          "traitIds": [],
+          "attachments": {
+            "muzzle": null,
+            "sight": null,
+            "tactical": null,
+            "magazine": null,
+            "ammo": null,
+            "module": null,
+            "moduleSuffix": null,
+            "moduleLevel": null
+          }
+        }
+      ],
+      "recommendation": {
+        "rating": null,
+        "contents": ["사격 연습", "보스 연습"],
+        "tags": ["예시", "경기관총", "패스트거너", "울프"],
+        "notes": "같은 목표를 따라 사격하는 흐름을 관찰하는 예시입니다. 오래 사격할 수 있는 위치와 중간에 장전할 시점을 먼저 정하고, 익숙해지면 본인 모듈을 기록해보세요."
+      },
+      "notes": "사격 메모\n• 움직이는 목표를 따라 조준하기\n• 탄창을 비우기 전 엄폐 위치 확인하기\n• 보조무기가 필요했던 상황 한 가지 남기기\n\n운영용 예시 구성입니다. 장비·모듈 레벨, 감염물 개체 등급, 실측 피해량은 입력하지 않았습니다. 크래들의 가용 여부와 해금 조건은 플레이 중인 시나리오에서 확인하세요.",
+      "catalogNames": {
+        "armor-23000801": "레니게이드 하의",
+        "armor-24000801": "레니게이드 신발",
+        "armor-lonewolf-gloves": "고독한 늑대 장갑",
+        "armor-lonewolf-hood": "고독한 늑대 모자",
+        "armor-lonewolf-jacket": "고독한 늑대 재킷",
+        "armor-lonewolf-mask": "고독한 늑대 마스크",
+        "cradle-5002": "중량형 무장 마스터리",
+        "cradle-5119": "패스트 거너 추적",
+        "cradle-critical-combo": "크리티컬 콤보",
+        "cradle-unyielding": "불굴",
+        "deviant-99000011": "울프의 속삭임",
+        "module-19500019": "속사 지속<일반>",
+        "module-suffix-frame-0": "일반",
+        "weapon-10123301": "리볼버-귀상어",
+        "weapon-10622301": "MG4-포식자",
+        "weapon-10941101": "군용 단검"
+      }
+    },
+    "versionNotes": "운영용 예시 초안: 장비 구성과 연습 메모를 등록했습니다. 미확인 개체 수치는 비워두었습니다."
+  }
+]

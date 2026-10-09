@@ -1,0 +1,30 @@
+html[data-text-size="LARGE"]
+  .main-content
+  :is(
+    p,
+    label,
+    input,
+    select,
+    textarea,
+    .button,
+    .panel-title,
+    .season-card-note,
+    .live-community-list small,
+    .live-build-list span,
+    .steam-overview-card li > time,
+    .steam-overview-note,
+    .steam-overview-observed
+  ) {
+  font-size: max(1rem, 100%);
+}
+html[data-reduce-motion="true"] {
+  scroll-behavior: auto;
+}
+html[data-reduce-motion="true"] *,
+html[data-reduce-motion="true"] *::before,
+html[data-reduce-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}

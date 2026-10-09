@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>UNIZ HIVE — Product Blueprint v0.1</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
+<link rel="icon" href="assets/logo-3.png">
+<style>
+html,body{margin:0;background:#07100E;color:#F1F4F2;font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:#42F5C5;text-decoration:none}a:hover{color:#F1F4F2;text-decoration:underline}
+*{box-sizing:border-box}
+@keyframes unizPulse{0%,100%{opacity:1}50%{opacity:.45}}
+</style>
+</helmet>
+
+<div style="position:relative;min-height:100vh;background:#07100E;overflow:hidden">
+<img src="assets/logo-4.png" alt="" style="position:absolute;right:-160px;top:-80px;width:720px;opacity:0.035;pointer-events:none">
+
+<div style="max-width:1400px;margin:0 auto;padding:40px clamp(16px,3vw,32px) 120px;display:grid;grid-template-columns:{{ shellCols }};gap:48px;position:relative">
+
+<nav style="position:sticky;top:24px;align-self:start;display:{{ tocDisp }};flex-direction:column;gap:2px;font-size:13px">
+<img src="assets/logo-3.png" alt="UNIZ" style="width:48px;height:48px;margin-bottom:16px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#668C7B;margin-bottom:8px">BLUEPRINT v0.1</div>
+<sc-for list="{{ toc }}" as="t" hint-placeholder-count="14">
+<a href="{{ t.href }}" style="display:flex;gap:10px;padding:6px 8px;border-radius:3px;color:#A5B3AD" style-hover="background:#111A17;color:#F1F4F2;text-decoration:none"><span style="font-family:'JetBrains Mono',monospace;color:#27BFA3;width:14px">{{ t.k }}</span><span>{{ t.label }}</span></a>
+</sc-for>
+</nav>
+
+<main style="display:flex;flex-direction:column;gap:96px;min-width:0">
+
+<header style="display:flex;flex-direction:column;gap:28px;padding-top:8px">
+<img src="assets/logo-1.png" alt="UNIZ HIVE" style="width:280px;max-width:100%;height:auto">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:820px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#42F5C5">PRODUCT DESIGN BLUEPRINT · 2026.10.06</div>
+<h1 style="margin:0;font-size:44px;line-height:1.2;font-weight:700;letter-spacing:-0.02em;text-wrap:pretty">시즌이 바뀌어도 하이브는 남는다.<br>UNIZ HIVE 웹 플랫폼 설계</h1>
+<p style="margin:0;font-size:17px;line-height:1.7;color:#A5B3AD;text-wrap:pretty">Once Human 공식 서버에서 시즌마다 함께 이동하는 한국 하이브 UNIZ를 위한 운영 · 정보 · 커뮤니티 플랫폼. 이 문서는 하이파이 UI와 프론트엔드 구현 이전 단계의 전체 제품 설계(A–M)입니다.</p>
+</div>
+<div style="display:grid;grid-template-columns:{{ pillarCols }};gap:1px;background:rgba(100,190,160,0.15);border:1px solid rgba(100,190,160,0.15);border-radius:4px;overflow:hidden">
+<sc-for list="{{ pillars }}" as="p" hint-placeholder-count="6">
+<div style="background:#0B1412;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B;letter-spacing:0.1em">{{ p.n }}</span><span style="font-size:14px;font-weight:600;letter-spacing:0.02em">{{ p.t }}</span></div>
+</sc-for>
+</div>
+</header>
+
+<!-- A -->
+<section id="A" data-screen-label="A Design direction" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">A</span><h2 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.01em">Design direction</h2><span style="font-size:14px;color:#668C7B">로고는 유기적으로, UI는 절제된 대시보드로</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:28px;display:flex;flex-direction:column;gap:16px;align-items:flex-start;position:relative;overflow:hidden">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">BRAND LAYER · 10%</div>
+<img src="assets/logo-2.png" alt="" style="width:160px;height:160px;align-self:center">
+<p style="margin:0;font-size:14px;line-height:1.7;color:#A5B3AD">폐허 위에서 다시 자라는 생명. 생물발광·덩굴·이상현상은 <strong style="color:#F1F4F2">로고, Hero, 로그인, 시즌 장식, Empty state</strong>에만 존재합니다. 한 화면에 브랜드 일러스트는 최대 1개.</p>
+</div>
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:28px;display:flex;flex-direction:column;gap:16px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">PRODUCT LAYER · 90%</div>
+<div style="display:flex;flex-direction:column;gap:8px;flex:1;justify-content:center">
+<div style="display:grid;grid-template-columns:110px 1fr 70px;gap:12px;font-size:13px;padding:10px 12px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;color:#668C7B;font-size:11px">PHASE</span><div style="height:4px;background:#17231F;border-radius:2px"><div style="width:50%;height:4px;background:#27BFA3;border-radius:2px"></div></div><span style="font-family:'JetBrains Mono',monospace;text-align:right">3 / 6</span></div>
+<div style="display:grid;grid-template-columns:110px 1fr 70px;gap:12px;font-size:13px;padding:10px 12px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;color:#668C7B;font-size:11px">READY</span><div style="height:4px;background:#17231F;border-radius:2px"><div style="width:74%;height:4px;background:#42F5C5;border-radius:2px;box-shadow:0 0 8px rgba(66,245,197,0.5)"></div></div><span style="font-family:'JetBrains Mono',monospace;text-align:right;color:#42F5C5">23 / 31</span></div>
+<div style="display:grid;grid-template-columns:110px 1fr 70px;gap:12px;font-size:13px;padding:10px 12px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;color:#668C7B;font-size:11px">DPS · EST</span><div style="height:4px;background:#17231F;border-radius:2px"><div style="width:62%;height:4px;background:#668C7B;border-radius:2px"></div></div><span style="font-family:'JetBrains Mono',monospace;text-align:right">48.2K</span></div>
+</div>
+<p style="margin:0;font-size:14px;line-height:1.7;color:#A5B3AD">차콜 표면, 얇은 보더, 강한 위계의 한글 타이포. Glow는 <strong style="color:#F1F4F2">선택 상태 · 핵심 CTA · 시즌 상태 · 특별 콘텐츠</strong>에만.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+<sc-for list="{{ principles }}" as="p" hint-placeholder-count="4">
+<div style="border-top:2px solid #27BFA3;padding-top:14px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">{{ p.t }}</span><span style="font-size:13px;line-height:1.65;color:#A5B3AD">{{ p.d }}</span></div>
+</sc-for>
+</div>
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;overflow:hidden">
+<div style="display:grid;grid-template-columns:96px minmax(0,1fr) minmax(0,1fr);font-size:13px">
+<div style="padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B;border-bottom:1px solid rgba(100,190,160,0.15)">역할 분리</div>
+<div style="padding:12px 16px;border-bottom:1px solid rgba(100,190,160,0.15);border-left:1px solid rgba(100,190,160,0.15);font-weight:600;color:#A5B3AD">DISCORD — 실시간</div>
+<div style="padding:12px 16px;border-bottom:1px solid rgba(100,190,160,0.15);border-left:1px solid rgba(100,190,160,0.15);font-weight:600;color:#42F5C5">UNIZ HIVE WEB — 구조화</div>
+<sc-for list="{{ roleSplit }}" as="r" hint-placeholder-count="5">
+<div style="padding:10px 16px;color:#668C7B;border-bottom:1px solid rgba(100,190,160,0.08)">{{ r.k }}</div>
+<div style="padding:10px 16px;color:#A5B3AD;border-left:1px solid rgba(100,190,160,0.15);border-bottom:1px solid rgba(100,190,160,0.08)">{{ r.d }}</div>
+<div style="padding:10px 16px;border-left:1px solid rgba(100,190,160,0.15);border-bottom:1px solid rgba(100,190,160,0.08)">{{ r.w }}</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- B -->
+<section id="B" data-screen-label="B Sitemap" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">B</span><h2 style="margin:0;font-size:28px;font-weight:700">Sitemap</h2><span style="font-size:14px;color:#668C7B">8개 주 메뉴 + 시스템 + 분리된 Admin</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px">
+<sc-for list="{{ sitemap }}" as="s" hint-placeholder-count="10">
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:700;letter-spacing:0.06em">{{ s.k }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#27BFA3">{{ s.path }}</span></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(100,190,160,0.2);padding-left:12px">
+<sc-for list="{{ s.children }}" as="c" hint-placeholder-count="4"><span style="font-size:12.5px;line-height:1.5;color:#A5B3AD">{{ c }}</span></sc-for>
+</div>
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B;letter-spacing:0.08em">{{ s.access }}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- C -->
+<section id="C" data-screen-label="C Dashboard" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">C</span><h2 style="margin:0;font-size:28px;font-weight:700">HOME · Dashboard</h2><span style="font-size:14px;color:#668C7B">“오늘 UNIZ에서 무슨 일이 있는가?” — 10초</span></div>
+
+<div style="border:1px solid rgba(100,190,160,0.15);border-radius:6px;overflow:hidden;background:#07100E">
+<div style="min-height:64px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:12px 20px;border-bottom:1px solid rgba(100,190,160,0.15);background:#0B1412">
+<img src="assets/logo-1.png" alt="UNIZ HIVE" style="height:40px;width:auto">
+<div style="display:flex;flex-wrap:wrap;gap:2px;flex:1 1 420px">
+<sc-for list="{{ navItems }}" as="n" hint-placeholder-count="8"><span style="font-size:12px;font-weight:600;letter-spacing:0.06em;padding:8px 10px;color:{{ n.color }};border-bottom:2px solid {{ n.bar }};white-space:nowrap">{{ n.k }}</span></sc-for>
+</div>
+<div style="display:flex;gap:8px;align-items:center">
+<div style="display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;font-size:12px;color:#668C7B;width:170px"><span>검색</span><span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;border:1px solid rgba(100,190,160,0.25);padding:1px 4px;border-radius:2px">⌘K</span></div>
+<div style="width:32px;height:32px;border:1px solid rgba(100,190,160,0.15);border-radius:3px;display:grid;place-items:center;position:relative;font-size:12px;color:#A5B3AD">🔔︎<span style="position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;background:#42F5C5"></span></div>
+<div style="display:flex;align-items:center;gap:8px;padding:0 4px 0 10px;height:32px;border:1px solid rgba(100,190,160,0.15);border-radius:3px"><span style="font-size:12px;color:#A5B3AD">moss</span><span style="width:24px;height:24px;border-radius:50%;background:#27BFA3;color:#07100E;font-size:11px;font-weight:700;display:grid;place-items:center">M</span></div>
+</div>
+</div>
+
+<div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:16px 20px;background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;position:relative;overflow:hidden">
+<img src="assets/logo-3.png" alt="" style="width:56px;height:56px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#668C7B">CURRENT SCENARIO</span><span style="font-size:22px;font-weight:700;letter-spacing:0.04em">ENDLESS DREAM</span></div>
+<div style="width:1px;height:36px;background:rgba(100,190,160,0.15)"></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#668C7B">SERVER</span><span style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600">KR-XXXX</span></div>
+<div style="width:1px;height:36px;background:rgba(100,190,160,0.15)"></div>
+<div style="display:flex;flex-direction:column;gap:6px;min-width:140px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#668C7B">PHASE 3 / 6</span><div style="display:flex;gap:3px"><span style="flex:1;height:4px;background:#27BFA3"></span><span style="flex:1;height:4px;background:#27BFA3"></span><span style="flex:1;height:4px;background:#42F5C5"></span><span style="flex:1;height:4px;background:#17231F"></span><span style="flex:1;height:4px;background:#17231F"></span><span style="flex:1;height:4px;background:#17231F"></span></div></div>
+<div style="margin-left:auto;display:flex;gap:12px;align-items:center">
+<span style="font-size:12px;color:#A5B3AD">정산까지 <strong style="color:#F1F4F2;font-family:'JetBrains Mono',monospace">D-18</strong></span>
+<span style="display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(66,245,197,0.45);border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#42F5C5;box-shadow:0 0 16px rgba(66,245,197,0.12)"><span style="width:6px;height:6px;border-radius:50%;background:#42F5C5;box-shadow:0 0 6px #42F5C5;animation:unizPulse 2.4s ease-in-out infinite"></span>HIVE ACTIVE</span>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+
+<div style="flex:5 1 360px;background:#121D19;border:1px solid rgba(66,245,197,0.35);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:inset 0 1px 0 rgba(66,245,197,0.2)">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#42F5C5">NEXT OPERATION</span><span style="font-size:12px;color:#A5B3AD">오늘 21:00 · 3시간 12분 후</span></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:20px;font-weight:700">Prime War 보스 레이드</span><span style="font-size:13px;color:#A5B3AD">RAID · Endless Dream · Blackheart Region · 🔊︎ #하이브-보이스-1</span></div>
+<div style="display:flex;align-items:center;gap:12px">
+<div style="display:flex"><sc-for list="{{ avatars }}" as="a" hint-placeholder-count="7"><span style="width:28px;height:28px;border-radius:50%;background:{{ a.bg }};border:2px solid #121D19;margin-right:-8px;display:grid;place-items:center;font-size:11px;font-weight:700;color:#07100E">{{ a.i }}</span></sc-for></div>
+<span style="font-size:13px;margin-left:12px"><strong style="font-family:'JetBrains Mono',monospace">14</strong><span style="color:#668C7B"> / 20 Going</span></span>
+<span style="font-size:12px;color:#C9A24A;margin-left:auto">Support 2자리 부족</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+<sc-for list="{{ rsvpOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.on }}" style="height:36px;border-radius:3px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }};border:1px solid {{ o.bd }}">{{ o.k }}</button></sc-for>
+</div>
+</div>
+
+<div style="flex:4 1 280px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">MIGRATION READINESS</span><a href="#L" style="font-size:12px">Season Hub →</a></div>
+<div style="display:flex;align-items:center;gap:20px">
+<div style="width:96px;height:96px;border-radius:50%;background:conic-gradient(#42F5C5 0 74%,#17231F 74% 100%);display:grid;place-items:center;flex-shrink:0"><div style="width:80px;height:80px;border-radius:50%;background:#121D19;display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:600">23<span style="color:#668C7B;font-size:14px">/31</span></span><span style="font-size:10px;color:#668C7B">READY</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:12px;flex:1">
+<sc-for list="{{ migrationShort }}" as="m" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:1px;background:{{ m.c }}"></span><span style="color:#A5B3AD;flex:1">{{ m.k }}</span><span style="font-family:'JetBrains Mono',monospace">{{ m.n }}</span></div></sc-for>
+</div>
+</div>
+</div>
+
+<div style="flex:3 1 220px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:12px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">NEXT SEASON VOTE</span>
+<span style="font-size:15px;font-weight:600">S14 시나리오 투표 진행 중</span>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between"><span>Isles of the Abyss</span><span style="font-family:'JetBrains Mono',monospace;color:#42F5C5">14</span></div><div style="height:3px;background:#17231F"><div style="width:52%;height:3px;background:#42F5C5"></div></div></div>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between"><span style="color:#A5B3AD">The Way of Winter</span><span style="font-family:'JetBrains Mono',monospace">9</span></div><div style="height:3px;background:#17231F"><div style="width:33%;height:3px;background:#668C7B"></div></div></div>
+</div>
+<span style="font-size:12px;color:#668C7B;margin-top:auto">마감 10.12 23:59 · 27/31 참여</span>
+</div>
+
+<div style="flex:4 1 280px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:10px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">최근 공지</span>
+<sc-for list="{{ notices }}" as="n" hint-placeholder-count="3"><div style="display:flex;gap:10px;align-items:baseline;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(100,190,160,0.08)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:{{ n.tc }};border:1px solid {{ n.tc }};padding:1px 5px;border-radius:2px;flex-shrink:0">{{ n.tag }}</span><span style="flex:1">{{ n.t }}</span><span style="font-size:11px;color:#668C7B;flex-shrink:0">{{ n.d }}</span></div></sc-for>
+</div>
+
+<div style="flex:2 1 160px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">MEMBERS</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600">31</span>
+<span style="font-size:12px;color:#A5B3AD"><span style="color:#42F5C5">●</span> 12 접속 중 (Discord)</span>
+<span style="font-size:12px;color:#C9A24A">승인 대기 2</span>
+</div>
+
+<div style="flex:3 1 220px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">ONCE HUMAN UPDATE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;border:1px solid #F1F4F2;border-radius:2px">OFFICIAL</span></div>
+<span style="font-size:14px;font-weight:600;line-height:1.45">패치 노트 — 시나리오 밸런스 조정 및 신규 이벤트</span>
+<span style="font-size:12px;color:#668C7B;margin-top:auto">어댑터: OfficialNewsAdapter · 2일 전</span>
+</div>
+
+<div style="flex:3 1 220px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">STEAM PLAYERS</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;border:1px solid #A5B3AD;color:#A5B3AD;border-radius:2px">STEAM API</span></div>
+<span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600">—</span>
+<span style="font-size:12px;color:#668C7B;margin-top:auto">실시간 동접 · SteamAdapter 연결 후 표시 (현재 mock)</span>
+</div>
+
+<div style="flex:4 1 280px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:10px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">최근 BUILDS</span>
+<sc-for list="{{ recentBuilds }}" as="b" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;gap:8px;font-size:13px"><span>{{ b.t }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5B3AD">{{ b.dps }}</span></div></sc-for>
+</div>
+<div style="flex:4 1 280px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:10px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">최근 GUIDES</span>
+<sc-for list="{{ recentGuides }}" as="g" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;gap:8px;font-size:13px"><span>{{ g.t }}</span><span style="font-size:12px;color:#668C7B">{{ g.a }}</span></div></sc-for>
+</div>
+<div style="flex:4 1 280px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:10px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">최근 GALLERY</span>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;flex:1">
+<div style="aspect-ratio:1;background:#17231F;border-radius:2px"></div><div style="aspect-ratio:1;background:#17231F;border-radius:2px"></div><div style="aspect-ratio:1;background:#17231F;border-radius:2px"></div><div style="aspect-ratio:1;background:#17231F;border-radius:2px;display:grid;place-items:center;font-size:11px;color:#668C7B">+18</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;font-size:13px;line-height:1.6;color:#A5B3AD">
+<div><strong style="color:#F1F4F2">1행 — 행동.</strong> NEXT OPERATION에 RSVP를 바로 노출(유일한 glow 카드). 이동 준비율, 투표.</div>
+<div><strong style="color:#F1F4F2">2행 — 상태.</strong> 공지, 멤버 수/승인 대기, 공식 업데이트, Steam 동접.</div>
+<div><strong style="color:#F1F4F2">3행 — 콘텐츠.</strong> 빌드·가이드·갤러리. 시즌 Phase에 따라 1행 카드 우선순위가 바뀜(정산기 → 이동 준비가 1순위).</div>
+</div>
+</sc-if>
+</section>
+
+<!-- D -->
+<section id="D" data-screen-label="D Page structures" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">D</span><h2 style="margin:0;font-size:28px;font-weight:700">주요 페이지 구조</h2><span style="font-size:14px;color:#668C7B">Operations · Members · Database · Search · Auth (나머지는 H–M)</span></div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;font-weight:700;letter-spacing:0.04em">OPERATIONS</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#27BFA3">/ops · /ops/[id]</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ opTypes }}" as="t" hint-placeholder-count="7"><span style="font-size:12px;padding:4px 10px;border:1px solid {{ t.bd }};color:{{ t.fg }};border-radius:2px">{{ t.k }}</span></sc-for></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ opsList }}" as="o" hint-placeholder-count="4"><div style="padding:10px 12px;background:{{ o.bg }};border:1px solid {{ o.bd }};border-radius:3px;display:flex;flex-direction:column;gap:3px"><div style="display:flex;justify-content:space-between;font-size:11px;font-family:'JetBrains Mono',monospace;color:#668C7B"><span>{{ o.type }}</span><span>{{ o.when }}</span></div><span style="font-size:13px;font-weight:600">{{ o.t }}</span><span style="font-size:11px;color:#A5B3AD">{{ o.n }}</span></div></sc-for>
+</div>
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;padding:14px;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:15px;font-weight:700">Prime War 보스 레이드</span>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12px"><span style="color:#668C7B">일시</span><span>10.06 (화) 21:00</span><span style="color:#668C7B">위치</span><span>Blackheart Region</span><span style="color:#668C7B">보이스</span><span>#하이브-보이스-1</span><span style="color:#668C7B">Bot</span><span style="color:#27BFA3">/event 연동 · 30분 전 알림</span></div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ roles }}" as="r" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:72px 1fr 40px;gap:8px;align-items:center;font-size:12px"><span style="color:#A5B3AD">{{ r.k }}</span><div style="display:flex;gap:3px"><sc-for list="{{ r.slots }}" as="s" hint-placeholder-count="4"><span style="width:20px;height:20px;border-radius:50%;background:{{ s.bg }};border:1px {{ s.bs }} {{ s.bd }};font-size:9px;font-weight:700;color:#07100E;display:grid;place-items:center">{{ s.i }}</span></sc-for></div><span style="font-family:'JetBrains Mono',monospace;text-align:right;color:{{ r.c }}">{{ r.n }}</span></div></sc-for>
+</div>
+<span style="font-size:11px;color:#668C7B">Officer는 아바타를 드래그해 역할 지정 · Maybe 4 · Unavailable 3</span>
+</div>
+</div>
+<div style="font-size:12px;line-height:1.6;color:#A5B3AD;border-top:1px solid rgba(100,190,160,0.1);padding-top:10px"><strong style="color:#F1F4F2">생성 폼</strong> Title · Type · Date/Time · Scenario · Location · Description · Required Members · Role 구성(Tank/DPS/Support/Gatherer/Driver/Custom) · Voice Channel(Discord 채널 선택). 목록 ↔ 주간 캘린더 전환.</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;font-weight:700;letter-spacing:0.04em">MEMBERS</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#27BFA3">/members</span></div>
+<div style="display:flex;gap:6px;font-size:12px"><span style="flex:1;padding:6px 10px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;color:#668C7B">닉네임 · Discord 검색</span><span style="padding:6px 10px;border:1px solid rgba(100,190,160,0.15);border-radius:3px;color:#A5B3AD">Rank ▾</span><span style="padding:6px 10px;border:1px solid rgba(100,190,160,0.15);border-radius:3px;color:#A5B3AD">Role ▾</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+<sc-for list="{{ members }}" as="m" hint-placeholder-count="4"><div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;overflow:hidden;display:flex;flex-direction:column" style-hover="border-color:rgba(66,245,197,0.4);box-shadow:0 0 18px rgba(66,245,197,0.08)">
+<div style="aspect-ratio:16/10;background:linear-gradient(180deg,#17231F,#0B1412);display:flex;align-items:flex-end;padding:8px;position:relative"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B;position:absolute;top:8px;left:8px">대표 캐릭터 이미지</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;border:1px solid {{ m.rc }};color:{{ m.rc }};border-radius:2px">{{ m.rank }}</span></div>
+<div style="padding:10px;display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:700">{{ m.oh }}</span><span style="font-size:11px;color:#668C7B">@{{ m.dc }}</span><span style="font-size:11px;color:#A5B3AD;margin-top:4px">{{ m.role }} · {{ m.weapon }}</span><span style="font-size:10px;color:#668C7B;font-family:'JetBrains Mono',monospace">{{ m.since }}</span></div>
+</div></sc-for>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;font-weight:700;letter-spacing:0.04em">DATABASE</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#27BFA3">/db/[category]/[slug]</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px;font-size:12px"><sc-for list="{{ dbCats }}" as="c" hint-placeholder-count="8"><span style="padding:6px 8px;border-radius:2px;background:{{ c.bg }};color:{{ c.fg }}">{{ c.k }}</span></sc-for></div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;gap:4px;flex-wrap:wrap;font-size:11px"><span style="padding:4px 8px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:2px;color:#668C7B;flex:1;min-width:80px">무기 검색</span><span style="padding:4px 8px;border:1px solid rgba(100,190,160,0.15);border-radius:2px;color:#A5B3AD">Rarity</span><span style="padding:4px 8px;border:1px solid rgba(100,190,160,0.15);border-radius:2px;color:#A5B3AD">Source</span></div>
+<sc-for list="{{ dbRows }}" as="r" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:center;padding:6px 8px;border-bottom:1px solid rgba(100,190,160,0.08);font-size:12px"><span style="width:26px;height:26px;background:#17231F;border:1px solid {{ r.rc }};border-radius:2px"></span><span>{{ r.n }}<br><span style="font-size:10px;color:#668C7B">{{ r.t }}</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;border:1px solid {{ r.sc }};color:{{ r.sc }};border-radius:2px;white-space:nowrap">{{ r.s }}</span></div></sc-for>
+</div>
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;padding:12px;display:flex;flex-direction:column;gap:8px;font-size:12px">
+<div style="display:flex;gap:10px;align-items:center"><span style="width:44px;height:44px;background:#17231F;border:1px solid #C9A24A;border-radius:2px"></span><div style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:700">Item Name</span><span style="color:#C9A24A;font-size:11px">Legendary · Assault Rifle</span></div></div>
+<span style="color:#A5B3AD;line-height:1.5">Description…</span>
+<div style="display:grid;grid-template-columns:1fr auto;gap:3px 8px;font-family:'JetBrains Mono',monospace;font-size:11px"><span style="color:#668C7B">Damage</span><span>—</span><span style="color:#668C7B">Fire Rate</span><span>—</span><span style="color:#668C7B">Source</span><span>Blueprint</span><span style="color:#668C7B">Patch</span><span>v—</span><span style="color:#668C7B">Last Verified</span><span>2026.10.02</span></div>
+<span style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;border:1px solid #42F5C5;color:#42F5C5;border-radius:2px;align-self:flex-start">COMMUNITY VERIFIED</span>
+</div>
+</div>
+<div style="font-size:12px;line-height:1.6;color:#A5B3AD">모든 레코드는 <code style="color:#F1F4F2">source</code> · <code style="color:#F1F4F2">patchVersion</code> · <code style="color:#F1F4F2">lastVerifiedAt</code>를 필수로 가짐. 외부 데이터 무단 복제 금지 — TH.GL 출처 항목은 링크 참조만, 수치는 커뮤니티 검증값만 저장.</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:16px">
+<div id="search" style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;font-weight:700;letter-spacing:0.04em">GLOBAL SEARCH · ⌘K</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#27BFA3">CommandPalette</span></div>
+<div style="background:#121D19;border:1px solid rgba(66,245,197,0.3);border-radius:4px;box-shadow:0 24px 60px rgba(0,0,0,0.5);overflow:hidden">
+<div style="padding:12px 14px;border-bottom:1px solid rgba(100,190,160,0.15);font-size:14px;display:flex;gap:8px"><span style="color:#42F5C5">›</span><span>부식</span><span style="width:1px;height:18px;background:#42F5C5;animation:unizPulse 1s steps(1) infinite"></span></div>
+<div style="padding:6px;display:flex;flex-direction:column;gap:1px;font-size:13px">
+<sc-for list="{{ searchResults }}" as="s" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:64px 1fr auto;gap:10px;padding:7px 8px;border-radius:2px;background:{{ s.bg }};align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">{{ s.g }}</span><span>{{ s.t }}</span><span style="font-size:11px;color:#668C7B">{{ s.m }}</span></div></sc-for>
+</div>
+<div style="padding:8px 14px;border-top:1px solid rgba(100,190,160,0.15);font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B;display:flex;gap:14px"><span>↑↓ 이동</span><span>↵ 열기</span><span>&gt; 명령 모드 (예: &gt;새 오퍼레이션)</span></div>
+</div>
+</div>
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;font-weight:700;letter-spacing:0.04em">AUTH · 가입 Flow</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#27BFA3">/login · /onboarding</span></div>
+<div style="display:flex;flex-direction:column;gap:0">
+<sc-for list="{{ authFlow }}" as="a" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:7px 0;font-size:13px"><span style="width:22px;height:22px;border-radius:50%;border:1px solid {{ a.c }};color:{{ a.c }};font-family:'JetBrains Mono',monospace;font-size:10px;display:grid;place-items:center">{{ a.n }}</span><span>{{ a.t }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">{{ a.role }}</span></div></sc-for>
+</div>
+<div style="display:flex;gap:4px;flex-wrap:wrap"><sc-for list="{{ roleLadder }}" as="r" hint-placeholder-count="5"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 7px;border:1px solid {{ r.c }};color:{{ r.c }};border-radius:2px">{{ r.k }}</span></sc-for></div>
+<span style="font-size:12px;color:#668C7B">Steam 연결은 /settings에서 Optional. Discord 채팅 UI는 만들지 않음 — 딥링크만.</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- E -->
+<section id="E" data-screen-label="E Components" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">E</span><h2 style="margin:0;font-size:28px;font-weight:700">Component system</h2><span style="font-size:14px;color:#668C7B">Next.js App Router · TypeScript · Adapter 분리</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px">
+<sc-for list="{{ compGroups }}" as="g" hint-placeholder-count="4">
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:10px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">{{ g.k }}</span>
+<sc-for list="{{ g.items }}" as="c" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:2px;padding:6px 0;border-bottom:1px solid rgba(100,190,160,0.08)"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#F1F4F2">&lt;{{ c.n }}&gt;</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B">{{ c.p }}</span></div></sc-for>
+</div>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px">
+<pre style="margin:0;background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.65;color:#A5B3AD;overflow:auto">{{ codeTree }}</pre>
+<pre style="margin:0;background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.65;color:#A5B3AD;overflow:auto">{{ codeAdapter }}</pre>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B;margin-right:8px">SOURCE BADGE</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 7px;border:1px solid #F1F4F2;color:#F1F4F2;border-radius:2px">OFFICIAL</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 7px;border:1px solid #27BFA3;color:#27BFA3;border-radius:2px">TH.GL</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 7px;border:1px solid #42F5C5;color:#42F5C5;background:rgba(66,245,197,0.08);border-radius:2px">COMMUNITY VERIFIED</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 7px;border:1px dashed #C9A24A;color:#C9A24A;border-radius:2px">UNVERIFIED</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 7px;border:1px dashed #A5B3AD;color:#A5B3AD;border-radius:2px">ESTIMATED</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B;margin:0 8px 0 16px">STATUS CHIP</span>
+<span style="font-size:11px;padding:3px 8px;border-radius:2px;background:#17231F;color:#A5B3AD">미정</span>
+<span style="font-size:11px;padding:3px 8px;border-radius:2px;background:rgba(201,162,74,0.15);color:#D9B65E">참가 예정</span>
+<span style="font-size:11px;padding:3px 8px;border-radius:2px;background:rgba(39,191,163,0.15);color:#3FD4B6">Pre-reg 완료</span>
+<span style="font-size:11px;padding:3px 8px;border-radius:2px;background:rgba(66,245,197,0.15);color:#42F5C5">준비 완료</span>
+<span style="font-size:11px;padding:3px 8px;border-radius:2px;background:#42F5C5;color:#07100E;font-weight:600">이전 완료</span>
+</div>
+</section>
+
+<!-- F -->
+<section id="F" data-screen-label="F Tokens" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">F</span><h2 style="margin:0;font-size:28px;font-weight:700">Color · Typography · Spacing</h2></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px">
+<sc-for list="{{ colors }}" as="c" hint-placeholder-count="14"><div style="display:flex;flex-direction:column;border:1px solid rgba(100,190,160,0.15);border-radius:3px;overflow:hidden"><div style="height:56px;background:{{ c.v }}"></div><div style="padding:8px 10px;display:flex;flex-direction:column;gap:2px;background:#0B1412"><span style="font-size:12px;font-weight:600">{{ c.k }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B;overflow-wrap:anywhere">{{ c.v }}</span><span style="font-size:10px;color:#A5B3AD">{{ c.u }}</span></div></div></sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:2px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B;margin-bottom:10px">TYPE — Pretendard (한/영 본문·UI) + JetBrains Mono (수치·라벨·코드)</span>
+<sc-for list="{{ typeScale }}" as="t" hint-placeholder-count="8"><div style="display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(100,190,160,0.08)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">{{ t.k }}</span><span style="font-size:{{ t.s }};font-weight:{{ t.w }};font-family:{{ t.f }};letter-spacing:{{ t.ls }};line-height:1.35">{{ t.ex }}</span></div></sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:8px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B;margin-bottom:6px">SPACING — 4px base</span>
+<sc-for list="{{ spacing }}" as="s" hint-placeholder-count="8"><div style="display:grid;grid-template-columns:40px 40px 1fr;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px"><span style="color:#A5B3AD">{{ s.k }}</span><span style="color:#668C7B">{{ s.v }}px</span><div style="height:8px;width:{{ s.w }};background:#27BFA3;opacity:0.6"></div></div></sc-for>
+</div>
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:10px;font-size:13px;color:#A5B3AD;line-height:1.6">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B">RADIUS · ELEVATION · GLOW</span>
+<div style="display:flex;gap:10px;align-items:flex-end"><div style="width:44px;height:44px;border:1px solid rgba(100,190,160,0.3);border-radius:2px"></div><div style="width:44px;height:44px;border:1px solid rgba(100,190,160,0.3);border-radius:4px"></div><div style="width:44px;height:44px;border:1px solid rgba(100,190,160,0.3);border-radius:6px"></div><div style="width:44px;height:44px;border:1px solid rgba(66,245,197,0.5);border-radius:4px;box-shadow:0 0 18px rgba(66,245,197,0.18)"></div></div>
+<span>2px 칩/배지 · 4px 카드 · 6px 모달/쉘. Pill·full-round는 아바타만. Glow는 단 1단계(<code style="color:#F1F4F2">0 0 18px rgba(66,245,197,.18)</code>), hover는 그 절반인 teal bloom.</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- G -->
+<section id="G" data-screen-label="G Navigation" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">G</span><h2 style="margin:0;font-size:28px;font-weight:700">Desktop / Mobile navigation</h2></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:14px;font-size:13px;line-height:1.7;color:#A5B3AD">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B">DESKTOP 1440 · TOP NAV 64px</span>
+<span>좌: 가로형 로고(240px / max-h 56) · 중앙: 8개 메뉴, 활성은 2px teal 언더라인 · 우: ⌘K 검색, 알림, Discord 프로필, 계정 메뉴. 페이지 내부는 필요한 경우만 좌측 Sub-sidebar(Build Lab, Database, Admin).</span>
+</div>
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B">TABLET 1024</span>
+<span>메뉴 8개 → 아이콘+짧은 라벨, 검색은 아이콘으로 축소. Dashboard는 12 → 8 column.</span>
+</div>
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B">MOBILE 390–430 · BOTTOM NAV 5 + DRAWER</span>
+<span>하단: HOME · SEASON · OPS · LAB · MORE. MORE 드로어에 MEMBERS · MAP · COMMUNITY · DATABASE · ADMIN. 상단은 Hex 엠블럼(32px) + 시즌 상태 칩 + 검색.</span>
+<span><strong style="color:#F1F4F2">구조 재배치:</strong> Build Lab은 슬롯 → 풀스크린 시트, Stats는 하단 고정 요약 바. Map은 툴바를 상단 1줄로 접고 지도 70vh. Operations는 RSVP 버튼이 하단 고정. Profile은 탭을 가로 스크롤.</span>
+</div>
+</div>
+<div style="display:flex;gap:16px">
+<div style="width:300px;height:600px;border:1px solid rgba(100,190,160,0.25);border-radius:28px;overflow:hidden;background:#07100E;display:flex;flex-direction:column;position:relative">
+<div style="height:28px"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid rgba(100,190,160,0.15)"><img src="assets/logo-3.png" alt="" style="width:28px;height:28px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;color:#42F5C5;border:1px solid rgba(66,245,197,0.4);padding:2px 6px;border-radius:2px">ED · PH3</span><span style="margin-left:auto;font-size:12px;color:#A5B3AD">검색</span></div>
+<div style="padding:12px;display:flex;flex-direction:column;gap:8px;flex:1;overflow:hidden">
+<div style="background:#121D19;border:1px solid rgba(66,245,197,0.35);border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#42F5C5">NEXT OPERATION · 21:00</span><span style="font-size:14px;font-weight:700">Prime War 보스 레이드</span><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px"><span style="height:30px;border-radius:3px;background:#42F5C5;color:#07100E;font-size:11px;font-weight:700;display:grid;place-items:center">Going</span><span style="height:30px;border-radius:3px;border:1px solid rgba(100,190,160,0.25);font-size:11px;display:grid;place-items:center">Maybe</span><span style="height:30px;border-radius:3px;border:1px solid rgba(100,190,160,0.25);font-size:11px;display:grid;place-items:center">불가</span></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:10px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">READY</span><div style="font-family:'JetBrains Mono',monospace;font-size:20px">23/31</div></div><div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:10px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">VOTE</span><div style="font-size:12px;font-weight:600;margin-top:4px">Isles 선두</div></div></div>
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:10px;display:flex;flex-direction:column;gap:6px;font-size:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">공지</span><span>S14 이동 일정 확정</span><span style="color:#A5B3AD">레이드 역할 배정 규칙</span></div>
+</div>
+<div style="height:60px;border-top:1px solid rgba(100,190,160,0.15);background:#0B1412;display:grid;grid-template-columns:repeat(5,1fr);font-size:9px;font-weight:600;letter-spacing:0.06em">
+<sc-for list="{{ mobileNav }}" as="m" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:{{ m.c }}"><span style="width:18px;height:18px;border:1.5px solid {{ m.c }};border-radius:{{ m.r }}"></span>{{ m.k }}</div></sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- H -->
+<section id="H" data-screen-label="H Map" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">H</span><h2 style="margin:0;font-size:28px;font-weight:700">Interactive Map</h2><span style="font-size:14px;color:#668C7B">TH.GL 공식 Embed · UNIZ는 바깥 프레임만</span></div>
+<div style="border:1px solid rgba(100,190,160,0.15);border-radius:6px;overflow:hidden;background:#0B1412">
+<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(100,190,160,0.15)">
+<span style="font-size:15px;font-weight:700;letter-spacing:0.08em">MAP</span>
+<div style="width:1px;height:20px;background:rgba(100,190,160,0.15)"></div>
+<div style="display:flex;gap:2px;flex-wrap:wrap">
+<sc-for list="{{ mapScenarios }}" as="s" hint-placeholder-count="6"><button onClick="{{ s.on }}" style="font-family:inherit;font-size:12px;padding:6px 10px;border-radius:2px;cursor:pointer;background:{{ s.bg }};color:{{ s.fg }};border:1px solid {{ s.bd }}">{{ s.k }}</button></sc-for>
+</div>
+<div style="margin-left:auto;display:flex;gap:6px">
+<span style="font-size:12px;padding:6px 10px;border:1px solid rgba(100,190,160,0.25);border-radius:2px;color:#A5B3AD">⛶ Fullscreen</span>
+<span style="font-size:12px;padding:6px 10px;border:1px solid rgba(100,190,160,0.25);border-radius:2px;color:#A5B3AD">Open Full Map ↗</span>
+</div>
+</div>
+<div style="display:flex;gap:6px;align-items:center;padding:8px 16px;border-bottom:1px solid rgba(100,190,160,0.15);flex-wrap:wrap">
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B;margin-right:6px">UNIZ ROUTE</span>
+<sc-for list="{{ mapRoutes }}" as="r" hint-placeholder-count="8"><button onClick="{{ r.on }}" style="font-family:inherit;font-size:12px;padding:4px 10px;border-radius:2px;cursor:pointer;background:{{ r.bg }};color:{{ r.fg }};border:1px solid {{ r.bd }}">{{ r.k }}</button></sc-for>
+</div>
+<div style="height:440px;position:relative;background-color:#0D1714;background-image:linear-gradient(rgba(100,190,160,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(100,190,160,0.05) 1px,transparent 1px);background-size:48px 48px;display:grid;place-items:center">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+<span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5B3AD">&lt;iframe src="TH.GL embed" loading="lazy"&gt;</span>
+<span style="font-size:13px;color:#668C7B">{{ mapLabel }}</span>
+<span style="font-size:12px;color:#668C7B">desktop 72vh · mobile 70vh · 내부 UI 수정 없음</span>
+</div>
+<div style="position:absolute;left:16px;bottom:16px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;max-width:260px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">FALLBACK (onError / 10s timeout)</span>
+<span style="font-size:12px;color:#A5B3AD">지도를 불러오지 못했습니다.</span>
+<span style="font-size:12px;font-weight:600;padding:6px 10px;background:#42F5C5;color:#07100E;border-radius:2px;align-self:flex-start">Open TH.GL Map ↗</span>
+</div>
+</div>
+<div style="padding:10px 16px;border-top:1px solid rgba(100,190,160,0.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:#A5B3AD">
+<span>Interactive map by <a href="https://th.gl">TH.GL</a> — 데이터 및 지도 저작권은 TH.GL에 있습니다.</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B">share code: {{ mapShare }}</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px">
+<pre style="margin:0;background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.65;color:#A5B3AD;overflow:auto">{{ codeMap }}</pre>
+<pre style="margin:0;background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.65;color:#A5B3AD;overflow:auto">{{ codeRoutes }}</pre>
+</div>
+</section>
+
+<!-- I -->
+<section id="I" data-screen-label="I Build Lab" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">I</span><h2 style="margin:0;font-size:28px;font-weight:700">BUILD LAB</h2><span style="font-size:14px;color:#668C7B">Planner + Simulator · 추정값은 반드시 표시</span></div>
+<div style="border:1px solid rgba(100,190,160,0.15);border-radius:6px;overflow:hidden;background:#07100E">
+<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(100,190,160,0.15);background:#0B1412">
+<div style="display:flex;flex-direction:column"><span style="font-size:16px;font-weight:700">부식 연사 DPS — 보스용</span><span style="font-size:11px;color:#668C7B">by moss · Endless Dream · v3 · 미저장 변경 2</span></div>
+<div style="display:flex;gap:2px;margin-left:24px">
+<sc-for list="{{ labTabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.on }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 14px;cursor:pointer;background:transparent;border:none;border-bottom:2px solid {{ t.bar }};color:{{ t.fg }}">{{ t.k }}</button></sc-for>
+</div>
+<div style="margin-left:auto;display:flex;gap:6px">
+<sc-for list="{{ labActions }}" as="a" hint-placeholder-count="5"><span style="font-size:12px;font-weight:600;padding:7px 12px;border-radius:3px;background:{{ a.bg }};color:{{ a.fg }};border:1px solid {{ a.bd }}">{{ a.k }}</span></sc-for>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));min-height:560px">
+<div style="border-right:1px solid rgba(100,190,160,0.15);padding:14px;display:flex;flex-direction:column;gap:14px;background:#0B1412">
+<sc-for list="{{ slotGroups }}" as="g" hint-placeholder-count="5">
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#668C7B">{{ g.k }}</span>
+<div style="display:grid;grid-template-columns:repeat({{ g.cols }},minmax(0,1fr));gap:4px">
+<sc-for list="{{ g.slots }}" as="s" hint-placeholder-count="3"><div style="display:flex;gap:8px;align-items:center;padding:6px;background:#121D19;border:1px {{ s.bs }} {{ s.bd }};border-radius:3px;min-width:0" style-hover="border-color:rgba(66,245,197,0.45)"><span style="width:28px;height:28px;flex-shrink:0;border-radius:2px;background:#17231F;border:1px solid {{ s.rc }}"></span><span style="display:{{ s.labelDisp }};flex-direction:column;min-width:0"><span style="font-size:10px;color:#668C7B">{{ s.k }}</span><span style="font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.v }}</span></span></div></sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="padding:16px;display:flex;flex-direction:column;gap:16px;min-width:0">
+<sc-if value="{{ isTest }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">DURATION</span><div style="display:flex;border:1px solid rgba(100,190,160,0.2);border-radius:3px;overflow:hidden"><sc-for list="{{ durations }}" as="d" hint-placeholder-count="3"><button onClick="{{ d.on }}" style="flex:1;font-family:inherit;font-size:12px;padding:7px 4px;border:none;cursor:pointer;background:{{ d.bg }};color:{{ d.fg }}">{{ d.k }}</button></sc-for></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">TARGET</span><div style="display:flex;border:1px solid rgba(100,190,160,0.2);border-radius:3px;overflow:hidden"><sc-for list="{{ targets }}" as="d" hint-placeholder-count="3"><button onClick="{{ d.on }}" style="flex:1;font-family:inherit;font-size:12px;padding:7px 4px;border:none;cursor:pointer;background:{{ d.bg }};color:{{ d.fg }}">{{ d.k }}</button></sc-for></div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;font-size:12px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">WEAKSPOT HIT %</span><span style="font-family:'JetBrains Mono',monospace">35%</span></div><div style="height:4px;background:#17231F;position:relative"><div style="width:35%;height:4px;background:#27BFA3"></div><span style="position:absolute;left:35%;top:-5px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#F1F4F2"></span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">DISTANCE</span><span style="font-family:'JetBrains Mono',monospace">20 m</span></div><div style="height:4px;background:#17231F;position:relative"><div style="width:40%;height:4px;background:#27BFA3"></div><span style="position:absolute;left:40%;top:-5px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#F1F4F2"></span></div></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B;margin-right:4px">BUFF ASSUMPTIONS</span><sc-for list="{{ buffs }}" as="b" hint-placeholder-count="5"><span style="font-size:12px;padding:4px 10px;border-radius:2px;border:1px solid {{ b.bd }};color:{{ b.fg }};background:{{ b.bg }}">{{ b.k }}</span></sc-for></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px">
+<div style="background:#121D19;border:1px solid rgba(66,245,197,0.35);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">CALCULATED DPS · {{ testLabel }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;border:1px dashed #A5B3AD;color:#A5B3AD;border-radius:2px">ESTIMATED</span></div>
+<span style="font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:600;color:#42F5C5">{{ calcDps }}</span>
+<span style="font-size:11px;color:#668C7B">UNIZ 공식 v0.3 · 버프/약점 가정 포함 · 내부 공식 미공개 항목은 근사</span>
+</div>
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">COMMUNITY TESTED DPS</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;border:1px solid #42F5C5;color:#42F5C5;background:rgba(66,245,197,0.08);border-radius:2px">COMMUNITY VERIFIED</span></div>
+<span style="font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:600">{{ testDps }}</span>
+<span style="font-size:11px;color:#668C7B">측정 6회 · 표준편차 ±3.1% · 최근 10.03 · 측정 기록 제출 →</span>
+</div>
+</div>
+<div style="height:120px;background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;position:relative;overflow:hidden">
+<span style="position:absolute;top:10px;left:12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">DAMAGE OVER TIME — 탄창/재장전 구간 표시</span>
+<svg viewBox="0 0 600 120" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><polyline points="0,100 40,40 80,38 120,36 160,92 200,95 240,42 280,38 320,37 360,92 400,95 440,40 480,38 520,36 560,92 600,95" fill="none" stroke="#27BFA3" stroke-width="1.5"></polyline><polyline points="0,100 40,48 80,46 120,45 160,96 200,98 240,50 280,46 320,45 360,96 400,98 440,48 480,46 520,45 560,96 600,98" fill="none" stroke="#668C7B" stroke-width="1" stroke-dasharray="4 4"></polyline></svg>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ isLoadout }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px">
+<div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:#A5B3AD;line-height:1.7">
+<span style="font-size:15px;color:#F1F4F2;font-weight:600">Loadout 개요</span>
+<span>좌측 슬롯 클릭 → 우측 검색 Drawer. 선택 즉시 Calculated Stats가 갱신되고 변경된 수치는 1.5초간 teal로 하이라이트.</span>
+<span>Cradle Override 8칸, Combat Deviant, Ammo/Food/Drink, Blueprint Stars · Gear Tier · Enhancement는 각 장비 슬롯 상세에서 조정.</span>
+</div>
+<div style="background:#121D19;border:1px solid rgba(66,245,197,0.3);border-radius:4px;box-shadow:-12px 0 40px rgba(0,0,0,0.4);display:flex;flex-direction:column">
+<div style="padding:12px;border-bottom:1px solid rgba(100,190,160,0.15);display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">SLOT · PRIMARY WEAPON</span><span style="padding:7px 10px;background:#0B1412;border:1px solid rgba(100,190,160,0.25);border-radius:3px;font-size:12px;color:#668C7B">이름 검색</span><div style="display:flex;gap:4px;flex-wrap:wrap"><span style="font-size:11px;padding:3px 8px;border:1px solid #42F5C5;color:#42F5C5;border-radius:2px">Assault Rifle</span><span style="font-size:11px;padding:3px 8px;border:1px solid rgba(100,190,160,0.25);color:#A5B3AD;border-radius:2px">Legendary</span><span style="font-size:11px;padding:3px 8px;border:1px solid rgba(100,190,160,0.25);color:#A5B3AD;border-radius:2px">#Burn</span></div></div>
+<sc-for list="{{ drawerItems }}" as="d" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:32px 1fr auto;gap:8px;align-items:center;padding:8px 12px;border-bottom:1px solid rgba(100,190,160,0.08);font-size:12px;background:{{ d.bg }}"><span style="width:32px;height:32px;background:#17231F;border:1px solid {{ d.rc }};border-radius:2px"></span><span>{{ d.n }}<br><span style="font-size:10px;color:#668C7B">{{ d.t }}</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:{{ d.sc }}">{{ d.s }}</span></div></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ isCompare }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 84px minmax(0,1fr);gap:0;border:1px solid rgba(100,190,160,0.15);border-radius:4px;overflow:hidden">
+<div style="padding:12px 14px;background:#121D19;display:flex;flex-direction:column"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">BUILD A</span><span style="font-weight:700">부식 연사 DPS v3</span></div>
+<div style="padding:12px;background:#0B1412;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">B − A</div>
+<div style="padding:12px 14px;background:#121D19;display:flex;flex-direction:column;text-align:right"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">BUILD B</span><span style="font-weight:700">화상 저격 — kite</span></div>
+<sc-for list="{{ compareRows }}" as="r" hint-placeholder-count="6">
+<div style="padding:9px 14px;border-top:1px solid rgba(100,190,160,0.08);display:flex;justify-content:space-between;font-size:13px"><span style="color:#A5B3AD">{{ r.k }}</span><span style="font-family:'JetBrains Mono',monospace">{{ r.a }}</span></div>
+<div style="padding:9px 8px;border-top:1px solid rgba(100,190,160,0.08);background:#0B1412;text-align:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:{{ r.c }}">{{ r.d }}</div>
+<div style="padding:9px 14px;border-top:1px solid rgba(100,190,160,0.08);text-align:right;font-family:'JetBrains Mono',monospace;font-size:13px">{{ r.b }}</div>
+</sc-for>
+</div>
+<span style="font-size:12px;color:#668C7B">“좋음” 방향은 스탯별로 정의(Reload는 낮을수록 좋음). 색은 방향 기준: 개선 teal · 악화 crimson · 동일 muted.</span>
+</div>
+</sc-if>
+</div>
+
+<div style="border-left:1px solid rgba(100,190,160,0.15);padding:14px;display:flex;flex-direction:column;gap:4px;background:#0B1412">
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#668C7B;margin-bottom:6px">CALCULATED STATS</span>
+<sc-for list="{{ stats }}" as="s" hint-placeholder-count="10"><div style="display:grid;grid-template-columns:1fr auto 14px;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(100,190,160,0.08);font-size:13px"><span style="color:#A5B3AD">{{ s.k }}</span><span style="font-family:'JetBrains Mono',monospace;color:{{ s.c }}">{{ s.v }}</span><span title="{{ s.src }}" style="width:6px;height:6px;border-radius:50%;background:{{ s.dot }};justify-self:end"></span></div></sc-for>
+<div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;font-size:10px;color:#668C7B;font-family:'JetBrains Mono',monospace"><span><span style="color:#42F5C5">●</span> community verified</span><span><span style="color:#A5B3AD">●</span> estimated</span><span><span style="color:#C9A24A">●</span> unverified</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- J -->
+<section id="J" data-screen-label="J Community" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">J</span><h2 style="margin:0;font-size:28px;font-weight:700">COMMUNITY</h2><span style="font-size:14px;color:#668C7B">오래 남는 글만 — 잡담은 Discord</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;overflow:hidden">
+<div style="display:flex;flex-wrap:wrap;gap:2px;padding:0 12px;border-bottom:1px solid rgba(100,190,160,0.15)">
+<sc-for list="{{ commTabs }}" as="t" hint-placeholder-count="6"><button onClick="{{ t.on }}" style="font-family:inherit;font-size:12px;font-weight:600;letter-spacing:0.06em;padding:12px 10px;cursor:pointer;background:transparent;border:none;border-bottom:2px solid {{ t.bar }};color:{{ t.fg }}">{{ t.k }}</button></sc-for>
+<span style="margin-left:auto;align-self:center;font-size:12px;font-weight:600;padding:6px 12px;background:#42F5C5;color:#07100E;border-radius:3px">글쓰기</span>
+</div>
+<sc-for list="{{ posts }}" as="p" hint-placeholder-count="4">
+<div style="padding:14px 16px;border-bottom:1px solid rgba(100,190,160,0.08);display:flex;flex-direction:column;gap:6px" style-hover="background:#111A17">
+<div style="display:flex;gap:8px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid {{ p.cc }};color:{{ p.cc }};border-radius:2px">{{ p.cat }}</span><span style="font-size:15px;font-weight:600">{{ p.t }}</span></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ p.tags }}" as="tg" hint-placeholder-count="2"><span style="font-size:11px;color:#668C7B">#{{ tg }}</span></sc-for></div>
+<div style="display:flex;gap:14px;font-size:11px;color:#668C7B;font-family:'JetBrains Mono',monospace;flex-wrap:wrap"><span style="color:#A5B3AD;font-family:'Pretendard Variable',sans-serif">{{ p.a }}</span><span>조회 {{ p.v }}</span><span>댓글 {{ p.c }}</span><span>♥ {{ p.l }}</span><span>☆ 북마크</span><span style="margin-left:auto">{{ p.d }}</span></div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#0B1412;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:16px">
+<div style="display:flex;flex-direction:column;gap:6px;font-size:12px;border-right:1px solid rgba(100,190,160,0.15);padding-right:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">목차</span><span style="color:#42F5C5">1. 준비물</span><span style="color:#A5B3AD">2. 동선</span><span style="color:#A5B3AD;padding-left:10px">2.1 북부</span><span style="color:#A5B3AD">3. 주의점</span></div>
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">GUIDE · 스크롤 연동 TOC (sticky)</span><span style="font-size:18px;font-weight:700;line-height:1.4">신규 시즌 첫 72시간 루트</span><span style="font-size:13px;line-height:1.75;color:#A5B3AD">본문 16px / 1.75 행간 · 최대 폭 720px. 지도 링크는 MAP 페이지 해당 Route로 딥링크.</span></div>
+</div>
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:8px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid #42F5C5;color:#42F5C5;border-radius:2px">BUILD</span><span style="font-size:15px;font-weight:600">부식 연사 DPS — 보스용</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(100,190,160,0.15);border:1px solid rgba(100,190,160,0.15);border-radius:3px;overflow:hidden">
+<div style="background:#0B1412;padding:10px;display:flex;flex-direction:column;gap:2px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">DPS EST</span><span style="font-family:'JetBrains Mono',monospace;font-size:15px">48.2K</span></div>
+<div style="background:#0B1412;padding:10px;display:flex;flex-direction:column;gap:2px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">TESTED</span><span style="font-family:'JetBrains Mono',monospace;font-size:15px">45.9K</span></div>
+<div style="background:#0B1412;padding:10px;display:flex;flex-direction:column;gap:2px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">CRIT</span><span style="font-family:'JetBrains Mono',monospace;font-size:15px">31%</span></div>
+<div style="background:#0B1412;padding:10px;display:flex;flex-direction:column;gap:2px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">PATCH</span><span style="font-family:'JetBrains Mono',monospace;font-size:15px">S13</span></div>
+</div>
+<div style="display:flex;gap:8px"><a href="#I" style="font-size:13px;font-weight:700;padding:10px 16px;background:#42F5C5;color:#07100E;border-radius:3px;box-shadow:0 0 18px rgba(66,245,197,0.25);text-decoration:none">OPEN IN BUILD LAB</a><span style="font-size:13px;padding:10px 14px;border:1px solid rgba(100,190,160,0.25);border-radius:3px;color:#A5B3AD">내 빌드와 비교</span></div>
+<span style="font-size:11px;color:#668C7B">Build Post = 일반 글 + buildId 참조(스냅샷 버전 고정). 원본 빌드가 수정되면 “새 버전 있음” 표시.</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- K -->
+<section id="K" data-screen-label="K Member profile" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">K</span><h2 style="margin:0;font-size:28px;font-weight:700">Member Profile</h2><span style="font-size:14px;color:#668C7B">/members/[handle]</span></div>
+<div style="border:1px solid rgba(100,190,160,0.15);border-radius:6px;overflow:hidden;background:#0B1412">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:0">
+<div style="border-right:1px solid rgba(100,190,160,0.15);padding:16px;display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:3/4;border:1px dashed rgba(100,190,160,0.35);border-radius:4px;background:linear-gradient(180deg,#121D19,#0B1412);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:16px">
+<img src="assets/logo-3.png" alt="" style="width:64px;height:64px;opacity:0.5">
+<span style="font-size:13px;color:#A5B3AD">대표 캐릭터 이미지 업로드</span>
+<span style="font-size:11px;color:#668C7B">PNG/JPG · 3:4 권장 · 크롭 지원</span>
+</div>
+<div style="border:1px dashed rgba(201,162,74,0.4);border-radius:3px;padding:10px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#C9A24A">RESERVED · AI SCREENSHOT ANALYSIS</span><span style="font-size:11px;color:#A5B3AD">향후 스크린샷에서 장비/외형 자동 추출 — 공간만 확보</span></div>
+</div>
+<div style="padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0">
+<div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">
+<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;gap:10px;align-items:center"><span style="font-size:28px;font-weight:700">Moss</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 7px;border:1px solid #42F5C5;color:#42F5C5;border-radius:2px">OFFICER</span></div><span style="font-size:13px;color:#A5B3AD">Discord @moss · Steam 연결됨 · UID <span style="font-family:'JetBrains Mono',monospace">1043•••••</span></span></div>
+<div style="margin-left:auto;display:flex;gap:6px"><span style="font-size:12px;padding:7px 12px;border:1px solid rgba(100,190,160,0.25);border-radius:3px;color:#A5B3AD">Discord DM ↗</span><span style="font-size:12px;padding:7px 12px;border:1px solid rgba(100,190,160,0.25);border-radius:3px;color:#A5B3AD">프로필 편집</span></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:rgba(100,190,160,0.15);border:1px solid rgba(100,190,160,0.15);border-radius:3px;overflow:hidden">
+<sc-for list="{{ profileFacts }}" as="f" hint-placeholder-count="6"><div style="background:#121D19;padding:10px 12px;display:flex;flex-direction:column;gap:3px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B;letter-spacing:0.08em">{{ f.k }}</span><span style="font-size:13px">{{ f.v }}</span></div></sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#668C7B">UNIZ와 함께한 시즌 · 5</span>
+<div style="display:flex;gap:0;align-items:stretch;overflow-x:auto">
+<sc-for list="{{ memberSeasons }}" as="s" hint-placeholder-count="5"><div style="flex:1;min-width:120px;padding:10px 12px;border:1px solid {{ s.bd }};margin-right:-1px;background:{{ s.bg }};display:flex;flex-direction:column;gap:2px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:{{ s.c }}">{{ s.s }}</span><span style="font-size:12px;font-weight:600">{{ s.n }}</span><span style="font-size:10px;color:#668C7B">{{ s.m }}</span></div></sc-for>
+</div>
+</div>
+<div style="display:flex;gap:2px;border-bottom:1px solid rgba(100,190,160,0.15);overflow-x:auto">
+<sc-for list="{{ profileTabs }}" as="t" hint-placeholder-count="6"><span style="font-size:13px;font-weight:600;padding:10px 12px;white-space:nowrap;color:{{ t.fg }};border-bottom:2px solid {{ t.bar }}">{{ t.k }}</span></sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px">
+<div style="background:#121D19;border:1px solid rgba(66,245,197,0.3);border-radius:3px;padding:12px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#42F5C5">MAIN BUILD</span><span style="font-size:13px;font-weight:600">부식 연사 DPS v3</span><span style="font-size:11px;color:#668C7B">48.2K est · 45.9K tested</span></div>
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;padding:12px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">PUBLISHED</span><span style="font-size:13px">Builds 4 · Guides 2 · Gallery 23</span></div>
+<div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;padding:12px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">OPERATIONS JOINED</span><span style="font-size:13px">47회 · 출석률 82%</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- L -->
+<section id="L" data-screen-label="L Season Hub" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">L</span><h2 style="margin:0;font-size:28px;font-weight:700">SEASON HUB</h2><span style="font-size:14px;color:#668C7B">UNIZ의 핵심 — 서버에 종속되지 않는 하이브의 연대기</span></div>
+
+<div style="border:1px solid rgba(100,190,160,0.15);border-radius:6px;overflow:hidden;background:#0B1412">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:0;border-bottom:1px solid rgba(100,190,160,0.15);position:relative;overflow:hidden">
+<div style="padding:24px;display:flex;flex-direction:column;gap:16px;position:relative">
+<div style="display:flex;gap:10px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#668C7B">SEASON 13 · CURRENT</span><span style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#42F5C5;border:1px solid rgba(66,245,197,0.45);padding:3px 8px;border-radius:2px;box-shadow:0 0 14px rgba(66,245,197,0.12)"><span style="width:5px;height:5px;border-radius:50%;background:#42F5C5"></span>PHASE 3</span></div>
+<span style="font-size:36px;font-weight:700;letter-spacing:0.03em">ENDLESS DREAM</span>
+<div style="display:flex;gap:28px;flex-wrap:wrap;font-size:13px">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">SERVER</span><span style="font-family:'JetBrains Mono',monospace">KR-XXXX</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">SEASON START</span><span style="font-family:'JetBrains Mono',monospace">2026.08.20</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">SETTLEMENT</span><span style="font-family:'JetBrains Mono',monospace">2026.10.24 · D-18</span></div>
+</div>
+</div>
+<div style="display:grid;place-items:center;border-left:1px solid rgba(100,190,160,0.15)"><img src="assets/logo-2.png" alt="" style="width:150px;height:150px"></div>
+</div>
+
+<div style="padding:16px 24px;border-bottom:1px solid rgba(100,190,160,0.15);display:flex;gap:0;overflow-x:auto">
+<sc-for list="{{ lifecycle }}" as="l" hint-placeholder-count="7"><div style="flex:1;min-width:110px;display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center"><span style="width:10px;height:10px;border-radius:50%;background:{{ l.dot }};border:1px solid {{ l.bd }};flex-shrink:0;box-shadow:{{ l.glow }}"></span><span style="flex:1;height:1px;background:{{ l.line }}"></span></div><span style="font-size:12px;color:{{ l.fg }};padding-right:8px">{{ l.k }}</span></div></sc-for>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:0">
+<div style="padding:20px 24px;border-right:1px solid rgba(100,190,160,0.15);display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">MIGRATION BOARD</span><span style="font-size:13px"><span style="font-family:'JetBrains Mono',monospace;font-size:22px;color:#42F5C5;font-weight:600">23</span><span style="font-family:'JetBrains Mono',monospace;color:#668C7B"> / 31</span> Members Ready</span></div>
+<div style="display:flex;height:10px;border-radius:2px;overflow:hidden;gap:2px">
+<sc-for list="{{ migration }}" as="m" hint-placeholder-count="5"><div style="flex:{{ m.n }};background:{{ m.c }}"></div></sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px">
+<sc-for list="{{ migration }}" as="m" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:6px;padding:10px;background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;min-width:0"><div style="display:flex;justify-content:space-between;align-items:center"><span style="width:8px;height:8px;background:{{ m.c }};border-radius:1px"></span><span style="font-family:'JetBrains Mono',monospace;font-size:16px">{{ m.n }}</span></div><span style="font-size:11px;color:#A5B3AD">{{ m.k }}</span><div style="display:flex;flex-wrap:wrap;gap:2px"><sc-for list="{{ m.who }}" as="w" hint-placeholder-count="3"><span style="width:16px;height:16px;border-radius:50%;background:{{ w.bg }};font-size:8px;font-weight:700;color:#07100E;display:grid;place-items:center">{{ w.i }}</span></sc-for></div></div></sc-for>
+</div>
+<span style="font-size:12px;color:#668C7B">내 상태 변경은 Discord <code style="color:#A5B3AD">/season status</code>와 동기화. Officer는 미정 멤버에게 일괄 리마인드.</span>
+</div>
+<div style="padding:20px 24px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">S14 SCENARIO VOTE</span><span style="font-size:11px;color:#668C7B">마감 10.12 · 1인 1표 · 변경 가능</span></div>
+<sc-for list="{{ voteCards }}" as="v" hint-placeholder-count="3"><button onClick="{{ v.on }}" style="text-align:left;font-family:inherit;color:#F1F4F2;cursor:pointer;padding:12px 14px;background:{{ v.bg }};border:1px solid {{ v.bd }};border-radius:4px;box-shadow:{{ v.glow }};display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font-size:15px;font-weight:700">{{ v.k }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:{{ v.nc }}">{{ v.n }}표</span></div>
+<span style="font-size:12px;color:#A5B3AD">{{ v.d }}</span>
+<div style="height:3px;background:#17231F"><div style="height:3px;width:{{ v.pct }};background:{{ v.nc }}"></div></div>
+<span style="font-size:11px;color:{{ v.nc }}">{{ v.mine }}</span>
+</button></sc-for>
+</div>
+</div>
+
+<div style="padding:20px 24px;border-top:1px solid rgba(100,190,160,0.15);display:flex;flex-direction:column;gap:12px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#668C7B">SEASON HISTORY — 삭제되지 않는 기록</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+<sc-for list="{{ history }}" as="h" hint-placeholder-count="3"><div style="background:#121D19;border:1px solid {{ h.bd }};border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+<div style="aspect-ratio:16/7;background:linear-gradient(180deg,#17231F,#111A17);position:relative;display:flex;align-items:flex-end;padding:10px"><span style="position:absolute;top:10px;left:10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:#668C7B">시즌 대표 스크린샷</span><span style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:600;color:{{ h.c }}">{{ h.s }}</span></div>
+<div style="padding:12px;display:flex;flex-direction:column;gap:6px;font-size:12px"><span style="font-size:15px;font-weight:700">{{ h.n }}</span><div style="display:grid;grid-template-columns:auto 1fr;gap:3px 10px"><span style="color:#668C7B">Server</span><span style="font-family:'JetBrains Mono',monospace">{{ h.srv }}</span><span style="color:#668C7B">Members</span><span>{{ h.m }}</span><span style="color:#668C7B">Major Ops</span><span>{{ h.ops }}</span><span style="color:#668C7B">Top Build</span><span>{{ h.b }}</span></div></div>
+</div></sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<!-- M -->
+<section id="M" data-screen-label="M Admin" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">M</span><h2 style="margin:0;font-size:28px;font-weight:700">ADMIN</h2><span style="font-size:14px;color:#668C7B">/admin · 별도 쉘 · amber 상단 바로 모드 구분</span></div>
+<div style="border:1px solid rgba(201,162,74,0.35);border-radius:6px;overflow:hidden;background:#0A0F0D">
+<div style="height:4px;background:#C9A24A"></div>
+<div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid rgba(100,190,160,0.15)"><img src="assets/logo-3.png" alt="" style="width:28px;height:28px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#C9A24A">UNIZ ADMIN CONSOLE</span><span style="margin-left:auto;font-size:12px;color:#A5B3AD">← 멤버 화면으로</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));min-height:420px">
+<div style="border-right:1px solid rgba(100,190,160,0.15);padding:12px;display:flex;flex-direction:column;gap:2px;font-size:13px">
+<sc-for list="{{ adminNav }}" as="a" hint-placeholder-count="9"><div style="display:flex;justify-content:space-between;padding:7px 10px;border-radius:2px;background:{{ a.bg }};color:{{ a.fg }}"><span>{{ a.k }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#C9A24A">{{ a.n }}</span></div></sc-for>
+</div>
+<div style="padding:16px;display:flex;flex-direction:column;gap:16px;min-width:0">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:18px;font-weight:700">Member Approval</span><span style="font-size:12px;color:#668C7B">Discord 서버 멤버 확인 완료된 신청만 표시</span></div>
+<div style="border:1px solid rgba(100,190,160,0.15);border-radius:3px;overflow-x:auto">
+<div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 170px;min-width:680px;gap:8px;padding:8px 12px;background:#121D19;font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B;letter-spacing:0.06em"><span>DISCORD</span><span>OH NICKNAME</span><span>UID</span><span>신청일</span><span></span></div>
+<sc-for list="{{ approvals }}" as="a" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 170px;min-width:680px;gap:8px;padding:10px 12px;border-top:1px solid rgba(100,190,160,0.08);font-size:13px;align-items:center"><span>@{{ a.dc }} <span style="font-size:10px;color:#42F5C5">✓ 서버 멤버</span></span><span>{{ a.oh }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A5B3AD">{{ a.uid }}</span><span style="font-size:12px;color:#668C7B">{{ a.d }}</span><div style="display:flex;gap:4px;justify-content:flex-end"><span style="font-size:12px;padding:5px 10px;background:#27BFA3;color:#07100E;border-radius:2px;font-weight:600">승인</span><span style="font-size:12px;padding:5px 10px;border:1px solid rgba(181,82,92,0.6);color:#D97880;border-radius:2px">거절</span></div></div></sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#668C7B">EXTERNAL INTEGRATION STATUS</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px">
+<sc-for list="{{ integrations }}" as="i" hint-placeholder-count="5"><div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:3px;padding:10px 12px;display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:{{ i.c }}"></span><span style="font-size:13px;font-weight:600">{{ i.k }}</span></div><span style="font-size:11px;color:#A5B3AD">{{ i.s }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#668C7B">{{ i.m }}</span></div></sc-for>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="N" data-screen-label="Next" style="display:flex;flex-direction:column;gap:20px;border-top:1px solid rgba(100,190,160,0.15);padding-top:24px">
+<div style="display:flex;gap:16px;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#42F5C5">→</span><h2 style="margin:0;font-size:28px;font-weight:700">확인이 필요한 결정</h2></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+<sc-for list="{{ openQs }}" as="q" hint-placeholder-count="4"><div style="background:#121D19;border:1px solid rgba(100,190,160,0.15);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#27BFA3">{{ q.n }}</span><span style="font-size:14px;font-weight:600;line-height:1.5">{{ q.t }}</span><span style="font-size:12px;line-height:1.6;color:#A5B3AD">{{ q.d }}</span></div></sc-for>
+</div>
+<footer style="display:flex;align-items:center;gap:16px;padding-top:40px;color:#668C7B;font-size:12px"><img src="assets/logo-4.png" alt="" style="width:40px;height:40px;opacity:0.5"><span>UNIZ HIVE · 비공식 팬 커뮤니티 플랫폼 · Once Human 및 관련 자산의 권리는 각 권리자에게 있습니다.</span></footer>
+</section>
+
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showAnnotations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window!=='undefined'?window.innerWidth:1440, rsvp: 'Going', vote: 'Isles of the Abyss', dur: '30s', target: 'Boss', labTab: 'Build Test', comm: 'ALL', mapScn: 'Manibus / Evolution\'s Call', route: 'UNIZ Farming' };
+  componentDidMount() { this._r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this._r); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  renderVals() {
+    const S = this.state, set = (k, v) => () => this.setState({ [k]: v });
+    const T = '#42F5C5', T2 = '#27BFA3', MU = '#668C7B', TX = '#F1F4F2', TX2 = '#A5B3AD', BD = 'rgba(100,190,160,0.15)', AM = '#C9A24A', CR = '#D97880';
+    const AV = ['#42F5C5','#27BFA3','#668C7B','#A5B3AD','#3FD4B6','#7FA898','#C9A24A','#5BBFA0'];
+    const av = (s) => s.split('').map((i, n) => ({ i, bg: AV[n % AV.length] }));
+    const seg = (key, list) => list.map(k => ({ k, on: set(key, k), bg: S[key] === k ? '#17231F' : 'transparent', fg: S[key] === k ? T : TX2, bd: S[key] === k ? 'rgba(66,245,197,0.45)' : 'transparent' }));
+    const tabs = (key, list) => list.map(k => ({ k, on: set(key, k), bar: S[key] === k ? T : 'transparent', fg: S[key] === k ? TX : MU }));
+    const durMul = { '10s': 1.18, '30s': 1, '60s': 0.91 }[S.dur], tMul = { Normal: 1.12, Elite: 1.04, Boss: 1 }[S.target];
+    const fmt = n => n.toLocaleString('en-US');
+    const migration = [
+      { k: '미정', n: 3, c: '#2A3732', who: av('JKL') },
+      { k: '참가 예정', n: 5, c: AM, who: av('ABCDE') },
+      { k: 'Pre-reg 완료', n: 8, c: T2, who: av('FGHIJKLM') },
+      { k: '이전 준비 완료', n: 10, c: '#3FD4B6', who: av('NOPQRSTUVW') },
+      { k: '이전 완료', n: 5, c: T, who: av('XYZMQ') },
+    ];
+    const votes = [
+      { k: 'Isles of the Abyss', n: 14, d: '해양 탐사 · 신규 레이드 · 하이브 22명 선호' },
+      { k: 'The Way of Winter', n: 9, d: '생존 난이도 ↑ · 혹한 관리 · S12 경험자 다수' },
+      { k: 'Manibus / Evolution\'s Call', n: 4, d: '기본 시나리오 · 신규 멤버 온보딩에 유리' },
+    ];
+    return {
+      tocDisp: S.w >= 1100 ? 'flex' : 'none', shellCols: S.w >= 1100 ? '200px minmax(0,1fr)' : 'minmax(0,1fr)',
+      pillarCols: S.w >= 1280 ? 'repeat(6,minmax(0,1fr))' : S.w >= 560 ? 'repeat(3,minmax(0,1fr))' : 'repeat(2,minmax(0,1fr))',
+      showNotes: this.props.showAnnotations ?? true,
+      toc: [['A','Design direction'],['B','Sitemap'],['C','Dashboard'],['D','Page structures'],['E','Components'],['F','Color · Type'],['G','Navigation'],['H','Map'],['I','Build Lab'],['J','Community'],['K','Member Profile'],['L','Season Hub'],['M','Admin'],['→','Open decisions']].map(([k,label]) => ({ k, label, href: '#' + (k === '→' ? 'N' : k) })),
+      pillars: ['SEASON MIGRATION','HIVE OPERATIONS','BUILD LAB','COMMUNITY','INTERACTIVE MAP','DISCORD INTEGRATION'].map((t, i) => ({ t, n: '0' + (i + 1) })),
+      principles: [
+        { t: '시즌 독립 데이터 모델', d: '모든 기록은 Season → Scenario → Server에 귀속되지만, 하이브와 멤버는 시즌 바깥의 상위 엔티티. 서버가 바뀌어도 기록은 이어짐.' },
+        { t: '신뢰도를 숨기지 않는다', d: '모든 수치에 출처 배지. 추정값(ESTIMATED)과 실측값(COMMUNITY VERIFIED)은 항상 분리 표기.' },
+        { t: 'Glow는 의미다', d: '빛나는 것은 지금 행동해야 하는 것뿐. 카드 대부분은 차콜 + 1px 보더.' },
+        { t: 'Discord로 돌려보낸다', d: '대화가 필요한 순간엔 채널 딥링크. 웹은 정리된 결과를 보관.' },
+      ],
+      roleSplit: [
+        { k: '공지', d: '#서버공지 — 알림·반응', w: '공지 아카이브, 시즌별 고정, 검색' },
+        { k: '정보', d: '#정보공유 #게임토론 — 흘러가는 대화', w: 'Guide/Tip 문서화, TOC, 패치 버전 태그' },
+        { k: '이벤트', d: '보이스 채널, 즉흥 모집', w: 'Operation 일정·역할·출석 기록 (Bot 연동)' },
+        { k: '시즌 이동', d: '“다음 시즌 어디 가요?” 대화', w: '투표, 참가 상태 보드, 이동 체크리스트, 시즌 기록' },
+        { k: '사진', d: '#사진공유 — 스트림', w: '시즌별 Gallery, 프로필 연결' },
+      ],
+      sitemap: [
+        { k: 'HOME', path: '/', children: ['Dashboard', '공지 상세 /notice/[id]', '알림 센터'], access: 'MEMBER+' },
+        { k: 'SEASON', path: '/season', children: ['Current Season', 'Migration Board', 'Next Season Vote', 'Migration Checklist', 'History /season/[no]'], access: 'MEMBER+ · 기록은 GUEST 열람' },
+        { k: 'MEMBERS', path: '/members', children: ['Directory', 'Profile /members/[handle]', '— Builds · Guides · Gallery', '— Operations · Seasons', 'Edit / 캐릭터 업로드'], access: 'MEMBER+' },
+        { k: 'OPERATIONS', path: '/ops', children: ['List · Calendar', 'Detail /ops/[id]', 'Create (OFFICER+)', 'Roster · Role 배정', '출석 기록'], access: 'MEMBER+' },
+        { k: 'MAP', path: '/map', children: ['TH.GL Embed', 'Scenario selector', 'UNIZ Routes', 'Member Shared Routes', 'Route 등록 (share code)'], access: 'GUEST+' },
+        { k: 'BUILD LAB', path: '/lab', children: ['Planner', 'Build Test', 'Compare /lab/compare', 'Shared /lab/b/[id]', 'My Builds'], access: 'GUEST 열람 · MEMBER 저장' },
+        { k: 'COMMUNITY', path: '/community', children: ['ALL · GUIDES · TIPS', 'BUILDS · Q&A · GALLERY', 'Post /community/[id]', 'Editor /community/new'], access: 'GUEST 열람 · MEMBER 작성' },
+        { k: 'DATABASE', path: '/db', children: ['Weapons · Armor · Mods', 'Deviants · Consumables', 'Blueprints · Facilities', 'Materials', 'Item /db/[cat]/[slug]'], access: 'GUEST+' },
+        { k: 'SYSTEM', path: '/', children: ['/login (Discord OAuth)', '/onboarding', '/search · ⌘K', '/settings (Steam 연결)', '/about (UNIZ 소개)'], access: 'ALL' },
+        { k: 'ADMIN', path: '/admin', children: ['Approvals · Roles', 'Seasons · Events', 'Moderation · Reports', 'Announcements', 'DB Verification · Integrations'], access: 'OFFICER(일부) · ADMIN' },
+      ],
+      navItems: ['HOME','SEASON','MEMBERS','OPERATIONS','MAP','BUILD LAB','COMMUNITY','DATABASE'].map((k, i) => ({ k, color: i === 0 ? TX : TX2, bar: i === 0 ? T : 'transparent' })),
+      avatars: av('MKSJYHR'),
+      rsvpOpts: ['Going','Maybe','Unavailable'].map(k => { const on = S.rsvp === k; return { k, on: set('rsvp', k), bg: on ? (k === 'Going' ? T : '#17231F') : 'transparent', fg: on && k === 'Going' ? '#07100E' : on ? TX : TX2, bd: on ? (k === 'Going' ? T : 'rgba(100,190,160,0.4)') : 'rgba(100,190,160,0.25)' }; }),
+      migrationShort: migration.map(m => ({ k: m.k, n: m.n, c: m.c })),
+      migration,
+      notices: [
+        { tag: 'SEASON', tc: T, t: 'S14 이동 일정 및 Pre-registration 안내', d: '10.05' },
+        { tag: 'OPS', tc: T2, t: '레이드 역할 배정 규칙 개정', d: '10.03' },
+        { tag: 'RULE', tc: TX2, t: '하이브 창고 사용 규칙', d: '09.28' },
+      ],
+      recentBuilds: [{ t: '부식 연사 DPS — 보스용', dps: '48.2K est' }, { t: '화상 저격 — kite', dps: '41.0K est' }, { t: '탱커 실드 샷건', dps: '22.4K est' }],
+      recentGuides: [{ t: '신규 시즌 첫 72시간 루트', a: 'moss' }, { t: '정산 전 꼭 챙길 것 12', a: 'kiri' }, { t: '하이브 시설 배치 가이드', a: 'yun' }],
+      opTypes: ['Raid','Boss','Farm Run','Dungeon','Exploration','Season Migration','Custom Event'].map((k, i) => ({ k, bd: i === 0 ? 'rgba(66,245,197,0.45)' : BD, fg: i === 0 ? T : TX2 })),
+      opsList: [
+        { type: 'RAID', when: '오늘 21:00', t: 'Prime War 보스 레이드', n: '14/20 · 역할 2 부족', bg: '#17231F', bd: 'rgba(66,245,197,0.4)' },
+        { type: 'FARM RUN', when: '10.08 20:00', t: '아크 광석 파밍', n: '6/8', bg: '#121D19', bd: BD },
+        { type: 'MIGRATION', when: '10.24 22:00', t: 'S14 동시 접속 이동', n: '23/31 준비', bg: '#121D19', bd: BD },
+        { type: 'EXPLORATION', when: '10.11 15:00', t: '신규 지역 사전 답사', n: '4/6', bg: '#121D19', bd: BD },
+      ],
+      roles: [
+        { k: 'Tank', n: '2/2', c: T, slots: [{ i: 'M', bg: AV[0], bd: AV[0], bs: 'solid' }, { i: 'K', bg: AV[1], bd: AV[1], bs: 'solid' }] },
+        { k: 'DPS', n: '8/10', c: TX2, slots: av('SJYHRA').map(x => ({ ...x, bd: x.bg, bs: 'solid' })).concat([{ i: '', bg: 'transparent', bd: MU, bs: 'dashed' }]) },
+        { k: 'Support', n: '2/4', c: AM, slots: [{ i: 'B', bg: AV[3], bd: AV[3], bs: 'solid' }, { i: 'C', bg: AV[4], bd: AV[4], bs: 'solid' }, { i: '', bg: 'transparent', bd: AM, bs: 'dashed' }, { i: '', bg: 'transparent', bd: AM, bs: 'dashed' }] },
+        { k: 'Gatherer', n: '1/2', c: TX2, slots: [{ i: 'D', bg: AV[5], bd: AV[5], bs: 'solid' }, { i: '', bg: 'transparent', bd: MU, bs: 'dashed' }] },
+        { k: 'Driver', n: '1/2', c: TX2, slots: [{ i: 'E', bg: AV[7], bd: AV[7], bs: 'solid' }, { i: '', bg: 'transparent', bd: MU, bs: 'dashed' }] },
+      ],
+      members: [
+        { oh: 'Moss', dc: 'moss', rank: 'OFFICER', rc: T, role: 'Tank', weapon: 'Shotgun', since: 'S9부터 · 5시즌' },
+        { oh: 'Kiri', dc: 'kiri_oh', rank: 'MEMBER', rc: TX2, role: 'DPS', weapon: 'Assault Rifle', since: 'S11부터 · 3시즌' },
+        { oh: 'Yun', dc: 'yun.b', rank: 'ADMIN', rc: AM, role: 'Support', weapon: 'SMG', since: 'S8부터 · 6시즌' },
+        { oh: 'Haru', dc: 'haru', rank: 'MEMBER', rc: TX2, role: 'Gatherer', weapon: 'Sniper', since: 'S13 신규' },
+      ],
+      dbCats: ['Weapons','Armor','Mods','Deviants','Consumables','Blueprints','Facilities','Materials'].map((k, i) => ({ k, bg: i === 0 ? '#17231F' : 'transparent', fg: i === 0 ? T : TX2 })),
+      dbRows: [
+        { n: 'Item A', t: 'Assault Rifle · Legendary', rc: AM, s: 'OFFICIAL', sc: TX },
+        { n: 'Item B', t: 'Shotgun · Epic', rc: '#9A7FD1', s: 'COMMUNITY VERIFIED', sc: T },
+        { n: 'Item C', t: 'Sniper · Legendary', rc: AM, s: 'TH.GL', sc: T2 },
+        { n: 'Item D', t: 'SMG · Rare', rc: '#5B8FD1', s: 'UNVERIFIED', sc: AM },
+        { n: 'Item E', t: 'Crossbow · Epic', rc: '#9A7FD1', s: 'COMMUNITY VERIFIED', sc: T },
+      ],
+      searchResults: [
+        { g: 'BUILD', t: '부식 연사 DPS — 보스용', m: 'moss', bg: '#17231F' },
+        { g: 'GUIDE', t: '부식 스택 유지하는 법', m: 'kiri' },
+        { g: 'ITEM', t: '부식 탄약', m: 'Consumables' },
+        { g: 'MEMBER', t: 'Moss', m: 'OFFICER' },
+        { g: 'OPS', t: '부식 보스 파밍 (10.08)', m: 'Farm Run' },
+        { g: 'POST', t: 'Q: 부식 vs 화상 보스전?', m: '댓글 12' },
+      ].map(x => ({ bg: 'transparent', ...x })),
+      authFlow: [
+        { n: '1', t: 'Login with Discord (OAuth)', role: 'GUEST', c: TX2 },
+        { n: '2', t: 'UNIZ Discord 서버 멤버 확인', role: 'auto', c: TX2 },
+        { n: '3', t: 'Once Human 닉네임 / UID 입력', role: 'APPLICANT', c: AM },
+        { n: '4', t: 'Admin Approval', role: 'OFFICER+', c: AM },
+        { n: '5', t: 'Hive Member — 프로필 생성', role: 'MEMBER', c: T },
+      ],
+      roleLadder: [['GUEST', MU], ['APPLICANT', AM], ['MEMBER', TX2], ['OFFICER', T], ['ADMIN', AM]].map(([k, c]) => ({ k, c })),
+      compGroups: [
+        { k: 'SHELL & NAV', items: [
+          { n: 'AppShell', p: 'nav, sidebar?, mode: "member"|"admin"' },
+          { n: 'Navbar', p: 'items: NavItem[], activeKey, user' },
+          { n: 'Sidebar', p: 'sections: SideSection[], collapsed' },
+          { n: 'MobileNav', p: 'primary: 5 items, drawerItems' },
+          { n: 'Logo', p: 'variant: horizontal|hex|detail|vertical|mono, size' },
+          { n: 'CommandPalette', p: 'providers: SearchProvider[], commands' } ] },
+        { k: 'PRIMITIVES', items: [
+          { n: 'Card', p: 'tone: default|raised|highlight, padding' },
+          { n: 'StatCard', p: 'label, value, unit?, source?: SourceKind' },
+          { n: 'Badge', p: 'kind: SourceKind | RankKind' },
+          { n: 'StatusChip', p: 'status: MigrationStatus | RSVP' },
+          { n: 'Avatar', p: 'src?, name, size, fallback="hex"' },
+          { n: 'Tabs / Modal / Drawer', p: 'controlled, keyboard-first' },
+          { n: 'DataTable', p: 'columns, rows, sort, filters, density' },
+          { n: 'EmptyState / LoadingState', p: 'emblem="detail"|"mono", action?' } ] },
+        { k: 'DOMAIN', items: [
+          { n: 'SeasonCard', p: 'season: Season, variant: current|history' },
+          { n: 'MigrationBoard', p: 'members: MemberMigration[], total' },
+          { n: 'VoteCard', p: 'candidate, votes, selected, onVote' },
+          { n: 'OperationCard', p: 'op: Operation, myRsvp, onRsvp' },
+          { n: 'RoleRoster', p: 'roles: RoleSlot[], editable' },
+          { n: 'MemberCard', p: 'member: MemberSummary' },
+          { n: 'BuildCard / GuideCard', p: 'build | post, compact?' } ] },
+        { k: 'BUILD LAB & MAP', items: [
+          { n: 'BuildSlot', p: 'slot: SlotKey, item?, onOpen' },
+          { n: 'ItemPicker', p: 'slot, filters: {q,category,rarity,tags}' },
+          { n: 'StatsPanel', p: 'stats: CalcStat[] (value, source)' },
+          { n: 'BuildTestPanel', p: 'scenario: TestScenario, result' },
+          { n: 'BuildDiff', p: 'a: Build, b: Build, metrics' },
+          { n: 'MapEmbed', p: 'map, shareCode?, zoom?, center?' } ] },
+      ],
+      codeTree: `app/
+  (member)/           AppShell mode="member"
+    page.tsx          HOME
+    season/  members/  ops/
+    map/  lab/  community/  db/
+  (admin)/admin/      AppShell mode="admin"
+  login/  onboarding/
+components/
+  ui/                 Card, Badge, Tabs, Drawer…
+  domain/             SeasonCard, OperationCard…
+  lab/  map/
+lib/
+  adapters/           discord · steam · thgl · ohNews
+  mocks/              mock providers (dev only)
+  domain/             types, dps-model.ts
+config/
+  integrations.ts     env → adapter 선택
+  map-routes.ts       UNIZ share codes`,
+      codeAdapter: `// lib/adapters/types.ts
+export interface DiscordAdapter {
+  getGuildMember(userId: string): Promise<GuildMember | null>;
+  getOnlineCount(): Promise<number>;
+  channelLink(channelId: string): string;
+}
+export interface SteamAdapter {
+  getCurrentPlayers(appId: string): Promise<number | null>;
+}
+export interface NewsAdapter {
+  latest(limit: number): Promise<NewsItem[]>;
+}
+// config/integrations.ts
+export const adapters = {
+  discord: env.DISCORD_ENABLED ? discordLive() : discordMock(),
+  steam:   env.STEAM_KEY ? steamLive() : steamMock(),
+  news:    newsMock(),   // endpoint는 env에서만
+};`,
+      colors: [
+        { k: 'bg/0', v: '#07100E', u: '앱 배경' }, { k: 'bg/1', v: '#0B1412', u: '섹션·사이드바' }, { k: 'bg/2', v: '#111A17', u: 'hover row' },
+        { k: 'surface/1', v: '#121D19', u: '카드' }, { k: 'surface/2', v: '#17231F', u: '입력·선택' },
+        { k: 'glow', v: '#42F5C5', u: 'CTA·선택·상태' }, { k: 'secondary', v: '#27BFA3', u: '링크·진행' }, { k: 'muted', v: '#668C7B', u: '라벨·메타' },
+        { k: 'text/1', v: '#F1F4F2', u: '본문·제목' }, { k: 'text/2', v: '#A5B3AD', u: '보조 텍스트' },
+        { k: 'border', v: 'rgba(100,190,160,0.15)', u: '1px 기본 보더' },
+        { k: 'danger', v: '#B5525C', u: '거절·삭제' }, { k: 'warning', v: '#C9A24A', u: '부족·미검증·Admin' }, { k: 'ivory', v: '#F3EFE2', u: '단색 엠블럼' },
+      ],
+      typeScale: [
+        { k: 'display 36/700', s: '36px', w: 700, f: 'inherit', ls: '0.03em', ex: 'ENDLESS DREAM' },
+        { k: 'h1 28/700', s: '28px', w: 700, f: 'inherit', ls: '-0.01em', ex: '시즌 이동 보드' },
+        { k: 'h2 20/700', s: '20px', w: 700, f: 'inherit', ls: '0', ex: 'Prime War 보스 레이드' },
+        { k: 'h3 15/600', s: '15px', w: 600, f: 'inherit', ls: '0', ex: '다음 시즌 투표 진행 중' },
+        { k: 'body 14/400', s: '14px', w: 400, f: 'inherit', ls: '0', ex: '정산 전까지 창고 정리를 마쳐주세요.' },
+        { k: 'small 12/400', s: '12px', w: 400, f: 'inherit', ls: '0', ex: '마감 10.12 23:59 · 27/31 참여' },
+        { k: 'label mono 11', s: '11px', w: 500, f: "'JetBrains Mono',monospace", ls: '0.1em', ex: 'NEXT OPERATION' },
+        { k: 'data mono 28', s: '28px', w: 600, f: "'JetBrains Mono',monospace", ls: '0', ex: '48,210  23/31' },
+      ],
+      spacing: [['1',4],['2',8],['3',12],['4',16],['5',20],['6',24],['8',32],['12',48]].map(([k, v]) => ({ k, v, w: (v * 3) + 'px' })),
+      mobileNav: [['HOME', T, '3px'], ['SEASON', TX2, '50%'], ['OPS', TX2, '3px'], ['LAB', TX2, '3px'], ['MORE', TX2, '50%']].map(([k, c, r]) => ({ k, c, r })),
+      mapScenarios: seg('mapScn', ['Manibus / Evolution\'s Call','Prismverse','The Way of Winter','Raids & Dungeons','Eternaland','RaidZone']),
+      mapRoutes: seg('route', ['All','UNIZ Farming','Seeds','Furniture','Deviants','Materials','Boss Route','Member Shared Routes']),
+      mapLabel: `${S.mapScn} · ${S.route}`,
+      mapShare: S.route === 'All' ? '—' : 'cfg:' + S.route.toLowerCase().replace(/\s+/g, '-'),
+      codeMap: `// components/map/MapEmbed.tsx
+type MapEmbedProps = {
+  map: MapKey;            // 'manibus' | 'prismverse' | …
+  shareCode?: string;     // TH.GL My Filters / Share
+  zoom?: number;
+  center?: [number, number];
+  height?: { desktop: '72vh'; mobile: '70vh' };
+  onLoadError?: () => void;
+};
+// URL은 thglAdapter.buildEmbedUrl(props)에서만 생성
+<MapEmbed map="manibus" shareCode={route.shareCode}
+  zoom={3} center={[0, 0]} />`,
+      codeRoutes: `// config/map-routes.ts  — Admin에서 편집
+export const unizRoutes: UnizRoute[] = [
+  { id: 'farming', label: 'UNIZ Farming',
+    map: 'manibus', shareCode: '<TH.GL share>',
+    owner: 'officer', verifiedAt: '2026-10-02' },
+  { id: 'boss', label: 'Boss Route', … },
+  // Member Shared Routes: 멤버가 share code 제출
+  //  → OFFICER 승인 후 노출
+];`,
+      labTabs: tabs('labTab', ['Loadout','Build Test','Compare']),
+      isTest: S.labTab === 'Build Test', isLoadout: S.labTab === 'Loadout', isCompare: S.labTab === 'Compare',
+      labActions: [['Save', true], ['Publish', false], ['Duplicate', false], ['Compare', false], ['Share', false]].map(([k, p]) => ({ k, bg: p ? T : 'transparent', fg: p ? '#07100E' : TX2, bd: p ? T : 'rgba(100,190,160,0.25)' })),
+      slotGroups: [
+        { k: 'WEAPONS', cols: 1, slots: [['Primary', 'Assault Rifle · ★5', AM], ['Secondary', 'Sniper · ★4', '#9A7FD1'], ['Melee', 'Machete', '#5B8FD1']] },
+        { k: 'ARMOR', cols: 2, slots: [['Helmet', 'Set A', AM], ['Mask', 'Set A', AM], ['Top', 'Set A', AM], ['Gloves', 'Set B', '#9A7FD1'], ['Pants', 'Set A', AM], ['Shoes', '— 비어 있음', MU]] },
+        { k: 'MODS & CALIBRATION', cols: 1, slots: [['Weapon Calibration', 'Crit 보정', T2], ['Weapon Mods', '1 / 1', AM], ['Armor Mods · Attributes', '6 / 6 · 18 attr', '#9A7FD1']] },
+        { k: 'CRADLE OVERRIDE × 8', cols: 8, slots: Array.from({ length: 8 }, (_, i) => ['', '', i < 6 ? T2 : MU, true]) },
+        { k: 'DEVIANT · CONSUMABLES', cols: 2, slots: [['Combat Deviant', 'Deviant', T2], ['Ammo', '부식 탄약', AM], ['Food', '—', MU], ['Drink', '—', MU]] },
+        { k: 'TIER', cols: 3, slots: [['Stars', '★★★★★', AM], ['Tier', 'T5', T2], ['Enh.', '+5', T2]] },
+      ].map(g => ({ ...g, slots: g.slots.map(([k, v, rc, compact]) => ({ k, v, rc, labelDisp: compact ? 'none' : 'flex', bd: v === '— 비어 있음' || (compact && rc === MU) ? 'rgba(100,190,160,0.3)' : BD, bs: v === '— 비어 있음' || (compact && rc === MU) ? 'dashed' : 'solid' })) })),
+      durations: seg('dur', ['10s','30s','60s']).map((d, i) => ({ ...d, k: ['10s Burst','30s DPS','60s Sustained'][i] })),
+      targets: seg('target', ['Normal','Elite','Boss']),
+      testLabel: { '10s': '10s BURST', '30s': '30s', '60s': '60s SUSTAINED' }[S.dur] + ' · ' + S.target.toUpperCase(),
+      calcDps: fmt(Math.round(48210 * durMul * tMul)),
+      testDps: S.dur === '30s' && S.target === 'Boss' ? '45,900' : '측정 없음',
+      buffs: [['하이브 버프', true], ['음식 버프', true], ['Deviant 시너지', true], ['파티 Support', false], ['약점 고정', false]].map(([k, on]) => ({ k, bd: on ? 'rgba(66,245,197,0.4)' : BD, fg: on ? T : MU, bg: on ? 'rgba(66,245,197,0.06)' : 'transparent' })),
+      stats: [
+        ['Weapon Damage', '412', TX, T], ['Crit Rate', '31.0%', TX, T], ['Crit Damage', '+68%', TX, T], ['Weakspot Damage', '+55%', TX, TX2], ['Element Damage', '+24%', T, TX2], ['Status Damage', '+40%', TX, AM], ['Fire Rate', '600 rpm', TX, T], ['Magazine', '45', TX, T], ['Reload', '2.1 s', TX, TX2], ['Stability', '—', MU, AM],
+      ].map(([k, v, c, dot]) => ({ k, v, c, dot, src: dot === T ? 'community verified' : dot === AM ? 'unverified' : 'estimated' })),
+      drawerItems: [
+        { n: 'Item A', t: 'Legendary · #Burn', rc: AM, s: 'VERIFIED', sc: T, bg: '#17231F' },
+        { n: 'Item B', t: 'Epic · #Crit', rc: '#9A7FD1', s: 'OFFICIAL', sc: TX },
+        { n: 'Item C', t: 'Legendary · #Status', rc: AM, s: 'UNVERIFIED', sc: AM },
+        { n: 'Item D', t: 'Rare', rc: '#5B8FD1', s: 'TH.GL', sc: T2 },
+      ].map(x => ({ bg: 'transparent', ...x })),
+      compareRows: [
+        { k: 'DPS (est)', a: '48,210', b: '50,235', d: '+4.2%', c: T },
+        { k: 'Crit Rate', a: '31.0%', b: '29.4%', d: '-5.3%', c: CR },
+        { k: 'Reload', a: '2.1 s', b: '2.9 s', d: '+0.8 sec', c: CR },
+        { k: 'Element Damage', a: '+24%', b: '+36%', d: '+12%', c: T },
+        { k: 'Magazine', a: '45', b: '45', d: '0', c: MU },
+        { k: 'Weakspot Damage', a: '+55%', b: '+80%', d: '+25%', c: T },
+      ],
+      commTabs: tabs('comm', ['ALL','GUIDES','TIPS','BUILDS','Q&A','GALLERY']),
+      posts: [
+        { cat: 'GUIDE', cc: T2, t: '신규 시즌 첫 72시간 루트', tags: ['시즌시작','루트'], a: 'moss', v: '1.2K', c: 18, l: 64, d: '10.04' },
+        { cat: 'BUILD', cc: T, t: '부식 연사 DPS — 보스용 (실측 포함)', tags: ['부식','보스'], a: 'moss', v: '842', c: 11, l: 51, d: '10.03' },
+        { cat: 'Q&A', cc: AM, t: '정산 기간에 하이브 시설 옮겨지나요?', tags: ['정산'], a: 'haru', v: '310', c: 9, l: 4, d: '10.02' },
+        { cat: 'TIP', cc: TX2, t: '창고 정리 단축 루틴', tags: ['QoL'], a: 'kiri', v: '205', c: 3, l: 12, d: '09.30' },
+      ].filter(p => S.comm === 'ALL' || ({ GUIDES: 'GUIDE', TIPS: 'TIP', BUILDS: 'BUILD', 'Q&A': 'Q&A' })[S.comm] === p.cat),
+      profileFacts: [['HIVE RANK', 'OFFICER'], ['CURRENT SCENARIO', 'Endless Dream'], ['ROLE', 'Tank · Driver'], ['MAIN WEAPON', 'Shotgun'], ['PLAYSTYLE', '레이드 리딩 · 탐사'], ['PREFERRED', 'Raid · Boss · Exploration'], ['JOINED', '2025.03 · S9']].map(([k, v]) => ({ k, v })),
+      memberSeasons: [['S9', 'Manibus', '합류'], ['S10', 'Prismverse', 'Ops 9'], ['S11', 'Manibus', 'Ops 11'], ['S12', 'The Way of Winter', 'Ops 14 · Top Build'], ['S13', 'Endless Dream', '진행 중']].map(([s, n, m], i, a) => { const cur = i === a.length - 1; return { s, n, m, c: cur ? T : MU, bd: cur ? 'rgba(66,245,197,0.45)' : BD, bg: cur ? '#17231F' : '#121D19' }; }),
+      profileTabs: ['Overview','Builds 4','Guides 2','Gallery 23','Operations 47','Season History'].map((k, i) => ({ k, fg: i === 0 ? TX : MU, bar: i === 0 ? T : 'transparent' })),
+      lifecycle: ['현재 시즌','정산 기간','다음 Scenario 선택','서버 선택','멤버 참가 여부','이동 준비','다음 시즌 시작'].map((k, i) => ({ k, dot: i < 2 ? T2 : i === 2 ? T : 'transparent', bd: i <= 2 ? T : MU, glow: i === 2 ? '0 0 10px rgba(66,245,197,0.7)' : 'none', line: i < 2 ? T2 : 'rgba(100,190,160,0.2)', fg: i === 2 ? T : i < 2 ? TX : MU })),
+      voteCards: votes.map(v => { const on = S.vote === v.k; const n = v.n + (on ? 1 : 0); return { ...v, n, on: set('vote', v.k), pct: Math.round(n / 28 * 100) + '%', bg: on ? '#17231F' : '#121D19', bd: on ? 'rgba(66,245,197,0.6)' : BD, glow: on ? '0 0 18px rgba(66,245,197,0.18)' : 'none', nc: on ? T : TX2, mine: on ? '✓ 내 투표' : '카드를 눌러 투표' }; }),
+      history: [
+        { s: 'S11', n: 'Manibus', srv: 'KR-XXXX', m: '24명', ops: 'Raid 11 · Boss 6', b: '화상 저격', c: MU, bd: BD },
+        { s: 'S12', n: 'The Way of Winter', srv: 'KR-XXXX', m: '28명', ops: 'Raid 14 · Migration 1', b: '탱커 실드', c: MU, bd: BD },
+        { s: 'S13', n: 'Endless Dream', srv: 'KR-XXXX', m: '31명 · 진행 중', ops: 'Raid 7 · Farm 12', b: '부식 연사', c: T, bd: 'rgba(66,245,197,0.35)' },
+      ],
+      adminNav: [['Member Approval', '2'], ['Role Management', ''], ['Season Management', ''], ['Event Management', ''], ['Guide Moderation', '1'], ['Reports', '0'], ['Announcements', ''], ['DB Verification', '14'], ['Integrations', '']].map(([k, n], i) => ({ k, n, bg: i === 0 ? '#17231F' : 'transparent', fg: i === 0 ? TX : TX2 })),
+      approvals: [
+        { dc: 'haru', oh: 'Haru', uid: '2210•••••', d: '10.05' },
+        { dc: 'sol.k', oh: 'Sol', uid: '1987•••••', d: '10.06' },
+      ],
+      integrations: [
+        { k: 'Discord OAuth', c: T, s: '정상', m: 'adapter: live' },
+        { k: 'UNIZ Bot', c: AM, s: '준비 중 · /event /season', m: 'adapter: mock' },
+        { k: 'Steam', c: MU, s: '미연결 (Optional)', m: 'adapter: mock' },
+        { k: 'TH.GL Embed', c: T, s: 'iframe 응답 정상', m: 'routes: 6' },
+        { k: 'OH Official News', c: AM, s: '수동 등록 모드', m: 'adapter: mock' },
+      ],
+      openQs: [
+        { n: 'Q1', t: 'Phase 정의', d: 'Phase 1–6을 UNIZ가 직접 정의할지, 게임 내 시즌 단계를 그대로 따를지.' },
+        { n: 'Q2', t: '공개 범위', d: 'Map · Build Lab · Database · Season History를 비회원(GUEST)에게 공개할지.' },
+        { n: 'Q3', t: 'DPS 모델 소유', d: 'Calculated DPS 공식 담당자와 Community Verified 기준(측정 횟수·편차).' },
+        { n: 'Q4', t: '하이파이 우선순위', d: '다음 단계 하이파이 화면 순서 제안: Season Hub → Dashboard → Build Lab → Operations.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
