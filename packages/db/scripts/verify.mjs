@@ -16,6 +16,8 @@ const expectedTables = [
   "announcements",
   "audit_logs",
   "build_likes",
+  "build_loadouts",
+  "build_loadout_entries",
   "build_publications",
   "build_share_requests",
   "build_versions",

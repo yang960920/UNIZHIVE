@@ -1,0 +1,115 @@
+.editor {
+  margin: 16px 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-1);
+}
+.editor h4 {
+  margin: 0 0 12px;
+}
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.fields label,
+.options label {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+}
+.fields input,
+.fields select,
+.options input {
+  width: 100%;
+  min-height: 36px;
+}
+.material {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.materialLabel {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.selected {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.note {
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.options summary {
+  cursor: pointer;
+  font-size: 12px;
+  padding: 7px 0;
+}
+.results {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  max-height: 260px;
+  overflow: auto;
+}
+.results button {
+  display: grid;
+  gap: 4px;
+  text-align: left;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+}
+.results button[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+.results small {
+  font-size: 10px;
+  line-height: 1.5;
+}
+.reset {
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font-size: 11px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.normal {
+  color: #74c68b;
+}
+.rare {
+  color: #7db8ed;
+}
+.epic {
+  color: #c89cf4;
+}
+.legendary {
+  color: #efd17b;
+}
+.saved {
+  margin: 10px 0;
+  font-size: 12px;
+}
+.saved p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+.error {
+  color: var(--danger);
+  font-size: 11px;
+}
+@media (max-width: 640px) {
+  .fields {
+    grid-template-columns: 1fr;
+  }
+}

@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   CONSUMABLE_CATALOG,
   createEmptyConsumableLoadout,
+  getConsumableCraftRecipes,
   type ConsumableLoadout,
   type ConsumableCatalogItem,
 } from "@uniz/build-engine";
@@ -12,7 +13,10 @@ import {
   GearConsumablesEditor,
   GearConsumablesView,
 } from "../src/components/build-planner/gear-consumables";
-import { consumableSelectionError } from "../src/components/build-planner/gear-consumables-model";
+import {
+  consumableSelectionError,
+  makeConsumableChecklist,
+} from "../src/components/build-planner/gear-consumables-model";
 
 vi.mock("next/image", () => ({
   default: (props: Record<string, unknown>) =>
@@ -134,6 +138,82 @@ afterEach(async () => {
 });
 
 describe("food and drink selection", () => {
+  it("records actual meat and milk choices without inventing an initial ingredient, and restores them in the saved view", async () => {
+    await mount();
+    await choose("음식", 1, "변이된 소시지");
+    expect(latest.preparations).toBeUndefined();
+    expect(container.querySelector('[aria-label="도핑 제작 재료 선택"]')?.textContent).toContain(
+      "재료 선택",
+    );
+    const selectIngredient = async (label: string, query: string) => {
+      const input = [...container.querySelectorAll("label")]
+        .find((node) => node.textContent?.trim() === `${label} 검색`)
+        ?.querySelector("input") as HTMLInputElement;
+      await act(async () => {
+        Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(
+          input,
+          query,
+        );
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+      });
+      const button = container.querySelector(
+        `[aria-label="${label} 검색 결과"] button`,
+      ) as HTMLButtonElement;
+      await click(button);
+    };
+    await selectIngredient("고기·생선 재료", "악어고기");
+    await selectIngredient("우유·꿀 재료", "감로꿀");
+    const saved = latest;
+    const preparation = saved.preparations!["consumable-30110324"];
+    expect(preparation.ingredientSelections["group-103"]).toBe("material-30101012");
+    expect(preparation.ingredientSelections["group-165"]).toBe("material-30104904");
+    expect(container.textContent).toContain("파워서지 대미지 2% 증가");
+    expect(makeConsumableChecklist(saved).join("\n")).toContain("사용 재료: 악어고기 × 1");
+    await act(async () =>
+      root.render(createElement(GearConsumablesView, { value: JSON.parse(JSON.stringify(saved)) })),
+    );
+    expect(container.querySelector('[aria-label="저장된 도핑 제작 재료"]')?.textContent).toContain(
+      "감로 꿀 × 1",
+    );
+    expect(container.querySelector('[aria-label="저장된 도핑 제작 재료"]')?.textContent).toContain(
+      "파워서지 대미지 2% 증가",
+    );
+  });
+
+  it("clears obsolete ingredient choices when a recipe or the selected food changes", async () => {
+    const id = "consumable-30110324";
+    const recipe = getConsumableCraftRecipes(id).find((item) => item.isDefault)!;
+    await mount({
+      initial: {
+        foodIds: [id],
+        drinkIds: [],
+        notes: "",
+        preparations: {
+          [id]: {
+            recipeKey: recipe.key,
+            ingredientSelections: {
+              "group-103": "material-30101012",
+              "group-165": "material-30104904",
+            },
+          },
+        },
+      },
+    });
+    const selector = container.querySelector(
+      '[aria-label="도핑 제작 재료 선택"] select',
+    ) as HTMLSelectElement;
+    await act(async () => {
+      selector.value = getConsumableCraftRecipes(id).find((item) => !item.isDefault)!.key;
+      selector.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    expect(latest.preparations![id].ingredientSelections).toEqual({});
+    await click(namedButton("음식 1 변경"));
+    await inputText("갤럭시페스츄리");
+    await click(textButton("음식 선택 적용"));
+    expect(latest.preparations?.[id]).toBeUndefined();
+    expect(latest.foodIds).toEqual(["consumable-30110389"]);
+  });
+
   it("searches newly added foods without spaces and applies the unique result with Enter", async () => {
     await mount({ initialClass: "셰프" });
     await click(namedButton("음식 1 선택"));

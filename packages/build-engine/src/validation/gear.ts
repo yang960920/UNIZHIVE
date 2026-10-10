@@ -25,11 +25,39 @@ import {
   type PlannerLoadout,
 } from "../model/planner";
 import { plannerLoadoutSchema } from "./planner";
+import {
+  getCraftingMaterial,
+  getGearCraftRecipe,
+  getConsumablePreparation,
+  getWeaponTuningBlueprint,
+  weaponTuningFits,
+  type CraftingRecipe,
+} from "../model/crafting";
 
 const id = z.string().trim().min(1).max(160);
 const recordingLevel = z.number().int().min(1).max(100).nullable();
 const moduleLevel = z.number().int().min(1).max(17).nullable();
 const nullableId = id.nullable();
+const craftingSelectionMap = z.record(id, id).superRefine((values, ctx) => {
+  if (Object.keys(values).length > 64)
+    ctx.addIssue({ code: "custom", message: "Too many crafting ingredient choices." });
+});
+const tuningSchema = z.strictObject({
+  blueprintId: id,
+  attackPercent: z.number().min(0).max(1000).nullable(),
+  secondary: z
+    .strictObject({
+      kind: z.enum(["CRIT_RATE", "CRIT_DAMAGE", "ELEMENTAL_DAMAGE", "WEAKSPOT_DAMAGE"]),
+      value: z.number().min(0).max(1000).nullable(),
+    })
+    .nullable(),
+});
+const gearCraftingSchema = z.strictObject({
+  tier: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5)]).nullable(),
+  recipeKey: nullableId,
+  materialChoices: craftingSelectionMap,
+  tuning: tuningSchema.nullable(),
+});
 function metadataLabels(maxItems: number, maxLength: number, stripHash: boolean) {
   return z
     .array(
@@ -68,6 +96,7 @@ export const gearLoadoutSchema = z
           abilityGrade: recordingLevel,
           activityGrade: recordingLevel,
           traitIds: z.array(id).max(16),
+          crafting: gearCraftingSchema.optional(),
           attachments: z.strictObject({
             muzzle: nullableId,
             sight: nullableId,
@@ -93,6 +122,15 @@ export const gearLoadoutSchema = z
         foodIds: z.array(id).max(2),
         drinkIds: z.array(id).max(2),
         notes: z.string().max(2000),
+        preparations: z
+          .record(
+            id,
+            z.strictObject({
+              recipeKey: id,
+              ingredientSelections: craftingSelectionMap,
+            }),
+          )
+          .optional(),
       })
       .optional(),
     catalogNames: z.record(id, z.string().trim().min(1).max(120)).optional(),
@@ -193,9 +231,16 @@ export const gearLoadoutSchema = z
       const referenced = new Set<string>();
       loadout.consumables?.foodIds.forEach((itemId) => referenced.add(itemId));
       loadout.consumables?.drinkIds.forEach((itemId) => referenced.add(itemId));
+      for (const preparation of Object.values(loadout.consumables?.preparations ?? {})) {
+        Object.values(preparation.ingredientSelections).forEach((itemId) => referenced.add(itemId));
+      }
       for (const selection of loadout.slots) {
         referenced.add(selection.itemId);
         selection.traitIds.forEach((trait) => referenced.add(trait));
+        Object.values(selection.crafting?.materialChoices ?? {}).forEach((itemId) =>
+          referenced.add(itemId),
+        );
+        if (selection.crafting?.tuning) referenced.add(selection.crafting.tuning.blueprintId);
         for (const [key, value] of Object.entries(selection.attachments)) {
           if (key !== "moduleLevel" && typeof value === "string") referenced.add(value);
         }
@@ -248,6 +293,20 @@ export function parseGearLoadout(
     if (!gearItemMatchesScenario(item, snapshot.context))
       add(path, "Select a matching scenario for this catalog item.");
   };
+  const checkMaterialChoices = (
+    recipe: Readonly<CraftingRecipe> | undefined,
+    choices: Record<string, string>,
+    path: (string | number)[],
+  ) => {
+    for (const [key, materialId] of Object.entries(choices)) {
+      const ingredient = recipe?.ingredients.find((ingredient) => ingredient.key === key);
+      if (!ingredient || !ingredient.options.some((option) => option.materialId === materialId))
+        add(
+          [...path, key],
+          "Crafting material must be an allowed choice of the selected recipe ingredient.",
+        );
+    }
+  };
   if (snapshot.consumables) {
     const categories: ["foodIds" | "drinkIds", ConsumableKind][] = [
       ["foodIds", "FOOD"],
@@ -259,6 +318,18 @@ export function parseGearLoadout(
         if (!item || item.kind !== kind)
           add(["consumables", key, index], "Unknown consumable or incorrect food/drink category.");
       });
+    const selected = new Set([...snapshot.consumables.foodIds, ...snapshot.consumables.drinkIds]);
+    for (const [itemId, preparation] of Object.entries(snapshot.consumables.preparations ?? {})) {
+      const path = ["consumables", "preparations", itemId];
+      if (!selected.has(itemId)) add(path, "Preparation belongs only to a selected food or drink.");
+      const resolved = getConsumablePreparation(itemId, preparation);
+      if (!resolved)
+        add([...path, "recipeKey"], "Unknown preparation recipe for this food or drink.");
+      checkMaterialChoices(resolved?.recipe, preparation.ingredientSelections, [
+        ...path,
+        "ingredientSelections",
+      ]);
+    }
   }
   snapshot.slots.forEach((selection, index) => {
     const path = ["slots", index];
@@ -270,6 +341,59 @@ export function parseGearLoadout(
     if (!gearItemFitsSlot(parent, selection.slot))
       add([...path, "itemId"], "Catalog item cannot occupy the selected equipment slot.");
     checkScenario(parent, [...path, "itemId"]);
+    if (selection.crafting) {
+      const crafting = selection.crafting;
+      if (parent.kind !== "ARMOR" && parent.kind !== "WEAPON")
+        add([...path, "crafting"], "Only weapons and armor record crafting choices.");
+      const recipe = getGearCraftRecipe(parent.id, crafting.tier, crafting.recipeKey);
+      if (crafting.recipeKey && !recipe)
+        add(
+          [...path, "crafting", "recipeKey"],
+          "Crafting recipe must match the selected equipment and recorded tier.",
+        );
+      checkMaterialChoices(recipe, crafting.materialChoices, [
+        ...path,
+        "crafting",
+        "materialChoices",
+      ]);
+      if (crafting.tuning) {
+        const tuning = crafting.tuning;
+        const blueprint = getWeaponTuningBlueprint(tuning.blueprintId);
+        if (!blueprint || !weaponTuningFits(blueprint, parent, snapshot.context))
+          add(
+            [...path, "crafting", "tuning", "blueprintId"],
+            "Tuning blueprint must explicitly match the weapon and scenario.",
+          );
+        if (
+          blueprint &&
+          tuning.attackPercent !== null &&
+          (tuning.attackPercent < blueprint.attackRange.min ||
+            tuning.attackPercent > blueprint.attackRange.max)
+        )
+          add(
+            [...path, "crafting", "tuning", "attackPercent"],
+            "Recorded attack percentage is outside this blueprint's sourced range.",
+          );
+        if (blueprint && tuning.secondary) {
+          const option = blueprint.secondaryOptions.find(
+            (option) => option.kind === tuning.secondary?.kind,
+          );
+          if (!option)
+            add(
+              [...path, "crafting", "tuning", "secondary", "kind"],
+              "Unknown secondary tuning attribute.",
+            );
+          else if (
+            tuning.secondary.value !== null &&
+            (tuning.secondary.value < option.min || tuning.secondary.value > option.max)
+          )
+            add(
+              [...path, "crafting", "tuning", "secondary", "value"],
+              "Recorded tuning attribute is outside the sourced range.",
+            );
+        }
+      }
+    }
     for (const key of GEAR_ATTACHMENT_KEYS) {
       const attachedId = selection.attachments[key];
       if (attachedId === null) continue;
@@ -315,9 +439,15 @@ export function parseGearLoadout(
   const referenced = new Set<string>();
   snapshot.consumables?.foodIds.forEach((itemId) => referenced.add(itemId));
   snapshot.consumables?.drinkIds.forEach((itemId) => referenced.add(itemId));
+  for (const preparation of Object.values(snapshot.consumables?.preparations ?? {}))
+    Object.values(preparation.ingredientSelections).forEach((itemId) => referenced.add(itemId));
   for (const selection of snapshot.slots) {
     referenced.add(selection.itemId);
     selection.traitIds.forEach((trait) => referenced.add(trait));
+    Object.values(selection.crafting?.materialChoices ?? {}).forEach((itemId) =>
+      referenced.add(itemId),
+    );
+    if (selection.crafting?.tuning) referenced.add(selection.crafting.tuning.blueprintId);
     for (const [key, value] of Object.entries(selection.attachments)) {
       if (key !== "moduleLevel" && typeof value === "string") referenced.add(value);
     }
@@ -326,7 +456,13 @@ export function parseGearLoadout(
   snapshot.catalogNames = Object.fromEntries(
     [...referenced]
       .sort()
-      .map((itemId) => [itemId, (items.get(itemId) ?? consumableItems.get(itemId))!.name]),
+      .map((itemId) => [
+        itemId,
+        (items.get(itemId) ??
+          consumableItems.get(itemId) ??
+          getCraftingMaterial(itemId) ??
+          getWeaponTuningBlueprint(itemId))!.name,
+      ]),
   );
   gearLoadoutSchema.parse(snapshot);
   return snapshot;

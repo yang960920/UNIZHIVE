@@ -95,6 +95,20 @@ function slotIssue(issue: GearIssue, draft: PlannerGearLoadout): PlannerSaveBloc
     return blocker(
       `${label}의 장착 위치가 중복되었거나 올바르지 않습니다. 장비를 다시 선택해 주세요.`,
     );
+  if (field === "crafting") {
+    const detail = issue.path[3];
+    return blocker(
+      detail === "tier"
+        ? `${label}의 제작 티어를 T1~T5에서 선택하거나 비워 주세요.`
+        : detail === "materialChoices"
+          ? `${label}의 제작 재료가 선택한 제작 조합에 맞지 않습니다. 재료를 다시 선택하거나 기본 재료로 복원해 주세요.`
+          : detail === "recipeKey"
+            ? `${label}의 제작 조합이 현재 장비·티어와 맞지 않습니다. 제작 조합을 다시 선택해 주세요.`
+            : detail === "tuning"
+              ? `${label}의 튜닝 설계도와 실제 수치를 확인해 주세요. 호환되는 설계도를 선택하고 숫자는 안내된 범위로 입력하거나 비워 주세요.`
+              : `${label}의 제작 기록을 확인해 주세요. 장비에 맞는 제작 조합과 재료를 다시 선택해 주세요.`,
+    );
+  }
   if (field === "traitIds") {
     const conflict = getGearTraitConflicts(selection.traitIds).find((entry) =>
       issue.message.includes("shiny")
@@ -189,13 +203,15 @@ function translateIssue(issue: GearIssue, draft: PlannerGearLoadout): PlannerSav
     const limit = field === "foodIds" ? limits.food : limits.drink;
     return {
       message:
-        field === "notes"
-          ? "도핑 메모는 2,000자 이내로 입력해 주세요."
-          : issue.message.includes("different items")
-            ? `같은 ${object} 중복 선택할 수 없습니다. 중복된 항목을 해제해 주세요.`
-            : issue.code === "too_big" || issue.message.includes("at most")
-              ? `${subject} 현재 클래스에서 최대 ${limit}개까지 선택할 수 있습니다. 추가 항목을 해제하거나 클래스를 확인해 주세요.`
-              : `${kind} 선택을 현재 목록에서 확인할 수 없습니다. 해당 항목을 다시 선택하거나 해제해 주세요.`,
+        field === "preparations"
+          ? "도핑 제작 조합과 선택 재료를 확인해 주세요. 요리에 맞는 조합에서 재료를 다시 선택하거나 해제해 주세요."
+          : field === "notes"
+            ? "도핑 메모는 2,000자 이내로 입력해 주세요."
+            : issue.message.includes("different items")
+              ? `같은 ${object} 중복 선택할 수 없습니다. 중복된 항목을 해제해 주세요.`
+              : issue.code === "too_big" || issue.message.includes("at most")
+                ? `${subject} 현재 클래스에서 최대 ${limit}개까지 선택할 수 있습니다. 추가 항목을 해제하거나 클래스를 확인해 주세요.`
+                : `${kind} 선택을 현재 목록에서 확인할 수 없습니다. 해당 항목을 다시 선택하거나 해제해 주세요.`,
       targetId: "gear-consumables",
     };
   }

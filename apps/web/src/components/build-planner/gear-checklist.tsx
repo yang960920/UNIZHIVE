@@ -17,6 +17,7 @@ import { GearArmorSetEffects } from "./gear-armor-summary";
 import { GearDeviantFusionGuide } from "./gear-fusion-guide";
 import { GearFarmingMapLink } from "./gear-farming-map-link";
 import { GearConsumablesView } from "./gear-consumables";
+import { GearCraftingView } from "./gear-crafting";
 export { makeGearChecklist } from "./gear-checklist-text";
 import "./gear-checklist.css";
 
@@ -88,6 +89,7 @@ export function GearLoadoutView({ loadout }: { loadout: PlannerGearLoadout }) {
                   {item?.isKeyArmor && <small>핵심 방어구</small>}
                 </div>
               </div>
+              <GearCraftingView selection={selection} />
               {slot === "combatDeviant" && (
                 <GearFarmingMapLink
                   kind="deviant"

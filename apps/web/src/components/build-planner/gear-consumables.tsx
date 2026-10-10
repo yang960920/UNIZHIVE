@@ -21,6 +21,7 @@ import {
 } from "./gear-consumables-model";
 import styles from "./gear-consumables.module.css";
 import { PlannerFieldBadge } from "./save-feedback";
+import { ConsumablePreparationEditor, ConsumablePreparationView } from "./consumable-preparation";
 
 function ConsumableIcon({ item }: { item?: ConsumableCatalogItem }) {
   return (
@@ -77,7 +78,7 @@ function CommonConsumableNotes() {
   return (
     <div className={styles.note}>
       <p>
-        표시 수치는 기본 효과이며 재료·요리 품질·셰프 제작 강화는 반영하지 않았습니다. 추가 효과는
+        요리의 기본 효과와 선택한 재료의 추가 효과를 따로 표시합니다. 요리 품질·셰프 제작 강화는
         도핑 메모에 기록해 주세요.
       </p>
       <details>
@@ -317,8 +318,15 @@ export function GearConsumablesEditor({
       ids.some((chosen, index) => chosen === id && index !== picker.index)
     )
       return;
+    const previousId = ids[picker.index];
     ids[picker.index] = id;
-    onChange({ ...loadout, [key]: ids.filter((chosen) => typeof chosen === "string") });
+    const preparations = { ...loadout.preparations };
+    if (previousId && previousId !== id) delete preparations[previousId];
+    onChange({
+      ...loadout,
+      [key]: ids.filter((chosen) => typeof chosen === "string"),
+      ...(loadout.preparations ? { preparations } : {}),
+    });
     setPicker(null);
   }
   return (
@@ -384,6 +392,20 @@ export function GearConsumablesEditor({
                       </div>
                     </div>
                     {item && <ConsumableFacts item={item} />}
+                    {item && (
+                      <ConsumablePreparationEditor
+                        key={item.id}
+                        consumableId={item.id}
+                        value={loadout.preparations?.[item.id]}
+                        disabled={disabled}
+                        onChange={(preparation) =>
+                          onChange({
+                            ...loadout,
+                            preparations: { ...loadout.preparations, [item.id]: preparation },
+                          })
+                        }
+                      />
+                    )}
                     <div className={styles.actions}>
                       <button
                         type="button"
@@ -399,9 +421,15 @@ export function GearConsumablesEditor({
                           type="button"
                           className="button"
                           aria-label={`${consumableKindLabels[kind]} ${index + 1} 해제`}
-                          onClick={() =>
-                            onChange({ ...loadout, [key]: ids.filter((_, at) => at !== index) })
-                          }
+                          onClick={() => {
+                            const preparations = { ...loadout.preparations };
+                            delete preparations[ids[index]];
+                            onChange({
+                              ...loadout,
+                              [key]: ids.filter((_, at) => at !== index),
+                              ...(loadout.preparations ? { preparations } : {}),
+                            });
+                          }}
                         >
                           <Trash2 size={14} />
                           해제
@@ -470,6 +498,7 @@ export function GearConsumablesView({
                     </div>
                   </div>
                   {item && <ConsumableFacts item={item} />}
+                  <ConsumablePreparationView consumableId={id} value={value.preparations?.[id]} />
                 </article>
               );
             })}

@@ -6,6 +6,7 @@ import {
   type ConsumableLoadout,
   type ConsumableRecipeIngredient,
 } from "@uniz/build-engine";
+import { consumablePreparationLines } from "./consumable-preparation-model";
 
 export const consumableKindLabels = { FOOD: "음식", DRINK: "음료" } as const;
 export const consumableCommonNotes: readonly string[] = [
@@ -118,6 +119,9 @@ export function makeConsumableChecklist(
         lines.push(`  기본 재료: ${consumableRecipeText(item)}`);
         if (item.recipe.basisLabel) lines.push(`  재료 기준: ${item.recipe.basisLabel}`);
         for (const note of item.notes ?? []) lines.push(`  참고: ${note}`);
+        lines.push(
+          ...consumablePreparationLines(id, loadout.preparations?.[id]).map((line) => `  ${line}`),
+        );
       }
     });
   }

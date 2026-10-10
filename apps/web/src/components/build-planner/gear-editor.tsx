@@ -51,6 +51,7 @@ import { GearDeviantFusionGuide } from "./gear-fusion-guide";
 import { gearTraitConflictMessage } from "./gear-trait-presentation";
 import { GearArmorSetEffects } from "./gear-armor-summary";
 import { GearConsumablesEditor } from "./gear-consumables";
+import { GearCraftingEditor } from "./gear-crafting";
 import { consumableSelectionError } from "./gear-consumables-model";
 import { getGearSaveIssues } from "./gear-save-validation";
 import { PlannerFieldBadge, PlannerRequiredFields, PlannerSaveFeedback } from "./save-feedback";
@@ -119,11 +120,13 @@ const SlotCard = memo(function SlotCard({
           {savedName ?? item?.name ?? (selection ? "이전 장비 기록" : "장비 선택")}
         </span>
         <span className="gear-slot-caption">
-          {selection?.level
-            ? `Lv. ${selection.level}`
-            : item?.rarity
-              ? rarityLabels[item.rarity]
-              : ""}
+          {selection?.crafting?.tier
+            ? `T${selection.crafting.tier}${selection.level ? ` · Lv. ${selection.level}` : ""}`
+            : selection?.level
+              ? `Lv. ${selection.level}`
+              : item?.rarity
+                ? rarityLabels[item.rarity]
+                : ""}
         </span>
         {item?.isKeyArmor && <span className="gear-key-badge">핵심</span>}
         {!selection && <Plus size={16} className="gear-slot-plus" aria-hidden="true" />}
@@ -482,11 +485,13 @@ export function GearPlannerEditor({
         )
       : eligible;
   }, [picker, draft.slots, draft.context]);
-  const numericFieldLabels: Record<NumericField, string> = {
+  const numericFieldLabels: Record<string, string> = {
     level: "장비 레벨",
     abilityGrade: "어빌리티 등급",
     activityGrade: "활성 등급",
     moduleLevel: "모듈 레벨",
+    tuningAttack: "튜닝 공격력",
+    tuningSecondary: "튜닝 추가 옵션",
   };
   const saveBlockers = getPlannerSaveBlockers({
     title,
@@ -806,6 +811,28 @@ export function GearPlannerEditor({
                     </>
                   )}
                 </div>
+                {(weaponSlots.includes(focusedSlot) || armorSlots.includes(focusedSlot)) && (
+                  <GearCraftingEditor
+                    key={`${focusedSlot}.${focused.itemId}`}
+                    selection={focused}
+                    context={draft.context}
+                    numberTexts={numberTexts}
+                    numberErrors={numberErrors}
+                    onNumberText={(field, text) =>
+                      setNumberTexts((previous) => ({
+                        ...previous,
+                        [`${focusedSlot}.${field}`]: text,
+                      }))
+                    }
+                    onChange={(next) => updateSlot(focusedSlot, () => next)}
+                    onNumberError={(field, error) =>
+                      setNumberErrors((previous) => ({
+                        ...previous,
+                        [`${focusedSlot}.${field}`]: error,
+                      }))
+                    }
+                  />
+                )}
                 {focusedSlot === "combatDeviant" && (
                   <div className="gear-deviant-traits">
                     <h4>특성</h4>

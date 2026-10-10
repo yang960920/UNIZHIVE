@@ -2,6 +2,7 @@ import catalog from "./gear-catalog.json";
 import armorSets from "./armor-sets.json";
 import type { PlannerContext, PlannerScenarioKey } from "./planner";
 import { createEmptyConsumableLoadout, type ConsumableLoadout } from "./consumables";
+import type { GearCrafting } from "./crafting";
 
 export const GEAR_SCHEMA_VERSION = "uniz-gear.v2" as const;
 /** Eight UI recording positions, not an inferred global scenario rule. */
@@ -124,6 +125,8 @@ export interface GearSelection {
   activityGrade: number | null;
   traitIds: string[];
   attachments: GearAttachments;
+  /** Optional additive V2 recording; old immutable snapshots retain their original fields. */
+  crafting?: GearCrafting;
 }
 
 export interface GearRecommendation {

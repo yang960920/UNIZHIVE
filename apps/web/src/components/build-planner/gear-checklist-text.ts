@@ -8,6 +8,7 @@ import {
 } from "./gear-editor-model";
 import { scenarioLabels, cradleConditionsNote } from "./presentation-labels";
 import { makeConsumableChecklist } from "./gear-consumables-model";
+import { gearCraftingLines } from "./gear-crafting-model";
 
 export function makeGearChecklist(loadout: PlannerGearLoadout): string {
   const name = (id: string) => gearDisplayName(id, loadout.catalogNames);
@@ -33,6 +34,7 @@ export function makeGearChecklist(loadout: PlannerGearLoadout): string {
       `${gearSlotLabels[slot]}: ${name(selection.itemId)}${equipmentLevel}${item?.isKeyArmor ? " · 핵심 방어구" : ""}`,
     );
     if (item?.kind === "CRADLE") lines.push(`  효과: ${item.description}`);
+    lines.push(...gearCraftingLines(selection).map((line) => `  ${line}`));
     for (const key of ["muzzle", "sight", "tactical", "magazine", "ammo", "module"] as const) {
       const id = selection.attachments[key];
       if (!id) continue;

@@ -535,6 +535,7 @@ export const builds = pgTable(
   },
   (table) => [
     index("builds_owner_index").on(table.ownerId),
+    unique("builds_id_owner_unique").on(table.id, table.ownerId),
     index("builds_visibility_updated_index").on(table.visibility, table.updatedAt),
   ],
 );
@@ -571,6 +572,59 @@ export const buildVersions = pgTable(
     ),
   ],
 );
+
+export const buildLoadouts = pgTable(
+  "build_loadouts",
+  {
+    id: id(),
+    ownerId: text("owner_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "restrict" }),
+    title: text("title").notNull(),
+    notes: text("notes").notNull().default(""),
+    archivedAt: timestamp("archived_at", { withTimezone: true }),
+    ...timestamps(),
+  },
+  (table) => [
+    unique("build_loadouts_id_owner_unique").on(table.id, table.ownerId),
+    index("build_loadouts_owner_updated_index").on(table.ownerId, table.updatedAt),
+    check("build_loadouts_title_length", sql`length(trim(${table.title})) BETWEEN 2 AND 100`),
+    check("build_loadouts_notes_length", sql`length(${table.notes}) <= 2000`),
+  ],
+).enableRLS();
+
+export const buildLoadoutEntries = pgTable(
+  "build_loadout_entries",
+  {
+    id: id(),
+    loadoutId: text("loadout_id").notNull(),
+    ownerId: text("owner_id").notNull(),
+    buildId: text("build_id").notNull(),
+    buildVersionId: text("build_version_id").notNull(),
+    position: integer("position").notNull(),
+    ...timestamps(),
+  },
+  (table) => [
+    unique("build_loadout_entries_version_unique").on(table.loadoutId, table.buildVersionId),
+    unique("build_loadout_entries_position_unique").on(table.loadoutId, table.position),
+    check("build_loadout_entries_position_range", sql`${table.position} BETWEEN 0 AND 31`),
+    foreignKey({
+      name: "build_loadout_entries_group_owner_fk",
+      columns: [table.loadoutId, table.ownerId],
+      foreignColumns: [buildLoadouts.id, buildLoadouts.ownerId],
+    }).onDelete("restrict"),
+    foreignKey({
+      name: "build_loadout_entries_build_owner_fk",
+      columns: [table.buildId, table.ownerId],
+      foreignColumns: [builds.id, builds.ownerId],
+    }).onDelete("restrict"),
+    foreignKey({
+      name: "build_loadout_entries_version_build_fk",
+      columns: [table.buildVersionId, table.buildId],
+      foreignColumns: [buildVersions.id, buildVersions.buildId],
+    }).onDelete("restrict"),
+  ],
+).enableRLS();
 
 export const communityPosts = pgTable(
   "community_posts",

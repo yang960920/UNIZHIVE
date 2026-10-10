@@ -1,4 +1,5 @@
 import catalog from "../../data/consumables-catalog.json";
+import type { ConsumablePreparation } from "./crafting";
 
 export type ConsumableKind = "FOOD" | "DRINK";
 
@@ -51,6 +52,8 @@ export interface ConsumableLoadout {
   drinkIds: string[];
   /** Player-recorded ingredient or preparation differences, separate from base catalog effects. */
   notes: string;
+  /** Sourced recipe choices, keyed only by a selected food or drink identity. */
+  preparations?: Record<string, ConsumablePreparation>;
 }
 
 function freezeIngredient(

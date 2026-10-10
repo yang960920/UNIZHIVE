@@ -104,3 +104,46 @@ export {
   parseGearLoadoutForSave,
   parseVersionedPlannerSnapshot,
 } from "./validation/gear";
+export {
+  CRAFTING_MATERIALS,
+  LEATHER_MATERIALS,
+  GEAR_CRAFTING_RECIPES,
+  CONSUMABLE_CRAFTING_RECIPES,
+  WEAPON_TUNING_BLUEPRINTS,
+  getCraftingMaterial,
+  getWeaponTuningBlueprint,
+  getGearCraftRecipes,
+  getGearCraftRecipe,
+  getConsumableCraftRecipes,
+  getEffectiveIngredientSelections,
+  getRecipeMaterials,
+  getConsumablePreparation,
+  weaponTuningFits,
+  getEligibleWeaponTuningBlueprints,
+  createEmptyGearCrafting,
+} from "./model/crafting";
+export { prepareBuildLoadout, makeLoadoutPreparationText } from "./model/loadout-preparation";
+export type {
+  LoadoutBuildInput,
+  PreparedEquipmentUse,
+  PreparedEquipment,
+  PreparedMaterialSource,
+  PreparedMaterial,
+  PreparationIssue,
+  PreparedConsumable,
+  LoadoutPreparationResult,
+} from "./model/loadout-preparation";
+export type {
+  CraftingTier,
+  CraftingRarity,
+  CraftingMaterial,
+  CraftingMaterialOption,
+  CraftingIngredient,
+  CraftingRecipe,
+  TuningSecondaryKind,
+  WeaponTuningBlueprint,
+  WeaponTuningSelection,
+  GearCrafting,
+  ConsumablePreparation,
+  ResolvedCraftingIngredient,
+} from "./model/crafting";

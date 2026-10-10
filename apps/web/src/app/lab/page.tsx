@@ -207,6 +207,9 @@ export default async function BuildLabPage({
       {(access.mayCreate || access.preview) && (
         <div className="planner-library">
           <nav className="planner-library-pager" aria-label="내 빌드 보기">
+            <Link href="/lab/loadouts" className="button button-quiet" prefetch={false}>
+              내 로드아웃 · 공통 장비와 재료
+            </Link>
             <Link
               href={href("owned", undefined, false)}
               className="button button-quiet"
