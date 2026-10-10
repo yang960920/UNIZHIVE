@@ -1,0 +1,976 @@
+{
+  "schemaVersion": "uniz-key-armor-aliases.v1",
+  "reviewedAt": "2026-10-10",
+  "sourceBuildId": "25590224",
+  "sourceObservedAt": "2026-10-07",
+  "policy": "Search aliases only. Preserve original names, item IDs, slots, icons, legacy snapshots and equipment restrictions.",
+  "entries": [
+    {
+      "catalogId": "armor-gilded-gauntlets",
+      "sourceId": "25010901",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "유금 장갑",
+      "slot": "gloves",
+      "aliases": ["유금장갑", "Gilded Palm Shield", "Gilded Gloves"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "25010901",
+          "blueprintId": "25310901",
+          "fragmentIds": ["25410901"],
+          "nameKey": "鎏金覆掌_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：鎏金覆掌_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/25310901/",
+          "name": "Gilded Gloves"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-21012001",
+      "sourceId": "21012001",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "노랑 페인트 마스크",
+      "slot": "helmet",
+      "aliases": ["Yellow Painted Mask", "Yellow Paint Mask"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "21012001",
+          "blueprintId": "21312001",
+          "fragmentIds": ["21412001"],
+          "nameKey": "黄油漆面具_$S@TIDS$_cg0|2",
+          "blueprintNameKey": "蓝图：黄油漆面具_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/21312001/",
+          "name": "Yellow Paint Mask"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24011001",
+      "sourceId": "24011001",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "단단한 전투화",
+      "slot": "shoes",
+      "aliases": ["경질 전술화", "Tactical Combat Boots", "Hard Tactical Boots"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24011001",
+          "blueprintId": "24311001",
+          "fragmentIds": ["24411001"],
+          "nameKey": "硬质战术靴_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：硬质战术靴_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24311001/",
+          "name": "Hard Tactical Boots"
+        },
+        {
+          "kind": "COMMUNITY_HISTORICAL_NAME",
+          "url": "https://constante.tistory.com/entry/원스휴먼-목록-방어구-부위별-총-정리",
+          "aliases": ["경질 전술화"]
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-23010701",
+      "sourceId": "23010701",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "댄싱 스파인 하의",
+      "slot": "bottom",
+      "aliases": ["댄싱스파인 하의", "Tattoo Pants"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "23010701",
+          "blueprintId": "23310701",
+          "fragmentIds": ["23410701"],
+          "nameKey": "刺舞长裤_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：刺舞长裤_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/23310701/",
+          "name": "Tattoo Pants"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-26010301",
+      "sourceId": "26010301",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "더스트 마스크",
+      "slot": "mask",
+      "aliases": ["더스트 스톰 마스크", "Desert Dust Mask", "Dust Mask"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "26010301",
+          "blueprintId": "26310301",
+          "fragmentIds": ["26410301"],
+          "nameKey": "荒漠尘埃面罩_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：荒漠尘埃面罩_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/26310301/",
+          "name": "Dust Mask"
+        },
+        {
+          "kind": "COMMUNITY_HISTORICAL_NAME",
+          "url": "https://constante.tistory.com/entry/원스휴먼-목록-방어구-부위별-총-정리",
+          "aliases": ["더스트 스톰 마스크"]
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-26013101",
+      "sourceId": "26013101",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "디퓨저 마스크",
+      "slot": "mask",
+      "aliases": ["Viper Mask"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "26013101",
+          "blueprintId": "26313101",
+          "fragmentIds": ["26413101"],
+          "nameKey": "散播者面罩_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：散播者面罩_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/26313101/",
+          "name": "Viper Mask"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22014201",
+      "sourceId": "22014201",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "마그네틱 모멘트 상의",
+      "slot": "top",
+      "aliases": ["Magnetic Moment Top"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22014201",
+          "blueprintId": "22314201",
+          "fragmentIds": ["22414201"],
+          "nameKey": "磁矩上衣_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：磁矩上衣_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22314201/",
+          "name": "Magnetic Moment Top"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22013101",
+      "sourceId": "22013101",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "매직 트리거 상의",
+      "slot": "top",
+      "aliases": ["Charmed Mag Top"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22013101",
+          "blueprintId": "22313101",
+          "fragmentIds": ["22413101"],
+          "nameKey": "魔术扳机上衣_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：魔术扳机上衣_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22313101/",
+          "name": "Charmed Mag Top"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-21012201",
+      "sourceId": "21012201",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "바람을 듣는 모자",
+      "slot": "helmet",
+      "aliases": ["Wind Intepreter Cap", "Wind Interpreter Cap"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "21012201",
+          "blueprintId": "21312201",
+          "fragmentIds": ["21412201"],
+          "nameKey": "听风帽_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：听风帽_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/21312201/",
+          "name": "Wind Interpreter Cap"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-21011901",
+      "sourceId": "21011901",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "방독 마스크",
+      "slot": "helmet",
+      "aliases": ["Gas-tight Helmet"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "21011901",
+          "blueprintId": "21311901",
+          "fragmentIds": ["21411901"],
+          "nameKey": "防毒头罩_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：防毒头罩_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/21311901/",
+          "name": "Gas-tight Helmet"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24010901",
+      "sourceId": "24010901",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "베테랑 헌터 부츠",
+      "slot": "shoes",
+      "aliases": ["노련한 사냥꾼 부츠", "Old Huntsman Boots", "Seasoned Hunter Leather Boots"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24010901",
+          "blueprintId": "24310901",
+          "fragmentIds": ["24410901"],
+          "nameKey": "老练猎手皮靴_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：老练猎手皮靴_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24310901/",
+          "name": "Old Huntsman Boots"
+        },
+        {
+          "kind": "COMMUNITY_HISTORICAL_NAME",
+          "url": "https://constante.tistory.com/entry/원스휴먼-목록-방어구-부위별-총-정리",
+          "aliases": ["노련한 사냥꾼 부츠"]
+        },
+        {
+          "kind": "PUBLIC_HISTORICAL_ENGLISH_NAME",
+          "url": "https://game8.co/games/Once-Human/archives/462429",
+          "name": "Seasoned Hunter Leather Boots"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-23010601",
+      "sourceId": "23010601",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "블레이드 하의",
+      "slot": "bottom",
+      "aliases": ["Sharp Blade Pants"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "23010601",
+          "blueprintId": "23310601",
+          "fragmentIds": ["23410601"],
+          "nameKey": "利刃长裤_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：利刃长裤_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/23310601/",
+          "name": "Sharp Blade Pants"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22012301",
+      "sourceId": "22012301",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "샤먼 벌처 상의",
+      "slot": "top",
+      "aliases": ["Shaman Vulture Top", "벌처 샤먼 상의"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22012301",
+          "blueprintId": "22312301",
+          "fragmentIds": ["22412301"],
+          "nameKey": "萨满秃鹫上衣_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：萨满秃鹫上衣_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22312301/",
+          "name": "Shaman Vulture Top"
+        },
+        {
+          "kind": "COMMUNITY_HISTORICAL_NAME",
+          "url": "https://constante.tistory.com/entry/원스휴먼-목록-방어구-부위별-총-정리",
+          "aliases": ["벌처 샤먼 상의"]
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22012201",
+      "sourceId": "22012201",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "낡은 망토",
+      "slot": "top",
+      "aliases": ["원로의 망토", "Doyen's Cloak"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22012201",
+          "blueprintId": "22312201",
+          "fragmentIds": ["22412201"],
+          "nameKey": "元老斗篷_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：元老斗篷_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22312201/",
+          "name": "Doyen's Cloak"
+        },
+        {
+          "kind": "EXISTING_VERIFIED_BLUEPRINT_NAME",
+          "url": "https://wikily.gg/ko/once-human/armor-blueprints/22312201/",
+          "aliases": ["낡은 망토"]
+        },
+        {
+          "kind": "COMMUNITY_HISTORICAL_NAME",
+          "url": "https://constante.tistory.com/entry/원스휴먼-목록-방어구-부위별-총-정리",
+          "aliases": ["원로의 망토"]
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24010701",
+      "sourceId": "24010701",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "데님 부츠",
+      "slot": "shoes",
+      "aliases": ["카우보이 부츠", "Cowboy Boots"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24010701",
+          "blueprintId": "24310701",
+          "fragmentIds": ["24410701"],
+          "nameKey": "牛仔靴_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：牛仔靴_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24310701/",
+          "name": "Cowboy Boots"
+        },
+        {
+          "kind": "EXISTING_VERIFIED_BLUEPRINT_NAME",
+          "url": "https://wikily.gg/ko/once-human/armor-blueprints/24310701/",
+          "aliases": ["데님 부츠"]
+        },
+        {
+          "kind": "COMMUNITY_HISTORICAL_NAME",
+          "url": "https://constante.tistory.com/entry/원스휴먼-목록-방어구-부위별-총-정리",
+          "aliases": ["카우보이 부츠"]
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-25010701",
+      "sourceId": "25010701",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "유랑자 장갑",
+      "slot": "gloves",
+      "aliases": ["드리프터 장갑", "Drifter Gauntlets"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "25010701",
+          "blueprintId": "25310701",
+          "fragmentIds": ["25410701"],
+          "nameKey": "漂流者手套_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：漂流者手套_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/25310701/",
+          "name": "Drifter Gauntlets"
+        },
+        {
+          "kind": "EXISTING_VERIFIED_BLUEPRINT_NAME",
+          "url": "https://wikily.gg/ko/once-human/armor-blueprints/25310701/",
+          "aliases": ["드리프터 장갑"]
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-21012101",
+      "sourceId": "21012101",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "방독 후드",
+      "slot": "helmet",
+      "aliases": ["방독마스크 후드", "Gas Mask Hood"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "21012101",
+          "blueprintId": "21312101",
+          "fragmentIds": ["21412101"],
+          "nameKey": "防毒兜帽_$S@TIDS$_cg0|2",
+          "blueprintNameKey": "蓝图：防毒兜帽_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/21312101/",
+          "name": "Gas Mask Hood"
+        },
+        {
+          "kind": "EXISTING_VERIFIED_BLUEPRINT_NAME",
+          "url": "https://wikily.gg/ko/once-human/armor-blueprints/21312101/",
+          "aliases": ["방독마스크 후드"]
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-25010801",
+      "sourceId": "25010801",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "설원 카모플라주 장갑",
+      "slot": "gloves",
+      "aliases": ["Snow Camo Gloves"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "25010801",
+          "blueprintId": "25310801",
+          "fragmentIds": ["25410801"],
+          "nameKey": "雪域迷彩手套_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：雪域迷彩手套_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/25310801/",
+          "name": "Snow Camo Gloves"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24011401",
+      "sourceId": "24011401",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "스핀스텝 가죽 부츠",
+      "slot": "shoes",
+      "aliases": ["Pivot Step Leather Boots"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24011401",
+          "blueprintId": "24311401",
+          "fragmentIds": ["24411401"],
+          "nameKey": "回转踏步皮靴_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：回转踏步皮靴_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24311401/",
+          "name": "Pivot Step Leather Boots"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-23013201",
+      "sourceId": "23013201",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "슬라이드 팬츠",
+      "slot": "bottom",
+      "aliases": ["Glide Pants"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "23013201",
+          "blueprintId": "23313201",
+          "fragmentIds": ["23413201"],
+          "nameKey": "滑步长裤_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：滑步长裤_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/23313201/",
+          "name": "Glide Pants"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-26013201",
+      "sourceId": "26013201",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "안카 가면",
+      "slot": "mask",
+      "aliases": ["Ankh Mask"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "26013201",
+          "blueprintId": "26313201",
+          "fragmentIds": ["26413201"],
+          "nameKey": "安可假面_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：安可假面_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://oncehuman.th.gl/db/gear/26013203",
+          "name": "Ankh Mask"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-23013101",
+      "sourceId": "23013101",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "오버로드 일렉트릭 하의",
+      "slot": "bottom",
+      "aliases": ["Overloaded Pants"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "23013101",
+          "blueprintId": "23313101",
+          "fragmentIds": ["23413101"],
+          "nameKey": "超载电光长裤_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：超载电光长裤_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/23313101/",
+          "name": "Overloaded Pants"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-26010101",
+      "sourceId": "26010101",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "오아시스 마스크",
+      "slot": "mask",
+      "aliases": ["Oasis Mask"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "26010101",
+          "blueprintId": "26310101",
+          "fragmentIds": ["26410101"],
+          "nameKey": "绿洲面罩_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：绿洲面罩_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/26310101/",
+          "name": "Oasis Mask"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22012501",
+      "sourceId": "22012501",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "은밀한 자객 로브",
+      "slot": "top",
+      "aliases": ["Covert Walker Shirt"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22012501",
+          "blueprintId": "22312501",
+          "fragmentIds": ["22412501"],
+          "nameKey": "隐秘行者罩衫_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：隐秘行者罩衫_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22312501/",
+          "name": "Covert Walker Shirt"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24010601",
+      "sourceId": "24010601",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "전술 전투화",
+      "slot": "shoes",
+      "aliases": ["Tactical Combat Shoes"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24010601",
+          "blueprintId": "24310601",
+          "fragmentIds": ["24410601"],
+          "nameKey": "战术步履鞋_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：战术步履鞋_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24310601/",
+          "name": "Tactical Combat Shoes"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-21011801",
+      "sourceId": "21011801",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "케이지 헬멧",
+      "slot": "helmet",
+      "aliases": ["감옥 헬멧", "Cage Helmet"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "21011801",
+          "blueprintId": "21311801",
+          "fragmentIds": ["21411801"],
+          "nameKey": "牢笼头盔_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：牢笼头盔_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/21311801/",
+          "name": "Cage Helmet"
+        },
+        {
+          "kind": "COMMUNITY_HISTORICAL_NAME",
+          "url": "https://constante.tistory.com/entry/원스휴먼-목록-방어구-부위별-총-정리",
+          "aliases": ["감옥 헬멧"]
+        },
+        {
+          "kind": "PUBLIC_FRAGMENT_NAME",
+          "url": "https://wikily.gg/ko/once-human/items/21411801/",
+          "name": "설계도 조각: 감옥 헬멧"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22012401",
+      "sourceId": "22012401",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "폭주하는 전장 상의",
+      "slot": "top",
+      "aliases": ["블래스트 프론트 상의", "Explosive Front Top"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22012401",
+          "blueprintId": "22312401",
+          "fragmentIds": ["22412401"],
+          "nameKey": "爆裂前线上衣_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：爆裂前线上衣_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22312401/",
+          "name": "Explosive Front Top"
+        },
+        {
+          "kind": "COMMUNITY_HISTORICAL_NAME",
+          "url": "https://constante.tistory.com/entry/원스휴먼-목록-방어구-부위별-총-정리",
+          "aliases": ["블래스트 프론트 상의"]
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24011201",
+      "sourceId": "24011201",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "플레임 가죽 부츠",
+      "slot": "shoes",
+      "aliases": ["Fire Rune Boots"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24011201",
+          "blueprintId": "24311201",
+          "fragmentIds": ["24411201"],
+          "nameKey": "火纹皮靴_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：火纹皮靴_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24311201/",
+          "name": "Fire Rune Boots"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24011301",
+      "sourceId": "24011301",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "혈흔 추적 가죽 부츠",
+      "slot": "shoes",
+      "aliases": ["Bloodstained Tracker Boots"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24011301",
+          "blueprintId": "24311301",
+          "fragmentIds": ["24411301"],
+          "nameKey": "血痕追迹皮靴_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：血痕追迹皮靴_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24311301/",
+          "name": "Bloodstained Tracker Boots"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22014101",
+      "sourceId": "22014101",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "화이트크래시 상의",
+      "slot": "top",
+      "aliases": ["Snowdrift Top"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22014101",
+          "blueprintId": "22314101",
+          "fragmentIds": ["22414101"],
+          "nameKey": "碎雪上衣_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：碎雪上衣_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22314101/",
+          "name": "Snowdrift Top"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24010501",
+      "sourceId": "24010501",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "가죽 부츠",
+      "slot": "shoes",
+      "aliases": ["Leather Boots"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24010501",
+          "blueprintId": "24310501",
+          "fragmentIds": ["24410501"],
+          "nameKey": "皮革靴_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：皮革靴_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24310501/",
+          "name": "Leather Boots"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22011401",
+      "sourceId": "22011401",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "깔끔한 가죽 재킷",
+      "slot": "top",
+      "aliases": ["조잡한 가죽 옷", "Sleek Leather Jacket"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22011401",
+          "blueprintId": "22311401",
+          "fragmentIds": ["22411401"],
+          "nameKey": "干练皮衣_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：干练皮衣_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22311401/",
+          "name": "Sleek Leather Jacket"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-26010001",
+      "sourceId": "26010001",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "메이플라이 고글",
+      "slot": "helmet",
+      "aliases": ["Mayfly Goggles"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "26010001",
+          "blueprintId": "26310001",
+          "fragmentIds": ["26410001"],
+          "nameKey": "蜉蝣护目镜_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：蜉蝣护目镜_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/26310001/",
+          "name": "Mayfly Goggles"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-21011601",
+      "sourceId": "21011601",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "베레모",
+      "slot": "helmet",
+      "aliases": ["Beret"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "21011601",
+          "blueprintId": "21311601",
+          "fragmentIds": ["21411601"],
+          "nameKey": "贝雷帽_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：贝雷帽_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/21311601/",
+          "name": "Beret"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-26010401",
+      "sourceId": "26010401",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "정밀 사격 마스크",
+      "slot": "mask",
+      "aliases": ["Precise Shot Mask"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "26010401",
+          "blueprintId": "26310401",
+          "fragmentIds": ["26410401"],
+          "nameKey": "精准射击面罩_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：精准射击面罩_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/26310401/",
+          "name": "Precise Shot Mask"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-24011101",
+      "sourceId": "24011101",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "트레킹 가죽 부츠",
+      "slot": "shoes",
+      "aliases": ["트레킹 부츠", "Earthly Boots"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "24011101",
+          "blueprintId": "24311101",
+          "fragmentIds": ["24411101"],
+          "nameKey": "踏地皮靴_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：踏地皮靴_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/24311101/",
+          "name": "Earthly Boots"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-22012601",
+      "sourceId": "22012601",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "프로스트 전술 조끼",
+      "slot": "top",
+      "aliases": ["Frost Tactical Vest"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "22012601",
+          "blueprintId": "22312601",
+          "fragmentIds": ["22412601"],
+          "nameKey": "寒霜战术马甲_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：寒霜战术马甲_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/22312601/",
+          "name": "Frost Tactical Vest"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-23010501",
+      "sourceId": "23010501",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "핫도그 반바지",
+      "slot": "bottom",
+      "aliases": ["Hot Dog Shorts"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "23010501",
+          "blueprintId": "23310501",
+          "fragmentIds": ["23410501"],
+          "nameKey": "热狗短裤_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：热狗短裤_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/23310501/",
+          "name": "Hot Dog Shorts"
+        }
+      ]
+    },
+    {
+      "catalogId": "armor-25010501",
+      "sourceId": "25010501",
+      "sourceTable": "item_data+equip_data",
+      "sourceName": "BBQ 장갑",
+      "slot": "gloves",
+      "aliases": ["BBQ Gloves"],
+      "evidence": [
+        {
+          "kind": "LOCAL_EXACT_ITEM_BLUEPRINT_CN_NAME",
+          "itemId": "25010501",
+          "blueprintId": "25310501",
+          "fragmentIds": ["25410501"],
+          "nameKey": "BBQ手套_$S@TIDS$_cg0|1",
+          "blueprintNameKey": "蓝图：BBQ手套_$S@TIDS$_cg0|0"
+        },
+        {
+          "kind": "PUBLIC_ITEM_ID_NAME",
+          "url": "https://wikily.gg/once-human/armor-blueprints/25310501/",
+          "name": "BBQ Gloves"
+        }
+      ]
+    }
+  ]
+}
