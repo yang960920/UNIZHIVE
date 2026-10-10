@@ -1,7 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { NextAuthOptions } from "next-auth";
 
-const boundary = vi.hoisted(() => ({ member: vi.fn(), persist: vi.fn(), prime: vi.fn() }));
+const boundary = vi.hoisted(() => ({
+  member: vi.fn(),
+  persist: vi.fn(),
+  eligibility: vi.fn(),
+  captureGrant: vi.fn(),
+  confirmAbsent: vi.fn(),
+}));
 vi.mock("server-only", () => ({}));
 vi.mock("next/headers", () => ({ headers: async () => new Headers() }));
 vi.mock("next-auth", () => ({ getServerSession: vi.fn() }));
@@ -11,8 +17,9 @@ vi.mock("../src/lib/server/auth-repository", () => ({
   persistDiscordIdentity: boundary.persist,
 }));
 vi.mock("../src/lib/server/discord-authorization", () => ({
-  getSessionGuildEligibilityState: vi.fn(),
-  primeSessionGuildMembership: boundary.prime,
+  getSessionGuildEligibilityState: boundary.eligibility,
+  captureDiscordSignInGrant: boundary.captureGrant,
+  confirmAbsentDiscordSignIn: boundary.confirmAbsent,
 }));
 
 type SignInArgs = Parameters<NonNullable<NonNullable<NextAuthOptions["callbacks"]>["signIn"]>>[0];
@@ -45,7 +52,9 @@ beforeEach(() => {
   boundary.persist
     .mockReset()
     .mockResolvedValue({ id: "CANARY_DATABASE_USER", name: "CANARY_NAME" });
-  boundary.prime.mockReset().mockResolvedValue(undefined);
+  boundary.eligibility.mockReset();
+  boundary.captureGrant.mockReset().mockResolvedValue(null);
+  boundary.confirmAbsent.mockReset().mockResolvedValue("LEFT");
 });
 
 afterEach(() => {
@@ -67,6 +76,7 @@ describe("sign-in logging preserves the authentication boundary", () => {
       "/login?error=DiscordUnavailable",
     );
     expect(boundary.persist).not.toHaveBeenCalled();
+    expect(boundary.confirmAbsent).not.toHaveBeenCalled();
     expect(logged).toHaveBeenCalledExactlyOnceWith("AUTH_SIGNIN_FAILURE", {
       stage: "DISCORD_GUILD_CHECK",
       category: "DISCORD_API",
@@ -87,11 +97,57 @@ describe("sign-in logging preserves the authentication boundary", () => {
       "/login?error=DiscordUnavailable",
     );
     expect(boundary.member).toHaveBeenCalledTimes(1);
-    expect(boundary.prime).not.toHaveBeenCalled();
+    expect(boundary.eligibility).not.toHaveBeenCalled();
     expect(logged).toHaveBeenCalledExactlyOnceWith("AUTH_SIGNIN_FAILURE", {
       stage: "ACCOUNT_PERSISTENCE",
       category: "POSTGRES",
       code: "42P01",
+    });
+    expect(JSON.stringify(logged.mock.calls)).not.toContain("CANARY");
+  });
+
+  it("reports a database failure while capturing the current grant before any Discord request", async () => {
+    const logged = vi.spyOn(console, "error").mockImplementation(() => {});
+    boundary.captureGrant.mockRejectedValue({
+      code: "08006",
+      message: "CANARY_DATABASE_URL CANARY_ACCESS_TOKEN",
+    });
+    const { authOptions } = await import("../src/lib/auth");
+    await expect(authOptions.callbacks!.signIn!(signInArgs())).resolves.toBe(
+      "/login?error=DiscordUnavailable",
+    );
+    expect(boundary.member).not.toHaveBeenCalled();
+    expect(boundary.persist).not.toHaveBeenCalled();
+    expect(logged).toHaveBeenCalledExactlyOnceWith("AUTH_SIGNIN_FAILURE", {
+      stage: "ACCOUNT_PERSISTENCE",
+      category: "POSTGRES",
+      code: "08006",
+    });
+    expect(JSON.stringify(logged.mock.calls)).not.toContain("CANARY");
+  });
+
+  it("reports a database failure during known-account absence handling without exposing the captured grant", async () => {
+    const logged = vi.spyOn(console, "error").mockImplementation(() => {});
+    boundary.captureGrant.mockResolvedValue({
+      userId: "CANARY_DATABASE_USER",
+      discordId: "CANARY_DISCORD_ACCOUNT_ID",
+      encryptedAccessToken: "CANARY_ENCRYPTED_GRANT",
+    });
+    boundary.member.mockResolvedValue(null);
+    boundary.confirmAbsent.mockRejectedValue({
+      cause: { code: "40001", message: "CANARY_ENCRYPTED_GRANT CANARY_SQL_QUERY" },
+    });
+    const { authOptions } = await import("../src/lib/auth");
+    await expect(authOptions.callbacks!.signIn!(signInArgs())).resolves.toBe(
+      "/login?error=DiscordUnavailable",
+    );
+    expect(boundary.member).toHaveBeenCalledTimes(1);
+    expect(boundary.confirmAbsent).toHaveBeenCalledTimes(1);
+    expect(boundary.persist).not.toHaveBeenCalled();
+    expect(logged).toHaveBeenCalledExactlyOnceWith("AUTH_SIGNIN_FAILURE", {
+      stage: "ACCOUNT_PERSISTENCE",
+      category: "POSTGRES",
+      code: "40001",
     });
     expect(JSON.stringify(logged.mock.calls)).not.toContain("CANARY");
   });
@@ -111,11 +167,17 @@ describe("sign-in logging preserves the authentication boundary", () => {
     expect(logged).not.toHaveBeenCalled();
   });
 
-  it("preserves successful login when optional membership priming fails", async () => {
+  it("completes successful sign-in after one live membership check and identity persistence", async () => {
     const logged = vi.spyOn(console, "error").mockImplementation(() => {});
-    boundary.prime.mockRejectedValue(new Error("CANARY_PRIMING_FAILURE"));
     const { authOptions } = await import("../src/lib/auth");
     await expect(authOptions.callbacks!.signIn!(signInArgs())).resolves.toBe(true);
+    expect(boundary.member).toHaveBeenCalledTimes(1);
+    expect(boundary.persist).toHaveBeenCalledTimes(1);
+    expect(boundary.persist.mock.invocationCallOrder[0]).toBeGreaterThan(
+      boundary.member.mock.invocationCallOrder[0],
+    );
+    expect(boundary.eligibility).not.toHaveBeenCalled();
+    expect(boundary.confirmAbsent).not.toHaveBeenCalled();
     expect(logged).not.toHaveBeenCalled();
   });
 });

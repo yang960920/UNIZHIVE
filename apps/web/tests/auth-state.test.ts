@@ -7,7 +7,8 @@ const fixture = vi.hoisted(() => ({
   findUser: vi.fn(),
   member: vi.fn(),
   persist: vi.fn(),
-  primeMembership: vi.fn(),
+  captureGrant: vi.fn(),
+  confirmAbsent: vi.fn(),
   cookie: "",
 }));
 
@@ -20,7 +21,8 @@ vi.mock("next-auth", () => ({ getServerSession: fixture.getServerSession }));
 vi.mock("@uniz/integrations/server", () => ({ getCurrentDiscordGuildMember: fixture.member }));
 vi.mock("../src/lib/server/discord-authorization", () => ({
   getSessionGuildEligibilityState: fixture.eligibility,
-  primeSessionGuildMembership: fixture.primeMembership,
+  captureDiscordSignInGrant: fixture.captureGrant,
+  confirmAbsentDiscordSignIn: fixture.confirmAbsent,
 }));
 vi.mock("../src/lib/server/auth-repository", () => ({
   findAuthUser: fixture.findUser,
@@ -30,6 +32,21 @@ vi.mock("../src/lib/server/auth-repository", () => ({
 type SessionCallbackArgs = Parameters<
   NonNullable<NonNullable<NextAuthOptions["callbacks"]>["session"]>
 >[0];
+type SignInArgs = Parameters<NonNullable<NonNullable<NextAuthOptions["callbacks"]>["signIn"]>>[0];
+
+function signInArgs(): SignInArgs {
+  return {
+    user: { id: "discord-user", name: "Live User" },
+    account: {
+      provider: "discord",
+      type: "oauth",
+      providerAccountId: "123456789012345680",
+      access_token: "synthetic-sign-in-token",
+      expires_at: 2_000_000_000,
+      scope: "identify guilds.members.read",
+    },
+  } as SignInArgs;
+}
 
 beforeEach(() => {
   vi.resetModules();
@@ -44,7 +61,8 @@ beforeEach(() => {
   fixture.cookie = "";
   fixture.member.mockReset().mockResolvedValue({ userId: "123456789012345680", nickname: "User" });
   fixture.persist.mockReset().mockResolvedValue({ id: "live-user", name: "Live User" });
-  fixture.primeMembership.mockReset().mockResolvedValue(undefined);
+  fixture.captureGrant.mockReset().mockResolvedValue(null);
+  fixture.confirmAbsent.mockReset().mockResolvedValue("LEFT");
   fixture.eligibility.mockReset().mockResolvedValue({ status: "MEMBER", retryAfterSeconds: null });
   fixture.findUser
     .mockReset()
@@ -104,36 +122,111 @@ describe("authenticated session failure versus anonymous guest", () => {
     expect(authOptions.jwt?.maxAge).toBe(authOptions.session?.maxAge);
   });
 
-  it("primes membership only after live sign-in verification and identity persistence", async () => {
+  it("verifies live membership once at sign-in and reads local authorization on the following page", async () => {
     const auth = await import("../src/lib/auth");
-    const args = {
-      user: { id: "discord-user", name: "Live User" },
-      account: {
-        provider: "discord",
-        type: "oauth",
-        providerAccountId: "123456789012345680",
-        access_token: "synthetic-sign-in-token",
-        expires_at: 2_000_000_000,
-        scope: "identify guilds.members.read",
-      },
-    } as Parameters<NonNullable<NonNullable<NextAuthOptions["callbacks"]>["signIn"]>>[0];
+    const args = signInArgs();
     await expect(auth.authOptions.callbacks!.signIn!(args)).resolves.toBe(true);
+    expect(fixture.member).toHaveBeenCalledExactlyOnceWith(
+      "123456789012345679",
+      "synthetic-sign-in-token",
+    );
+    expect(fixture.captureGrant).toHaveBeenCalledExactlyOnceWith("123456789012345680");
+    expect(fixture.captureGrant.mock.invocationCallOrder[0]).toBeLessThan(
+      fixture.member.mock.invocationCallOrder[0],
+    );
+    expect(fixture.persist).toHaveBeenCalledExactlyOnceWith({
+      discordId: "123456789012345680",
+      name: "Live User",
+      image: null,
+      accessToken: "synthetic-sign-in-token",
+      refreshToken: null,
+      expiresAt: 2_000_000_000,
+      scope: "identify guilds.members.read",
+    });
+    expect(fixture.persist.mock.invocationCallOrder[0]).toBeGreaterThan(
+      fixture.member.mock.invocationCallOrder[0],
+    );
+    expect(args.user).toMatchObject({ id: "live-user", name: "Live User" });
+    fixture.getServerSession.mockResolvedValue(await callbackSession(auth.authOptions));
+    await expect(auth.getCurrentAuthState()).resolves.toMatchObject({
+      status: "AUTHENTICATED",
+      user: { id: "live-user", role: "ADMIN" },
+    });
+    expect(fixture.eligibility).toHaveBeenCalledExactlyOnceWith("live-user");
     expect(fixture.member).toHaveBeenCalledTimes(1);
     expect(fixture.persist).toHaveBeenCalledTimes(1);
-    expect(fixture.primeMembership).toHaveBeenCalledExactlyOnceWith("live-user", {
-      guildId: "123456789012345679",
-      discordId: "123456789012345680",
-      accessToken: "synthetic-sign-in-token",
-      verifiedAt: expect.any(Number),
-    });
-    expect(fixture.primeMembership.mock.invocationCallOrder[0]).toBeGreaterThan(
-      fixture.persist.mock.invocationCallOrder[0],
-    );
-    fixture.primeMembership.mockClear();
-    fixture.member.mockResolvedValue(null);
-    await expect(auth.authOptions.callbacks!.signIn!(args)).resolves.toContain("GuildMembership");
-    expect(fixture.primeMembership).not.toHaveBeenCalled();
+    expect(fixture.confirmAbsent).not.toHaveBeenCalled();
   });
+
+  it.each(["identify", "guilds.members.read", ""])(
+    "denies incomplete sign-in consent %s before checking membership or persisting identity",
+    async (scope) => {
+      const auth = await import("../src/lib/auth");
+      const args = signInArgs();
+      args.account!.scope = scope;
+      await expect(auth.authOptions.callbacks!.signIn!(args)).resolves.toBe(false);
+      expect(fixture.member).not.toHaveBeenCalled();
+      expect(fixture.persist).not.toHaveBeenCalled();
+      expect(fixture.eligibility).not.toHaveBeenCalled();
+      expect(fixture.captureGrant).not.toHaveBeenCalled();
+      expect(fixture.confirmAbsent).not.toHaveBeenCalled();
+    },
+  );
+
+  it("denies absent sign-in membership for an unknown account without trying to revoke a grant", async () => {
+    const auth = await import("../src/lib/auth");
+    fixture.member.mockResolvedValue(null);
+    await expect(auth.authOptions.callbacks!.signIn!(signInArgs())).resolves.toBe(
+      "/login?error=GuildMembership",
+    );
+    expect(fixture.member).toHaveBeenCalledTimes(1);
+    expect(fixture.persist).not.toHaveBeenCalled();
+    expect(fixture.eligibility).not.toHaveBeenCalled();
+    expect(fixture.confirmAbsent).not.toHaveBeenCalled();
+  });
+
+  it("denies mismatched sign-in identity without revoking the existing account grant", async () => {
+    const auth = await import("../src/lib/auth");
+    fixture.captureGrant.mockResolvedValue({
+      userId: "live-user",
+      discordId: "123456789012345680",
+      encryptedAccessToken: "synthetic-current-grant",
+    });
+    fixture.member.mockResolvedValue({ userId: "123456789012345681", nickname: "Another User" });
+    await expect(auth.authOptions.callbacks!.signIn!(signInArgs())).resolves.toBe(
+      "/login?error=GuildMembership",
+    );
+    expect(fixture.member).toHaveBeenCalledTimes(1);
+    expect(fixture.persist).not.toHaveBeenCalled();
+    expect(fixture.eligibility).not.toHaveBeenCalled();
+    expect(fixture.confirmAbsent).not.toHaveBeenCalled();
+  });
+
+  it.each(["LEFT", "UNAVAILABLE"])(
+    "passes the captured grant to confirmed-absence handling and rejects the new login when the grant result is %s",
+    async (result) => {
+      const auth = await import("../src/lib/auth");
+      const grant = Object.freeze({
+        userId: "live-user",
+        discordId: "123456789012345680",
+        encryptedAccessToken: "synthetic-captured-grant",
+      });
+      fixture.captureGrant.mockResolvedValue(grant);
+      fixture.member.mockResolvedValue(null);
+      fixture.confirmAbsent.mockResolvedValue(result);
+      await expect(auth.authOptions.callbacks!.signIn!(signInArgs())).resolves.toBe(
+        "/login?error=GuildMembership",
+      );
+      expect(fixture.confirmAbsent).toHaveBeenCalledExactlyOnceWith(grant);
+      expect(fixture.confirmAbsent.mock.invocationCallOrder[0]).toBeGreaterThan(
+        fixture.member.mock.invocationCallOrder[0],
+      );
+      expect(fixture.captureGrant).toHaveBeenCalledTimes(1);
+      expect(fixture.member).toHaveBeenCalledTimes(1);
+      expect(fixture.persist).not.toHaveBeenCalled();
+      expect(fixture.eligibility).not.toHaveBeenCalled();
+    },
+  );
 
   it("keeps distinct requests independent when no server render memoization scope is active", async () => {
     const auth = await import("../src/lib/auth");
@@ -148,8 +241,8 @@ describe("authenticated session failure versus anonymous guest", () => {
     expect(fixture.getServerSession).toHaveBeenCalledTimes(2);
   });
 
-  it.each(["UNAVAILABLE", "REAUTH_REQUIRED", "LEFT"])(
-    "retains login identity during %s while denying protected access",
+  it.each(["UNAVAILABLE", "REAUTH_REQUIRED"])(
+    "retains login identity during local account %s while denying protected access",
     async (status) => {
       fixture.eligibility.mockResolvedValue({ status, retryAfterSeconds: null });
       const auth = await import("../src/lib/auth");
@@ -170,21 +263,21 @@ describe("authenticated session failure versus anonymous guest", () => {
     },
   );
 
-  it("exposes a safe retry delay without losing login or accepting the JWT authorization marker", async () => {
-    fixture.eligibility.mockResolvedValue({ status: "UNAVAILABLE", retryAfterSeconds: 261 });
+  it("does not add a Discord retry delay to a local account database failure or lose login identity", async () => {
+    fixture.eligibility.mockResolvedValue({ status: "UNAVAILABLE", retryAfterSeconds: null });
     const auth = await import("../src/lib/auth");
     const session = await callbackSession(auth.authOptions);
     fixture.getServerSession.mockResolvedValue(session);
     await expect(auth.getCurrentAuthState()).resolves.toEqual({
       user: null,
       status: "UNAVAILABLE",
-      retryAfterSeconds: 261,
     });
     await expect(auth.getCurrentSessionState()).resolves.toMatchObject({
       status: "AUTHENTICATED",
       user: { id: "live-user" },
     });
     expect(JSON.stringify(session)).not.toMatch(/access_token|refresh_token|client_secret/);
+    expect(fixture.member).not.toHaveBeenCalled();
   });
 
   it("turns database failures during the session callback or final role read into UNAVAILABLE", async () => {

@@ -11,7 +11,8 @@ vi.mock("next-auth", () => ({ getServerSession: vi.fn() }));
 vi.mock("@uniz/integrations/server", () => ({ getCurrentDiscordGuildMember: vi.fn() }));
 vi.mock("../src/lib/server/discord-authorization", () => ({
   getSessionGuildEligibilityState: vi.fn(),
-  primeSessionGuildMembership: vi.fn(),
+  captureDiscordSignInGrant: vi.fn(),
+  confirmAbsentDiscordSignIn: vi.fn(),
 }));
 vi.mock("../src/lib/server/auth-repository", () => ({
   findAuthUser: vi.fn(),

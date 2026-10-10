@@ -13,15 +13,6 @@ import {
   type LiveGuildEligibility,
 } from "./discord-authorization-policy";
 import { decryptDiscordToken, encryptDiscordToken } from "./discord-token-crypto";
-import {
-  beginMembershipVerification,
-  finishMembershipVerification,
-  hasMembershipSnapshot,
-  invalidateMembershipSnapshot,
-  invalidateUserMembershipSnapshots,
-  publishMembershipSnapshot,
-  type MembershipGeneration,
-} from "./discord-membership-cache";
 
 export type { LiveGuildEligibility } from "./discord-authorization-policy";
 
@@ -52,7 +43,31 @@ interface TokenLease {
   discordId: string;
   accessToken: string;
   encryptedAccessToken: string;
-  refreshed: boolean;
+}
+
+export interface DiscordSignInGrant {
+  userId: string;
+  discordId: string;
+  encryptedAccessToken: string | null;
+  rowVersion: string;
+}
+
+/** Capture before checking a fresh sign-in, so an old absence cannot revoke a newer grant. */
+export async function captureDiscordSignInGrant(
+  discordId: string,
+): Promise<DiscordSignInGrant | null> {
+  const [account] = await getDb()
+    .select({
+      userId: accounts.userId,
+      discordId: accounts.providerAccountId,
+      encryptedAccessToken: accounts.access_token,
+      // This short-lived proof also distinguishes null -> new token -> null changes.
+      rowVersion: sql<string>`xmin::text`,
+    })
+    .from(accounts)
+    .where(and(eq(accounts.providerAccountId, discordId), eq(accounts.provider, "discord")))
+    .limit(1);
+  return account ?? null;
 }
 
 const clearedTokens = {
@@ -92,7 +107,6 @@ async function getTokenLease(userId: string): Promise<TokenLease | LiveGuildElig
         discordId: account.providerAccountId,
         accessToken,
         encryptedAccessToken: account.access_token,
-        refreshed: false,
       };
     }
     if (!account.refresh_token) return eligibilityState("REAUTH_REQUIRED");
@@ -142,7 +156,6 @@ async function getTokenLease(userId: string): Promise<TokenLease | LiveGuildElig
         discordId: account.providerAccountId,
         accessToken: refreshed.accessToken,
         encryptedAccessToken,
-        refreshed: true,
       };
     } catch (error) {
       if (error instanceof DiscordApiError && error.kind === "UNAUTHORIZED") {
@@ -157,18 +170,34 @@ async function getTokenLease(userId: string): Promise<TokenLease | LiveGuildElig
   });
 }
 
-async function confirmGuildLeave(userId: string, lease: TokenLease): Promise<LiveGuildEligibility> {
+async function confirmGuildLeave(
+  userId: string,
+  lease: Pick<DiscordSignInGrant, "discordId" | "encryptedAccessToken"> & {
+    rowVersion?: string;
+  },
+): Promise<LiveGuildEligibility> {
   return getDb().transaction(async (transaction) => {
     await transaction.execute(sql`select pg_advisory_xact_lock(912743110)`);
     const [user] = await transaction.select().from(users).where(eq(users.id, userId)).for("update");
     const [account] = await transaction
-      .select()
+      .select({
+        id: accounts.id,
+        providerAccountId: accounts.providerAccountId,
+        access_token: accounts.access_token,
+        rowVersion: sql<string>`xmin::text`,
+      })
       .from(accounts)
       .where(and(eq(accounts.userId, userId), eq(accounts.provider, "discord")))
       .limit(1)
       .for("update");
     // A concurrent sign-in/refresh replaces ciphertext; discard this older check.
-    if (!user || !account || account.access_token !== lease.encryptedAccessToken)
+    if (
+      !user ||
+      !account ||
+      account.providerAccountId !== lease.discordId ||
+      account.access_token !== lease.encryptedAccessToken ||
+      (lease.rowVersion !== undefined && account.rowVersion !== lease.rowVersion)
+    )
       return "UNAVAILABLE";
     await transaction
       .update(users)
@@ -187,6 +216,13 @@ async function confirmGuildLeave(userId: string, lease: TokenLease): Promise<Liv
     });
     return "LEFT";
   });
+}
+
+/** Only a matching Discord identity with a confirmed Unknown Member response may call this. */
+export async function confirmAbsentDiscordSignIn(
+  grant: DiscordSignInGrant,
+): Promise<LiveGuildEligibility> {
+  return confirmGuildLeave(grant.userId, grant);
 }
 
 async function isCurrentLease(
@@ -212,9 +248,32 @@ async function isCurrentLease(
   });
 }
 
-async function readGuildEligibilityState(
+async function clearRejectedGrant(userId: string, lease: TokenLease): Promise<boolean> {
+  return getDb().transaction(async (transaction) => {
+    const [account] = await transaction
+      .select()
+      .from(accounts)
+      .where(and(eq(accounts.userId, userId), eq(accounts.provider, "discord")))
+      .limit(1)
+      .for("update");
+    // An older 401 must never revoke a newer sign-in or refresh grant.
+    if (
+      !account ||
+      account.providerAccountId !== lease.discordId ||
+      account.access_token !== lease.encryptedAccessToken
+    )
+      return false;
+    await transaction
+      .update(accounts)
+      .set({ ...clearedTokens, updatedAt: new Date() })
+      .where(eq(accounts.id, account.id));
+    return true;
+  });
+}
+
+/** Explicit membership checks only: sign-in/approval, never ordinary session renewal. */
+export async function getLiveGuildEligibilityState(
   userId: string,
-  useSnapshot: boolean,
 ): Promise<LiveGuildEligibilityState> {
   if (
     !resolveDatabaseUrl(process.env) ||
@@ -227,20 +286,7 @@ async function readGuildEligibilityState(
   try {
     const guildId = process.env.DISCORD_GUILD_ID;
     const lease = await getTokenLease(userId);
-    if ("status" in lease) {
-      if (lease.status === "REAUTH_REQUIRED") invalidateUserMembershipSnapshots(userId);
-      return lease;
-    }
-    const generation: MembershipGeneration = {
-      userId,
-      guildId,
-      discordId: lease.discordId,
-      encryptedAccessToken: lease.encryptedAccessToken,
-    };
-    if (lease.refreshed)
-      invalidateUserMembershipSnapshots(userId, { negative: false, except: generation });
-    if (useSnapshot && hasMembershipSnapshot(generation)) return eligibilityState("MEMBER");
-    const verification = beginMembershipVerification(generation);
+    if ("status" in lease) return lease;
     try {
       const member = await getCurrentDiscordGuildMember(guildId, lease.accessToken);
       const decision = membershipDecision({
@@ -249,31 +295,20 @@ async function readGuildEligibilityState(
         returnedDiscordId: member?.userId,
       });
       if (decision !== "MEMBER") {
-        invalidateMembershipSnapshot(generation);
         return eligibilityState(
           decision === "LEFT" ? await confirmGuildLeave(userId, lease) : decision,
         );
       }
-      if (!(await isCurrentLease(userId, guildId, lease))) {
-        invalidateMembershipSnapshot(generation);
-        return eligibilityState("UNAVAILABLE");
-      }
-      return eligibilityState(publishMembershipSnapshot(verification) ? "MEMBER" : "UNAVAILABLE");
-    } catch (error) {
-      if (error instanceof DiscordApiError && error.kind === "UNAUTHORIZED")
-        invalidateMembershipSnapshot(generation);
       return eligibilityState(
-        membershipDecision({
-          kind:
-            error instanceof DiscordApiError && error.kind === "UNAUTHORIZED"
-              ? "UNAUTHORIZED"
-              : "UNAVAILABLE",
-          expectedDiscordId: lease.discordId,
-        }),
-        error,
+        (await isCurrentLease(userId, guildId, lease)) ? "MEMBER" : "UNAVAILABLE",
       );
-    } finally {
-      finishMembershipVerification(verification);
+    } catch (error) {
+      if (error instanceof DiscordApiError && error.kind === "UNAUTHORIZED") {
+        return eligibilityState(
+          (await clearRejectedGrant(userId, lease)) ? "REAUTH_REQUIRED" : "UNAVAILABLE",
+        );
+      }
+      return eligibilityState("UNAVAILABLE", error);
     }
   } catch {
     // Database, encryption, timeouts and malformed responses all deny access.
@@ -281,55 +316,40 @@ async function readGuildEligibilityState(
   }
 }
 
-/** Every call checks Discord freshly; use this for target membership approval/review. */
-export async function getLiveGuildEligibilityState(
-  userId: string,
-): Promise<LiveGuildEligibilityState> {
-  return readGuildEligibilityState(userId, false);
-}
-
-/** Credentials are checked on every request; positive guild evidence lasts at most five minutes. */
+/**
+ * Local account eligibility for an already signed site session. MEMBER means the persisted
+ * Discord link remains valid locally; it is not a new Guild membership assertion.
+ * OAuth expiry is independent of the site's session and never triggers a remote refresh here.
+ */
 export async function getSessionGuildEligibilityState(
   userId: string,
 ): Promise<LiveGuildEligibilityState> {
-  return readGuildEligibilityState(userId, true);
-}
-
-/** Called only after a successful live identity/membership check and persistence at sign-in. */
-export async function primeSessionGuildMembership(
-  userId: string,
-  proof: { guildId: string; discordId: string; accessToken: string; verifiedAt?: number },
-): Promise<boolean> {
-  const verifiedAt = proof.verifiedAt ?? Date.now();
+  if (!resolveDatabaseUrl(process.env) || !process.env.NEXTAUTH_SECRET)
+    return eligibilityState("UNAVAILABLE");
   try {
-    if (proof.guildId !== process.env.DISCORD_GUILD_ID) return false;
-    const lease = await getTokenLease(userId);
-    if ("status" in lease) {
-      if (lease.status === "REAUTH_REQUIRED") invalidateUserMembershipSnapshots(userId);
-      return false;
-    }
-    if (lease.discordId !== proof.discordId || lease.accessToken !== proof.accessToken)
-      return false;
-    const generation = {
-      userId,
-      guildId: proof.guildId,
-      discordId: lease.discordId,
-      encryptedAccessToken: lease.encryptedAccessToken,
-    };
-    invalidateUserMembershipSnapshots(userId, { negative: false, except: generation });
-    const verification = beginMembershipVerification(
-      generation,
-      verifiedAt,
-      proof.verifiedAt !== undefined,
-    );
+    const [account] = await getDb()
+      .select({
+        discordId: accounts.providerAccountId,
+        accessToken: accounts.access_token,
+        scope: accounts.scope,
+      })
+      .from(accounts)
+      .where(and(eq(accounts.userId, userId), eq(accounts.provider, "discord")))
+      .limit(1);
+    if (!account?.accessToken || !hasDiscordMembershipScope(account.scope))
+      return eligibilityState("REAUTH_REQUIRED");
     try {
-      if (!(await isCurrentLease(userId, proof.guildId, lease))) return false;
-      return publishMembershipSnapshot(verification);
-    } finally {
-      finishMembershipVerification(verification);
+      decryptDiscordToken(
+        account.accessToken,
+        `discord:${account.discordId}:access`,
+        process.env.NEXTAUTH_SECRET,
+      );
+    } catch {
+      return eligibilityState("REAUTH_REQUIRED");
     }
+    return eligibilityState("MEMBER");
   } catch {
-    return false;
+    return eligibilityState("UNAVAILABLE");
   }
 }
 

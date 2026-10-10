@@ -12,6 +12,7 @@ const boundary = vi.hoisted(() => ({
     isMock: false,
   } as CurrentUser,
   eligibility: vi.fn(),
+  member: vi.fn(),
   serverSession: vi.fn(),
   authUser: vi.fn(),
 }));
@@ -26,10 +27,11 @@ vi.mock("next/headers", () => ({
   },
 }));
 vi.mock("next-auth", () => ({ getServerSession: boundary.serverSession }));
-vi.mock("@uniz/integrations/server", () => ({ getCurrentDiscordGuildMember: vi.fn() }));
+vi.mock("@uniz/integrations/server", () => ({ getCurrentDiscordGuildMember: boundary.member }));
 vi.mock("../src/lib/server/discord-authorization", () => ({
   getSessionGuildEligibilityState: boundary.eligibility,
-  primeSessionGuildMembership: vi.fn(),
+  captureDiscordSignInGrant: vi.fn(),
+  confirmAbsentDiscordSignIn: vi.fn(),
 }));
 vi.mock("../src/lib/server/auth-repository", () => ({
   findAuthUser: boundary.authUser,
@@ -41,6 +43,7 @@ import { getCurrentAuthState, getCurrentSessionState, getCurrentUser } from "../
 beforeEach(() => {
   boundary.request = new Headers({ cookie: "opaque-session-cookie" });
   boundary.headersUnavailable = false;
+  boundary.member.mockReset();
   boundary.user = { ...boundary.user, role: "ADMIN" };
   boundary.eligibility.mockReset().mockResolvedValue({ status: "MEMBER", retryAfterSeconds: null });
   boundary.authUser.mockReset().mockImplementation(async () => ({ ...boundary.user }));
@@ -53,7 +56,7 @@ beforeEach(() => {
 });
 
 describe("HTTP request authentication scope", () => {
-  it("shares one authorization lookup between action utilities and its response render", async () => {
+  it("shares one local account authorization lookup between action utilities and its response render", async () => {
     expect((await getCurrentSessionState()).user?.role).toBe("ADMIN");
     expect(boundary.eligibility).not.toHaveBeenCalled();
     expect((await getCurrentUser())?.role).toBe("ADMIN");
@@ -61,25 +64,27 @@ describe("HTTP request authentication scope", () => {
     expect((await getCurrentUser())?.id).toBe(boundary.user.id);
     expect(boundary.serverSession).toHaveBeenCalledTimes(1);
     expect(boundary.eligibility).toHaveBeenCalledTimes(1);
+    expect(boundary.member).not.toHaveBeenCalled();
   });
 
-  it("shares the pending verification when multiple action readers run concurrently", async () => {
+  it("shares the pending local account read when multiple action readers run concurrently", async () => {
     const states = await Promise.all(Array.from({ length: 12 }, () => getCurrentAuthState()));
     expect(states.every((state) => state.status === "AUTHENTICATED")).toBe(true);
     expect(boundary.serverSession).toHaveBeenCalledTimes(1);
     expect(boundary.eligibility).toHaveBeenCalledTimes(1);
   });
 
-  it("consults current membership verification on the next request and observes a confirmed departure", async () => {
+  it("observes a locally cleared Discord account on the next request and requires sign-in again", async () => {
     expect((await getCurrentAuthState()).status).toBe("AUTHENTICATED");
     boundary.request = new Headers({ cookie: "opaque-session-cookie" });
-    boundary.eligibility.mockResolvedValue({ status: "LEFT", retryAfterSeconds: null });
-    expect(await getCurrentAuthState()).toEqual({ user: null, status: "LEFT" });
+    boundary.eligibility.mockResolvedValue({ status: "REAUTH_REQUIRED", retryAfterSeconds: null });
+    expect(await getCurrentAuthState()).toEqual({ user: null, status: "REAUTH_REQUIRED" });
     expect(boundary.serverSession).toHaveBeenCalledTimes(2);
     expect(boundary.eligibility).toHaveBeenCalledTimes(2);
+    expect(boundary.member).not.toHaveBeenCalled();
   });
 
-  it("does not retain an unavailable verification across requests", async () => {
+  it("does not retain a local account database failure across requests or attach a retry delay", async () => {
     boundary.eligibility.mockResolvedValue({ status: "UNAVAILABLE", retryAfterSeconds: null });
     expect(await getCurrentAuthState()).toEqual({ user: null, status: "UNAVAILABLE" });
     expect(await getCurrentUser()).toBeNull();
@@ -89,6 +94,7 @@ describe("HTTP request authentication scope", () => {
     boundary.eligibility.mockResolvedValue({ status: "MEMBER", retryAfterSeconds: null });
     expect((await getCurrentAuthState()).status).toBe("AUTHENTICATED");
     expect(boundary.eligibility).toHaveBeenCalledTimes(2);
+    expect(boundary.member).not.toHaveBeenCalled();
   });
 
   it("reads changed database roles on the next request rather than trusting the prior state", async () => {
@@ -99,7 +105,7 @@ describe("HTTP request authentication scope", () => {
     expect(boundary.eligibility).toHaveBeenCalledTimes(2);
   });
 
-  it("does not trust the display identity's role after a concurrent demotion during verification", async () => {
+  it("does not trust the display identity's role after a concurrent demotion during the local account read", async () => {
     expect((await getCurrentSessionState()).user?.role).toBe("ADMIN");
     boundary.eligibility.mockImplementation(async () => {
       boundary.user = { ...boundary.user, role: "MEMBER" };
@@ -110,13 +116,14 @@ describe("HTTP request authentication scope", () => {
     expect(boundary.eligibility).toHaveBeenCalledTimes(1);
   });
 
-  it("keeps header-only page requests independent from Discord authorization", async () => {
+  it("keeps header-only page requests independent from the local account authorization read", async () => {
     for (let request = 0; request < 8; request++) {
       boundary.request = new Headers({ cookie: "opaque-session-cookie" });
       expect((await getCurrentSessionState()).status).toBe("AUTHENTICATED");
     }
     expect(boundary.serverSession).toHaveBeenCalledTimes(8);
     expect(boundary.eligibility).not.toHaveBeenCalled();
+    expect(boundary.member).not.toHaveBeenCalled();
   });
 
   it("denies authorization when an HTTP request scope is unavailable", async () => {

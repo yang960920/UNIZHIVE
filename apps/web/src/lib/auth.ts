@@ -18,8 +18,9 @@ import {
 } from "./auth-policy";
 import { findAuthUser, persistDiscordIdentity } from "./server/auth-repository";
 import {
+  captureDiscordSignInGrant,
+  confirmAbsentDiscordSignIn,
   getSessionGuildEligibilityState,
-  primeSessionGuildMembership,
 } from "./server/discord-authorization";
 import { hasDiscordMembershipScope } from "./server/discord-authorization-policy";
 import { DISCORD_OAUTH_ISSUER, DISCORD_OAUTH_SCOPE } from "./discord-oauth-config";
@@ -77,15 +78,22 @@ export const authOptions: NextAuthOptions = {
         !hasDiscordMembershipScope(account.scope)
       )
         return false;
-      let stage: SignInFailureStage = "DISCORD_GUILD_CHECK";
+      let stage: SignInFailureStage = "ACCOUNT_PERSISTENCE";
       try {
+        const priorGrant = await captureDiscordSignInGrant(account.providerAccountId);
+        stage = "DISCORD_GUILD_CHECK";
         const member = await getCurrentDiscordGuildMember(
           process.env.DISCORD_GUILD_ID!,
           account.access_token,
         );
-        if (!member || member.userId !== account.providerAccountId)
+        if (!member) {
+          if (priorGrant) {
+            stage = "ACCOUNT_PERSISTENCE";
+            await confirmAbsentDiscordSignIn(priorGrant);
+          }
           return "/login?error=GuildMembership";
-        const verifiedAt = Date.now();
+        }
+        if (member.userId !== account.providerAccountId) return "/login?error=GuildMembership";
         stage = "ACCOUNT_PERSISTENCE";
         const persisted = await persistDiscordIdentity({
           discordId: account.providerAccountId,
@@ -98,14 +106,6 @@ export const authOptions: NextAuthOptions = {
         });
         user.id = persisted.id;
         user.name = persisted.name;
-        // The successful sign-in already confirmed membership. Bind this verification
-        // to the persisted grant instead of making a duplicate Discord call on landing.
-        await primeSessionGuildMembership(persisted.id, {
-          guildId: process.env.DISCORD_GUILD_ID!,
-          discordId: account.providerAccountId,
-          accessToken: account.access_token,
-          verifiedAt,
-        }).catch(() => undefined);
         return true;
       } catch (error) {
         logSignInFailure(stage, error);
@@ -137,7 +137,7 @@ export const authOptions: NextAuthOptions = {
         return session;
       }
       // The login cookie represents identity. Discord availability must not erase that
-      // identity; protected readers below verify Guild membership independently.
+      // identity; protected readers below check the current local account and permissions.
       try {
         const user =
           token.isMock === true
@@ -217,7 +217,7 @@ async function readCurrentAuthState(request: SessionRequest): Promise<CurrentAut
         };
       }
     }
-    // Roles remain fresh even while a recent, bounded Guild verification is reused.
+    // Read roles again after the local account check so a concurrent demotion is observed.
     const user = identity.user.isMock
       ? resolveDevIdentity(identity.user.id, process.env)
       : await findAuthUser(identity.user.id);
@@ -231,8 +231,7 @@ async function readCurrentAuthState(request: SessionRequest): Promise<CurrentAut
 // several times before React renders its response. Next owns a distinct headers object
 // per HTTP request and keeps it stable through the action and its revalidation render.
 // Object identity (never a cookie/token/user ID) scopes the promise to that request;
-// a later request revalidates the current grant and role; the Guild verification itself
-// can be reused for five minutes without repeatedly consuming Discord's rate limit.
+// a later request revalidates the local account and role without contacting Discord.
 const requestAuthStates = new WeakMap<object, Promise<CurrentAuthState>>();
 export const getCurrentAuthState = cache(async (): Promise<CurrentAuthState> => {
   try {

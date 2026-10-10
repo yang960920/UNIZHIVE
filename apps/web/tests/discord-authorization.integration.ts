@@ -24,9 +24,14 @@ vi.mock("@uniz/integrations/server", async (importOriginal) => {
 });
 
 import { accounts, auditLogs, eq, getDb, users } from "@uniz/db";
-import { refreshDiscordOAuthTokens } from "@uniz/integrations/server";
+import { getCurrentDiscordGuildMember, refreshDiscordOAuthTokens } from "@uniz/integrations/server";
 import { persistDiscordIdentity } from "../src/lib/server/auth-repository";
-import { getLiveGuildEligibility } from "../src/lib/server/discord-authorization";
+import {
+  captureDiscordSignInGrant,
+  confirmAbsentDiscordSignIn,
+  getLiveGuildEligibility,
+  getSessionGuildEligibilityState,
+} from "../src/lib/server/discord-authorization";
 import { decryptDiscordToken } from "../src/lib/server/discord-token-crypto";
 
 process.loadEnvFile(new URL("../../../.env", import.meta.url));
@@ -73,6 +78,86 @@ afterEach(async () => {
 });
 
 describe("Discord token and authorization repositories against local PostgreSQL", () => {
+  it("does not confuse different cleared-grant row versions during delayed sign-in absence", async () => {
+    await getDb().update(users).set({ role: "ADMIN" }).where(eq(users.id, userId!));
+    await getDb().update(accounts).set({ access_token: null }).where(eq(accounts.userId, userId!));
+    const olderGrant = await captureDiscordSignInGrant(discord.userId);
+    await persistDiscordIdentity({
+      discordId: discord.userId,
+      name: "Newer revoked sign-in fixture",
+      image: null,
+      accessToken: "synthetic-newer-access",
+      refreshToken: "synthetic-newer-refresh",
+      expiresAt: Math.floor(Date.now() / 1000) + 3600,
+      scope: "identify guilds.members.read",
+    });
+    await getDb().update(accounts).set({ access_token: null }).where(eq(accounts.userId, userId!));
+    expect(await confirmAbsentDiscordSignIn(olderGrant!)).toBe("UNAVAILABLE");
+    const [user] = await getDb()
+      .select({ role: users.role })
+      .from(users)
+      .where(eq(users.id, userId!));
+    expect(user?.role).toBe("ADMIN");
+    expect(
+      await getDb().select().from(auditLogs).where(eq(auditLogs.actorId, userId!)),
+    ).toHaveLength(0);
+  });
+
+  it("authorizes the current local link despite expired Discord tokens and an unavailable provider", async () => {
+    await getDb()
+      .update(accounts)
+      .set({ expires_at: 1, refresh_token: null })
+      .where(eq(accounts.userId, userId!));
+    discord.membership = "UNAVAILABLE";
+    for (let request = 0; request < 3; request++) {
+      expect(await getSessionGuildEligibilityState(userId!)).toEqual({
+        status: "MEMBER",
+        retryAfterSeconds: null,
+      });
+    }
+    expect(getCurrentDiscordGuildMember).not.toHaveBeenCalled();
+    expect(refreshDiscordOAuthTokens).not.toHaveBeenCalled();
+    await getDb().update(accounts).set({ access_token: null }).where(eq(accounts.userId, userId!));
+    expect((await getSessionGuildEligibilityState(userId!)).status).toBe("REAUTH_REQUIRED");
+  });
+
+  it("does not let an older failed login revoke a newer persisted sign-in", async () => {
+    await getDb().update(users).set({ role: "ADMIN" }).where(eq(users.id, userId!));
+    const olderGrant = await captureDiscordSignInGrant(discord.userId);
+    await persistDiscordIdentity({
+      discordId: discord.userId,
+      name: "Newer sign-in fixture",
+      image: null,
+      accessToken: "synthetic-newer-access",
+      refreshToken: "synthetic-newer-refresh",
+      expiresAt: Math.floor(Date.now() / 1000) + 3600,
+      scope: "identify guilds.members.read",
+    });
+    expect(await confirmAbsentDiscordSignIn(olderGrant!)).toBe("UNAVAILABLE");
+    expect((await getSessionGuildEligibilityState(userId!)).status).toBe("MEMBER");
+    const [user] = await getDb()
+      .select({ role: users.role })
+      .from(users)
+      .where(eq(users.id, userId!));
+    expect(user?.role).toBe("ADMIN");
+    expect(
+      await getDb().select().from(auditLogs).where(eq(auditLogs.actorId, userId!)),
+    ).toHaveLength(0);
+  });
+
+  it("revokes existing sessions when a login confirms absence for the captured current grant", async () => {
+    await getDb().update(users).set({ role: "ADMIN" }).where(eq(users.id, userId!));
+    const grant = await captureDiscordSignInGrant(discord.userId);
+    expect(await confirmAbsentDiscordSignIn(grant!)).toBe("LEFT");
+    expect((await getSessionGuildEligibilityState(userId!)).status).toBe("REAUTH_REQUIRED");
+    const [user] = await getDb()
+      .select({ role: users.role })
+      .from(users)
+      .where(eq(users.id, userId!));
+    expect(user?.role).toBe("GUEST");
+    expect(getCurrentDiscordGuildMember).not.toHaveBeenCalled();
+  });
+
   it("stores authenticated ciphertext and verifies the expected Discord identity", async () => {
     const [account] = await getDb().select().from(accounts).where(eq(accounts.userId, userId!));
     expect(account?.access_token).not.toContain("synthetic-access-token");

@@ -58,7 +58,9 @@ Migration 상태는 `UNDECIDED`, `JOINING`, `PRE_REGISTERED`, `READY`, `MIGRATED
 
 모든 테이블은 PostgreSQL `gen_random_uuid()::text` 기본값의 문자열 PK와 `created_at`, `updated_at`을 사용한다. 시간은 `timestamptz`이며 애플리케이션에서 `Date`로 취급한다. Drizzle write의 `updatedAt`은 `$onUpdate`로 갱신된다. 직접 SQL로 수정할 경우 수정 시각을 함께 설정해야 한다. 유일성·복합 FK·조회 index를 schema와 migration에 정의한다.
 
-OAuth Account는 Auth.js v4 필드 형태를 유지한다. 현재 인증은 JWT 세션을 사용하므로 별도 세션·verification token 테이블이 없다. Discord access/refresh token은 계정 바인딩을 포함한 AES-256-GCM 암호문으로 서버에 저장한다. 서버 가입의 긍정 확인은 동일 토큰 세대에서 최대 5분만 사용하며 역할은 매 요청과 저장 트랜잭션에서 DB로 재확인한다. 가입 승인 대상은 즉시 Discord를 확인한다. 토큰 갱신은 계정 잠금으로 직렬화한다. Audit metadata나 Integration metadata에 token 및 UID를 넣지 않는다.
+OAuth Account는 Auth.js v4 필드 형태를 유지한다. 현재 인증은 JWT 세션을 사용하므로 별도 세션·verification token 테이블이 없다. Discord access/refresh token은 계정 바인딩을 포함한 AES-256-GCM 암호문으로 서버에 저장한다. 일반 권한 요청은 서명된 사이트 세션과 현재 DB 계정 연결, 필요한 동의 범위, 암호화된 access token의 바인딩·복호화 가능 여부를 확인한다. Discord 토큰 만료나 5분 메모리 가입 확인은 일반 권한 판단에 사용하지 않으며, 일반 요청에서 외부 가입 조회·토큰 갱신을 하지 않는다. 역할은 매 요청과 저장 트랜잭션에서 DB로 재확인한다.
+
+Discord 로그인과 가입 승인 대상 등 명시적 실시간 확인에서 외부 가입 여부를 조회한다. 그 실시간 확인에 필요한 토큰 갱신만 계정 잠금으로 직렬화한다. 확인된 탈퇴는 현재 인증 세대인지 확인한 뒤 GUEST·인증 정보 삭제·감사 기록으로 처리하고 기존 이력을 보존한다. 실시간 인증 거부는 현재 인증 정보만 지우며 역할을 탈퇴로 변경하지 않는다. 외부 탈퇴·동의 취소는 다음 로그인 또는 실시간 확인에서 발견한다. Discord 장애만으로 일반 페이지와 저장을 차단하지 않으며, DB·현재 인증 정보 확인 실패는 계속 거부한다. 로그아웃은 로컬 세션만 종료하며 account의 저장된 인증 정보를 삭제하지 않는다. 이 정책에는 새 schema나 migration이 없다. Audit metadata나 Integration metadata에 token 및 UID를 넣지 않는다. 자세한 기준은 [Discord 세션 정책](discord-session-policy.md)에 있다.
 
 Once Human UID는 `member_profiles.once_human_uid`에만 있으며 기본 공개 응답에서 제거한다. UI에는 `PublicMemberProfile`과 `toPublicMemberProfile()`을 사용한다. Role은 클라이언트 입력을 신뢰하지 않고 서버가 DB에서 읽는다.
 

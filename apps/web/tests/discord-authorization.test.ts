@@ -28,18 +28,40 @@ vi.mock("@uniz/integrations/server", () => {
   };
 });
 vi.mock("@uniz/db", () => {
-  const accounts = { name: "accounts" };
+  const accounts = {
+    name: "accounts",
+    id: "id",
+    userId: "userId",
+    providerAccountId: "providerAccountId",
+    access_token: "access_token",
+    scope: "scope",
+  };
   const users = { name: "users" };
   const auditLogs = { name: "audits" };
   const transaction = {
     execute: async () => undefined,
-    select: () => ({
+    select: (fields?: Record<string, string>) => ({
       from(table: { name: string }) {
+        const read = () => {
+          if (fixture.failDatabase) throw new Error("Database unavailable");
+          const row = table.name === "accounts" ? fixture.account : fixture.user;
+          if (!row.id) return [];
+          return [
+            fields
+              ? Object.fromEntries(
+                  Object.entries(fields).map(([key, column]) => [key, row[column]]),
+                )
+              : { ...row },
+          ];
+        };
         const query = {
           where: () => query,
           limit: () => query,
-          for: async () =>
-            table.name === "accounts" ? [{ ...fixture.account }] : [{ ...fixture.user }],
+          for: async () => read(),
+          then: (
+            resolve: (rows: Record<string, unknown>[]) => unknown,
+            reject: (error: unknown) => unknown,
+          ) => Promise.resolve().then(read).then(resolve, reject),
         };
         return query;
       },
@@ -65,8 +87,9 @@ vi.mock("@uniz/db", () => {
     auditLogs,
     eq: () => undefined,
     and: () => undefined,
-    sql: () => undefined,
+    sql: () => "rowVersion",
     getDb: () => ({
+      select: transaction.select,
       async transaction<T>(callback: (connection: typeof transaction) => Promise<T>) {
         if (fixture.failDatabase) throw new Error("Database unavailable");
         const previous = fixture.tail;
@@ -90,19 +113,15 @@ import {
   getLiveGuildEligibility,
   getLiveGuildEligibilityState,
   getSessionGuildEligibilityState,
-  primeSessionGuildMembership,
+  captureDiscordSignInGrant,
+  confirmAbsentDiscordSignIn,
 } from "../src/lib/server/discord-authorization";
-import { invalidateUserMembershipSnapshots } from "../src/lib/server/discord-membership-cache";
 import { decryptDiscordToken, encryptDiscordToken } from "../src/lib/server/discord-token-crypto";
 
 const secret = "test-only-secret-thirty-two-characters-and-longer";
 const discordId = "123456789012345678";
 
 beforeEach(() => {
-  invalidateUserMembershipSnapshots("user-id", { negative: false });
-  (
-    globalThis as typeof globalThis & { __unizDiscordMembershipInvalidations?: Map<string, number> }
-  ).__unizDiscordMembershipInvalidations?.clear();
   vi.stubEnv("DATABASE_URL", "test-only-database");
   vi.stubEnv("POSTGRES_URL", "");
   vi.stubEnv("DISCORD_CLIENT_ID", "123456789012345679");
@@ -111,6 +130,7 @@ beforeEach(() => {
   vi.stubEnv("NEXTAUTH_SECRET", secret);
   fixture.account = {
     id: "account-id",
+    rowVersion: "account-generation-before",
     userId: "user-id",
     providerAccountId: discordId,
     access_token: encryptDiscordToken("access-before", `discord:${discordId}:access`, secret),
@@ -134,147 +154,158 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  invalidateUserMembershipSnapshots("user-id", { negative: false });
-  (
-    globalThis as typeof globalThis & { __unizDiscordMembershipInvalidations?: Map<string, number> }
-  ).__unizDiscordMembershipInvalidations?.clear();
   vi.useRealTimers();
   vi.unstubAllEnvs();
 });
 
-describe("bounded session guild membership evidence", () => {
-  it("verifies the Discord grant when the database is configured through the Supabase integration", async () => {
+describe("local Discord account eligibility for site sessions", () => {
+  it("works through the Supabase database URL without calling Discord", async () => {
     vi.stubEnv("DATABASE_URL", "");
     vi.stubEnv("POSTGRES_URL", "postgresql://fixture@pooler.example.test/hive");
-    expect(await getLiveGuildEligibility("user-id")).toBe("MEMBER");
-    expect(fixture.guildMember).toHaveBeenCalledTimes(1);
-  });
-
-  it("rejects a delayed login proof that predates a newer forced 401 for the same persisted grant", async () => {
-    vi.useFakeTimers({ toFake: ["Date"] });
-    await getSessionGuildEligibilityState("user-id");
-    const proof = {
-      guildId: "123456789012345680",
-      discordId,
-      accessToken: "access-before",
-      verifiedAt: Date.now(),
-    };
-    await vi.advanceTimersByTimeAsync(1);
-    fixture.guildMember.mockRejectedValue(new DiscordApiError("UNAUTHORIZED", 401));
-    await expect(getLiveGuildEligibilityState("user-id")).resolves.toMatchObject({
-      status: "REAUTH_REQUIRED",
-    });
-    await expect(primeSessionGuildMembership("user-id", proof)).resolves.toBe(false);
-    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
-      status: "REAUTH_REQUIRED",
-    });
-    expect(fixture.guildMember).toHaveBeenCalledTimes(3);
-    await vi.advanceTimersByTimeAsync(1);
-    fixture.guildMember.mockResolvedValue({
-      userId: discordId,
-      nickname: null,
-      roleIds: [],
-      source: "LIVE",
-    });
-    await expect(getLiveGuildEligibilityState("user-id")).resolves.toMatchObject({
-      status: "MEMBER",
-    });
-    await expect(
-      primeSessionGuildMembership("user-id", { ...proof, verifiedAt: Date.now() }),
-    ).resolves.toBe(true);
-  });
-
-  it("reuses one positive proof across requests without extending its original five-minute deadline", async () => {
-    vi.useFakeTimers({ toFake: ["Date"] });
-    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
-      status: "MEMBER",
-    });
-    await vi.advanceTimersByTimeAsync(299_999);
-    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
-      status: "MEMBER",
-    });
-    expect(fixture.guildMember).toHaveBeenCalledTimes(1);
-    fixture.guildMember.mockResolvedValueOnce(null);
-    await vi.advanceTimersByTimeAsync(1);
     await expect(getSessionGuildEligibilityState("user-id")).resolves.toEqual({
-      status: "LEFT",
+      status: "MEMBER",
       retryAfterSeconds: null,
     });
-    expect(fixture.guildMember).toHaveBeenCalledTimes(2);
-    expect(fixture.user.role).toBe("GUEST");
-    expect(fixture.account.access_token).toBeNull();
-    expect(fixture.audits).toHaveLength(1);
+    expect(fixture.guildMember).not.toHaveBeenCalled();
+    expect(fixture.refresh).not.toHaveBeenCalled();
   });
 
-  it("denies an expired proof during 429 without extending it or altering OAuth/roles", async () => {
+  it("keeps ordinary requests available across time, remote rate limits and fresh server modules", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
-    await getSessionGuildEligibilityState("user-id");
-    await vi.advanceTimersByTimeAsync(300_000);
     fixture.guildMember.mockRejectedValue(new DiscordApiError("UNAVAILABLE", 429, 261));
+    fixture.refresh.mockRejectedValue(new DiscordApiError("UNAVAILABLE", 429, 261));
     const before = { ...fixture.account };
-    for (let request = 0; request < 2; request++) {
-      await expect(getSessionGuildEligibilityState("user-id")).resolves.toEqual({
-        status: "UNAVAILABLE",
-        retryAfterSeconds: 261,
+    for (let request = 0; request < 12; request++) {
+      await vi.advanceTimersByTimeAsync(300_000);
+      const state =
+        request % 2 === 0
+          ? getSessionGuildEligibilityState
+          : (await import("../src/lib/server/discord-authorization"))
+              .getSessionGuildEligibilityState;
+      await expect(state("user-id")).resolves.toEqual({
+        status: "MEMBER",
+        retryAfterSeconds: null,
       });
+      if (request === 5) vi.resetModules();
     }
-    expect(fixture.guildMember).toHaveBeenCalledTimes(3);
+    expect(fixture.guildMember).not.toHaveBeenCalled();
+    expect(fixture.refresh).not.toHaveBeenCalled();
     expect(fixture.account).toEqual(before);
     expect(fixture.user.role).toBe("ADMIN");
     expect(fixture.audits).toHaveLength(0);
   });
 
-  it("keeps forced target checks fresh and invalidates session evidence on confirmed departure", async () => {
-    await getSessionGuildEligibilityState("user-id");
-    fixture.guildMember.mockResolvedValueOnce(null);
-    await expect(getLiveGuildEligibility("user-id")).resolves.toBe("LEFT");
+  it.each([null, 1, Math.floor(Date.now() / 1000) + 10])(
+    "does not confuse Discord token expiry %s with site session expiry",
+    async (expiresAt) => {
+      fixture.account.expires_at = expiresAt;
+      fixture.account.refresh_token = null;
+      await expect(getSessionGuildEligibilityState("user-id")).resolves.toEqual({
+        status: "MEMBER",
+        retryAfterSeconds: null,
+      });
+      expect(fixture.refresh).not.toHaveBeenCalled();
+      expect(fixture.guildMember).not.toHaveBeenCalled();
+    },
+  );
+
+  it("keeps signed site sessions independent of OAuth client configuration", async () => {
+    vi.stubEnv("DISCORD_CLIENT_ID", "");
+    vi.stubEnv("DISCORD_CLIENT_SECRET", "");
     await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
-      status: "REAUTH_REQUIRED",
+      status: "MEMBER",
     });
-    expect(fixture.guildMember).toHaveBeenCalledTimes(2);
+    expect(fixture.guildMember).not.toHaveBeenCalled();
   });
 
-  it("checks current token presence, consent and expiry before a cached proof can authorize", async () => {
-    await getSessionGuildEligibilityState("user-id");
-    const access = fixture.account.access_token;
+  it.each([
+    { access_token: null },
+    { scope: "identify" },
+    { access_token: "legacy-plaintext-token" },
+    { providerAccountId: "different-linked-identity" },
+  ])("rejects cleared, reduced or unreadable account credentials %j", async (changed) => {
+    Object.assign(fixture.account, changed);
+    await expect(getSessionGuildEligibilityState("user-id")).resolves.toEqual({
+      status: "REAUTH_REQUIRED",
+      retryAfterSeconds: null,
+    });
+    expect(fixture.guildMember).not.toHaveBeenCalled();
+    expect(fixture.refresh).not.toHaveBeenCalled();
+  });
+
+  it("checks the current persisted account on every request", async () => {
+    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
+      status: "MEMBER",
+    });
     fixture.account.access_token = null;
     await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
       status: "REAUTH_REQUIRED",
     });
-    expect(fixture.guildMember).toHaveBeenCalledTimes(1);
-    fixture.account.access_token = access;
-    await getSessionGuildEligibilityState("user-id");
-    expect(fixture.guildMember).toHaveBeenCalledTimes(2);
-    fixture.account.scope = "identify";
+    fixture.account = {};
     await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
       status: "REAUTH_REQUIRED",
     });
-    expect(fixture.guildMember).toHaveBeenCalledTimes(2);
-    fixture.account.scope = "identify guilds.members.read";
-    fixture.account.expires_at = 1;
+    expect(fixture.guildMember).not.toHaveBeenCalled();
+  });
+
+  it("reports local database failures without a Discord cooldown", async () => {
+    fixture.failDatabase = true;
+    await expect(getSessionGuildEligibilityState("user-id")).resolves.toEqual({
+      status: "UNAVAILABLE",
+      retryAfterSeconds: null,
+    });
+    expect(fixture.guildMember).not.toHaveBeenCalled();
+  });
+
+  it("keeps ordinary requests working after an explicit Discord rate limit", async () => {
+    fixture.guildMember.mockRejectedValue(new DiscordApiError("UNAVAILABLE", 429, 261));
+    await expect(getLiveGuildEligibilityState("user-id")).resolves.toEqual({
+      status: "UNAVAILABLE",
+      retryAfterSeconds: 261,
+    });
+    await expect(getSessionGuildEligibilityState("user-id")).resolves.toEqual({
+      status: "MEMBER",
+      retryAfterSeconds: null,
+    });
+    expect(fixture.guildMember).toHaveBeenCalledTimes(1);
+    expect(fixture.refresh).not.toHaveBeenCalled();
+  });
+
+  it("denies subsequent site requests after an explicit current-grant 401 without demoting roles", async () => {
+    fixture.guildMember.mockRejectedValue(new DiscordApiError("UNAUTHORIZED", 401));
+    await expect(getLiveGuildEligibilityState("user-id")).resolves.toMatchObject({
+      status: "REAUTH_REQUIRED",
+    });
+    expect(fixture.account.access_token).toBeNull();
+    expect(fixture.account.refresh_token).toBeNull();
+    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
+      status: "REAUTH_REQUIRED",
+    });
+    expect(fixture.guildMember).toHaveBeenCalledTimes(1);
+    expect(fixture.user.role).toBe("ADMIN");
+    expect(fixture.audits).toHaveLength(0);
+  });
+
+  it("preserves a concurrent newer sign-in when an older Discord check returns 401", async () => {
+    fixture.guildMember.mockImplementationOnce(async () => {
+      fixture.account.access_token = encryptDiscordToken(
+        "new-sign-in-token",
+        "discord:" + discordId + ":access",
+        secret,
+      );
+      throw new DiscordApiError("UNAUTHORIZED", 401);
+    });
+    await expect(getLiveGuildEligibilityState("user-id")).resolves.toMatchObject({
+      status: "UNAVAILABLE",
+    });
     await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
       status: "MEMBER",
     });
-    expect(fixture.refresh).toHaveBeenCalledTimes(1);
-    expect(fixture.guildMember).toHaveBeenCalledTimes(3);
-    expect(fixture.guildMember.mock.calls.at(-1)?.[1]).toBe("access-after");
+    expect(fixture.account.scope).toBe("identify guilds.members.read");
+    expect(fixture.user.role).toBe("ADMIN");
   });
 
-  it("treats sign-in/token generation replacements as cold evidence, never reusing the previous proof", async () => {
-    await getSessionGuildEligibilityState("user-id");
-    fixture.account.access_token = encryptDiscordToken(
-      "access-replaced",
-      `discord:${discordId}:access`,
-      secret,
-    );
-    fixture.guildMember.mockResolvedValueOnce(null);
-    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
-      status: "LEFT",
-    });
-    expect(fixture.guildMember).toHaveBeenCalledTimes(2);
-  });
-
-  it("does not let a slower positive response resurrect evidence invalidated by a newer forced 401", async () => {
+  it("rejects a delayed live success after another current-grant check has revoked it", async () => {
     let release!: (member: unknown) => void;
     let markStarted!: () => void;
     const started = new Promise<void>((resolve) => (markStarted = resolve));
@@ -293,52 +324,81 @@ describe("bounded session guild membership evidence", () => {
     await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
       status: "REAUTH_REQUIRED",
     });
-    expect(fixture.guildMember).toHaveBeenCalledTimes(3);
-    expect(fixture.user.role).toBe("ADMIN");
+    expect(fixture.guildMember).toHaveBeenCalledTimes(2);
   });
 
-  it("rejects superseded live positive responses instead of seeding a new account generation", async () => {
+  it("rejects a superseded live success without preventing the newer site session", async () => {
     fixture.guildMember.mockImplementationOnce(async () => {
       fixture.account.access_token = encryptDiscordToken(
         "concurrent-sign-in-token",
-        `discord:${discordId}:access`,
+        "discord:" + discordId + ":access",
         secret,
       );
       return { userId: discordId, nickname: null, roleIds: [], source: "LIVE" };
     });
-    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
+    await expect(getLiveGuildEligibilityState("user-id")).resolves.toMatchObject({
       status: "UNAVAILABLE",
     });
-    await getSessionGuildEligibilityState("user-id");
-    expect(fixture.guildMember).toHaveBeenCalledTimes(2);
-  });
-
-  it("primes only the matching persisted login proof and preserves the proof's actual age", async () => {
-    vi.useFakeTimers({ toFake: ["Date"] });
-    const proof = {
-      guildId: "123456789012345680",
-      discordId,
-      accessToken: "access-before",
-      verifiedAt: Date.now(),
-    };
-    await expect(
-      primeSessionGuildMembership("user-id", { ...proof, accessToken: "wrong-token" }),
-    ).resolves.toBe(false);
-    await expect(
-      primeSessionGuildMembership("user-id", { ...proof, guildId: "123456789012345681" }),
-    ).resolves.toBe(false);
-    await expect(primeSessionGuildMembership("user-id", proof)).resolves.toBe(true);
     await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
       status: "MEMBER",
     });
-    expect(fixture.guildMember).not.toHaveBeenCalled();
-    await vi.advanceTimersByTimeAsync(300_000);
-    await expect(primeSessionGuildMembership("user-id", proof)).resolves.toBe(false);
-    await getSessionGuildEligibilityState("user-id");
     expect(fixture.guildMember).toHaveBeenCalledTimes(1);
   });
 });
 
+describe("confirmed absence during a new sign-in", () => {
+  it("rejects an older null-token generation after a newer sign-in is revoked back to null", async () => {
+    fixture.account.access_token = null;
+    const olderGrant = await captureDiscordSignInGrant(discordId);
+    fixture.account.access_token = encryptDiscordToken(
+      "new-sign-in-token",
+      `discord:${discordId}:access`,
+      secret,
+    );
+    fixture.account.rowVersion = "account-generation-new-sign-in";
+    fixture.guildMember.mockRejectedValue(new DiscordApiError("UNAUTHORIZED", 401));
+    expect((await getLiveGuildEligibilityState("user-id")).status).toBe("REAUTH_REQUIRED");
+    fixture.account.rowVersion = "account-generation-new-revocation";
+    expect(fixture.account.access_token).toBeNull();
+    expect(await confirmAbsentDiscordSignIn(olderGrant!)).toBe("UNAVAILABLE");
+    expect(fixture.user.role).toBe("ADMIN");
+    expect(fixture.audits).toHaveLength(0);
+  });
+
+  it("clears an existing captured grant, demotes and audits without another remote call", async () => {
+    const grant = await captureDiscordSignInGrant(discordId);
+    expect(grant).toMatchObject({ userId: "user-id", discordId });
+    expect(await confirmAbsentDiscordSignIn(grant!)).toBe("LEFT");
+    expect(fixture.user.role).toBe("GUEST");
+    expect(fixture.account.access_token).toBeNull();
+    expect(fixture.audits).toHaveLength(1);
+    expect(fixture.guildMember).not.toHaveBeenCalled();
+    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
+      status: "REAUTH_REQUIRED",
+    });
+  });
+
+  it("does not let an older failed login erase a newer successfully persisted login", async () => {
+    const grant = await captureDiscordSignInGrant(discordId);
+    fixture.account.access_token = encryptDiscordToken(
+      "new-sign-in-token",
+      "discord:" + discordId + ":access",
+      secret,
+    );
+    expect(await confirmAbsentDiscordSignIn(grant!)).toBe("UNAVAILABLE");
+    expect(fixture.user.role).toBe("ADMIN");
+    expect(fixture.audits).toHaveLength(0);
+    await expect(getSessionGuildEligibilityState("user-id")).resolves.toMatchObject({
+      status: "MEMBER",
+    });
+  });
+
+  it("captures no revocation target for a previously unlinked identity", async () => {
+    fixture.account = {};
+    expect(await captureDiscordSignInGrant(discordId)).toBeNull();
+    expect(fixture.audits).toHaveLength(0);
+  });
+});
 describe("live authorization and token lifecycle", () => {
   it("preserves OAuth grants and roles while exposing only safe rate-limit delay metadata", async () => {
     fixture.guildMember.mockRejectedValue(new DiscordApiError("UNAVAILABLE", 429, 261));
