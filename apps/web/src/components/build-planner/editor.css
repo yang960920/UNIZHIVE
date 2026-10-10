@@ -19,6 +19,108 @@
   gap: 24px;
   min-width: 0;
 }
+.planner-field-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border, #7b988c30);
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin-left: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.6;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.planner-field-badge.is-required {
+  color: var(--primary);
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+}
+.gear-build-fields label,
+.planner-field-grid label {
+  position: relative;
+}
+.gear-build-fields label > .planner-field-badge,
+.planner-field-grid label > .planner-field-badge {
+  position: absolute;
+  top: -2px;
+  right: 0;
+}
+.gear-build-fields label > small {
+  font-size: 10px;
+  color: var(--muted);
+}
+.planner-editor .planner-field-error {
+  color: var(--danger);
+}
+.planner-required-guide {
+  display: grid;
+  gap: 9px;
+  padding: 16px 20px;
+  border: 1px solid var(--border, #7b988c30);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.planner-required-guide p {
+  margin: 0;
+}
+.planner-required-guide .planner-field-badge {
+  margin: 0 8px 0 0;
+}
+.planner-required-guide .planner-required-note {
+  color: var(--muted);
+  font-size: 11px;
+}
+.planner-save-copy {
+  display: grid;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+.planner-save-feedback {
+  padding: 12px 14px;
+  border-left: 3px solid var(--primary);
+  background: color-mix(in srgb, var(--primary) 6%, transparent);
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.planner-save-feedback.needs-input {
+  border-left-color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 6%, transparent);
+}
+.planner-save-feedback strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.planner-save-feedback ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+}
+.planner-save-feedback a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.planner-save-feedback a:hover,
+.planner-save-feedback a:focus-visible {
+  color: var(--primary);
+}
+.gear-editor [id],
+.planner-editor [id] {
+  scroll-margin-top: 100px;
+}
+.gear-save-bar > button,
+.planner-editor-footer > button {
+  flex-shrink: 0;
+}
 .gear-editor label {
   display: grid;
   gap: 7px;

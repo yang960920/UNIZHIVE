@@ -209,6 +209,10 @@ import {
 import { GearTraitSelector } from "../src/components/build-planner/gear-trait-picker";
 import { GearDeviantFusionGuide } from "../src/components/build-planner/gear-fusion-guide";
 import { GearConsumablesEditor } from "../src/components/build-planner/gear-consumables";
+import {
+  PlannerRequiredFields,
+  PlannerSaveFeedback,
+} from "../src/components/build-planner/save-feedback";
 
 type Element = { type: unknown; props: Record<string, unknown> };
 function flatten(node: unknown): Element[] {
@@ -249,6 +253,15 @@ function field(label: string) {
 }
 function change(label: string, value: string) {
   (field(label).props.onChange as (event: unknown) => void)({ target: { value } });
+}
+function saveButton(preview = false) {
+  return find(
+    render(preview),
+    (element) => element.type === "button" && element.props.type === "submit",
+  );
+}
+function saveFeedback(preview = false) {
+  return find(render(preview), (element) => element.type === PlannerSaveFeedback);
 }
 function snapshot(): PlannerGearLoadout {
   return JSON.parse(
@@ -311,6 +324,103 @@ beforeEach(() => {
   vi.mocked(parseGearLoadoutForSave).mockClear();
   vi.stubGlobal("document", { activeElement: null, getElementById: vi.fn(() => null) });
   vi.stubGlobal("HTMLElement", class {});
+});
+
+describe("Gear editor required fields and save guidance", () => {
+  it.each(["", "   ", "가", " 가 ", "가".repeat(101)])(
+    "explains why invalid title %s cannot be saved",
+    (title) => {
+      change("빌드 이름", title);
+      expect(saveButton().props.disabled).toBe(true);
+      expect(saveButton().props["aria-describedby"]).toBe("planner-save-status");
+      expect(saveFeedback().props.blockers).toEqual([
+        expect.objectContaining({
+          message: expect.stringContaining("2~100자"),
+          targetId: "planner-title",
+        }),
+      ]);
+    },
+  );
+
+  it("allows a valid title with every optional field empty and removes the missing-field reason", () => {
+    change("빌드 이름", "  새 빌드  ");
+    expect(saveButton().props.disabled).toBe(false);
+    expect(saveFeedback().props.blockers).toEqual([]);
+    expect(snapshot().slots).toEqual([]);
+    expect(snapshot().context.scenarioKey).toBeNull();
+    expect(render().some((element) => element.type === PlannerRequiredFields)).toBe(true);
+  });
+
+  it("points to unfinished body preparation and recovers when it is ready", () => {
+    change("빌드 이름", "새 빌드");
+    const body = find(render(), (element) => element.type === "ContentEditor");
+    (body.props.onReadyChange as (ready: boolean) => void)(false);
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveFeedback().props.blockers).toEqual([
+      expect.objectContaining({
+        message: expect.stringContaining("본문·이미지"),
+        targetId: "planner-description",
+      }),
+    ]);
+    (body.props.onReadyChange as (ready: boolean) => void)(true);
+    expect(saveButton().props.disabled).toBe(false);
+  });
+
+  it("explains an invalid optional video and permits clearing it", () => {
+    change("빌드 이름", "새 빌드");
+    const video = find(render(), (element) => element.type === "YouTubeField");
+    (video.props.onChange as (url: string) => void)("https://example.com/video");
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveFeedback().props.blockers).toEqual([
+      expect.objectContaining({
+        message: expect.stringContaining("영상은 선택"),
+        targetId: "planner-description",
+      }),
+    ]);
+    (video.props.onChange as (url: string) => void)("");
+    expect(saveButton().props.disabled).toBe(false);
+  });
+
+  it("names the invalid numeric slot and clears its reason without discarding the draft", () => {
+    loadedWeapon();
+    change("장비 레벨", "invalid");
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveFeedback().props.blockers).toEqual([
+      expect.objectContaining({
+        message: expect.stringContaining("주 무기 장비 레벨"),
+        targetId: "gear-slot-primary",
+      }),
+    ]);
+    change("장비 레벨", "");
+    expect(saveButton().props.disabled).toBe(false);
+    expect(saveFeedback().props.blockers).toEqual([]);
+    expect(snapshot().slots[0].itemId).toBe("weapon-a");
+  });
+
+  it("normalizes whitespace-only optional play conditions for saving while keeping the typed draft", async () => {
+    change("빌드 이름", "새 빌드");
+    change("게임 버전", "   ");
+    change("클래스", "   ");
+    expect(saveButton().props.disabled).toBe(false);
+    const form = new FormData();
+    await boundary.action!({ ok: false, message: "" }, form);
+    const saved = JSON.parse(form.get("loadout") as string) as PlannerGearLoadout;
+    expect(saved.context.gamePatch).toBeNull();
+    expect(saved.context.characterClass).toBeNull();
+    expect(snapshot().context.gamePatch).toBe("   ");
+  });
+
+  it("explains preview and initialization blockers even with a valid title", () => {
+    change("빌드 이름", "새 빌드");
+    expect(saveFeedback(true).props.blockers).toEqual([
+      expect.objectContaining({ message: expect.stringContaining("미리보기에서는 저장") }),
+    ]);
+    boundary.clientReady = false;
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveFeedback().props.blockers).toEqual([
+      expect.objectContaining({ message: expect.stringContaining("입력 화면을 준비") }),
+    ]);
+  });
 });
 
 describe("Gear editor consumable save boundary", () => {
@@ -449,7 +559,13 @@ describe("Gear editor boundaries and draft preservation", () => {
     expect(slot.props.savedName).toBe("이전에 저장한 무기");
     expect(snapshot().slots[0].itemId).toBe("removed-weapon");
     expect(snapshot().catalogNames).toEqual(loadout.catalogNames);
-    expect(parseGearLoadoutForSave).not.toHaveBeenCalled();
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveFeedback().props.blockers).toEqual([
+      expect.objectContaining({
+        message: expect.stringContaining("다시 선택하거나 해제"),
+        targetId: "gear-slot-primary",
+      }),
+    ]);
     expect((await boundary.action!({ ok: false, message: "" }, new FormData())).ok).toBe(false);
     expect(boundary.save).not.toHaveBeenCalled();
     const picker = openPicker();
@@ -563,18 +679,20 @@ describe("Gear editor boundaries and draft preservation", () => {
     );
     expect(snapshot().slots).toEqual(loadout.slots);
   });
-  it("preserves a failed save, validates only at save time and submits trusted catalog names", async () => {
+  it("preserves a failed save and submits freshly validated trusted catalog names", async () => {
     loadedWeapon();
     render();
     change("빌드 이름", "새 입력");
     change("장비 레벨", "12");
-    expect(parseGearLoadoutForSave).not.toHaveBeenCalled();
+    render();
+    const preflightCalls = vi.mocked(parseGearLoadoutForSave).mock.calls.length;
+    expect(boundary.save).not.toHaveBeenCalled();
     const form = new FormData();
     form.set("title", "새 입력");
     const result = await boundary.action!({ ok: false, message: "" }, form);
     expect(result.ok).toBe(false);
     expect(boundary.save).toHaveBeenCalledOnce();
-    expect(parseGearLoadoutForSave).toHaveBeenCalledOnce();
+    expect(parseGearLoadoutForSave).toHaveBeenCalledTimes(preflightCalls + 1);
     expect(JSON.parse(form.get("loadout") as string).catalogNames["weapon-a"]).toBe("시험 무기");
     expect(field("빌드 이름").props.value).toBe("새 입력");
     expect(snapshot().slots[0].level).toBe(12);
@@ -672,6 +790,8 @@ describe("Gear editor boundaries and draft preservation", () => {
             (element.type === "label" && text(element.props.children).startsWith("모듈 레벨")),
         ),
       ).toBe(false);
+      change("빌드 이름", "근접 구성");
+      render();
       const form = new FormData();
       await boundary.action!({ ok: false, message: "" }, form);
       expect(boundary.save).toHaveBeenCalledOnce();

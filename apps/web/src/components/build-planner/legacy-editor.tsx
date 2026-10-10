@@ -8,9 +8,11 @@ import {
   createEmptyPlannerLoadout,
   parsePlannerLoadout,
   PLANNER_CATEGORIES,
+  PLANNER_COUNT_STORAGE_LIMIT,
   PLANNER_MAX_ENTRIES,
   PLANNER_MAX_ROLLS,
   PLANNER_REFERENCE_CATALOG,
+  PLANNER_ROLL_STORAGE_LIMIT,
   type PlannerContext,
   type PlannerEntry,
   type PlannerLoadout,
@@ -19,12 +21,19 @@ import {
 import { saveBuildPlanner } from "@/app/lab/actions";
 import { ContentEditor } from "@/components/content/editor";
 import { YouTubeField } from "@/components/content/presentation";
+import { parseYouTubeUrl } from "@/lib/content-document";
 import type {
   BuildVisibility,
   PlannerActionState,
   PlannerBuildDetail,
 } from "@/lib/data/build-planner-types";
 import { categoryLabels, scenarioLabels, visibilityLabels, SourceEvidence } from "./presentation";
+import { PlannerFieldBadge, PlannerRequiredFields, PlannerSaveFeedback } from "./save-feedback";
+import {
+  buildTitleError,
+  getPlannerSaveBlockers,
+  type PlannerSaveBlocker,
+} from "./save-requirements";
 import "./editor.css";
 
 type CountField = "tier" | "stars" | "calibration" | "level";
@@ -129,6 +138,63 @@ function validNumericText(value: string, integer: boolean) {
   }
 }
 
+function draftSaveBlockers(draft: DraftLoadout): PlannerSaveBlocker[] {
+  const blockers: PlannerSaveBlocker[] = [];
+  draft.entries.forEach((entry, index) => {
+    const label = `${categoryLabels[entry.category]} ${index + 1}`;
+    if (!entry.name.trim()) {
+      blockers.push({
+        message: `${label}의 항목 이름을 입력하거나 사용하지 않는 항목을 삭제해주세요.`,
+        targetId: `planner-entry-name-${entry.id}`,
+      });
+    }
+    if (
+      entry.reference &&
+      !PLANNER_REFERENCE_CATALOG.some(
+        (reference) =>
+          reference.category === entry.category &&
+          reference.recordId === entry.reference!.recordId &&
+          reference.revision === entry.reference!.revision &&
+          reference.name === entry.name,
+      )
+    ) {
+      blockers.push({
+        message: `${label}의 이전 참고 자료를 현재 항목으로 다시 선택하거나 직접 입력으로 전환해주세요.`,
+        targetId: `planner-entry-reference-${entry.id}`,
+      });
+    }
+    countFields.forEach((field) => {
+      try {
+        const value = readNumber(entry.instance[field], true);
+        if (value !== null && value > PLANNER_COUNT_STORAGE_LIMIT) throw new Error();
+      } catch {
+        blockers.push({
+          message: `${label}의 ${countLabels[field]}에 저장 가능한 0 이상의 정수를 입력해주세요. 모르는 수치는 비워두어도 됩니다.`,
+          targetId: `planner-entry-${field}-${entry.id}`,
+        });
+      }
+    });
+    entry.instance.rolls.forEach((roll, rollIndex) => {
+      if (!roll.label.trim()) {
+        blockers.push({
+          message: `${label}의 부옵션 ${rollIndex + 1} 이름을 입력하거나 사용하지 않는 부옵션을 삭제해주세요.`,
+          targetId: `planner-roll-name-${entry.id}-${rollIndex}`,
+        });
+      }
+      try {
+        const value = readNumber(roll.value, false);
+        if (value !== null && Math.abs(value) > PLANNER_ROLL_STORAGE_LIMIT) throw new Error();
+      } catch {
+        blockers.push({
+          message: `${label}의 부옵션 ${rollIndex + 1} 값에 저장 가능한 숫자를 입력해주세요. 모르는 수치는 비워두어도 됩니다.`,
+          targetId: `planner-roll-value-${entry.id}-${rollIndex}`,
+        });
+      }
+    });
+  });
+  return blockers;
+}
+
 export function LegacyPlannerEditor({
   initial,
   preview = false,
@@ -156,12 +222,44 @@ export function LegacyPlannerEditor({
   const [visibility, setVisibility] = useState<BuildVisibility>(initial?.visibility ?? "PRIVATE");
   const [notes, setNotes] = useState("");
   const [mediaReady, setMediaReady] = useState(true);
+  const [youtubeUrl, setYoutubeUrl] = useState(initial?.selectedVersion.youtubeUrl ?? "");
   const prepared = prepareDraft(draft);
+  const titleError = buildTitleError(title);
+  const draftBlockers = draftSaveBlockers(draft);
+  let youtubeError = "";
+  try {
+    parseYouTubeUrl(youtubeUrl);
+  } catch {
+    youtubeError =
+      "참고 영상의 유튜브 링크를 확인하거나 링크를 비워주세요. 영상은 선택 사항입니다.";
+  }
+  const blockers = getPlannerSaveBlockers({
+    title,
+    preview,
+    mediaReady,
+    extraBlockers: [
+      ...(unavailableSnapshot
+        ? [
+            {
+              message:
+                "이 버전은 현재 편집 화면으로 불러올 수 없습니다. 편집 가능한 버전에서 저장해주세요.",
+            },
+          ]
+        : []),
+      ...draftBlockers,
+      ...(youtubeError ? [{ message: youtubeError, targetId: "planner-description" }] : []),
+      ...(!prepared.loadout && !draftBlockers.length
+        ? [{ message: prepared.message, targetId: "planner-entries" }]
+        : []),
+    ],
+  });
   const [state, submit, pending] = useActionState<PlannerActionState, FormData>(
     async (previous, form) => {
       if (previous.ok) return previous;
       if (preview || unavailableSnapshot)
         return { ok: false, message: "실제 계정의 편집 가능한 빌드에서 저장해주세요." };
+      if (titleError) return { ok: false, message: titleError };
+      if (youtubeError) return { ok: false, message: youtubeError };
       if (!mediaReady || form.get("contentMediaReady") === "false")
         return {
           ok: false,
@@ -254,6 +352,7 @@ export function LegacyPlannerEditor({
         />
         <Card>
           <h2>빌드의 이름과 공개 범위</h2>
+          <PlannerRequiredFields legacy />
           <p className="planner-editor-help">
             다음에 다시 찾을 수 있도록 이름을 정해주세요. 하이브 공유와 전체 공개는 관리자 승인 후
             적용됩니다. 승인 전에는 기존 공유 버전이 유지됩니다.
@@ -261,15 +360,25 @@ export function LegacyPlannerEditor({
           <div className="planner-field-grid">
             <label>
               빌드 이름
+              <PlannerFieldBadge required />
               <input
+                id="planner-title"
                 name="title"
                 required
                 minLength={2}
                 maxLength={100}
                 placeholder="예: 다음 시즌을 위한 탐험 구성"
                 value={title}
+                aria-invalid={Boolean(titleError)}
+                aria-describedby="planner-title-help"
                 onChange={(event) => setTitle(event.target.value)}
               />
+              <small
+                id="planner-title-help"
+                className={titleError ? "planner-field-error" : undefined}
+              >
+                {titleError ?? "앞뒤 공백을 제외하고 2~100자로 입력해주세요."}
+              </small>
             </label>
             <label>
               공개 범위
@@ -288,7 +397,9 @@ export function LegacyPlannerEditor({
           </div>
         </Card>
         <Card>
-          <h2>플레이 조건</h2>
+          <h2>
+            플레이 조건 <PlannerFieldBadge />
+          </h2>
           <p className="planner-editor-help">아직 모르는 조건은 비워두어도 됩니다.</p>
           <div className="planner-field-grid">
             <label>
@@ -364,9 +475,9 @@ export function LegacyPlannerEditor({
             <h2>장비 구성 · {draft.entries.length}개</h2>
             <span className="planner-entry-category">직접 기록한 구성</span>
           </div>
-          <p className="planner-editor-help">
+          <p className="planner-editor-help" id="planner-entries" tabIndex={-1}>
             게임에서 사용하는 장비와 옵션을 추가하세요. 장착 위치와 수량은 직접 기록하며, 미확인
-            수치는 비워둘 수 있습니다.
+            수치는 비워둘 수 있습니다. 장비 추가는 선택이며, 추가한 항목의 이름은 필수입니다.
           </p>
           <div className="planner-entry-list">
             {!draft.entries.length && (
@@ -415,6 +526,7 @@ export function LegacyPlannerEditor({
                     <label>
                       입력 방법
                       <select
+                        id={`planner-entry-reference-${entry.id}`}
                         value={
                           previousReference
                             ? previousReferenceOption
@@ -452,10 +564,13 @@ export function LegacyPlannerEditor({
                     </label>
                     <label>
                       항목 이름
+                      <PlannerFieldBadge required />
                       <input
+                        id={`planner-entry-name-${entry.id}`}
                         required
                         maxLength={120}
                         value={entry.name}
+                        aria-invalid={!entry.name.trim()}
                         readOnly={Boolean(entry.reference)}
                         placeholder={`${categoryLabels[entry.category]} 이름`}
                         onChange={(event) =>
@@ -521,6 +636,7 @@ export function LegacyPlannerEditor({
                       <label key={field}>
                         {countLabels[field]}
                         <input
+                          id={`planner-entry-${field}-${entry.id}`}
                           type="text"
                           inputMode="numeric"
                           maxLength={30}
@@ -565,10 +681,13 @@ export function LegacyPlannerEditor({
                         <div className="planner-roll-row" key={rollIndex}>
                           <label>
                             부옵션 이름
+                            <PlannerFieldBadge required />
                             <input
+                              id={`planner-roll-name-${entry.id}-${rollIndex}`}
                               required
                               maxLength={60}
                               value={roll.label}
+                              aria-invalid={!roll.label.trim()}
                               placeholder="게임에서 확인한 옵션"
                               onChange={(event) =>
                                 updateEntry(entry.id, (current) => ({
@@ -588,6 +707,7 @@ export function LegacyPlannerEditor({
                           <label>
                             기록한 값
                             <input
+                              id={`planner-roll-value-${entry.id}-${rollIndex}`}
                               type="text"
                               inputMode="decimal"
                               maxLength={30}
@@ -692,7 +812,9 @@ export function LegacyPlannerEditor({
           </div>
         </Card>
         <Card>
-          <h2>빌드 설명</h2>
+          <h2 id="planner-description" tabIndex={-1}>
+            빌드 설명 <PlannerFieldBadge />
+          </h2>
           <ContentEditor
             textName="description"
             initialDocument={initial?.selectedVersion.bodyDocument ?? null}
@@ -704,11 +826,14 @@ export function LegacyPlannerEditor({
           />
           <YouTubeField
             initialUrl={initial?.selectedVersion.youtubeUrl ?? null}
+            onChange={setYoutubeUrl}
             disabled={pending || state.ok || preview}
           />
         </Card>
         <Card>
-          <h2>{baseBuildId ? "이번 버전의 기록" : "첫 버전의 기록"}</h2>
+          <h2>
+            {baseBuildId ? "이번 버전의 기록" : "첫 버전의 기록"} <PlannerFieldBadge />
+          </h2>
           <label>
             변경 메모
             <textarea
@@ -729,12 +854,17 @@ export function LegacyPlannerEditor({
                 ? `v${baseSourceVersion}을 바탕으로 새 버전을 저장합니다. 이전 기록은 그대로 유지됩니다.`
                 : "장비 구성과 플레이 조건을 함께 저장합니다."}
           </p>
+          <PlannerSaveFeedback
+            id="planner-save-status"
+            blockers={blockers}
+            pending={pending}
+            saved={state.ok}
+          />
           <button
             type="submit"
             className="button button-primary"
-            disabled={
-              preview || !prepared.loadout || !title.trim() || pending || state.ok || !mediaReady
-            }
+            aria-describedby="planner-save-status"
+            disabled={blockers.length > 0 || pending || state.ok}
           >
             {state.ok
               ? "저장 완료"
@@ -749,11 +879,6 @@ export function LegacyPlannerEditor({
       {unavailableSnapshot && (
         <p className="planner-form-message is-error" role="alert">
           이 버전은 현재 편집 화면으로 불러올 수 없습니다. 기존 기록을 보존하고 있습니다.
-        </p>
-      )}
-      {prepared.message && (
-        <p className="planner-form-message is-error" role="status">
-          {prepared.message}
         </p>
       )}
       {state.message && (

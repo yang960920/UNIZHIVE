@@ -38,6 +38,7 @@ import { saveBuildPlanner } from "@/app/lab/actions";
 import { useUserPreferences } from "@/components/user-preferences-provider";
 import { ContentEditor } from "@/components/content/editor";
 import { YouTubeField } from "@/components/content/presentation";
+import { parseYouTubeUrl } from "@/lib/content-document";
 import type {
   BuildVisibility,
   PlannerActionState,
@@ -51,6 +52,9 @@ import { gearTraitConflictMessage } from "./gear-trait-presentation";
 import { GearArmorSetEffects } from "./gear-armor-summary";
 import { GearConsumablesEditor } from "./gear-consumables";
 import { consumableSelectionError } from "./gear-consumables-model";
+import { getGearSaveIssues } from "./gear-save-validation";
+import { PlannerFieldBadge, PlannerRequiredFields, PlannerSaveFeedback } from "./save-feedback";
+import { buildTitleError, getPlannerSaveBlockers } from "./save-requirements";
 import {
   armorSlots,
   attachmentLabels,
@@ -245,6 +249,7 @@ export function GearPlannerEditor({
   );
   const [notes, setNotes] = useState("");
   const [mediaReady, setMediaReady] = useState(true);
+  const [youtubeUrl, setYoutubeUrl] = useState(initial?.selectedVersion.youtubeUrl ?? "");
   const [focusedSlot, setFocusedSlot] = useState<GearSlot>("primary");
   const [picker, setPicker] = useState<PickerTarget | null>(null);
   const [choiceMessage, setChoiceMessage] = useState("");
@@ -253,6 +258,27 @@ export function GearPlannerEditor({
   const [numberErrors, setNumberErrors] = useState<Record<string, string>>({});
   const returnFocus = useRef<HTMLElement | null>(null);
   const serialized = useMemo(() => JSON.stringify(draft), [draft]);
+  const saveDraft = useMemo(
+    () => ({
+      ...draft,
+      context: {
+        ...draft.context,
+        gamePatch: draft.context.gamePatch?.trim() || null,
+        characterClass: draft.context.characterClass?.trim() || null,
+      },
+    }),
+    [draft],
+  );
+  const gearSaveIssues = useMemo(() => getGearSaveIssues(saveDraft), [saveDraft]);
+  const titleError = buildTitleError(title);
+  const youtubeError = useMemo(() => {
+    try {
+      parseYouTubeUrl(youtubeUrl);
+      return "";
+    } catch {
+      return "유튜브 영상 링크를 확인하거나 비워 주세요. 영상은 선택 사항입니다.";
+    }
+  }, [youtubeUrl]);
   const consumableError = consumableSelectionError(draft.consumables, draft.context.characterClass);
   const traitConflicts = useMemo(
     () =>
@@ -275,10 +301,12 @@ export function GearPlannerEditor({
         return { ok: false, message: "입력한 숫자를 확인해주세요. 작성 중인 내용은 유지됩니다." };
       if (traitError) return { ok: false, message: traitError };
       if (consumableError) return { ok: false, message: consumableError };
+      if (titleError || youtubeError || gearSaveIssues.length)
+        return { ok: false, message: titleError || youtubeError || gearSaveIssues[0].message };
       try {
         form.set(
           "loadout",
-          JSON.stringify(parseGearLoadoutForSave({ ...draft, catalogNames: {} })),
+          JSON.stringify(parseGearLoadoutForSave({ ...saveDraft, catalogNames: {} })),
         );
       } catch {
         return {
@@ -454,7 +482,31 @@ export function GearPlannerEditor({
         )
       : eligible;
   }, [picker, draft.slots, draft.context]);
-  const numericError = Object.values(numberErrors).find(Boolean);
+  const numericFieldLabels: Record<NumericField, string> = {
+    level: "장비 레벨",
+    abilityGrade: "어빌리티 등급",
+    activityGrade: "활성 등급",
+    moduleLevel: "모듈 레벨",
+  };
+  const saveBlockers = getPlannerSaveBlockers({
+    title,
+    preview,
+    ready,
+    mediaReady,
+    extraBlockers: [
+      ...Object.entries(numberErrors)
+        .filter(([, error]) => Boolean(error))
+        .map(([key, error]) => {
+          const [slot, field] = key.split(".") as [GearSlot, NumericField];
+          return {
+            message: `${gearSlotLabels[slot]} ${numericFieldLabels[field]}: ${error}`,
+            targetId: `gear-slot-${slot}`,
+          };
+        }),
+      ...gearSaveIssues,
+      ...(youtubeError ? [{ message: youtubeError, targetId: "planner-description" }] : []),
+    ],
+  });
   function handleDetailTabKey(event: KeyboardEvent<HTMLButtonElement>) {
     if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
@@ -534,18 +586,24 @@ export function GearPlannerEditor({
           <div className="gear-build-fields">
             <label>
               빌드 이름
+              <PlannerFieldBadge required />
               <input
+                id="planner-title"
                 name="title"
                 required
                 minLength={2}
                 maxLength={100}
                 placeholder="내 빌드 이름"
                 value={title}
+                aria-invalid={Boolean(title.trim() && titleError)}
+                aria-describedby="planner-title-help"
                 onChange={(event) => setTitle(event.target.value)}
               />
+              <small id="planner-title-help">앞뒤 공백을 제외하고 2~100자</small>
             </label>
             <label>
               공개 범위
+              <PlannerFieldBadge />
               <select
                 name="visibility"
                 value={visibility}
@@ -560,11 +618,13 @@ export function GearPlannerEditor({
             </label>
           </div>
         </section>
+        <PlannerRequiredFields />
         <div className="gear-workbench">
-          <aside className="gear-context-panel gear-panel">
+          <aside id="gear-play-conditions" tabIndex={-1} className="gear-context-panel gear-panel">
             <div className="gear-panel-heading">
               <Crosshair size={16} />
               <h3>플레이 조건</h3>
+              <PlannerFieldBadge />
             </div>
             <div className="gear-condition-fields">
               <label>
@@ -673,10 +733,11 @@ export function GearPlannerEditor({
               )}
             </div>
           </aside>
-          <section className="gear-equipment-panel">
+          <section id="gear-equipment" tabIndex={-1} className="gear-equipment-panel">
             <div className="gear-panel-heading">
               <Shield size={16} />
               <h3>장비</h3>
+              <PlannerFieldBadge />
               <span>빈 칸은 선택 · 장착된 칸은 상세 설정</span>
             </div>
             <div className="gear-weapons">{weaponSlots.map(renderSlot)}</div>
@@ -687,6 +748,7 @@ export function GearPlannerEditor({
                 <div className="gear-panel-heading">
                   <Sparkles size={16} />
                   <h3>전투 감염물</h3>
+                  <PlannerFieldBadge />
                 </div>
                 {renderSlot("combatDeviant")}
               </div>
@@ -694,6 +756,7 @@ export function GearPlannerEditor({
                 <div className="gear-panel-heading">
                   <Layers size={16} />
                   <h3>크래들</h3>
+                  <PlannerFieldBadge />
                 </div>
                 <div className="gear-cradle-grid">{cradleSlots.map(renderSlot)}</div>
                 <p className="gear-cradle-note">
@@ -979,17 +1042,20 @@ export function GearPlannerEditor({
             )}
           </aside>
         </div>
-        <GearConsumablesEditor
-          value={draft.consumables}
-          characterClass={draft.context.characterClass}
-          disabled={!ready || pending || state.ok}
-          onClassChange={(value) => updateContext("characterClass", value)}
-          onChange={(consumables) => setDraft((previous) => ({ ...previous, consumables }))}
-        />
-        <section className="gear-recommendation gear-panel">
+        <div id="gear-consumables" tabIndex={-1}>
+          <GearConsumablesEditor
+            value={draft.consumables}
+            characterClass={draft.context.characterClass}
+            disabled={!ready || pending || state.ok}
+            onClassChange={(value) => updateContext("characterClass", value)}
+            onChange={(consumables) => setDraft((previous) => ({ ...previous, consumables }))}
+          />
+        </div>
+        <section id="gear-recommendation" tabIndex={-1} className="gear-recommendation gear-panel">
           <div className="gear-panel-heading">
             <Star size={16} />
             <h3>빌드 추천</h3>
+            <PlannerFieldBadge />
             <span>장비 등급과 별개로 남기는 추천 기록</span>
           </div>
           <div className="gear-recommendation-grid">
@@ -1070,8 +1136,10 @@ export function GearPlannerEditor({
             />
           </div>
         </section>
-        <section className="gear-build-notes gear-panel">
-          <h3>빌드 설명</h3>
+        <section id="planner-description" tabIndex={-1} className="gear-build-notes gear-panel">
+          <h3>
+            빌드 설명 <PlannerFieldBadge />
+          </h3>
           <ContentEditor
             textName="description"
             initialDocument={initial?.selectedVersion.bodyDocument ?? null}
@@ -1083,11 +1151,14 @@ export function GearPlannerEditor({
           />
           <YouTubeField
             initialUrl={initial?.selectedVersion.youtubeUrl ?? null}
+            onChange={setYoutubeUrl}
             disabled={pending || state.ok || preview}
           />
         </section>
-        <details className="gear-build-notes gear-panel">
-          <summary>버전과 장비 구성 메모</summary>
+        <details id="gear-loadout-notes" className="gear-build-notes gear-panel">
+          <summary>
+            버전과 장비 구성 메모 <PlannerFieldBadge />
+          </summary>
           <div className="gear-notes-grid">
             <label>
               이번 버전 메모
@@ -1113,31 +1184,30 @@ export function GearPlannerEditor({
           </div>
         </details>
         <div className="gear-save-bar">
-          <p>
-            {preview
-              ? "미리보기입니다. 저장하려면 승인된 Discord 계정으로 로그인해주세요."
-              : baseBuildId
-                ? `v${baseSourceVersion}을 바탕으로 새 버전을 저장합니다. 기존 기록은 유지됩니다.`
-                : "게임에서 따라 장착할 수 있는 나의 구성을 저장합니다."}
-            <small>
-              하이브 공유와 전체 공개는 관리자 승인 후 적용됩니다. 승인 전에는 기존 공유 버전이
-              유지됩니다.
-            </small>
-          </p>
+          <div className="planner-save-copy">
+            <p>
+              {preview
+                ? "미리보기입니다. 저장하려면 승인된 Discord 계정으로 로그인해주세요."
+                : baseBuildId
+                  ? `v${baseSourceVersion}을 바탕으로 새 버전을 저장합니다. 기존 기록은 유지됩니다.`
+                  : "게임에서 따라 장착할 수 있는 나의 구성을 저장합니다."}
+              <small>
+                하이브 공유와 전체 공개는 관리자 승인 후 적용됩니다. 승인 전에는 기존 공유 버전이
+                유지됩니다.
+              </small>
+            </p>
+            <PlannerSaveFeedback
+              id="planner-save-status"
+              blockers={saveBlockers}
+              pending={pending}
+              saved={state.ok}
+            />
+          </div>
           <button
             type="submit"
             className="button button-primary"
-            disabled={
-              preview ||
-              pending ||
-              state.ok ||
-              !mediaReady ||
-              !title.trim() ||
-              Boolean(numericError) ||
-              Boolean(traitError) ||
-              Boolean(consumableError) ||
-              keyArmors.length > 1
-            }
+            aria-describedby="planner-save-status"
+            disabled={saveBlockers.length > 0 || pending || state.ok}
           >
             {state.ok
               ? "저장 완료"
@@ -1149,12 +1219,12 @@ export function GearPlannerEditor({
           </button>
         </div>
       </fieldset>
-      {(traitError || numericError || consumableError || state.message) && (
+      {state.message && (
         <p
           className={`planner-form-message ${state.ok ? "" : "is-error"}`}
           role={state.ok ? "status" : "alert"}
         >
-          {traitError || numericError || consumableError || state.message}
+          {state.message}
         </p>
       )}
       {picker && !pending && !state.ok && (

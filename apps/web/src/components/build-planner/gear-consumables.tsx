@@ -20,6 +20,7 @@ import {
   searchConsumables,
 } from "./gear-consumables-model";
 import styles from "./gear-consumables.module.css";
+import { PlannerFieldBadge } from "./save-feedback";
 
 function ConsumableIcon({ item }: { item?: ConsumableCatalogItem }) {
   return (
@@ -320,6 +321,7 @@ export function GearConsumablesEditor({
           <h3>
             <Utensils size={17} aria-hidden="true" />
             도핑 구성
+            <PlannerFieldBadge />
           </h3>
           <p>음식과 음료는 각각 선택합니다. 셰프는 종류별로 서로 다른 2개를 기록할 수 있습니다.</p>
         </div>

@@ -45,6 +45,8 @@ vi.mock("@uniz/ui", () => ({
 }));
 
 import { PlannerEditor } from "../src/components/build-planner/legacy-editor";
+import { PlannerSaveFeedback } from "../src/components/build-planner/save-feedback";
+import type { PlannerSaveBlocker } from "../src/components/build-planner/save-requirements";
 import { PLANNER_REFERENCE_CATALOG, createEmptyPlannerLoadout } from "@uniz/build-engine";
 let initialDetail: PlannerBuildDetail | undefined;
 
@@ -109,6 +111,16 @@ function addWeapon() {
   change("빌드 이름", "테스트 장비 구성");
   change("항목 이름", "직접 기록한 무기");
 }
+function saveButton(preview = false) {
+  return required(
+    render(preview),
+    (element) => element.type === "button" && element.props.type === "submit",
+  );
+}
+function saveBlockers(preview = false) {
+  return required(render(preview), (element) => element.type === PlannerSaveFeedback).props
+    .blockers as PlannerSaveBlocker[];
+}
 
 beforeEach(() => {
   boundary.states = [];
@@ -121,6 +133,103 @@ beforeEach(() => {
 });
 
 describe("Planner controlled editor input", () => {
+  it("only requires a valid title when optional fields and equipment are empty", () => {
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveBlockers()).toEqual([expect.objectContaining({ targetId: "planner-title" })]);
+    change("빌드 이름", "이름만 있는 빌드");
+    expect(saveButton().props.disabled).toBe(false);
+    expect(saveButton().props["aria-describedby"]).toBe("planner-save-status");
+    expect(saveBlockers()).toEqual([]);
+    expect(snapshot().entries).toEqual([]);
+    expect(snapshot().context).toEqual(createEmptyPlannerLoadout().context);
+  });
+
+  it.each(["", "가", " 가 ", " ", "가".repeat(101)])(
+    "explains the title requirement for invalid title %s",
+    (title) => {
+      change("빌드 이름", title);
+      expect(field("빌드 이름").props.id).toBe("planner-title");
+      expect(field("빌드 이름").props["aria-invalid"]).toBe(true);
+      expect(saveButton().props.disabled).toBe(true);
+      expect(saveBlockers()).toEqual([
+        expect.objectContaining({ targetId: "planner-title", message: expect.any(String) }),
+      ]);
+      const help = required(render(), (element) => element.props.id === "planner-title-help");
+      expect(text(help.props.children)).toBe(saveBlockers()[0].message);
+    },
+  );
+
+  it("points to each added item or roll name until it is completed or removed", () => {
+    change("빌드 이름", "이름 검증 빌드");
+    click("모듈");
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveBlockers()).toEqual([
+      {
+        message: "모듈 1의 항목 이름을 입력하거나 사용하지 않는 항목을 삭제해주세요.",
+        targetId: field("항목 이름").props.id,
+      },
+    ]);
+    change("항목 이름", "기록한 모듈");
+    expect(saveBlockers()).toEqual([]);
+    click("부옵션 추가");
+    expect(saveBlockers()).toEqual([
+      {
+        message: "모듈 1의 부옵션 1 이름을 입력하거나 사용하지 않는 부옵션을 삭제해주세요.",
+        targetId: field("부옵션 이름").props.id,
+      },
+    ]);
+    change("부옵션 이름", "기록한 부옵션");
+    expect(saveButton().props.disabled).toBe(false);
+    expect(saveBlockers()).toEqual([]);
+    expect(field("기록한 값").props.value).toBe("");
+  });
+
+  it("points to invalid recorded numbers and allows the optional value to be cleared", () => {
+    addWeapon();
+    change("티어", "-1");
+    expect(saveBlockers()).toEqual([expect.objectContaining({ targetId: field("티어").props.id })]);
+    change("티어", "");
+    expect(saveButton().props.disabled).toBe(false);
+    expect(saveBlockers()).toEqual([]);
+  });
+
+  it("shows why a valid preview cannot be saved", () => {
+    change("빌드 이름", "미리보기 빌드");
+    expect(saveButton(true).props.disabled).toBe(true);
+    expect(saveBlockers(true)).toEqual([
+      expect.objectContaining({ message: expect.stringContaining("미리보기") }),
+    ]);
+  });
+
+  it("explains pending image preparation until the content editor is ready", () => {
+    change("빌드 이름", "본문 이미지 빌드");
+    const bodyEditor = required(render(), (element) => element.type === "ContentEditor");
+    (bodyEditor.props.onReadyChange as (ready: boolean) => void)(false);
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveBlockers()).toEqual([
+      expect.objectContaining({ targetId: "planner-description", message: expect.any(String) }),
+    ]);
+    (bodyEditor.props.onReadyChange as (ready: boolean) => void)(true);
+    expect(saveButton().props.disabled).toBe(false);
+    expect(saveBlockers()).toEqual([]);
+  });
+
+  it("explains an invalid optional video link and enables saving after it is cleared", () => {
+    change("빌드 이름", "참고 영상 빌드");
+    const videoField = required(render(), (element) => element.type === "YouTubeField");
+    (videoField.props.onChange as (value: string) => void)("https://example.com/video");
+    expect(saveButton().props.disabled).toBe(true);
+    expect(saveBlockers()).toEqual([
+      expect.objectContaining({
+        targetId: "planner-description",
+        message: expect.stringContaining("영상은 선택 사항"),
+      }),
+    ]);
+    (videoField.props.onChange as (value: string) => void)("");
+    expect(saveButton().props.disabled).toBe(false);
+    expect(saveBlockers()).toEqual([]);
+  });
+
   it.each(["retired-revision", "missing-record", "changed-name"] as const)(
     "preserves a %s reference until deliberate selection and clearly identifies the previous data",
     (kind) => {
