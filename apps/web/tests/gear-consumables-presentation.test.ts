@@ -11,6 +11,32 @@ import {
 } from "../src/components/build-planner/gear-consumables-model";
 
 describe("consumable information in saved builds", () => {
+  it.each([
+    ["FOOD", "깜짝춘권", "30110385"],
+    ["FOOD", "깜짝 춘권", "30110385"],
+    ["FOOD", "갤럭시페스츄리", "30110389"],
+    ["FOOD", "갤럭시 패스츄리", "30110389"],
+    ["FOOD", "은하천층", "30110389"],
+    ["FOOD", "Ｌａｙｅｒｅｄ　Ｇａｌａｘｙ", "30110389"],
+    ["FOOD", "팡팡팝콘", "30110375"],
+    ["DRINK", "스타더스트옥수수발효주", "30110355"],
+  ] as const)("finds %s item %s by its name or reviewed alias", (kind, query, sourceId) => {
+    const matches = searchConsumables(kind, query);
+    expect(matches.map((item) => item.sourceId)).toContain(sourceId);
+    expect(matches.every((item) => item.kind === kind)).toBe(true);
+  });
+
+  it("matches compact effect and ingredient terms without mixing food and drink slots", () => {
+    expect(searchConsumables("FOOD", "원소대미지 공중").map((item) => item.sourceId)).toContain(
+      "30110389",
+    );
+    expect(searchConsumables("FOOD", "변이밀 양배추").map((item) => item.sourceId)).toContain(
+      "30110385",
+    );
+    expect(searchConsumables("DRINK", "깜짝춘권")).toEqual([]);
+    expect(searchConsumables("FOOD", "깜짝춘권 없는재료qwerty")).toEqual([]);
+  });
+
   it("copies four independent Chef selections with basic effect figures, recipes, and preparation notes", () => {
     const foods = CONSUMABLE_CATALOG.filter((item) => item.kind === "FOOD").slice(0, 2);
     const drinks = CONSUMABLE_CATALOG.filter((item) => item.kind === "DRINK").slice(0, 2);

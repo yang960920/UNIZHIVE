@@ -200,7 +200,8 @@ function ConsumablePicker({
             </Dialog.Close>
           </header>
           <Dialog.Description className={styles.note}>
-            이름·별칭·효과·재료로 검색하고 기본 효과를 확인해 선택하세요.
+            이름·별칭·효과·재료로 검색하고 기본 효과를 확인해 선택하세요. 검색 결과가 1개일 때는
+            Enter로 바로 선택할 수 있습니다.
           </Dialog.Description>
           <label className={styles.search}>
             <Search size={17} aria-hidden="true" />
@@ -209,10 +210,16 @@ function ConsumablePicker({
               ref={input}
               value={query}
               maxLength={120}
-              placeholder="예: 크리티컬, 파워서지, 호박"
+              placeholder={
+                kind === "FOOD"
+                  ? "예: 깜짝춘권, 갤럭시페스츄리, 원소 대미지"
+                  : "예: 아이디어드링크, 옥수수발효주, 오염 내성"
+              }
               onChange={(event) => setQuery(event.target.value)}
               onKeyDown={(event) => {
-                if (event.key === "Enter") event.preventDefault();
+                if (event.key !== "Enter" || event.nativeEvent.isComposing) return;
+                event.preventDefault();
+                if (filtered.length === 1 && active && !duplicate) onChoose(active.id);
               }}
             />
           </label>

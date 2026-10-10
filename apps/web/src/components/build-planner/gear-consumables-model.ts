@@ -57,7 +57,12 @@ export function searchConsumables(
   kind: "FOOD" | "DRINK",
   query: string,
 ): readonly ConsumableCatalogItem[] {
-  const terms = query.trim().toLocaleLowerCase("ko-KR").split(/\s+/).filter(Boolean);
+  const terms = query
+    .normalize("NFKC")
+    .trim()
+    .toLocaleLowerCase("ko-KR")
+    .split(/\s+/)
+    .filter(Boolean);
   return CONSUMABLE_CATALOG.filter((item) => {
     if (item.kind !== kind) return false;
     const text = [
@@ -67,8 +72,10 @@ export function searchConsumables(
       consumableRecipeText(item),
     ]
       .join(" ")
+      .normalize("NFKC")
       .toLocaleLowerCase("ko-KR");
-    return terms.every((term) => text.includes(term));
+    const compact = text.replace(/\s+/g, "");
+    return terms.every((term) => text.includes(term) || compact.includes(term));
   });
 }
 

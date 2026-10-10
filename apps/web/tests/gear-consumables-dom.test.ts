@@ -75,6 +75,19 @@ async function inputText(value: string) {
     input.dispatchEvent(new Event("input", { bubbles: true }));
   });
 }
+async function enterSearch(isComposing = false) {
+  const input = document.querySelector('[role="dialog"] input') as HTMLInputElement;
+  const event = new KeyboardEvent("keydown", {
+    key: "Enter",
+    bubbles: true,
+    cancelable: true,
+    isComposing,
+  });
+  await act(async () => {
+    input.dispatchEvent(event);
+  });
+  return event;
+}
 async function choose(kind: "음식" | "음료", slot: number, itemName: string) {
   await click(namedButton(`${kind} ${slot} 선택`));
   await inputText(itemName);
@@ -121,6 +134,55 @@ afterEach(async () => {
 });
 
 describe("food and drink selection", () => {
+  it("searches newly added foods without spaces and applies the unique result with Enter", async () => {
+    await mount({ initialClass: "셰프" });
+    await click(namedButton("음식 1 선택"));
+    await inputText("깜짝춘권");
+    expect(document.querySelector('[aria-label="음식 검색 결과"]')?.textContent).toContain(
+      "깜짝 춘권",
+    );
+    expect((await enterSearch()).defaultPrevented).toBe(true);
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(latest.foodIds).toEqual(["consumable-30110385"]);
+    await click(namedButton("음식 2 선택"));
+    await inputText("은하천층");
+    await enterSearch();
+    expect(latest.foodIds).toEqual(["consumable-30110385", "consumable-30110389"]);
+    await click(namedButton("음료 1 선택"));
+    await inputText("스타더스트옥수수발효주");
+    await enterSearch();
+    expect(latest.drinkIds).toEqual(["consumable-30110355"]);
+    expect(container.textContent).toContain("공중에 있을 때 원소 대미지 보너스 30%");
+    expect(textButton("저장").disabled).toBe(false);
+  });
+
+  it("keeps ambiguous or empty searches open and never applies an arbitrary first item on Enter", async () => {
+    await mount();
+    await click(namedButton("음식 1 선택"));
+    await inputText("원소");
+    await enterSearch();
+    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
+    expect(latest.foodIds).toEqual([]);
+    await inputText("없는도핑qwerty");
+    await enterSearch();
+    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
+    expect(latest.foodIds).toEqual([]);
+  });
+
+  it("waits for Korean composition to finish and retains duplicate-selection protection", async () => {
+    await mount({ initialClass: "셰프" });
+    await choose("음식", 1, "깜짝춘권");
+    await click(namedButton("음식 2 선택"));
+    await inputText("갤럭시페스츄리");
+    await enterSearch(true);
+    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
+    expect(latest.foodIds).toEqual(["consumable-30110385"]);
+    await inputText("깜짝춘권");
+    await enterSearch();
+    expect(textButton("음식 선택 적용").disabled).toBe(true);
+    expect(latest.foodIds).toEqual(["consumable-30110385"]);
+  });
+
   it("searches and selects an independent food and drink with base figures and recipe", async () => {
     await mount();
     await choose("음식", 1, foods[0].name);
