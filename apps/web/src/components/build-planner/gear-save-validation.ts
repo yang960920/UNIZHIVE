@@ -99,7 +99,9 @@ function slotIssue(issue: GearIssue, draft: PlannerGearLoadout): PlannerSaveBloc
     const detail = issue.path[3];
     return blocker(
       detail === "tier"
-        ? `${label}의 제작 티어를 T1~T5에서 선택하거나 비워 주세요.`
+        ? gearItemById.get(selection.itemId)?.kind === "WEAPON"
+          ? `${label}는 T5 제작 기준으로 기록합니다. 무기를 다시 선택해 주세요.`
+          : `${label}의 제작 티어를 T1~T5에서 선택하거나 비워 주세요.`
         : detail === "materialChoices"
           ? `${label}의 제작 재료가 선택한 제작 조합에 맞지 않습니다. 재료를 다시 선택하거나 기본 재료로 복원해 주세요.`
           : detail === "recipeKey"

@@ -161,7 +161,7 @@ describe("crafting save and immutable snapshot compatibility", () => {
     draft.slots[0].crafting!.tier = 1;
     expect(() => parseGearLoadoutForSave(draft)).toThrow(/recipe must match/);
   });
-  it("accepts current weapon tuning independently of recorded equipment level and without an invented Tier V gate", () => {
+  it("records current weapon tuning independently of equipment level and normalizes new saves to the T5 planning policy", () => {
     const draft = createEmptyGearLoadout();
     const selection = createGearSelection("primary", "weapon-10521401");
     selection.level = 50;
@@ -177,7 +177,9 @@ describe("crafting save and immutable snapshot compatibility", () => {
     draft.slots = [selection];
     const saved = parseGearLoadoutForSave(draft);
     expect(saved.slots[0].level).toBe(50);
-    expect(saved.slots[0].crafting?.tier).toBe(1);
+    expect(saved.slots[0].crafting?.tier).toBe(5);
+    const historical = parseVersionedPlannerSnapshot(GEAR_SCHEMA_VERSION, draft);
+    expect(historical && "slots" in historical ? historical.slots[0].crafting?.tier : null).toBe(1);
     expect(saved.catalogNames?.["tuning-30399160"]).toBe("튜닝 설계도·속사 저격");
     selection.crafting.tuning!.attackPercent = 33;
     expect(() => parseGearLoadoutForSave(draft)).toThrow(/sourced range/);

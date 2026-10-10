@@ -121,6 +121,8 @@ export {
   weaponTuningFits,
   getEligibleWeaponTuningBlueprints,
   createEmptyGearCrafting,
+  getWeaponCraftingAtTier5,
+  normalizeWeaponCrafting,
 } from "./model/crafting";
 export { prepareBuildLoadout, makeLoadoutPreparationText } from "./model/loadout-preparation";
 export type {

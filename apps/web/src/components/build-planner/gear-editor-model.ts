@@ -1,5 +1,7 @@
 import {
   GEAR_CATALOG,
+  createGearSelection,
+  normalizeWeaponCrafting,
   type GearSelection,
   type GearSlot,
   type PlannerGearLoadout,
@@ -90,25 +92,7 @@ export function countGearArmorSets(
 }
 
 export function newGearSelection(slot: GearSlot, itemId: string): GearSelection {
-  return {
-    slot,
-    itemId,
-    level: null,
-    suffixId: null,
-    abilityGrade: null,
-    activityGrade: null,
-    traitIds: [],
-    attachments: {
-      muzzle: null,
-      sight: null,
-      tactical: null,
-      magazine: null,
-      ammo: null,
-      module: null,
-      moduleSuffix: null,
-      moduleLevel: null,
-    },
-  };
+  return normalizeWeaponCrafting(createGearSelection(slot, itemId), gearItemById.get(itemId));
 }
 
 export function equipGearItem(

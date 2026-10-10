@@ -9,6 +9,7 @@ import {
   getCraftingMaterial,
   getEligibleWeaponTuningBlueprints,
   getGearCraftRecipe,
+  getRecipeMaterials,
   type GearSelection,
 } from "@uniz/build-engine";
 import {
@@ -145,10 +146,19 @@ describe("gear crafting recording", () => {
         item.kind === "WEAPON" && getEligibleWeaponTuningBlueprints(item.id, context).length,
     )!;
     await mount(createGearSelection("primary", weapon.id));
-    await change(control<HTMLSelectElement>("장비 티어"), "5");
+    expect(container.textContent).toContain("T5 제작 재료");
+    expect(container.textContent).not.toContain("장비 티어");
+    expect(container.textContent).not.toContain("사용 안 함");
     const blueprint = getEligibleWeaponTuningBlueprints(weapon.id, context)[0];
-    await change(control<HTMLSelectElement>("튜닝 설계도"), blueprint.id);
+    const button = [...container.querySelectorAll<HTMLButtonElement>('button[role="option"]')].find(
+      (node) => node.getAttribute("aria-label")?.startsWith(blueprint.name),
+    )!;
+    await act(async () => button.click());
+    expect(latest.crafting?.tier).toBe(5);
     expect(latest.crafting?.tuning?.attackPercent).toBeNull();
+    const summary = container.querySelector("ul");
+    expect(summary?.textContent).toContain(blueprint.name);
+    expect(summary?.lastElementChild?.textContent).toContain("× 1");
     const attack = control<HTMLInputElement>("공격력 (%)");
     await change(attack, "실제값아님");
     expect(attack.value).toBe("실제값아님");
@@ -164,5 +174,83 @@ describe("gear crafting recording", () => {
     await act(async () => root.render(createElement(GearCraftingView, { selection: latest })));
     expect(container.textContent).toContain(blueprint.name);
     expect(container.textContent).toContain(`튜닝 공격력: ${value}%`);
+  });
+  it("shows all T5 materials immediately for an old weapon record without changing equipment level", async () => {
+    const weapon = GEAR_CATALOG.find(
+      (item) => item.kind === "WEAPON" && getGearCraftRecipe(item.id, 5)?.isDefault,
+    )!;
+    const initial = createGearSelection("primary", weapon.id);
+    initial.level = 50;
+    initial.crafting = { tier: 2, recipeKey: null, materialChoices: {}, tuning: null };
+    await mount(initial);
+    expect(container.querySelector("select")).toBeNull();
+    expect(container.querySelector("details")).toBeNull();
+    expect(container.textContent).not.toContain("티어를 기록하면");
+    const recipe = getGearCraftRecipe(weapon.id, 5)!;
+    const totals = new Map<string, { name: string; quantity: number }>();
+    for (const material of getRecipeMaterials(recipe, {})) {
+      const source = getCraftingMaterial(material.materialId)!;
+      const previous = totals.get(source.sourceId);
+      totals.set(source.sourceId, {
+        name: source.name,
+        quantity: (previous?.quantity ?? 0) + (material.quantity ?? 0),
+      });
+    }
+    const lines = [...container.querySelectorAll("ul li")].map((node) => node.textContent);
+    expect(lines).toHaveLength(totals.size);
+    for (const material of totals.values()) {
+      expect(lines).toContain(`${material.name}× ${material.quantity}`);
+    }
+    expect(latest.level).toBe(50);
+  });
+  it("keeps actual values while searching or selecting the same blueprint, and clears them on removal", async () => {
+    const weapon = GEAR_CATALOG.find(
+      (item) =>
+        item.kind === "WEAPON" && getEligibleWeaponTuningBlueprints(item.id, context).length,
+    )!;
+    const blueprint = getEligibleWeaponTuningBlueprints(weapon.id, context)[0];
+    const initial = createGearSelection("primary", weapon.id);
+    initial.crafting = {
+      tier: 5,
+      recipeKey: null,
+      materialChoices: {},
+      tuning: {
+        blueprintId: blueprint.id,
+        attackPercent: blueprint.attackRange.min,
+        secondary: null,
+      },
+    };
+    await mount(initial);
+    const current = [
+      ...container.querySelectorAll<HTMLButtonElement>('button[role="option"]'),
+    ].find((node) => node.getAttribute("aria-selected") === "true")!;
+    await act(async () => current.click());
+    expect(latest.crafting?.tuning?.attackPercent).toBe(blueprint.attackRange.min);
+    await change(control<HTMLInputElement>("튜닝 설계도 검색"), "없는설계도");
+    expect(container.textContent).toContain("검색 결과가 없습니다");
+    expect(container.textContent).toContain(blueprint.description);
+    expect(control<HTMLInputElement>("공격력 (%)").value).toBe(String(blueprint.attackRange.min));
+    const clear = [...container.querySelectorAll<HTMLButtonElement>("button")].find(
+      (node) => node.textContent === "튜닝 선택 해제",
+    )!;
+    await act(async () => clear.click());
+    expect(latest.crafting?.tuning).toBeNull();
+    expect(container.querySelector('input[placeholder="실제 수치 · 모르면 비워두기"]')).toBeNull();
+  });
+  it("states that unverified T5 materials are unavailable while showing a chosen tuning blueprint", async () => {
+    const weapon = GEAR_CATALOG.find(
+      (item) =>
+        item.kind === "WEAPON" &&
+        !getGearCraftRecipe(item.id, 5) &&
+        getEligibleWeaponTuningBlueprints(item.id, context).length > 0,
+    )!;
+    const blueprint = getEligibleWeaponTuningBlueprints(weapon.id, context)[0];
+    await mount(createGearSelection("primary", weapon.id));
+    expect(container.textContent).toContain("T5 제작 재료를 아직 확인하지 못했습니다.");
+    expect(container.querySelector("ul")).toBeNull();
+    const option = container.querySelector<HTMLButtonElement>('button[role="option"]')!;
+    await act(async () => option.click());
+    expect(container.querySelector("ul li")?.textContent).toContain(blueprint.name);
+    expect(container.querySelector("ul li")?.textContent).toContain("× 1");
   });
 });

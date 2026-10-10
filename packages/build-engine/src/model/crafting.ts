@@ -1,5 +1,6 @@
 import catalog from "../../data/crafting-catalog.json";
-import { GEAR_CATALOG, type GearCatalogItem } from "./gear";
+import gearCatalog from "./gear-catalog.json";
+import type { GearCatalogItem, GearSelection } from "./gear";
 import type { PlannerContext, PlannerScenarioKey } from "./planner";
 
 export type CraftingTier = 1 | 2 | 3 | 4 | 5;
@@ -123,7 +124,11 @@ export const WEAPON_TUNING_BLUEPRINTS: readonly Readonly<WeaponTuningBlueprint>[
     }),
   ),
 );
-const gearItemsById = new Map(GEAR_CATALOG.map((item) => [item.id, item]));
+// Keep gear -> crafting -> static data one-way so new selections can use T5 defaults
+// without a runtime initialization cycle between the two model modules.
+const gearItemsById = new Map(
+  (gearCatalog as unknown as GearCatalogItem[]).map((item) => [item.id, item]),
+);
 const tuningById = new Map(WEAPON_TUNING_BLUEPRINTS.map((item) => [item.id, item]));
 
 export function getCraftingMaterial(
@@ -239,4 +244,84 @@ export function getEligibleWeaponTuningBlueprints(
 }
 export function createEmptyGearCrafting(): GearCrafting {
   return { tier: null, recipeKey: null, materialChoices: {}, tuning: null };
+}
+
+function recipeContexts(recipe: Readonly<CraftingRecipe>): Set<string> {
+  return new Set(
+    recipe.sourceKeys.map((key) => {
+      const value: unknown = JSON.parse(key);
+      return Array.isArray(value) ? JSON.stringify(value.slice(1)) : "BASE";
+    }),
+  );
+}
+
+/**
+ * Editing/new-write policy: weapon preparations use Tier V. This does not assert
+ * a game restriction and is never applied by the immutable snapshot reader.
+ * Callers must validate the original payload before using this on a new save.
+ */
+export function getWeaponCraftingAtTier5(
+  selection: Readonly<GearSelection>,
+  item: Readonly<GearCatalogItem> | undefined = gearItemsById.get(selection.itemId),
+): GearCrafting {
+  const previous = selection.crafting;
+  if (item?.kind !== "WEAPON" || item.id !== selection.itemId)
+    return previous ?? createEmptyGearCrafting();
+  const source = getGearCraftRecipe(selection.itemId, previous?.tier, previous?.recipeKey);
+  // Do not turn an unknown/tier-incompatible recipe ID into a seemingly valid one.
+  if (previous?.recipeKey && !source)
+    return { ...previous, tier: 5, materialChoices: { ...previous.materialChoices } };
+  const candidates = getGearCraftRecipes(selection.itemId, 5);
+  const contexts = source ? recipeContexts(source) : null;
+  const sameContext = contexts
+    ? candidates.find((recipe) => [...recipeContexts(recipe)].some((key) => contexts.has(key)))
+    : undefined;
+  const recipe =
+    source?.tier === 5 ? source : (sameContext ?? getGearCraftRecipe(selection.itemId, 5));
+  const materialChoices = recipe ? getEffectiveIngredientSelections(recipe) : {};
+  for (const [key, materialId] of Object.entries(previous?.materialChoices ?? {})) {
+    const oldIngredient = source?.ingredients.find((ingredient) => ingredient.key === key);
+    if (
+      !oldIngredient ||
+      !oldIngredient.options.some((option) => option.materialId === materialId)
+    ) {
+      // Retain invalid input so subsequent strict validation cannot hide tampering.
+      materialChoices[key] = materialId;
+      continue;
+    }
+    const destination =
+      recipe?.ingredients.find(
+        (ingredient) =>
+          ingredient.key === key &&
+          ingredient.options.some((option) => option.materialId === materialId),
+      ) ??
+      recipe?.ingredients.find((ingredient) =>
+        ingredient.options.some((option) => option.materialId === materialId),
+      );
+    if (destination) materialChoices[destination.key] = materialId;
+    // A valid old-tier fixed material that is not used at T5 is replaced by the
+    // sourced T5 requirement. Only choices allowed by the destination are retained.
+  }
+  return {
+    tier: 5,
+    recipeKey: recipe?.key ?? null,
+    materialChoices,
+    tuning: previous?.tuning
+      ? {
+          ...previous.tuning,
+          secondary: previous.tuning.secondary ? { ...previous.tuning.secondary } : null,
+        }
+      : null,
+  };
+}
+
+export function normalizeWeaponCrafting(
+  selection: GearSelection,
+  item: Readonly<GearCatalogItem> | undefined = gearItemsById.get(selection.itemId),
+): GearSelection {
+  if (item?.kind !== "WEAPON" || item.id !== selection.itemId) return selection;
+  const crafting = getWeaponCraftingAtTier5(selection, item);
+  return JSON.stringify(crafting) === JSON.stringify(selection.crafting)
+    ? selection
+    : { ...selection, crafting };
 }

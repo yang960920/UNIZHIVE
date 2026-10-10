@@ -1,7 +1,9 @@
 "use client";
 
 import { useId, useState } from "react";
+import { craftingRarityLabels } from "./gear-crafting-model";
 import styles from "./gear-crafting.module.css";
+export { craftingRarityLabels } from "./gear-crafting-model";
 
 export interface CraftingTextOption {
   id: string;
@@ -10,13 +12,6 @@ export interface CraftingTextOption {
   rarity?: "NORMAL" | "RARE" | "EPIC" | "LEGENDARY" | null;
   description?: string | null;
 }
-
-export const craftingRarityLabels = {
-  NORMAL: "초록",
-  RARE: "파랑",
-  EPIC: "보라",
-  LEGENDARY: "노랑",
-} as const;
 
 function matches(option: CraftingTextOption, query: string) {
   const normalize = (text: string) =>

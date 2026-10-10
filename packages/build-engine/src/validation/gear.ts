@@ -31,6 +31,7 @@ import {
   getConsumablePreparation,
   getWeaponTuningBlueprint,
   weaponTuningFits,
+  normalizeWeaponCrafting,
   type CraftingRecipe,
 } from "../model/crafting";
 
@@ -474,7 +475,21 @@ export function parseGearLoadoutForSave(
   catalog: GearCatalog = GEAR_CATALOG,
   consumableCatalog: ConsumableCatalog = CONSUMABLE_CATALOG,
 ): PlannerGearLoadout {
-  const snapshot = parseGearLoadout(input, catalog, consumableCatalog);
+  // Validate the author's original recipe, tier and material IDs first. Applying
+  // the T5 editing policy before validation would silently erase forged fields.
+  let snapshot = parseGearLoadout(input, catalog, consumableCatalog);
+  const itemsById = new Map(catalog.map((item) => [item.id, item]));
+  const normalizedSlots = snapshot.slots.map((selection) =>
+    normalizeWeaponCrafting(selection, itemsById.get(selection.itemId)),
+  );
+  if (normalizedSlots.some((selection, index) => selection !== snapshot.slots[index])) {
+    // Rebuild trusted names after old-tier fixed materials have been replaced.
+    snapshot = parseGearLoadout(
+      { ...snapshot, slots: normalizedSlots, catalogNames: undefined },
+      catalog,
+      consumableCatalog,
+    );
+  }
   const keyArmors = getGearKeyArmorSelections(snapshot.slots, catalog);
   const issues: z.core.$ZodIssue[] = [];
   if (snapshot.consumables) {

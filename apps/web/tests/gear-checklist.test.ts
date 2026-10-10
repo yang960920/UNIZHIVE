@@ -1,8 +1,44 @@
 import { describe, expect, it } from "vitest";
-import { GEAR_CATALOG, createEmptyGearLoadout, createGearSelection } from "@uniz/build-engine";
+import {
+  GEAR_CATALOG,
+  createEmptyGearLoadout,
+  createGearSelection,
+  getGearCraftRecipe,
+  getRecipeMaterials,
+  getCraftingMaterial,
+  getEligibleWeaponTuningBlueprints,
+} from "@uniz/build-engine";
 import { makeGearChecklist } from "../src/components/build-planner/gear-checklist-text";
+import { newGearSelection } from "../src/components/build-planner/gear-editor-model";
 
 describe("saved equipment checklist", () => {
+  it("creates the weapon at T5 and lists its complete materials and one chosen tuning blueprint", () => {
+    const weapon = newGearSelection("primary", "weapon-p90-holographic-resonance");
+    expect(weapon.crafting?.tier).toBe(5);
+    const recipe = getGearCraftRecipe(weapon.itemId, 5, weapon.crafting?.recipeKey)!;
+    const before = structuredClone(weapon);
+    const blueprint = getEligibleWeaponTuningBlueprints(weapon.itemId)[0];
+    weapon.crafting!.tuning = {
+      blueprintId: blueprint.id,
+      attackPercent: null,
+      secondary: null,
+    };
+    const loadout = createEmptyGearLoadout();
+    loadout.slots = [weapon];
+    const text = makeGearChecklist(loadout);
+    expect(text).toContain("장비 티어: T5");
+    for (const material of getRecipeMaterials(recipe, before.crafting?.materialChoices)) {
+      if (!material.materialId) continue;
+      expect(text).toContain(
+        `제작 재료: ${getCraftingMaterial(material.materialId)!.name} × ${material.quantity}`,
+      );
+    }
+    expect(text).toContain("제작 시 1개");
+    expect(text).toContain(`튜닝: ${blueprint.name} · 파랑 · 제작 시 1개`);
+    expect(text).not.toContain("제작 조합:");
+    const armor = newGearSelection("helmet", "armor-lonewolf-hood");
+    expect(armor.crafting).toBeUndefined();
+  });
   it("keeps actual levels and suffix separate from recommendation and deviant grades", () => {
     const loadout = createEmptyGearLoadout();
     const weapon = createGearSelection("primary", "weapon-p90-holographic-resonance");

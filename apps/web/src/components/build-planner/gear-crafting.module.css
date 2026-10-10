@@ -4,6 +4,9 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface-1);
+  min-width: 0;
+  container-type: inline-size;
+  container-name: gear-crafting;
 }
 .editor h4 {
   margin: 0 0 12px;
@@ -12,6 +15,10 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+}
+.fields > *,
+.tuningSearch {
+  min-width: 0;
 }
 .fields label,
 .options label {
@@ -84,6 +91,93 @@
   padding: 8px 0;
   cursor: pointer;
 }
+.weaponMaterials h4 {
+  margin-bottom: 8px;
+}
+.materialList {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.materialList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+}
+.materialList li span {
+  overflow-wrap: anywhere;
+}
+.materialList strong {
+  flex-shrink: 0;
+  font-weight: 500;
+}
+.tuningPicker {
+  display: grid;
+  gap: 8px;
+}
+.tuningPicker > .note {
+  margin: 0;
+}
+.tuningSearch {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+}
+.editor .tuningSearch input {
+  width: 100%;
+  min-height: 44px;
+  min-width: 0;
+}
+.tuningResults {
+  display: grid;
+  gap: 6px;
+}
+.tuningRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.tuningName {
+  font-size: 12px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.tuningGrades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tuningGrades button {
+  min-width: 48px;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+}
+.tuningGrades button[aria-selected="true"] {
+  border-color: currentColor;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  font-weight: 600;
+}
+.tuningGrades button[data-active="true"],
+.tuningGrades button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.tuningSelection {
+  margin: 12px 0;
+}
 .normal {
   color: #74c68b;
 }
@@ -107,6 +201,11 @@
 .error {
   color: var(--danger);
   font-size: 11px;
+}
+@container gear-crafting (max-width: 400px) {
+  .fields {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 640px) {
   .fields {

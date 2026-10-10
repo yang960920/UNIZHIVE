@@ -28,6 +28,7 @@ import {
   getGearTraitConflicts,
   getEligibleGearAttachments,
   getEligibleGearItems,
+  normalizeWeaponCrafting,
   parseGearLoadoutForSave,
   type GearSelection,
   type GearSlot,
@@ -242,7 +243,12 @@ export function GearPlannerEditor({
   const [baseSourceVersion] = useState(() => initial?.selectedVersion.version ?? null);
   const [draft, setDraft] = useState<PlannerGearLoadout>(() =>
     initial?.selectedVersion.loadout?.schemaVersion === "uniz-gear.v2"
-      ? initial.selectedVersion.loadout
+      ? {
+          ...initial.selectedVersion.loadout,
+          slots: initial.selectedVersion.loadout.slots.map((selection) =>
+            normalizeWeaponCrafting(selection, gearItemById.get(selection.itemId)),
+          ),
+        }
       : createEmptyGearLoadout(),
   );
   const [title, setTitle] = useState(initial?.title ?? "");

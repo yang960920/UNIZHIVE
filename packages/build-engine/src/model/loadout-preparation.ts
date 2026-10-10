@@ -198,7 +198,14 @@ export function prepareBuildLoadout(
       let materialComplete = Boolean(
         tier !== null && recipe && resolved.length > 0 && resolved.every(validMaterial),
       );
-      if (tier === null) issue(input, name, "제작 티어를 선택하면 재료 수량을 계산할 수 있습니다.");
+      if (tier === null)
+        issue(
+          input,
+          name,
+          item.kind === "WEAPON"
+            ? "이전 버전에 무기 제작 티어가 기록되지 않아 재료 수량을 확정할 수 없습니다. 편집 후 저장하면 T5 기준으로 안내합니다."
+            : "제작 티어를 선택하면 재료 수량을 계산할 수 있습니다.",
+        );
       else if (!recipe) issue(input, name, "선택한 티어의 제작표가 아직 확인되지 않았습니다.");
       else if (!resolved.length) issue(input, name, "제작 재료 수량이 아직 확인되지 않았습니다.");
       if (recipe && tier !== null)

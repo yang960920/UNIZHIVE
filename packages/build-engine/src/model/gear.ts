@@ -2,7 +2,7 @@ import catalog from "./gear-catalog.json";
 import armorSets from "./armor-sets.json";
 import type { PlannerContext, PlannerScenarioKey } from "./planner";
 import { createEmptyConsumableLoadout, type ConsumableLoadout } from "./consumables";
-import type { GearCrafting } from "./crafting";
+import { normalizeWeaponCrafting, type GearCrafting } from "./crafting";
 
 export const GEAR_SCHEMA_VERSION = "uniz-gear.v2" as const;
 /** Eight UI recording positions, not an inferred global scenario rule. */
@@ -270,7 +270,7 @@ export function createEmptyGearLoadout(): PlannerGearLoadout {
 }
 
 export function createGearSelection(slot: GearSlot, itemId: string): GearSelection {
-  return {
+  const selection: GearSelection = {
     slot,
     itemId,
     level: null,
@@ -289,6 +289,10 @@ export function createGearSelection(slot: GearSlot, itemId: string): GearSelecti
       moduleLevel: null,
     },
   };
+  return normalizeWeaponCrafting(
+    selection,
+    GEAR_CATALOG.find((item) => item.id === itemId),
+  );
 }
 
 export function gearItemMatchesScenario(item: GearCatalogItem, context?: PlannerContext): boolean {
