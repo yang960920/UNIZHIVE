@@ -132,15 +132,18 @@ export function VideoReference({ url }: { url: string | null }) {
 export function YouTubeField({
   name = "youtubeUrl",
   initialUrl = null,
+  value,
   onChange,
   disabled = false,
 }: {
   name?: string;
   initialUrl?: string | null;
+  value?: string;
   onChange?: (url: string) => void;
   disabled?: boolean;
 }) {
-  const [url, setUrl] = useState(initialUrl ?? "");
+  const [localUrl, setUrl] = useState(initialUrl ?? "");
+  const url = value ?? localUrl;
   let error = "";
   try {
     parseYouTubeUrl(url);

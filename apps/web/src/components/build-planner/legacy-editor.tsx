@@ -20,6 +20,9 @@ import {
 } from "@uniz/build-engine";
 import { saveBuildPlanner } from "@/app/lab/actions";
 import { ContentEditor } from "@/components/content/editor";
+import type { ContentEditorDraft } from "@/components/content/draft";
+import { BrowserDraftControls } from "@/components/browser-draft-controls";
+import { useBrowserDraft } from "@/lib/browser-drafts/use-browser-draft";
 import { YouTubeField } from "@/components/content/presentation";
 import { parseYouTubeUrl } from "@/lib/content-document";
 import type {
@@ -35,13 +38,14 @@ import {
   type PlannerSaveBlocker,
 } from "./save-requirements";
 import "./editor.css";
+import {
+  isLegacyBrowserBuildDraft,
+  type CountField,
+  type DraftEntry,
+  type DraftLoadout,
+  type LegacyBrowserBuildDraft,
+} from "./build-browser-draft";
 
-type CountField = "tier" | "stars" | "calibration" | "level";
-type DraftRoll = Omit<PlannerRoll, "value"> & { value: string };
-type DraftEntry = Omit<PlannerEntry, "instance"> & {
-  instance: Record<CountField, string> & { rolls: DraftRoll[] };
-};
-type DraftLoadout = Omit<PlannerLoadout, "entries"> & { entries: DraftEntry[] };
 const countLabels: Record<CountField, string> = {
   tier: "티어",
   stars: "별",
@@ -204,9 +208,11 @@ export function LegacyPlannerEditor({
 }) {
   const router = useRouter();
   // A refreshed server prop must not pair this unsaved draft with a newer save baseline.
-  const [baseBuildId] = useState(() => initial?.id ?? null);
-  const [baseVersionStamp] = useState(() => initial?.updatedAt ?? null);
-  const [baseSourceVersion] = useState(() => initial?.selectedVersion.version ?? null);
+  const [baseBuildId, setBaseBuildId] = useState(() => initial?.id ?? null);
+  const [baseVersionStamp, setBaseVersionStamp] = useState(() => initial?.updatedAt ?? null);
+  const [baseSourceVersion, setBaseSourceVersion] = useState(
+    () => initial?.selectedVersion.version ?? null,
+  );
   const [unavailableSnapshot] = useState(() =>
     Boolean(initial && initial.selectedVersion.loadout?.schemaVersion !== "uniz-planner.v1"),
   );
@@ -223,6 +229,55 @@ export function LegacyPlannerEditor({
   const [notes, setNotes] = useState("");
   const [mediaReady, setMediaReady] = useState(true);
   const [youtubeUrl, setYoutubeUrl] = useState(initial?.selectedVersion.youtubeUrl ?? "");
+  const [bodyDraft, setBodyDraft] = useState<ContentEditorDraft | null>(null);
+  const [restoredBodyDraft, setRestoredBodyDraft] = useState<ContentEditorDraft | null>(null);
+  const [posted, setPosted] = useState(false);
+  const browserValue: LegacyBrowserBuildDraft = {
+    format: 1,
+    editor: "legacy",
+    loadout: draft,
+    title,
+    description,
+    visibility,
+    notes,
+    youtubeUrl,
+    bodyDraft,
+    baseBuildId,
+    baseVersionStamp,
+    baseSourceVersion,
+  };
+  const browserDraft = useBrowserDraft<LegacyBrowserBuildDraft>({
+    scope: initial ? `build:${initial.id}:legacy` : "build:new:legacy",
+    value: browserValue,
+    hasContent: Boolean(
+      title ||
+      description ||
+      notes ||
+      youtubeUrl ||
+      bodyDraft?.images.length ||
+      visibility !== "PRIVATE" ||
+      JSON.stringify(draft) !== JSON.stringify(makeDraft(createEmptyPlannerLoadout())),
+    ),
+    enabled: !posted && !unavailableSnapshot,
+    validate: (saved): saved is LegacyBrowserBuildDraft =>
+      isLegacyBrowserBuildDraft(saved) && saved.baseBuildId === (initial?.id ?? null),
+    restore: (saved) => {
+      setDraft(saved.loadout);
+      setTitle(saved.title);
+      setDescription(saved.description);
+      setVisibility(saved.visibility);
+      setNotes(saved.notes);
+      setYoutubeUrl(saved.youtubeUrl);
+      setBodyDraft(saved.bodyDraft);
+      setRestoredBodyDraft(saved.bodyDraft);
+      setBaseBuildId(saved.baseBuildId);
+      setBaseVersionStamp(saved.baseVersionStamp);
+      setBaseSourceVersion(saved.baseSourceVersion);
+    },
+  });
+  const staleDraft =
+    browserDraft.restored &&
+    Boolean(baseBuildId && initial && baseVersionStamp !== initial.updatedAt);
   const prepared = prepareDraft(draft);
   const titleError = buildTitleError(title);
   const draftBlockers = draftSaveBlockers(draft);
@@ -236,6 +291,7 @@ export function LegacyPlannerEditor({
   const blockers = getPlannerSaveBlockers({
     title,
     preview,
+    ready: browserDraft.hydrated,
     mediaReady,
     extraBlockers: [
       ...(unavailableSnapshot
@@ -256,6 +312,8 @@ export function LegacyPlannerEditor({
   const [state, submit, pending] = useActionState<PlannerActionState, FormData>(
     async (previous, form) => {
       if (previous.ok) return previous;
+      if (!browserDraft.hydrated)
+        return { ok: false, message: "임시저장한 내용을 확인한 뒤 다시 저장해주세요." };
       if (preview || unavailableSnapshot)
         return { ok: false, message: "실제 계정의 편집 가능한 빌드에서 저장해주세요." };
       if (titleError) return { ok: false, message: titleError };
@@ -267,7 +325,12 @@ export function LegacyPlannerEditor({
         };
       if (!prepared.loadout) return { ok: false, message: prepared.message };
       try {
-        return await saveBuildPlanner(previous, form);
+        const result = await saveBuildPlanner(previous, form);
+        if (result.ok) {
+          setPosted(true);
+          await browserDraft.clear().catch(() => undefined);
+        }
+        return result;
       } catch {
         return {
           ok: false,
@@ -337,7 +400,8 @@ export function LegacyPlannerEditor({
     <form action={submit} className="planner-editor">
       <fieldset
         className="planner-editor-fieldset"
-        disabled={pending || state.ok || unavailableSnapshot}
+        disabled={pending || state.ok || unavailableSnapshot || !browserDraft.hydrated}
+        aria-busy={!browserDraft.hydrated}
       >
         {baseBuildId && (
           <>
@@ -352,6 +416,17 @@ export function LegacyPlannerEditor({
         />
         <Card>
           <h2>빌드의 이름과 공개 범위</h2>
+          {!browserDraft.hydrated && (
+            <p className="planner-editor-help" role="status">
+              임시저장한 내용을 확인하고 있습니다…
+            </p>
+          )}
+          {staleDraft && (
+            <p className="planner-form-message is-error" role="status">
+              이 임시저장은 이전 수정본입니다. 서버에 더 새로운 버전이 있어, 저장 시 기존 변경
+              내용을 덮어쓰지 않도록 확인합니다. 작성한 내용은 임시저장으로 계속 보관할 수 있습니다.
+            </p>
+          )}
           <PlannerRequiredFields legacy />
           <p className="planner-editor-help">
             다음에 다시 찾을 수 있도록 이름을 정해주세요. 하이브 공유와 전체 공개는 관리자 승인 후
@@ -815,16 +890,22 @@ export function LegacyPlannerEditor({
           <h2 id="planner-description" tabIndex={-1}>
             빌드 설명 <PlannerFieldBadge />
           </h2>
-          <ContentEditor
-            textName="description"
-            initialDocument={initial?.selectedVersion.bodyDocument ?? null}
-            initialText={description}
-            maxTextLength={5000}
-            onChange={(_document, text) => setDescription(text)}
-            onReadyChange={setMediaReady}
-            disabled={pending || state.ok || preview}
-          />
+          {browserDraft.hydrated && (
+            <ContentEditor
+              key={`build-body-${browserDraft.recoveryKey}`}
+              textName="description"
+              initialDocument={initial?.selectedVersion.bodyDocument ?? null}
+              initialText={description}
+              initialDraft={restoredBodyDraft}
+              onDraftChange={setBodyDraft}
+              maxTextLength={5000}
+              onChange={(_document, text) => setDescription(text)}
+              onReadyChange={setMediaReady}
+              disabled={pending || state.ok || preview}
+            />
+          )}
           <YouTubeField
+            value={youtubeUrl}
             initialUrl={initial?.selectedVersion.youtubeUrl ?? null}
             onChange={setYoutubeUrl}
             disabled={pending || state.ok || preview}
@@ -860,6 +941,7 @@ export function LegacyPlannerEditor({
             pending={pending}
             saved={state.ok}
           />
+          <BrowserDraftControls draft={browserDraft} />
           <button
             type="submit"
             className="button button-primary"

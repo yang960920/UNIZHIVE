@@ -18,7 +18,8 @@ vi.mock("@tiptap/react", async (original) => {
     },
   };
 });
-import { ContentEditor } from "../src/components/content/editor";
+import { ContentEditor, type ContentEditorDraft } from "../src/components/content/editor";
+import { contentDraftJson, isContentEditorDraft } from "../src/components/content/draft";
 import { ContentBody, VideoReference, YouTubeField } from "../src/components/content/presentation";
 const imageId = "bf93c9f3-367e-4d2e-a8b2-d576aa867da1";
 let container: HTMLDivElement, root: Root;
@@ -258,7 +259,210 @@ describe("real rich-editor image user flow", () => {
   });
 });
 
+describe("browser draft content and photo restoration", () => {
+  const uploadId = "ca95dbaa-d067-478e-923c-a19e4c99f8c0";
+  function photoDraft(file: File, completed = false): ContentEditorDraft {
+    return {
+      json: {
+        type: "doc",
+        content: [
+          {
+            type: "paragraph",
+            content: [{ type: "text", text: "복구할 글", marks: [{ type: "bold" }] }],
+          },
+          {
+            type: "image",
+            attrs: {
+              imageId: completed ? imageId : null,
+              uploadId: completed ? null : uploadId,
+              alt: "지도 사진",
+              src: "blob:old-page",
+            },
+          },
+          { type: "paragraph", content: [{ type: "text", text: "뒷부분" }] },
+        ],
+      },
+      images: [{ key: uploadId, ...(completed ? { imageId } : { uploadId }), file }],
+    };
+  }
+
+  it("preserves pending photo originals in snapshots, then keeps the original after upload succeeds", async () => {
+    let finish!: (result: unknown) => void;
+    boundary.upload.mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          finish = resolve;
+        }),
+    );
+    const onDraftChange = vi.fn();
+    await act(async () =>
+      root.render(createElement(ContentEditor, { initialText: "앞뒤", onDraftChange })),
+    );
+    const file = new File(["photo"], "지도.png", { type: "image/png" });
+    await drop(file);
+    const pending = onDraftChange.mock.lastCall![0] as ContentEditorDraft;
+    expect(pending.images[0].file).toBe(file);
+    expect(
+      pending.json.content?.some((node) => node.type === "image" && node.attrs?.uploadId),
+    ).toBe(true);
+    expect(JSON.stringify(pending.json)).not.toContain("blob:");
+    expect(isContentEditorDraft(pending)).toBe(true);
+    expect(ready()).toBe("false");
+    await act(async () =>
+      finish({ ok: true, image: { id: imageId, url: `/api/content/image/${imageId}` } }),
+    );
+    const complete = onDraftChange.mock.lastCall![0] as ContentEditorDraft;
+    expect(complete.images[0].imageId).toBe(imageId);
+    expect(complete.images[0].uploadId).toBeUndefined();
+    expect(complete.images[0].file).toBe(file);
+    expect(ready()).toBe("true");
+    const calls = onDraftChange.mock.calls.length;
+    await act(async () => boundary.editor!.chain().setTextSelection(1).run());
+    expect(onDraftChange).toHaveBeenCalledTimes(calls);
+  });
+
+  it("recreates a pending photo preview from the saved File, preserves failure, and retries without losing surrounding prose", async () => {
+    boundary.upload.mockResolvedValueOnce({ ok: false, message: "연결 실패" });
+    const file = new File(["photo"], "지도.png", { type: "image/png" });
+    const onDraftChange = vi.fn();
+    await act(async () =>
+      root.render(createElement(ContentEditor, { initialDraft: photoDraft(file), onDraftChange })),
+    );
+    expect(boundary.upload).toHaveBeenCalledOnce();
+    expect((boundary.upload.mock.calls[0][0] as FormData).get("image")).toBe(file);
+    expect(container.querySelector(".tiptap img")?.getAttribute("src")).toBe("blob:preview");
+    expect(container.querySelector(".tiptap strong")?.textContent).toBe("복구할 글");
+    expect(container.querySelector(".tiptap")?.textContent).toContain("뒷부분");
+    expect(ready()).toBe("false");
+    expect((onDraftChange.mock.lastCall![0] as ContentEditorDraft).images[0].file).toBe(file);
+    await act(async () =>
+      [...container.querySelectorAll("button")]
+        .find((button) => button.textContent === "다시 시도")!
+        .click(),
+    );
+    expect(boundary.upload).toHaveBeenCalledTimes(2);
+    expect(ready()).toBe("true");
+    expect(savedDocument().content[1].attrs.alt).toBe("지도 사진");
+  });
+
+  it("keeps a previously uploaded image id on restoration and uploads its original only if the image is missing", async () => {
+    const file = new File(["photo"], "지도.png", { type: "image/png" });
+    const onDraftChange = vi.fn();
+    await act(async () =>
+      root.render(
+        createElement(ContentEditor, { initialDraft: photoDraft(file, true), onDraftChange }),
+      ),
+    );
+    expect(boundary.upload).not.toHaveBeenCalled();
+    expect(container.querySelector(".tiptap img")?.getAttribute("src")).toBe(
+      `/api/content/image/${imageId}`,
+    );
+    expect(ready()).toBe("true");
+    const replacement = "e9eacdd5-6e99-4c20-8ae4-3b4a8701d2c5";
+    boundary.upload.mockResolvedValue({
+      ok: true,
+      image: { id: replacement, url: `/api/content/image/${replacement}` },
+    });
+    await act(async () =>
+      container.querySelector(".tiptap img")!.dispatchEvent(new Event("error")),
+    );
+    expect(boundary.upload).toHaveBeenCalledOnce();
+    expect((boundary.upload.mock.calls[0][0] as FormData).get("image")).toBe(file);
+    expect(savedDocument().content[1].attrs.imageId).toBe(replacement);
+    expect((onDraftChange.mock.lastCall![0] as ContentEditorDraft).images[0].imageId).toBe(
+      replacement,
+    );
+    expect(container.querySelector(".tiptap")?.textContent).toContain("복구할 글");
+    await act(async () =>
+      container.querySelector(".tiptap img")!.dispatchEvent(new Event("error")),
+    );
+    expect(boundary.upload).toHaveBeenCalledOnce();
+    expect(container.querySelector('[role="alert"]')?.textContent).toContain(
+      "사진을 불러오지 못했습니다",
+    );
+  });
+
+  it("removes deleted photos from local backups and ignores their late upload response", async () => {
+    let finish!: (result: unknown) => void;
+    boundary.upload.mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          finish = resolve;
+        }),
+    );
+    const onDraftChange = vi.fn();
+    await act(async () =>
+      root.render(
+        createElement(ContentEditor, {
+          initialDraft: photoDraft(new File(["photo"], "지도.png", { type: "image/png" })),
+          onDraftChange,
+        }),
+      ),
+    );
+    await act(async () =>
+      [...container.querySelectorAll("button")]
+        .find((button) => button.textContent === "제거")!
+        .click(),
+    );
+    await act(async () =>
+      finish({ ok: true, image: { id: imageId, url: `/api/content/image/${imageId}` } }),
+    );
+    expect((onDraftChange.mock.lastCall![0] as ContentEditorDraft).images).toEqual([]);
+    expect(container.querySelector(".tiptap img")).toBeNull();
+    expect(container.querySelector(".tiptap")?.textContent).toContain("복구할 글");
+  });
+
+  it("retains invalid-length draft prose so the author can fix it after reopening", async () => {
+    const text = "가".repeat(20_001);
+    const initialDraft: ContentEditorDraft = {
+      json: { type: "doc", content: [{ type: "paragraph", content: [{ type: "text", text }] }] },
+      images: [],
+    };
+    const onDraftChange = vi.fn();
+    expect(isContentEditorDraft(initialDraft)).toBe(true);
+    await act(async () =>
+      root.render(createElement(ContentEditor, { initialDraft, onDraftChange })),
+    );
+    expect(container.querySelector(".tiptap")?.textContent).toBe(text);
+    expect(
+      (onDraftChange.mock.lastCall![0] as ContentEditorDraft).json.content?.[0].content?.[0].text,
+    ).toBe(text);
+    expect(ready()).toBe("false");
+  });
+
+  it("rejects malformed draft nodes and image backups and strips stale object URLs", () => {
+    const file = new File(["photo"], "지도.png", { type: "image/png" });
+    const valid = photoDraft(file);
+    expect(isContentEditorDraft(valid)).toBe(true);
+    expect(JSON.stringify(contentDraftJson(valid.json))).not.toContain("blob:old-page");
+    expect(
+      isContentEditorDraft({ ...valid, images: [{ ...valid.images[0], file: "not a File" }] }),
+    ).toBe(false);
+    expect(
+      isContentEditorDraft({ json: { type: "doc", content: [{ type: "iframe" }] }, images: [] }),
+    ).toBe(false);
+    expect(
+      isContentEditorDraft({
+        json: { type: "doc", content: [{ type: "text", text: "x", marks: [null] }] },
+        images: [],
+      }),
+    ).toBe(false);
+  });
+});
+
 describe("safe article and optional video presentation", () => {
+  it("reflects restored controlled YouTube values without requiring another field mount", async () => {
+    const onChange = vi.fn();
+    await act(async () => root.render(createElement(YouTubeField, { value: "", onChange })));
+    await act(async () =>
+      root.render(createElement(YouTubeField, { value: "https://youtu.be/dQw4w9WgXcQ", onChange })),
+    );
+    expect((container.querySelector('input[name="youtubeUrl"]') as HTMLInputElement).value).toBe(
+      "https://youtu.be/dQw4w9WgXcQ",
+    );
+    expect(container.querySelector(".content-video")).not.toBeNull();
+    expect(container.querySelector("iframe")).toBeNull();
+  });
   it("waits for a reader click before loading the YouTube player and preserves a valid start time", async () => {
     await act(async () =>
       root.render(createElement(VideoReference, { url: "https://youtu.be/dQw4w9WgXcQ?t=1m20s" })),

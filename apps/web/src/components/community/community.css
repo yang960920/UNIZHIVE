@@ -585,6 +585,13 @@ a.community-author:hover .community-author-name {
   width: fit-content;
   min-height: 44px;
 }
+.community-submit-controls {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-width: 0;
+}
 .community-form-columns {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);

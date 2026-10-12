@@ -38,6 +38,9 @@ import {
 import { saveBuildPlanner } from "@/app/lab/actions";
 import { useUserPreferences } from "@/components/user-preferences-provider";
 import { ContentEditor } from "@/components/content/editor";
+import type { ContentEditorDraft } from "@/components/content/draft";
+import { BrowserDraftControls } from "@/components/browser-draft-controls";
+import { useBrowserDraft } from "@/lib/browser-drafts/use-browser-draft";
 import { YouTubeField } from "@/components/content/presentation";
 import { parseYouTubeUrl } from "@/lib/content-document";
 import type {
@@ -57,6 +60,7 @@ import { consumableSelectionError } from "./gear-consumables-model";
 import { getGearSaveIssues } from "./gear-save-validation";
 import { PlannerFieldBadge, PlannerRequiredFields, PlannerSaveFeedback } from "./save-feedback";
 import { buildTitleError, getPlannerSaveBlockers } from "./save-requirements";
+import { isGearBrowserBuildDraft, type GearBrowserBuildDraft } from "./build-browser-draft";
 import {
   armorSlots,
   attachmentLabels,
@@ -238,9 +242,11 @@ export function GearPlannerEditor({
   const router = useRouter();
   const { preferences } = useUserPreferences();
   const ready = useSyncExternalStore(subscribeToReady, readyOnClient, readyOnServer);
-  const [baseBuildId] = useState(() => initial?.id ?? null);
-  const [baseVersionStamp] = useState(() => initial?.updatedAt ?? null);
-  const [baseSourceVersion] = useState(() => initial?.selectedVersion.version ?? null);
+  const [baseBuildId, setBaseBuildId] = useState(() => initial?.id ?? null);
+  const [baseVersionStamp, setBaseVersionStamp] = useState(() => initial?.updatedAt ?? null);
+  const [baseSourceVersion, setBaseSourceVersion] = useState(
+    () => initial?.selectedVersion.version ?? null,
+  );
   const [draft, setDraft] = useState<PlannerGearLoadout>(() =>
     initial?.selectedVersion.loadout?.schemaVersion === "uniz-gear.v2"
       ? {
@@ -265,6 +271,80 @@ export function GearPlannerEditor({
   const [detailTab, setDetailTab] = useState<"module" | "accessories">("module");
   const [numberTexts, setNumberTexts] = useState<Record<string, string>>({});
   const [numberErrors, setNumberErrors] = useState<Record<string, string>>({});
+  const [bodyDraft, setBodyDraft] = useState<ContentEditorDraft | null>(null);
+  const [restoredBodyDraft, setRestoredBodyDraft] = useState<ContentEditorDraft | null>(null);
+  const [posted, setPosted] = useState(false);
+  const browserValue = useMemo<GearBrowserBuildDraft>(
+    () => ({
+      format: 1,
+      editor: "gear",
+      loadout: draft,
+      title,
+      description,
+      visibility,
+      notes,
+      youtubeUrl,
+      bodyDraft,
+      baseBuildId,
+      baseVersionStamp,
+      baseSourceVersion,
+      numberTexts,
+      numberErrors,
+      focusedSlot,
+    }),
+    [
+      draft,
+      title,
+      description,
+      visibility,
+      notes,
+      youtubeUrl,
+      bodyDraft,
+      baseBuildId,
+      baseVersionStamp,
+      baseSourceVersion,
+      numberTexts,
+      numberErrors,
+      focusedSlot,
+    ],
+  );
+  const browserDraft = useBrowserDraft<GearBrowserBuildDraft>({
+    scope: initial ? `build:${initial.id}:gear` : "build:new",
+    value: browserValue,
+    enabled: !posted,
+    hasContent: Boolean(
+      title ||
+      description ||
+      notes ||
+      youtubeUrl ||
+      bodyDraft?.images.length ||
+      Object.keys(numberTexts).length ||
+      visibility !== preferences.defaultBuildVisibility ||
+      JSON.stringify(draft) !== JSON.stringify(createEmptyGearLoadout()),
+    ),
+    validate: (saved): saved is GearBrowserBuildDraft =>
+      isGearBrowserBuildDraft(saved) && saved.baseBuildId === (initial?.id ?? null),
+    restore: (saved) => {
+      setDraft(saved.loadout);
+      setTitle(saved.title);
+      setDescription(saved.description);
+      setVisibility(saved.visibility);
+      setNotes(saved.notes);
+      setYoutubeUrl(saved.youtubeUrl);
+      setBodyDraft(saved.bodyDraft);
+      setRestoredBodyDraft(saved.bodyDraft);
+      setBaseBuildId(saved.baseBuildId);
+      setBaseVersionStamp(saved.baseVersionStamp);
+      setBaseSourceVersion(saved.baseSourceVersion);
+      setNumberTexts(saved.numberTexts);
+      setNumberErrors(saved.numberErrors);
+      setFocusedSlot(saved.focusedSlot);
+      setPicker(null);
+    },
+  });
+  const staleDraft =
+    browserDraft.restored &&
+    Boolean(baseBuildId && initial && baseVersionStamp !== initial.updatedAt);
   const returnFocus = useRef<HTMLElement | null>(null);
   const serialized = useMemo(() => JSON.stringify(draft), [draft]);
   const saveDraft = useMemo(
@@ -300,6 +380,8 @@ export function GearPlannerEditor({
   const [state, submit, pending] = useActionState<PlannerActionState, FormData>(
     async (previous, form) => {
       if (previous.ok) return previous;
+      if (!browserDraft.hydrated)
+        return { ok: false, message: "임시저장한 내용을 확인한 뒤 다시 저장해주세요." };
       if (preview) return { ok: false, message: "미리보기에서는 저장할 수 없습니다." };
       if (!mediaReady || form.get("contentMediaReady") === "false")
         return {
@@ -325,7 +407,12 @@ export function GearPlannerEditor({
         };
       }
       try {
-        return await saveBuildPlanner(previous, form);
+        const result = await saveBuildPlanner(previous, form);
+        if (result.ok) {
+          setPosted(true);
+          await browserDraft.clear().catch(() => undefined);
+        }
+        return result;
       } catch {
         return {
           ok: false,
@@ -502,7 +589,7 @@ export function GearPlannerEditor({
   const saveBlockers = getPlannerSaveBlockers({
     title,
     preview,
-    ready,
+    ready: ready && browserDraft.hydrated,
     mediaReady,
     extraBlockers: [
       ...Object.entries(numberErrors)
@@ -573,8 +660,8 @@ export function GearPlannerEditor({
   return (
     <form action={submit} className="gear-editor">
       <fieldset
-        disabled={!ready || pending || state.ok}
-        aria-busy={!ready}
+        disabled={!ready || !browserDraft.hydrated || pending || state.ok}
+        aria-busy={!ready || !browserDraft.hydrated}
         className="gear-editor-fieldset"
       >
         {baseBuildId && (
@@ -588,9 +675,11 @@ export function GearPlannerEditor({
           <div>
             <span className="gear-eyebrow">EQUIPMENT LOADOUT</span>
             <h2>{baseBuildId ? "장비 구성 수정" : "나의 장비 구성"}</h2>
-            {!ready && (
+            {(!ready || !browserDraft.hydrated) && (
               <p className="gear-muted" role="status">
-                장비 목록을 준비하고 있습니다…
+                {!browserDraft.hydrated
+                  ? "임시저장한 내용을 확인하고 있습니다…"
+                  : "장비 목록을 준비하고 있습니다…"}
               </p>
             )}
           </div>
@@ -629,6 +718,12 @@ export function GearPlannerEditor({
             </label>
           </div>
         </section>
+        {staleDraft && (
+          <p className="planner-form-message is-error" role="status">
+            이 임시저장은 이전 수정본입니다. 서버에 더 새로운 버전이 있어, 저장 시 기존 변경 내용을
+            덮어쓰지 않도록 확인합니다. 작성한 내용은 임시저장으로 계속 보관할 수 있습니다.
+          </p>
+        )}
         <PlannerRequiredFields />
         <div className="gear-workbench">
           <aside id="gear-play-conditions" tabIndex={-1} className="gear-context-panel gear-panel">
@@ -1173,16 +1268,22 @@ export function GearPlannerEditor({
           <h3>
             빌드 설명 <PlannerFieldBadge />
           </h3>
-          <ContentEditor
-            textName="description"
-            initialDocument={initial?.selectedVersion.bodyDocument ?? null}
-            initialText={description}
-            maxTextLength={5000}
-            onChange={(_document, text) => setDescription(text)}
-            onReadyChange={setMediaReady}
-            disabled={pending || state.ok || preview}
-          />
+          {browserDraft.hydrated && (
+            <ContentEditor
+              key={`build-body-${browserDraft.recoveryKey}`}
+              textName="description"
+              initialDocument={initial?.selectedVersion.bodyDocument ?? null}
+              initialText={description}
+              initialDraft={restoredBodyDraft}
+              onDraftChange={setBodyDraft}
+              maxTextLength={5000}
+              onChange={(_document, text) => setDescription(text)}
+              onReadyChange={setMediaReady}
+              disabled={pending || state.ok || preview}
+            />
+          )}
           <YouTubeField
+            value={youtubeUrl}
             initialUrl={initial?.selectedVersion.youtubeUrl ?? null}
             onChange={setYoutubeUrl}
             disabled={pending || state.ok || preview}
@@ -1236,6 +1337,7 @@ export function GearPlannerEditor({
               saved={state.ok}
             />
           </div>
+          <BrowserDraftControls draft={browserDraft} />
           <button
             type="submit"
             className="button button-primary"

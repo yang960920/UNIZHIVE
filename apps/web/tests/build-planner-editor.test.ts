@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { PlannerLoadout } from "@uniz/build-engine";
 import type { PlannerActionState, PlannerBuildDetail } from "../src/lib/data/build-planner-types";
+import type { LegacyBrowserBuildDraft } from "../src/components/build-planner/build-browser-draft";
 
 const boundary = vi.hoisted(() => ({
   states: [] as unknown[],
@@ -10,6 +11,17 @@ const boundary = vi.hoisted(() => ({
   result: { ok: false, message: "" } as PlannerActionState,
   save: vi.fn(),
   push: vi.fn(),
+  draftOptions: null as {
+    value: LegacyBrowserBuildDraft;
+    scope: string;
+    hasContent: boolean;
+    enabled: boolean;
+    restore: (value: LegacyBrowserBuildDraft) => void;
+  } | null,
+  draftHydrated: true,
+  draftRestored: false,
+  draftRecoveryKey: 0,
+  clearDraft: vi.fn(),
 }));
 
 vi.mock("react", async (importOriginal) => ({
@@ -36,6 +48,26 @@ vi.mock("next/navigation", () => ({ useRouter: () => ({ push: boundary.push }) }
 vi.mock("@/app/lab/actions", () => ({ saveBuildPlanner: boundary.save }));
 vi.mock("@/components/content/editor", () => ({ ContentEditor: "ContentEditor" }));
 vi.mock("@/components/content/presentation", () => ({ YouTubeField: "YouTubeField" }));
+vi.mock("@/lib/browser-drafts/use-browser-draft", () => ({
+  useBrowserDraft: (options: NonNullable<typeof boundary.draftOptions>) => {
+    boundary.draftOptions = options;
+    return {
+      hydrated: boundary.draftHydrated,
+      restored: boundary.draftRestored,
+      recoveryKey: boundary.draftRecoveryKey,
+      status: "idle",
+      savedAt: null,
+      error: null,
+      recoveries: [],
+      restoreRecovery: vi.fn(),
+      saveNow: vi.fn(),
+      clear: boundary.clearDraft,
+    };
+  },
+}));
+vi.mock("@/components/browser-draft-controls", () => ({
+  BrowserDraftControls: "BrowserDraftControls",
+}));
 vi.mock("@/lib/scenario-presets", () => import("../src/lib/scenario-presets"));
 vi.mock("@/lib/map-farming", () => import("../src/lib/map-farming"));
 vi.mock("@uniz/ui", () => ({
@@ -130,9 +162,62 @@ beforeEach(() => {
   boundary.action = null;
   boundary.save.mockReset().mockResolvedValue({ ok: false, message: "잠시 후 다시 저장해주세요." });
   boundary.push.mockReset();
+  boundary.draftOptions = null;
+  boundary.draftHydrated = true;
+  boundary.draftRestored = false;
+  boundary.draftRecoveryKey = 0;
+  boundary.clearDraft.mockReset().mockResolvedValue(undefined);
 });
 
 describe("Planner controlled editor input", () => {
+  it("retains incomplete names and malformed recorded numbers in its browser draft", () => {
+    render();
+    expect(boundary.draftOptions?.hasContent).toBe(false);
+    click("모듈");
+    change("티어", "5x");
+    click("부옵션 추가");
+    change("기록한 값", "미확인");
+    expect(serialized()).toBe("");
+    expect(boundary.draftOptions?.value.loadout.entries[0]).toMatchObject({
+      name: "",
+      instance: { tier: "5x", rolls: [{ label: "", value: "미확인" }] },
+    });
+    expect(boundary.draftOptions?.hasContent).toBe(true);
+    expect(required(render(), (element) => element.type === "BrowserDraftControls")).toBeDefined();
+    const saved = boundary.draftOptions!.value;
+    boundary.states = [];
+    render();
+    boundary.draftOptions!.restore(saved);
+    expect(field("티어").props.value).toBe("5x");
+    expect(field("기록한 값").props.value).toBe("미확인");
+    expect(saveButton().props.disabled).toBe(true);
+  });
+
+  it("protects untouched recovery during hydration and preserves the draft on failed publication", async () => {
+    boundary.draftHydrated = false;
+    change("빌드 이름", "복구 대기중");
+    expect(render().some((element) => element.type === "ContentEditor")).toBe(false);
+    expect(saveButton().props.disabled).toBe(true);
+    expect((await boundary.action!({ ok: false, message: "" }, new FormData())).ok).toBe(false);
+    expect(boundary.save).not.toHaveBeenCalled();
+    boundary.draftHydrated = true;
+    render();
+    await boundary.action!({ ok: false, message: "" }, new FormData());
+    expect(boundary.clearDraft).not.toHaveBeenCalled();
+  });
+
+  it("clears its browser draft on successful publication even if cleanup is unavailable", async () => {
+    change("빌드 이름", "구형 구성 저장");
+    render();
+    boundary.save.mockResolvedValueOnce({ ok: true, message: "저장 완료", href: "/lab" });
+    boundary.clearDraft.mockRejectedValueOnce(new Error("browser storage unavailable"));
+    const result = await boundary.action!({ ok: false, message: "" }, new FormData());
+    expect(result.ok).toBe(true);
+    expect(boundary.clearDraft).toHaveBeenCalledOnce();
+    render();
+    expect(boundary.draftOptions?.enabled).toBe(false);
+  });
+
   it("only requires a valid title when optional fields and equipment are empty", () => {
     expect(saveButton().props.disabled).toBe(true);
     expect(saveBlockers()).toEqual([expect.objectContaining({ targetId: "planner-title" })]);

@@ -17,6 +17,13 @@ import {
   type ContentDocument,
 } from "@/lib/content-document";
 import "./content.css";
+import {
+  contentDraftJson,
+  isContentEditorDraft,
+  type ContentEditorDraft,
+  type ContentEditorDraftImage,
+} from "./draft";
+export { isContentEditorDraft, type ContentEditorDraft } from "./draft";
 
 const ContentImage = ImageExtension.extend({
   addAttributes() {
@@ -63,17 +70,22 @@ const ContentImage = ImageExtension.extend({
 
 type Upload = {
   id: string;
+  backupKey: string;
   file: File;
   preview: string;
   state: "PENDING" | "ERROR";
   message: string;
+  attempt: number;
 };
-function uploadPosition(editor: Editor, id: string): number | null {
-  let position: number | null = null;
+function imagePositions(editor: Editor, attribute: "uploadId" | "imageId", id: string): number[] {
+  const positions: number[] = [];
   editor.state.doc.descendants((node, at) => {
-    if (node.type.name === "image" && node.attrs.uploadId === id) position = at;
+    if (node.type.name === "image" && node.attrs[attribute] === id) positions.push(at);
   });
-  return position;
+  return positions;
+}
+function uploadPosition(editor: Editor, id: string): number | null {
+  return imagePositions(editor, "uploadId", id)[0] ?? null;
 }
 
 export function ContentEditor({
@@ -81,31 +93,47 @@ export function ContentEditor({
   textName = "body",
   initialDocument = null,
   initialText = "",
+  initialDraft = null,
   maxTextLength = 20_000,
   onChange,
   onReadyChange,
+  onDraftChange,
   disabled = false,
 }: {
   name?: string;
   textName?: string;
   initialDocument?: ContentDocument | null;
   initialText?: string;
+  initialDraft?: ContentEditorDraft | null;
   maxTextLength?: number;
   onChange?: (document: ContentDocument, text: string) => void;
   onReadyChange?: (ready: boolean) => void;
+  onDraftChange?: (snapshot: ContentEditorDraft) => void;
   disabled?: boolean;
 }) {
   const labelId = useId();
   const fileInput = useRef<HTMLInputElement>(null);
   const jobs = useRef(new Map<string, Upload>());
-  const callbacks = useRef({ onChange, onReadyChange, maxTextLength, disabled });
+  const originals = useRef(new Map<string, ContentEditorDraftImage>());
+  const recoveredImageKeys = useRef(new Set<string>());
+  const lastDraftSignature = useRef("");
+  const callbacks = useRef({ onChange, onReadyChange, onDraftChange, maxTextLength, disabled });
   useEffect(() => {
-    callbacks.current = { onChange, onReadyChange, maxTextLength, disabled };
-  }, [onChange, onReadyChange, maxTextLength, disabled]);
-  const [initial] = useState(() => contentEditorJson(initialDocument, initialText));
-  const [document, setDocument] = useState<ContentDocument>(
-    () => initialDocument ?? contentDocumentFromEditor(initial),
+    callbacks.current = { onChange, onReadyChange, onDraftChange, maxTextLength, disabled };
+  }, [onChange, onReadyChange, onDraftChange, maxTextLength, disabled]);
+  const [restored] = useState(() =>
+    initialDraft && isContentEditorDraft(initialDraft) ? initialDraft : null,
   );
+  const [initial] = useState(() =>
+    restored ? contentDraftJson(restored.json) : contentEditorJson(initialDocument, initialText),
+  );
+  const [document, setDocument] = useState<ContentDocument>(() => {
+    try {
+      return contentDocumentFromEditor(initial);
+    } catch {
+      return initialDocument ?? contentDocumentFromEditor(contentEditorJson(null, ""));
+    }
+  });
   const [uploads, setUploads] = useState<Upload[]>([]);
   const [error, setError] = useState("");
   const [documentError, setDocumentError] = useState("");
@@ -113,14 +141,40 @@ export function ContentEditor({
   const syncJobs = () => setUploads([...jobs.current.values()]);
 
   function publish(editor: Editor) {
+    if (editor.isDestroyed) return;
     for (const [id, upload] of jobs.current) {
       if (uploadPosition(editor, id) === null) {
         URL.revokeObjectURL(upload.preview);
         jobs.current.delete(id);
       }
     }
+    const imageIds = new Set<string>();
+    const uploadIds = new Set<string>();
+    editor.state.doc.descendants((node) => {
+      if (node.type.name !== "image") return;
+      if (node.attrs.imageId) imageIds.add(node.attrs.imageId);
+      if (node.attrs.uploadId) uploadIds.add(node.attrs.uploadId);
+    });
+    for (const [key, original] of originals.current) {
+      if (!imageIds.has(original.imageId ?? "") && !uploadIds.has(original.uploadId ?? ""))
+        originals.current.delete(key);
+    }
     syncJobs();
+    const snapshot: ContentEditorDraft = {
+      json: contentDraftJson(editor.getJSON()),
+      images: [...originals.current.values()],
+    };
+    const signature = JSON.stringify([
+      snapshot.json,
+      snapshot.images.map(({ key, imageId, uploadId }) => ({ key, imageId, uploadId })),
+    ]);
+    if (signature !== lastDraftSignature.current) {
+      lastDraftSignature.current = signature;
+      callbacks.current.onDraftChange?.(snapshot);
+    }
     try {
+      if ([...uploadIds].some((id) => !jobs.current.has(id)))
+        throw new Error("사진 원본을 복구하지 못했습니다. 해당 사진을 지우고 다시 추가해 주세요.");
       const next = contentDocumentFromEditor(editor.getJSON());
       const text = contentPlainText(next);
       if (text.length > callbacks.current.maxTextLength)
@@ -143,6 +197,9 @@ export function ContentEditor({
     );
   }
   async function upload(editor: Editor, job: Upload) {
+    if (callbacks.current.disabled || editor.isDestroyed || jobs.current.get(job.id) !== job)
+      return;
+    const attempt = ++job.attempt;
     job.state = "PENDING";
     job.message = "이미지 준비 중…";
     syncJobs();
@@ -151,24 +208,31 @@ export function ContentEditor({
     try {
       const result = await uploadContentImage(form);
       if (!result.ok || !result.image) throw new Error(result.message);
-      if (editor.isDestroyed || !jobs.current.has(job.id)) return;
-      const position = uploadPosition(editor, job.id);
-      if (position === null) return;
-      const node = editor.state.doc.nodeAt(position)!;
+      if (editor.isDestroyed || jobs.current.get(job.id) !== job || job.attempt !== attempt) return;
+      const positions = imagePositions(editor, "uploadId", job.id);
+      if (!positions.length) return;
       jobs.current.delete(job.id);
+      originals.current.set(job.backupKey, {
+        key: job.backupKey,
+        imageId: result.image.id,
+        file: job.file,
+      });
       URL.revokeObjectURL(job.preview);
-      editor.view.dispatch(
-        editor.state.tr.setNodeMarkup(position, undefined, {
+      const transaction = editor.state.tr;
+      for (const position of positions) {
+        const node = editor.state.doc.nodeAt(position)!;
+        transaction.setNodeMarkup(position, undefined, {
           ...node.attrs,
           imageId: result.image.id,
           uploadId: null,
           src: result.image.url,
-        }),
-      );
+        });
+      }
+      editor.view.dispatch(transaction);
       syncJobs();
       publish(editor);
     } catch (cause) {
-      if (!jobs.current.has(job.id) || editor.isDestroyed) return;
+      if (jobs.current.get(job.id) !== job || editor.isDestroyed || job.attempt !== attempt) return;
       job.state = "ERROR";
       job.message = cause instanceof Error ? cause.message : "이미지를 준비하지 못했습니다.";
       syncJobs();
@@ -195,14 +259,26 @@ export function ContentEditor({
         return;
       }
     }
-    const created = files.map((file): Upload => ({
-      id: crypto.randomUUID(),
-      file,
-      preview: URL.createObjectURL(file),
-      state: "PENDING",
-      message: "이미지 준비 중…",
-    }));
-    for (const job of created) jobs.current.set(job.id, job);
+    const created = files.map((file): Upload => {
+      const id = crypto.randomUUID();
+      return {
+        id,
+        backupKey: id,
+        file,
+        preview: URL.createObjectURL(file),
+        state: "PENDING",
+        message: "이미지 준비 중…",
+        attempt: 0,
+      };
+    });
+    for (const job of created) {
+      jobs.current.set(job.id, job);
+      originals.current.set(job.backupKey, {
+        key: job.backupKey,
+        uploadId: job.id,
+        file: job.file,
+      });
+    }
     editor
       .chain()
       .focus()
@@ -245,17 +321,102 @@ export function ContentEditor({
     onUpdate: ({ editor: target }) => publish(target),
     onSelectionUpdate: ({ editor: target }) => publish(target),
   });
+  useEffect(() => {
+    if (!editor) return;
+    for (const image of restored?.images ?? []) originals.current.set(image.key, { ...image });
+    const transaction = editor.state.tr;
+    for (const image of restored?.images ?? []) {
+      if (image.imageId || !image.uploadId) continue;
+      const positions = imagePositions(editor, "uploadId", image.uploadId);
+      if (!positions.length || jobs.current.has(image.uploadId)) continue;
+      const job: Upload = {
+        id: image.uploadId,
+        backupKey: image.key,
+        file: image.file,
+        preview: URL.createObjectURL(image.file),
+        state: "PENDING",
+        message: "임시저장한 사진 복구 중…",
+        attempt: 0,
+      };
+      jobs.current.set(job.id, job);
+      for (const position of positions)
+        transaction.setNodeMarkup(position, undefined, {
+          ...editor.state.doc.nodeAt(position)!.attrs,
+          src: job.preview,
+          imageId: null,
+          uploadId: job.id,
+        });
+    }
+    if (transaction.docChanged) editor.view.dispatch(transaction);
+
+    function recoverImage(target: HTMLImageElement) {
+      if (callbacks.current.disabled || editor!.isDestroyed) return;
+      const imageId = target.getAttribute("data-content-image-id");
+      if (!imageId) return;
+      const original = [...originals.current.values()].find((image) => image.imageId === imageId);
+      if (!original) return;
+      if (recoveredImageKeys.current.has(original.key)) {
+        setError("사진을 불러오지 못했습니다. 연결을 확인하거나 해당 사진을 다시 추가해 주세요.");
+        return;
+      }
+      const positions = imagePositions(editor!, "imageId", imageId);
+      if (!positions.length) return;
+      recoveredImageKeys.current.add(original.key);
+      const id = crypto.randomUUID();
+      const job: Upload = {
+        id,
+        backupKey: original.key,
+        file: original.file,
+        preview: URL.createObjectURL(original.file),
+        state: "PENDING",
+        message: "임시저장한 사진 복구 중…",
+        attempt: 0,
+      };
+      jobs.current.set(id, job);
+      originals.current.set(original.key, { key: original.key, uploadId: id, file: original.file });
+      const restore = editor!.state.tr;
+      for (const position of positions)
+        restore.setNodeMarkup(position, undefined, {
+          ...editor!.state.doc.nodeAt(position)!.attrs,
+          imageId: null,
+          uploadId: id,
+          src: job.preview,
+        });
+      editor!.view.dispatch(restore);
+      publish(editor!);
+      void upload(editor!, job);
+    }
+    const imageError = (event: Event) => {
+      if (event.target instanceof HTMLImageElement) recoverImage(event.target);
+    };
+    editor.view.dom.addEventListener("error", imageError, true);
+    for (const image of editor.view.dom.querySelectorAll<HTMLImageElement>(
+      "img[data-content-image-id]",
+    )) {
+      if (image.complete && !image.naturalWidth) recoverImage(image);
+    }
+    publish(editor);
+    for (const job of jobs.current.values()) if (!job.attempt) void upload(editor, job);
+    return () => editor.view.dom.removeEventListener("error", imageError, true);
+    // Restore only when an editor mounts. User edits must not be replaced when callbacks change.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editor, restored]);
   const ready = Boolean(editor && !disabled && !uploads.length && !documentError);
   useEffect(() => {
     callbacks.current.onReadyChange?.(ready);
   }, [ready]);
   useEffect(() => {
     editor?.setEditable(!disabled);
+    if (editor && !disabled)
+      for (const job of jobs.current.values()) if (!job.attempt) void upload(editor, job);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor, disabled]);
   useEffect(
     () => () => {
       for (const job of jobs.current.values()) URL.revokeObjectURL(job.preview);
       jobs.current.clear();
+      originals.current.clear();
+      recoveredImageKeys.current.clear();
     },
     [],
   );
@@ -267,8 +428,9 @@ export function ContentEditor({
   }
   function removeUpload(id: string) {
     if (!editor) return;
-    const position = uploadPosition(editor, id);
-    if (position !== null) editor.chain().setNodeSelection(position).deleteSelection().run();
+    const positions = imagePositions(editor, "uploadId", id).reverse();
+    for (const position of positions)
+      editor.chain().setNodeSelection(position).deleteSelection().run();
     const job = jobs.current.get(id);
     if (job) URL.revokeObjectURL(job.preview);
     jobs.current.delete(id);

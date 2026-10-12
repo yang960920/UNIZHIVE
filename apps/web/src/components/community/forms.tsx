@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, startTransition, useActionState, useRef, type ReactNode } from "react";
+import { Fragment, startTransition, useActionState, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toKstInput, type AdministrationActionState } from "../../lib/admin-format";
@@ -23,7 +23,15 @@ import { communityCategoryLabels, communityHref } from "./presentation";
 import "./community.css";
 import { ContentEditor } from "../content/editor";
 import { YouTubeField } from "../content/presentation";
-import type { CommunitySection } from "../../lib/community-policy";
+import type { CommunityCategory, CommunitySection } from "../../lib/community-policy";
+import { useBrowserDraft } from "@/lib/browser-drafts/use-browser-draft";
+import { BrowserDraftControls } from "../browser-draft-controls";
+import { useUserPreferences } from "../user-preferences-provider";
+import {
+  createCommunityPostDraft,
+  isCommunityPostDraft,
+  type CommunityPostDraft,
+} from "./post-draft";
 
 type FormAction = (
   previous: AdministrationActionState,
@@ -41,11 +49,17 @@ export function CommunityActionForm({
   label,
   children,
   resetOnSuccess = false,
+  onSuccess,
+  submitControls,
+  submitDisabled = false,
 }: {
   action: FormAction;
   label: string;
-  children: ReactNode;
+  children: ReactNode | ((pending: boolean) => ReactNode);
   resetOnSuccess?: boolean;
+  onSuccess?: () => Promise<void>;
+  submitControls?: ReactNode;
+  submitDisabled?: boolean;
 }) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
@@ -55,6 +69,8 @@ export function CommunityActionForm({
       try {
         const result = await action(previous, form);
         if (result.ok) {
+          // A completed server write remains successful even if local storage is unavailable.
+          await onSuccess?.().catch(() => undefined);
           if (resetOnSuccess) formRef.current?.reset();
           if (result.href) router.push(result.href);
         }
@@ -76,17 +92,26 @@ export function CommunityActionForm({
       className="community-action-form"
       onSubmit={(event) => {
         event.preventDefault();
-        if (pending || submitBusy.current) return;
+        if (pending || submitBusy.current || submitDisabled) return;
         const form = new FormData(event.currentTarget);
         submitBusy.current = true;
         startTransition(() => submit(form));
       }}
     >
       <fieldset className="community-fields" disabled={pending}>
-        {children}
-        <button type="submit" className="button button-primary">
-          {pending ? "저장 중…" : label}
-        </button>
+        {typeof children === "function" ? children(pending) : children}
+        {submitControls ? (
+          <div className="community-submit-controls">
+            {submitControls}
+            <button type="submit" className="button button-primary" disabled={submitDisabled}>
+              {pending ? "저장 중…" : label}
+            </button>
+          </div>
+        ) : (
+          <button type="submit" className="button button-primary" disabled={submitDisabled}>
+            {pending ? "저장 중…" : label}
+          </button>
+        )}
       </fieldset>
       {state.message && (
         <p
@@ -122,13 +147,26 @@ function VersionFields({ id, updatedAt }: { id: string; updatedAt: string }) {
   );
 }
 
-export function CommunityPostForm({
-  data,
-  filters = {},
-}: {
+type CommunityPostFormProps = {
   data: CommunityEditorData;
   filters?: CommunityReturnFilters;
-}) {
+};
+
+export function CommunityPostForm(props: CommunityPostFormProps) {
+  const { userKey } = useUserPreferences();
+  const initial = props.data.initial;
+  const showcase = initial
+    ? initial.category === "SHOWCASE"
+    : props.filters?.section === "SHOWCASE" || props.filters?.category === "SHOWCASE";
+  return (
+    <StatefulCommunityPostForm
+      key={`${userKey}:${initial?.id ?? "new"}:${showcase ? "showcase" : "board"}`}
+      {...props}
+    />
+  );
+}
+
+function StatefulCommunityPostForm({ data, filters = {} }: CommunityPostFormProps) {
   const initial = data.initial;
   const showcase = initial
     ? initial.category === "SHOWCASE"
@@ -140,109 +178,203 @@ export function CommunityPostForm({
         category: filters.category === "SHOWCASE" ? null : filters.category,
         ...(initial ? { section: "BOARD" as const } : {}),
       };
+  const initialCategory: CommunityCategory =
+    initial?.category ??
+    (showcase
+      ? "SHOWCASE"
+      : filters.category && Object.hasOwn(communityCategoryLabels, filters.category)
+        ? (filters.category as CommunityCategory)
+        : "GENERAL");
+  const [value, setValue] = useState<CommunityPostDraft>(() =>
+    createCommunityPostDraft(initial, initialCategory),
+  );
+  const [published, setPublished] = useState(false);
+  const [mediaReady, setMediaReady] = useState(false);
+  const draft = useBrowserDraft({
+    scope: initial
+      ? `community:post:${initial.id}`
+      : `community:new:${showcase ? "showcase" : "board"}`,
+    value,
+    hasContent: Boolean(
+      value.title ||
+      value.body ||
+      value.youtubeUrl ||
+      value.buildVersionId ||
+      value.contentDraft.images.length,
+    ),
+    enabled: !published,
+    validate: (candidate): candidate is CommunityPostDraft =>
+      isCommunityPostDraft(candidate) &&
+      (showcase ? candidate.category === "SHOWCASE" : candidate.category !== "SHOWCASE") &&
+      Boolean(candidate.expectedUpdatedAt) === Boolean(initial),
+    restore: (saved) => {
+      setMediaReady(false);
+      setValue(data.canPin ? saved : { ...saved, isPinned: false });
+    },
+  });
+  const staleDraft = Boolean(initial && value.expectedUpdatedAt !== initial.updatedAt);
   const linkedMissing =
-    initial?.buildVersionId &&
-    !data.buildVersions.some((version) => version.id === initial.buildVersionId);
+    value.buildVersionId &&
+    !data.buildVersions.some((version) => version.id === value.buildVersionId);
   return (
     <CommunityActionForm
       action={saveCommunityPostForm}
       label={initial ? "글 변경 저장" : "글 등록"}
+      submitDisabled={!draft.hydrated || !mediaReady || published}
+      submitControls={<BrowserDraftControls draft={draft} />}
+      onSuccess={async () => {
+        setPublished(true);
+        await draft.clear();
+      }}
     >
-      <ReturnFields filters={returnFilters} />
-      {initial && <VersionFields id={initial.id} updatedAt={initial.updatedAt} />}
-      <Fragment key={initial?.updatedAt ?? "new-post"}>
-        <label>
-          글 제목
-          <input
-            name="title"
-            required
-            minLength={2}
-            maxLength={160}
-            defaultValue={initial?.title}
-            placeholder="내용을 알아볼 수 있는 제목"
-          />
-        </label>
-        <div className="community-form-columns">
-          <label>
-            분류
-            <select
-              name="category"
-              defaultValue={
-                initial?.category ??
-                (showcase
-                  ? "SHOWCASE"
-                  : filters.category && Object.hasOwn(communityCategoryLabels, filters.category)
-                    ? filters.category
-                    : "GENERAL")
-              }
-            >
-              {Object.entries(communityCategoryLabels)
-                .filter(([key]) => (showcase ? key === "SHOWCASE" : key !== "SHOWCASE"))
-                .map(([key, label]) => (
-                  <option key={key} value={key}>
-                    {label}
-                  </option>
-                ))}
-            </select>
-          </label>
-          <label>
-            공유할 빌드 버전 · 선택
-            <select name="buildVersionId" defaultValue={initial?.buildVersionId ?? ""}>
-              <option value="">빌드 연결 안 함</option>
-              {data.buildVersions.map((version) => (
-                <option key={version.id} value={version.id}>
-                  {version.title} · {version.version}번 버전 ·{" "}
-                  {version.visibility === "HIVE" ? "하이브 공유" : "전체 공개"}
-                </option>
-              ))}
-              {linkedMissing && (
-                <option value={initial.buildVersionId!}>기존 연결 · 현재 접근 상태 변경</option>
-              )}
-            </select>
-            <small className="community-note">
-              글에는 선택한 버전이 고정됩니다. 빌드를 나중에 수정해도 이 글의 연결 버전은 바뀌지
-              않습니다.
-            </small>
-          </label>
-        </div>
-        {linkedMissing && (
+      {(pending) => (
+        <>
+          <ReturnFields filters={returnFilters} />
+          {initial && (
+            <VersionFields
+              id={initial.id}
+              updatedAt={value.expectedUpdatedAt ?? initial.updatedAt}
+            />
+          )}
+          {staleDraft && (
+            <p className="community-form-message is-error" role="alert">
+              임시저장 이후 게시글이 변경되었습니다. 복구한 내용은 보존되며, 기존 글을 덮어쓰지
+              않도록 저장 시 변경 여부를 확인합니다.
+            </p>
+          )}
+          <Fragment key={`${initial?.id ?? "new-post"}:${draft.recoveryKey ?? 0}`}>
+            <label>
+              글 제목
+              <input
+                name="title"
+                required
+                minLength={2}
+                maxLength={160}
+                disabled={!draft.hydrated || published}
+                value={value.title}
+                onChange={(event) =>
+                  setValue((previous) => ({ ...previous, title: event.target.value }))
+                }
+                placeholder="내용을 알아볼 수 있는 제목"
+              />
+            </label>
+            <div className="community-form-columns">
+              <label>
+                분류
+                <select
+                  name="category"
+                  disabled={!draft.hydrated || published}
+                  value={value.category}
+                  onChange={(event) =>
+                    setValue((previous) => ({
+                      ...previous,
+                      category: event.target.value as CommunityCategory,
+                    }))
+                  }
+                >
+                  {Object.entries(communityCategoryLabels)
+                    .filter(([key]) => (showcase ? key === "SHOWCASE" : key !== "SHOWCASE"))
+                    .map(([key, label]) => (
+                      <option key={key} value={key}>
+                        {label}
+                      </option>
+                    ))}
+                </select>
+              </label>
+              <label>
+                공유할 빌드 버전 · 선택
+                <select
+                  name="buildVersionId"
+                  disabled={!draft.hydrated || published}
+                  value={value.buildVersionId}
+                  onChange={(event) =>
+                    setValue((previous) => ({ ...previous, buildVersionId: event.target.value }))
+                  }
+                >
+                  <option value="">빌드 연결 안 함</option>
+                  {data.buildVersions.map((version) => (
+                    <option key={version.id} value={version.id}>
+                      {version.title} · {version.version}번 버전 ·{" "}
+                      {version.visibility === "HIVE" ? "하이브 공유" : "전체 공개"}
+                    </option>
+                  ))}
+                  {linkedMissing && (
+                    <option value={value.buildVersionId}>기존 연결 · 현재 접근 상태 변경</option>
+                  )}
+                </select>
+                <small className="community-note">
+                  글에는 선택한 버전이 고정됩니다. 빌드를 나중에 수정해도 이 글의 연결 버전은 바뀌지
+                  않습니다.
+                </small>
+              </label>
+            </div>
+            {linkedMissing && (
+              <p className="community-note">
+                기존 빌드의 공유 범위가 바뀌었습니다. 사용할 수 있는 공유 버전을 선택하거나 연결을
+                해제해주세요.
+              </p>
+            )}
+            {data.buildOptionsTruncated && (
+              <p className="community-note">
+                최근 공유 버전부터 표시합니다. 원하는 빌드는 <Link href="/lab">빌드 연구실</Link>
+                에서 공유 범위를 확인해주세요.
+              </p>
+            )}
+            {draft.hydrated ? (
+              <ContentEditor
+                initialDocument={value.bodyDocument}
+                initialText={value.body}
+                initialDraft={value.contentDraft}
+                maxTextLength={20000}
+                onChange={(bodyDocument, body) =>
+                  setValue((previous) => ({ ...previous, bodyDocument, body }))
+                }
+                onDraftChange={(contentDraft) =>
+                  setValue((previous) => ({ ...previous, contentDraft }))
+                }
+                onReadyChange={setMediaReady}
+                disabled={pending || published}
+              />
+            ) : (
+              <p className="community-note" role="status">
+                작성하던 내용을 확인하고 있어요.
+              </p>
+            )}
+            <YouTubeField
+              value={value.youtubeUrl}
+              onChange={(youtubeUrl) => setValue((previous) => ({ ...previous, youtubeUrl }))}
+              disabled={!draft.hydrated || pending || published}
+            />
+            {data.canPin && (
+              <label className="community-checkbox">
+                <input
+                  type="checkbox"
+                  name="isPinned"
+                  disabled={!draft.hydrated || published}
+                  checked={value.isPinned}
+                  onChange={(event) =>
+                    setValue((previous) => ({ ...previous, isPinned: event.target.checked }))
+                  }
+                />
+                목록 상단에 고정
+              </label>
+            )}
+          </Fragment>
           <p className="community-note">
-            기존 빌드의 공유 범위가 바뀌었습니다. 사용할 수 있는 공유 버전을 선택하거나 연결을
-            해제해주세요.
+            승인된 하이브 멤버에게 공개됩니다. 사진과 문단을 원하는 위치에 배치할 수 있습니다.
           </p>
-        )}
-        {data.buildOptionsTruncated && (
-          <p className="community-note">
-            최근 공유 버전부터 표시합니다. 원하는 빌드는 <Link href="/lab">빌드 연구실</Link>에서
-            공유 범위를 확인해주세요.
-          </p>
-        )}
-        <ContentEditor
-          initialDocument={initial?.bodyDocument ?? null}
-          initialText={initial?.body ?? ""}
-          maxTextLength={20000}
-        />
-        <YouTubeField initialUrl={initial?.youtubeUrl ?? null} />
-        {data.canPin && (
-          <label className="community-checkbox">
-            <input type="checkbox" name="isPinned" defaultChecked={initial?.isPinned ?? false} />
-            목록 상단에 고정
-          </label>
-        )}
-      </Fragment>
-      <p className="community-note">
-        승인된 하이브 멤버에게 공개됩니다. 사진과 문단을 원하는 위치에 배치할 수 있습니다.
-      </p>
-      {showcase && (
-        <p className="community-note">
-          자랑 분류에서는 본문의 첫 사진이 목록의 대표 사진으로 표시됩니다. 사진과 짧은 설명만으로도
-          우리만의 순간을 나눌 수 있습니다.
-        </p>
+          {showcase && (
+            <p className="community-note">
+              자랑 분류에서는 본문의 첫 사진이 목록의 대표 사진으로 표시됩니다. 사진과 짧은
+              설명만으로도 우리만의 순간을 나눌 수 있습니다.
+            </p>
+          )}
+          <p className="community-note">빌드 공유 분류에는 공유할 빌드 버전을 연결해주세요.</p>
+          <Link className="community-back" href={communityHref(returnFilters)}>
+            {showcase ? "자랑하기 목록으로" : "글 목록으로"}
+          </Link>
+        </>
       )}
-      <p className="community-note">빌드 공유 분류에는 공유할 빌드 버전을 연결해주세요.</p>
-      <Link className="community-back" href={communityHref(returnFilters)}>
-        {showcase ? "자랑하기 목록으로" : "글 목록으로"}
-      </Link>
     </CommunityActionForm>
   );
 }

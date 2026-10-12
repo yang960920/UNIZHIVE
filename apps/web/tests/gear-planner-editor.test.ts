@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { GearCatalogItem, PlannerGearLoadout } from "@uniz/build-engine";
 import type { PlannerActionState, PlannerBuildDetail } from "../src/lib/data/build-planner-types";
+import type { GearBrowserBuildDraft } from "../src/components/build-planner/build-browser-draft";
 
 const boundary = vi.hoisted(() => ({
   states: [] as unknown[],
@@ -14,6 +15,17 @@ const boundary = vi.hoisted(() => ({
   effects: [] as (() => void | (() => void))[],
   clientReady: true,
   defaultBuildVisibility: "PRIVATE" as "PRIVATE" | "HIVE" | "PUBLIC",
+  draftOptions: null as {
+    value: GearBrowserBuildDraft;
+    scope: string;
+    hasContent: boolean;
+    enabled: boolean;
+    restore: (value: GearBrowserBuildDraft) => void;
+  } | null,
+  draftHydrated: true,
+  draftRestored: false,
+  draftRecoveryKey: 0,
+  clearDraft: vi.fn(),
 }));
 
 vi.mock("react", async (original) => ({
@@ -174,6 +186,26 @@ vi.mock("next/image", () => ({ default: "Image" }));
 vi.mock("@/app/lab/actions", () => ({ saveBuildPlanner: boundary.save }));
 vi.mock("@/components/content/editor", () => ({ ContentEditor: "ContentEditor" }));
 vi.mock("@/components/content/presentation", () => ({ YouTubeField: "YouTubeField" }));
+vi.mock("@/lib/browser-drafts/use-browser-draft", () => ({
+  useBrowserDraft: (options: NonNullable<typeof boundary.draftOptions>) => {
+    boundary.draftOptions = options;
+    return {
+      hydrated: boundary.draftHydrated,
+      restored: boundary.draftRestored,
+      recoveryKey: boundary.draftRecoveryKey,
+      status: "idle",
+      savedAt: null,
+      error: null,
+      recoveries: [],
+      restoreRecovery: vi.fn(),
+      saveNow: vi.fn(),
+      clear: boundary.clearDraft,
+    };
+  },
+}));
+vi.mock("@/components/browser-draft-controls", () => ({
+  BrowserDraftControls: "BrowserDraftControls",
+}));
 vi.mock("@/lib/scenario-presets", () => import("../src/lib/scenario-presets"));
 vi.mock("@/lib/map-farming", () => ({ getFarmingMapLink: () => null }));
 vi.mock("@uniz/ui", () => ({ Card: "Card" }));
@@ -317,6 +349,11 @@ beforeEach(() => {
   boundary.effects = [];
   boundary.clientReady = true;
   boundary.defaultBuildVisibility = "PRIVATE";
+  boundary.draftOptions = null;
+  boundary.draftHydrated = true;
+  boundary.draftRestored = false;
+  boundary.draftRecoveryKey = 0;
+  boundary.clearDraft.mockReset().mockResolvedValue(undefined);
   initial = undefined;
   boundary.result = { ok: false, message: "" };
   boundary.save.mockReset().mockResolvedValue({ ok: false, message: "retry" });
@@ -327,6 +364,104 @@ beforeEach(() => {
 });
 
 describe("Gear editor required fields and save guidance", () => {
+  it("keeps incomplete input, invalid numeric text and photo drafts available for local saving", () => {
+    render();
+    expect(boundary.draftOptions?.hasContent).toBe(false);
+    loadedWeapon();
+    boundary.states = [];
+    change("빌드 이름", "가");
+    change("장비 레벨", "5x");
+    const body = find(render(), (element) => element.type === "ContentEditor");
+    const photo = new File(["photo"], "draft.png", { type: "image/png" });
+    const contentDraft = {
+      json: { type: "doc", content: [{ type: "paragraph" }] },
+      images: [{ key: "photo", uploadId: "774f488f-b801-45a4-9e2c-3a9ba68f7926", file: photo }],
+    };
+    (body.props.onDraftChange as (value: unknown) => void)(contentDraft);
+    render();
+    expect(saveButton().props.disabled).toBe(true);
+    expect(boundary.draftOptions).toMatchObject({
+      hasContent: true,
+      enabled: true,
+      value: { title: "가", numberTexts: { "primary.level": "5x" }, bodyDraft: contentDraft },
+    });
+    expect(boundary.draftOptions?.value.numberErrors["primary.level"]).toBeTruthy();
+    expect(find(render(), (element) => element.type === "BrowserDraftControls")).toBeDefined();
+  });
+
+  it("waits for recovery before mounting the rich editor or permitting publication", async () => {
+    boundary.draftHydrated = false;
+    change("빌드 이름", "미완료 복구");
+    expect(render().some((element) => element.type === "ContentEditor")).toBe(false);
+    expect(find(render(), (element) => element.type === "fieldset").props.disabled).toBe(true);
+    expect((await boundary.action!({ ok: false, message: "" }, new FormData())).ok).toBe(false);
+    expect(boundary.save).not.toHaveBeenCalled();
+  });
+
+  it("restores media and raw text with the original edit baseline when the server has changed", () => {
+    loadedWeapon();
+    change("빌드 이름", "복구한 제목");
+    change("장비 레벨", "미확인");
+    change("이번 버전 메모", "끝내지 못한 기록");
+    const video = find(render(), (element) => element.type === "YouTubeField");
+    (video.props.onChange as (value: string) => void)("잘못 입력한 링크");
+    const bodyDraft = {
+      json: {
+        type: "doc",
+        content: [{ type: "paragraph", content: [{ type: "text", text: "풍부한 본문" }] }],
+      },
+      images: [],
+    };
+    (
+      find(render(), (element) => element.type === "ContentEditor").props.onDraftChange as (
+        value: unknown,
+      ) => void
+    )(bodyDraft);
+    render();
+    const saved = boundary.draftOptions!.value;
+    initial = {
+      ...initial!,
+      updatedAt: "2026-10-12T00:00:00.000Z",
+      latestVersion: 2,
+      selectedVersion: { ...initial!.selectedVersion, version: 2 },
+    };
+    boundary.states = [];
+    render();
+    expect(boundary.draftOptions?.scope).toBe(`build:${initial.id}:gear`);
+    boundary.draftOptions!.restore(saved);
+    boundary.draftRestored = true;
+    boundary.draftRecoveryKey = 2;
+    const elements = render();
+    expect(field("빌드 이름").props.value).toBe("복구한 제목");
+    expect(field("장비 레벨").props.value).toBe("미확인");
+    expect(field("이번 버전 메모").props.value).toBe("끝내지 못한 기록");
+    expect(find(elements, (element) => element.type === "YouTubeField").props.value).toBe(
+      "잘못 입력한 링크",
+    );
+    expect(
+      find(elements, (element) => element.type === "ContentEditor").props.initialDraft,
+    ).toEqual(bodyDraft);
+    expect(
+      find(elements, (element) => element.props.name === "expectedUpdatedAt").props.value,
+    ).toBe(saved.baseVersionStamp);
+    expect(text(elements)).toContain("서버에 더 새로운 버전");
+    expect(boundary.draftOptions?.value.baseSourceVersion).toBe(1);
+    expect(saveButton().props.disabled).toBe(true);
+  });
+
+  it("clears drafts only after publication succeeds and stops further autosaving", async () => {
+    change("빌드 이름", "저장 경계 검증");
+    render();
+    await boundary.action!({ ok: false, message: "" }, new FormData());
+    expect(boundary.clearDraft).not.toHaveBeenCalled();
+    boundary.save.mockResolvedValueOnce({ ok: true, message: "저장 완료", href: "/lab" });
+    boundary.clearDraft.mockRejectedValueOnce(new Error("local deletion blocked"));
+    expect((await boundary.action!({ ok: false, message: "" }, new FormData())).ok).toBe(true);
+    expect(boundary.clearDraft).toHaveBeenCalledOnce();
+    render();
+    expect(boundary.draftOptions?.enabled).toBe(false);
+  });
+
   it.each(["", "   ", "가", " 가 ", "가".repeat(101)])(
     "explains why invalid title %s cannot be saved",
     (title) => {

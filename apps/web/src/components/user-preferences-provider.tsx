@@ -27,6 +27,7 @@ export function UserPreferencesProvider({
   }, [preferences.textSize, preferences.reduceMotion]);
   return (
     <Context.Provider
+      key={userKey}
       value={{
         preferences,
         userKey,

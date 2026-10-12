@@ -21,6 +21,7 @@ const boundary = vi.hoisted(() => ({
   dispatch: vi.fn(),
   transition: vi.fn((task: () => void) => task()),
   dispatched: null as Promise<AdministrationActionState> | null,
+  draftClear: vi.fn(),
 }));
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: boundary.push }) }));
 vi.mock("react", async (original) => ({
@@ -32,7 +33,25 @@ vi.mock("react", async (original) => ({
     boundary.action = action;
     return [{ ok: false, message: "" }, boundary.dispatch, false];
   },
+  useState: (initial: unknown) => [typeof initial === "function" ? initial() : initial, vi.fn()],
   startTransition: boundary.transition,
+}));
+vi.mock("../src/lib/browser-drafts/use-browser-draft", () => ({
+  useBrowserDraft: () => ({
+    hydrated: true,
+    status: "idle",
+    restored: false,
+    savedAt: null,
+    error: null,
+    recoveryKey: 0,
+    recoveries: [],
+    saveNow: vi.fn(),
+    clear: boundary.draftClear,
+    restoreRecovery: vi.fn(),
+  }),
+}));
+vi.mock("../src/components/user-preferences-provider", () => ({
+  useUserPreferences: () => ({ userKey: "member" }),
 }));
 vi.mock("../src/app/community/actions", () => ({
   saveCommunityPostForm: vi.fn(),
@@ -76,11 +95,18 @@ function elements(node: unknown): Element[] {
   if (Array.isArray(node)) return node.flatMap(elements);
   if (!node || typeof node !== "object" || !("props" in node)) return [];
   const element = node as Element;
+  if (typeof element.props.children === "function") {
+    return [element, ...elements((element.props.children as (pending: boolean) => unknown)(false))];
+  }
   if (
     typeof element.type === "function" &&
-    ["CommunityPaginationLinks", "CommunitySectionLinks", "VersionFields", "ReturnFields"].includes(
-      element.type.name,
-    )
+    [
+      "CommunityPaginationLinks",
+      "CommunitySectionLinks",
+      "VersionFields",
+      "ReturnFields",
+      "StatefulCommunityPostForm",
+    ].includes(element.type.name)
   ) {
     return [
       element,
@@ -90,9 +116,13 @@ function elements(node: unknown): Element[] {
   return [element, ...elements(element.props.children), ...elements(element.props.action)];
 }
 function text(node: unknown): string {
+  if (typeof node === "function") return text(node(false));
   if (Array.isArray(node)) return node.map(text).join("");
   if (typeof node === "string" || typeof node === "number") return String(node);
   if (!node || typeof node !== "object" || !("props" in node)) return "";
+  const element = node as Element;
+  if (typeof element.type === "function" && element.type.name === "StatefulCommunityPostForm")
+    return text((element.type as (props: Record<string, unknown>) => unknown)(element.props));
   return text((node as Element).props.children);
 }
 const author = { id: "author-id", name: "하이브 멤버", handle: "member" };
@@ -160,6 +190,7 @@ beforeEach(() => {
   boundary.dispatch.mockReset();
   boundary.transition.mockClear();
   boundary.dispatched = null;
+  boundary.draftClear.mockReset().mockResolvedValue(undefined);
 });
 afterEach(() => vi.unstubAllGlobals());
 
@@ -367,9 +398,7 @@ describe("community editor snapshots and write feedback", () => {
       filters: { category: "SHOWCASE" },
     });
     const nodes = elements(tree);
-    expect(nodes.find((node) => node.props.name === "category")?.props.defaultValue).toBe(
-      "SHOWCASE",
-    );
+    expect(nodes.find((node) => node.props.name === "category")?.props.value).toBe("SHOWCASE");
     expect(nodes.some((node) => node.type === "option" && node.props.value === "SHOWCASE")).toBe(
       true,
     );
@@ -401,7 +430,7 @@ describe("community editor snapshots and write feedback", () => {
     const edited = elements(
       CommunityPostForm({ data: existing, filters: { section: "SHOWCASE" } }),
     );
-    expect(edited.find((node) => node.props.name === "category")?.props.defaultValue).toBe("GUIDE");
+    expect(edited.find((node) => node.props.name === "category")?.props.value).toBe("GUIDE");
     expect(edited.find((node) => node.props.name === "returnSection")?.props.value).toBe("BOARD");
     expect(edited.some((node) => node.type === "option" && node.props.value === "SHOWCASE")).toBe(
       false,
@@ -490,7 +519,7 @@ describe("community editor snapshots and write feedback", () => {
       buildOptionsTruncated: false,
     };
     const nodes = elements(CommunityPostForm({ data }));
-    expect(nodes.find((node) => node.props.name === "buildVersionId")?.props.defaultValue).toBe(
+    expect(nodes.find((node) => node.props.name === "buildVersionId")?.props.value).toBe(
       "older-version",
     );
     expect(
@@ -538,5 +567,16 @@ describe("community editor snapshots and write feedback", () => {
     CommunityActionForm({ action, label: "글 수정", children: null });
     await boundary.action!({ ok: false, message: "" }, new FormData());
     expect(boundary.reset).not.toHaveBeenCalled();
+  });
+  it("keeps a completed write successful when local draft cleanup fails", async () => {
+    const action = vi
+      .fn()
+      .mockResolvedValue({ ok: true, message: "등록 완료", href: "/community/post-id" });
+    const onSuccess = vi.fn().mockRejectedValue(new Error("storage unavailable"));
+    CommunityActionForm({ action, label: "글 등록", children: null, onSuccess });
+    const result = await boundary.action!({ ok: false, message: "" }, new FormData());
+    expect(result.ok).toBe(true);
+    expect(onSuccess).toHaveBeenCalledOnce();
+    expect(boundary.push).toHaveBeenCalledWith("/community/post-id");
   });
 });
